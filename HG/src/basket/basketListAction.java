@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
 import member.memberVO;
 
@@ -14,6 +15,8 @@ import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
+import goods.goodsVO;
+
 public class basketListAction extends ActionSupport{
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
@@ -22,6 +25,8 @@ public class basketListAction extends ActionSupport{
 	private memberVO memresultClass;
 	private basketVO basparamClass;
 	private basketVO basresultClass;
+	private goodsVO goodsparamClass;
+	private goodsVO goodsresultClass;
 	
 	private String b_m_id;
 	private int b_g_number;
@@ -31,7 +36,9 @@ public class basketListAction extends ActionSupport{
 	private List<String> b_image = new ArrayList();
 	private Date b_date;
 	private List<basketVO> basketList = new ArrayList<basketVO>();
-	
+	private List<basketVO> subBasketList = new ArrayList<basketVO>();
+	private List<goodsVO> goodsList = new ArrayList<goodsVO>();
+	//private Vector vector = new Vector<>();
 	private int currentPage = 1; // 현재 페이지
 	private int totalCount;// 총 게시물의 수
 	private int blockCount = 10; // 한 페이지의 게시물 수
@@ -56,7 +63,18 @@ public class basketListAction extends ActionSupport{
 		String session_id = (String) session.get("m_id");
 		memresultClass = (memberVO) sqlMapper.queryForObject("UserCheck", session_id);
 		basketList = sqlMapper.queryForList("basketList", session_id);
-		
+		for(int i=1; i<= basketList.size(); i++){
+			goodsresultClass=(goodsVO)sqlMapper.queryForObject("goods_selectOne", basketList.get(0).getB_G_NUMBER());
+			if(goodsresultClass!=null){
+				goodsparamClass.setG_NAME(goodsresultClass.getG_NAME());
+				goodsparamClass.setG_PRICE(goodsresultClass.getG_PRICE());
+				goodsparamClass.setG_SAV_IMAGE(goodsresultClass.getG_SAV_IMAGE());
+			}else return ERROR;
+			goodsList.add(goodsparamClass);
+		}
+		/*vector.add(basketList); //jsp에서 orderSetAction으로 넘어가는 값에 hidden으로 넘겨줄것
+		vector.add(goodsList); *///jsp에서 orderSetAction으로 넘어가는 값에 hidden으로 넘겨줄것
+
 		totalCount = basketList.size();  // 전체 글의 갯수를 구함
 		page = new basketPageAction(currentPage, totalCount, blockCount, blockPage);
 		pagingHtml = page.getPagingHtml().toString();
@@ -68,7 +86,7 @@ public class basketListAction extends ActionSupport{
 			lastCount = page.getEndCount() + 1;
 		}
 		
-		basketList = basketList.subList(page.getStartCount(), lastCount);
+		subBasketList = basketList.subList(page.getStartCount(), lastCount);
 		
 		return SUCCESS;
 		
@@ -162,12 +180,12 @@ public class basketListAction extends ActionSupport{
 		this.b_date = b_date;
 	}
 
-	public List<basketVO> getBasketList() {
-		return basketList;
+	public List<basketVO> getSubBasketList() {
+		return subBasketList;
 	}
 
-	public void setBasketList(List<basketVO> basketList) {
-		this.basketList = basketList;
+	public void setSubBasketList(List<basketVO> subBasketList) {
+		this.subBasketList = subBasketList;
 	}
 
 	public int getCurrentPage() {
@@ -226,4 +244,37 @@ public class basketListAction extends ActionSupport{
 		this.num = num;
 	}
 
+	public goodsVO getGoodsparamClass() {
+		return goodsparamClass;
+	}
+
+	public void setGoodsparamClass(goodsVO goodsparamClass) {
+		this.goodsparamClass = goodsparamClass;
+	}
+
+	public goodsVO getGoodsresultClass() {
+		return goodsresultClass;
+	}
+
+	public void setGoodsresultClass(goodsVO goodsresultClass) {
+		this.goodsresultClass = goodsresultClass;
+	}
+
+	public List<goodsVO> getGoodsList() {
+		return goodsList;
+	}
+
+	public void setGoodsList(List<goodsVO> goodsList) {
+		this.goodsList = goodsList;
+	}
+
+	public List<basketVO> getBasketList() {
+		return basketList;
+	}
+
+	public void setBasketList(List<basketVO> basketList) {
+		this.basketList = basketList;
+	}
+	
+	
 }

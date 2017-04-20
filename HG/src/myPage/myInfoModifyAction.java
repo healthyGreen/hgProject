@@ -28,17 +28,29 @@ public class myInfoModifyAction extends ActionSupport{
 	private String m_addr2;
 	private String m_id;
 	private Map<String,Object> session;
+	private int checkPass;
 	
 	public myInfoModifyAction() throws Exception{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper=SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
 	}
-	
-	public String form() throws Exception{
+	//비밀번호 체크 폼으로 이동
+	public String checkForm() throws Exception{
 		return SUCCESS;
-		
 	}
+	//비밀번호 확인후 맞을시 수정폼이동 아닐시 에러페이지.
+	public String form() throws Exception{
+		if(resultClass.getM_PASS().equals(m_pass)){
+			checkPass = 1;
+		return SUCCESS;
+		}
+		else{
+			checkPass = 0;
+			return ERROR;
+		}
+	}
+	//수정내용 처리
 	public String execute() throws Exception{
 		//보안을위한 아이디 로그인 체크
 		ActionContext context=ActionContext.getContext();
@@ -184,6 +196,15 @@ public class myInfoModifyAction extends ActionSupport{
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
+
+	public int getCheckPass() {
+		return checkPass;
+	}
+
+	public void setCheckPass(int checkPass) {
+		this.checkPass = checkPass;
+	}
+	
 	
 
 }

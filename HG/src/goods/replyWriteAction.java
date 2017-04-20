@@ -10,7 +10,6 @@ import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class replyWriteAction extends ActionSupport {
-
 	public static Reader reader; // 파일 스트립을 위한 reader.
 	public static SqlMapClient sqlMapper; // sqlMapClient API를 사용하기위한
 											// sqlMapper객체.
