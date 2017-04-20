@@ -1,0 +1,126 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*사이드메뉴*/
+.leftbox{float:left; width:200px; margin-right:20px;}
+.leftbox .tit{width:100%; height:44px; line-height:44px; background-color:#4c4c4c; color:#fff; font-size:13pt; letter-spacing:-1px; text-align:center;}
+.leftbox .tit span{font-weight:bold;}
+.leftbox .mlist{width:198px; border:1px solid #cccccc; border-top:none;overflow:auto;}
+.leftbox .mlist dt{ float:left;width:100%; text-align:center; height:35px; line-height:35px; border-bottom:1px solid #dddddd;  border-top:1px solid #dddddd; color:#4c4c4c; background-color:#f4f4f4; font-weight:bold;}
+.leftbox .mlist dt.n{border-top:none;font-weight:bold;}
+.leftbox .mlist dt b{color:#3c59a0;font-weight:bold;}
+.leftbox .mlist dt a{color:#4c4c4c;font-weight:bold; display:block;}
+.leftbox .mlist dd{padding:5px 0 5px 30px; float:left; clear:both; height:22px; line-height:22px; color:#4c4c4c; background:url(../../dsm/img/all/arr2.jpg) 20px center no-repeat;}
+.leftbox .mlist dd a{color:#4c4c4c;}
+.leftbox .mlist dd.box{padding:10px 0 10px 10px; background:none; height:auto;}
+/*공통*/
+.indiv{ margin:0;}
+.main{width:1100px; margin:0 auto;}
+.subcon{width:1100px; margin:30px auto;}
+/*타이틀*/
+.sub_tit{width:100%; height:45px; line-height:45px; border-bottom:1px solid #4c4c4c; position:relative; margin:0 0 50px 0;}
+.sub_tit .tit{text-align:center; color:#4c4c4c; font-size:18pt; font-weight:bold; letter-spacing:-1px;}
+.sub_tit .tit span{ color:#b2b2b2; font-size:12pt; padding-left:5px;}
+.sub_tit .local{position:absolute; right:10px; bottom:10px; color:#6d6d6d; line-height:14px;}
+.sub_tit .local span{color:#4c4c4c;}
+.sub_tit2{width:100%; height:30px; line-height:30px; margin:25px 0 0 0; background:url(../img/all/arr3.jpg) left center no-repeat;}
+.sub_tit2 .tit{text-align:center; color:#cfde00; font-size:12pt; font-weight:bold;letter-spacing:-1px;padding-left:18px;}
+.sub_tit2 .tit span{ color:#4c4c4c; }
+.sub_tit3{width:100%; height:30px; line-height:30px;text-align:center; margin:0; padding:19px 0 35px 0; background:url(../img/all/arr1.jpg) center bottom no-repeat;}
+.sub_tit3 span{text-align:center; letter-spacing:-1px; font-size:30px; color:#999;}
+.sub_tit3 span a{color:#4c4c4c; font-size:30px; font-weight:bold; }
+
+
+
+
+/***********head***********/
+
+
+/*버튼*/
+.smbg{width:100%; height:29px; border-bottom:1px solid #d6d6d6; background-color:#e9e9e9;float:left;}
+.smbg .smbox{width:1100px;  margin:0 auto; font-size:11px;}
+.smbg .smbox .sm_left{float:left; }
+.smbg .smbox .sm_left li{display:inline; float:left; height:29px; line-height:29px; text-align:center; border-left:1px solid #d6d6d6;}
+.smbg .smbox .sm_left li.last{border-right:1px solid #d6d6d6;  background-color:#f4f4f4;}
+.smbg .smbox .sm_left li a{display:block;padding:0 15px; color:#7d7d7d;}
+.smbg .smbox .sm_rig{float:right;}
+.smbg .smbox .sm_rig li{display:inline; float:left;height:29px; line-height:29px; text-align:center; padding-right:10px; margin-right:10px; background:url(../../dsm/img/all/line3.jpg) right center no-repeat;}
+.smbg .smbox .sm_rig li.last{ padding:0; background:none; }
+.smbg .smbox a{ color:#7d7d7d;}
+.smbg .smbox a:hover{text-decoration:none;}
+
+/*메뉴*/
+.headbg{width:100%; height:115px; float:left;  }
+.headbg .head{width:1100px; height:70px; margin:20px auto 0 auto;position:relative;z-index:100; }
+/*검색*/
+.headbg .head .scbox{width:350px; height:30px; position:absolute; left:40%;top:20px; border:2px solid #1868af; margin-left:-169px;}
+.headbg .head .scbox .scform{float:left; width:294px;height:30px; }
+.headbg .head .scbox .scform input{width:340px;height:30px;padding-left:10px; line-height:30px; border:none; color:#909090;font-size: 12px; }
+.headbg .head .scbox .scbtn{ float:right;}
+/*로고*/
+.headbg .head .logo{float:left; margin-left:7px; height:55px; line-height:65px;}
+.headbg .head .logo:after{content: " ";margin-left: -0.6em;white-space: pre;}
+.headbg .head .logo img{vertical-align:middle; max-height:55px;}
+/*상단 오른쪽 배너*/
+.top_right_wrap{float:right;margin-top: 20px;}
+.top_right_wrap ul li{float:left;}
+/*상단슬라이드*/
+.headbg .head .h_rig{float:right; width:240px; height:70px;position:relative;}
+.headbg .head .h_rig .sliderkit-go-btn{position:absolute;top:0; right:0;z-index:10;width:35px;height:15px;}
+.headbg .head .h_rig .sliderkit-go-btn a{width:15px;height:15px;cursor:pointer;background-repeat:no-repeat; position:absolute;}
+.headbg .head .h_rig .sliderkit-go-btn a.sliderkit-go-prev {left:0; background-image:url(../../dsm/img/head/h_rig_left.jpg);background-position: center right;}
+.headbg .head .h_rig .sliderkit-go-btn a.sliderkit-go-next {right:0;background-image:url(../../dsm/img/head/h_rig_rig.jpg);background-position: center left;}
+.headbg .head .h_rig .sliderkit-btn-disable a{opacity:0/*can be set to any value until 1*/;cursor:default;}
+.headbg .head .h_rig .sliderkit-btn-disable a:hover{cursor:default;}
+.headbg .head .h_rig .sliderkit-go-btn span{display:none;}
+/*상단메뉴*/
+.topmenubg{float:left; clear:both;width:100%; height:47px; background-color: #1966b4;}
+.topmenubg .topmenu{width:1100px; height:47px; margin:0 auto; position:relative;}
+.topmenubg .topmenu li{display:inline; float:left;  line-height:45px; background:url(../../dsm/img/all/line2.png) right center no-repeat;padding: 0px 11px;}
+.topmenubg .topmenu li a{display:block; color:#fff; text-align:center; font-size:14px; font-weight:bold;}
+.topmenubg .topmenu li:hover, .topmenubg .topmenu li.all{background-color:#4c4c4c; background-image:none;}
+/*전체카테고리*/
+#allbox{display:none;position:absolute;top:44px;left:0;z-index:9999;/******/width:1098px; overflow:auto; height:auto;background:#fff;border:#000 solid 1px; font-size:11px; overflow:hidden;}
+.allcatebox {width:1100px; height:auto;}
+.allcatebox a{ font-size:11px;}
+.allcatebox .box{float:left; width:179px; margin:28px 20PX 0 20px; }
+.allcatebox .box .tit{width:100%; height:44px;  float:left; text-align:center; font-weight:bold; color:#666;  border-bottom:1px solid #d9d9d9; border-top:2px solid #000; margin-bottom:15px; }
+.allcatebox .box .tit a{color:#000;height:44px; line-height:44px;font-size:18px;}
+.allcatebox .box .list{float:left; width:100%; height:170px; }
+.allcatebox .box .list dd {text-align:center; color:#848484; margin:0 0 15px 0;}
+.allcatebox .box .list dd a{color:#848484; font-size:13px;}
+.allcatebox .box .list dd a:hover{ padding:3px; background-color:#86a3d7; color:#fff;}
+#allbox .close { display:block; width:100%; clear:both; height:35px; margin:30px 0 0 0;}
+#allbox .close a{float:right; width:140px; height:35px; margin-right:37px;}
+
+
+
+
+
+/************foot***************/
+/*카피라이트*/
+.foot_bg{ float:left;clear:both;width:100%; height:auto; display:block;background:#f8f8f8;}
+.foot_bg .foot {width:1100px; margin:0 auto 50px auto;height:auto;}
+/*하단왼쪽*/
+/*하단로고*/
+.foot .f_info{float:left; width:535px; height:250px; margin:0 0 0 15px;}
+.foot .f_info .f_logo{float:left; height:95px; line-height:95px;}
+.foot .f_info .f_logo:after{content: " ";margin-left: -0.6em;white-space: pre;}
+.foot .f_info .f_logo img{vertical-align:middle; max-height:50px;}
+/*하단카피라이트*/
+.foot .f_info .f_copy , .foot .f_info .f_copy a{ clear:both; color:#979797; line-height:17px; }
+/*카피라이터 회사명 색상*/
+
+.foot .f_info .f_copy span{color:#555555; padding:0 7px; margin-left:7px; background:url(../../dsm/img/all/line4.png) left center no-repeat;}
+.foot .f_info .f_copy span.none{padding:0 5px 0 0; margin:0; background:none;}
+/*카피라이터 사업자정보확인 색상*/
+.foot .f_info .f_copy a.ftc{ display:inline;padding:3px; background-color:#dbdbdb; border:1px solid #c7c7c7; color:#6f6f6f;text-align:center; }
+.foot .f_info .f_copy a.ftc:hover{ background-color:#86a3d7; border-color:#6887bf; color:#fff;text-decoration:none;}
+
+/*오른쪽 메뉴*/
+.foot .f_menu {float:right; width:540px; height:250px; margin:0;}
+.foot .f_menu .f_m{width:100%; height:14px; padding:35px 0 18px 0; background:url(../../dsm/img/all/line1.jpg) bottom repeat-x;}
+.foot .f_menu .f_m li{display:inline; margin-left:10px; padding-right:12px; background:url(../../dsm/img/all/line4.png) right center no-repeat;}
+
+.foot .f_menu .f_cs{width:100%; margin:25px 0 0 11px;}
+.foot .f_menu .f_cs li{display:inline; float:left; margin-right:45px;}

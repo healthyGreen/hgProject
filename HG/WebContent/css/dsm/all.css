@@ -1,0 +1,89 @@
+@charset "utf-8";
+/* CSS Document */
+
+@font-face {
+  font-family: 'Nanum GothicB';
+  font-style: normal;
+  font-weight: 700;
+  src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.eot);
+  src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.eot?#iefix) format('embedded-opentype'),
+       url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.woff2) format('woff2'),
+       url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.woff) format('woff'),
+       url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Nanum Gothic';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.eot);
+  src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.eot?#iefix) format('embedded-opentype'),
+       url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.woff2) format('woff2'),
+       url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.woff) format('woff'),
+       url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Nanum GothicEB';
+  font-style: normal;
+  font-weight:900;
+  src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-ExtraBold.eot);
+  src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-ExtraBold.eot?#iefix) format('embedded-opentype'),
+       url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-ExtraBold.woff2) format('woff2'),
+       url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-ExtraBold.woff) format('woff'),
+       url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-ExtraBold.ttf) format('truetype');
+}
+
+
+body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,form,fieldset,legend,input,textarea,button,select{margin:0;padding:0}
+body,input,textarea,select,button,table{background:none; font-family:'나눔고딕', 'NanumGothic', 'Nanum Gothic', 'sans-serif' !important;font-size:12px; line-height:1.5}
+body{height:100%}
+img,fieldset{border:0}
+
+ul,ol{list-style:none}
+em,address{font-style:normal}
+a{text-decoration:none; color:#696969;}
+a:hover,a:active,a:focus{text-decoration:none; color:#696969}
+.png24 {tmp:expression(setpng(this));}
+
+/*폰트설정*/
+.fn{font:12px 'Nanum Gothic', sans-serif ; }
+.fb{font:12px 'Nanum GothicB', sans-serif ; }
+.feb{font:12px 'Nanum GothicEB', sans-serif ; }
+
+
+/*스크립트기본*/
+
+.sliderkit { display: block; position: relative; overflow: hidden; text-align: left; }
+.sliderkit a, .sliderkit a:hover { text-decoration: none; }
+.sliderkit a:focus { outline: 1px dotted #000;/*optional*/ }
+.sliderkit img { border: 0; }
+/*---------------------------------
+ *  Navigation
+ *---------------------------------*/
+.sliderkit .sliderkit-nav { z-index: 10; position: absolute; text-align: center; }
+/* Nav > Clip */
+.sliderkit .sliderkit-nav-clip { position: relative; overflow: hidden; margin: 0 auto; }
+.sliderkit .sliderkit-nav-clip ul { position: relative; left: 0; top: 0; list-style: none; margin: 0; padding: 0; }
+.sliderkit .sliderkit-nav-clip ul li { float: left; }
+.sliderkit .sliderkit-nav-clip ul li a { display: block; overflow: hidden; }
+/*---------------------------------
+ *  Buttons
+ *---------------------------------*/
+.sliderkit .sliderkit-btn { z-index: 10; }
+/*---------------------------------
+ *  Panels
+ *---------------------------------*/
+.sliderkit .sliderkit-panel { z-index: 1; position: absolute; overflow: hidden; }
+.sliderkit .sliderkit-panel-active { z-index: 5; }
+.sliderkit .sliderkit-panel-old { z-index: 4; }
+/* Panels > Overlay */
+.sliderkit .sliderkit-panel .sliderkit-panel-textbox { position: absolute; z-index: 1; }
+.sliderkit .sliderkit-panel .sliderkit-panel-text { position: absolute; z-index: 3; top: 0; left: 0; }
+.sliderkit .sliderkit-panel .sliderkit-panel-overlay { position: absolute; z-index: 2; top: 0; left: 0; }
+/*---------------------------------
+ *  Counter
+ *---------------------------------*/
+.sliderkit .sliderkit-count { position: absolute; top: 5px; right: 5px; z-index: 10; padding: 5px; color: #fff; background: #000; }
+/*---------------------------------
+ *  Loader
+ *---------------------------------*/
+.sliderkit .sliderkit-timer { position: absolute; top: 0; left: 0; z-index: 10; height: 3px; background: #ccc; }

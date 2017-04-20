@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 
+'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+
+
+<sqlMap>
+	
+	<typeAlias alias="goods" type="goods.goodsVO"/>
+	
+	
+	<!-- 회원정보 맵핑 -->
+	
+   
+   <!-- 주문맵핑 -->
+   <resultMap id="goodsRes" class="goods">
+      <result property="" column=""/>
+      <result property="" column=""/>
+      <result property="" column=""/>
+      <result property="" column=""/>
+      <result property="" column=""/>
+      <result property="" column=""/>
+      <result property="" column=""/>
+      <result property="" column=""/>
+      <result property="" column=""/>
+      <result property="" column=""/>
+   </resultMap>
+   
+   <select id="goods_selectOne" resultMap="orderRes">
+		SELECT * FROM GOODS
+		WHERE G_NUMBER = #g_number# 
+	</select>
+	
+
+
+
+  
+</sqlMap>

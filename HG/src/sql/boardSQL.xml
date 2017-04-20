@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 
+'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+
+
+<sqlMap>
+  
+   <typeAlias alias="notice" type="notice.noticeVO"/>
+   <typeAlias alias="review" type="review.reviewVO"/>
+
+   
+  
+   
+   
+      <!-- 공지사항 맵핑 -->
+   <resultMap id="noticeRes" class="notice">
+      <result property="n_number" column="n_number"/>
+      <result property="n_title" column="n_title"/>
+      <result property="n_name" column="n_name"/>
+      <result property="n_date" column="n_date"/>
+      <result property="n_hit" column="n_hit"/>
+      <result property="n_content" column="n_content"/>
+   </resultMap>
+   
+   
+   <!-- 후기 맵핑 -->
+   <resultMap id="reviewRes" class="review">
+      <result property="rv_number" column="rv_number"/>
+      <result property="rv_image" column="rv_image"/>
+      <result property="rv_title" column="rv_title"/>
+      <result property="rv_content" column="rv_content"/>
+      <result property="rv_pass" column="rv_pass"/>
+      <result property="rv_name" column="rv_name"/>
+      <result property="rv_date" column="rv_date"/>
+      <result property="rv_score" column="rv_score"/>
+      <result property="rv_ref" column="rv_ref"/>
+      <result property="rv_ref_step" column="rv_ref_step"/>
+      <result property="rv_ref_level" column="rv_ref_level"/>
+   </resultMap>
+   
+   
+    
+  
+  <sql id="select-notice">
+        SELECT * FROM NOTICE
+  </sql>
+  
+  <sql id="select-review">
+        SELECT * FROM REVIEW
+  </sql>
+  
+
+  
+  <!--후기 관련 로직 -->
+  <select id="selectAllReview" resultMap="reviewRes">
+    <include refid="select-review"/>
+       order by rv_ref desc, rv_ref_step asc 
+  </select>
+  <select id="selectOneReview" resultMap="reviewRes" parameterClass="int">
+     <include refid="select-review"/>
+     where rv_number = #number#
+  </select>
+  
+  <select id="selectRvSearchW" resultMap="reviewRes" parameterClass="string">
+    <include refid="select-review"/>
+       WHERE rv_name like #search#
+       ORDER BY RV_REF DESC, RV_REF_STEP ASC
+  </select> 
+  
+  <select id="selectRvSearchT" resultMap="reviewRes" parameterClass="string">
+    <include refid="select-review"/>
+       WHERE rv_title like #search#
+       ORDER BY RV_REF DESC, RV_REF_STEP ASC
+  </select> 
+  
+  <select id="selectAboutPass" resultMap="reviewRes" parameterClass="review">
+     select rv_pass from review where rv_number=#rv_number#
+  </select>
+  <!-- 상품후기 비밀번호 확인 -->
+     <select id="selectPasswordRV" resultMap="reviewRes">
+      <include refid="select-review"/>
+      <include refid="where-no" />
+      AND password = #password#
+   </select>
+   
+   
+   <!-- 공지사항 로직 -->
+   <select id="selectAllNotice" resultMap="noticeRes">
+   	<include refid="select-notice"/>
+   		order by n_number DESC
+  
+   </select>
+
+   
+
+   
+
+  
+  <!-- ★insert문들 ★ -->
+  <insert id="insertReview" parameterClass="review">
+     insert into REVIEW (RV_NUMBER, RV_TITLE, RV_CONTENT, RV_PASS, RV_NAME, RV_DATE,
+     RV_SCORE, RV_REF, RV_REF_STEP, RV_REF_LEVEL) 
+     values (RV_NUMBER_SEQ.NEXTVAL, #rv_title#, #rv_content#, #rv_pass#, #rv_name#, #rv_date#,
+     #rv_score#, RV_NUMBER_SEQ.CURRVAL, #rv_ref_step#, #rv_ref_level#)
+  </insert>
+  
+  <insert id="insertReviewReply">
+     insert into REVIEW (RV_NUMBER, RV_TITLE, RV_CONTENT, RV_PASS, RV_NAME, RV_DATE,
+     RV_SCORE, RV_REF, RV_REF_STEP, RV_REF_LEVEL) 
+     values (RV_NUMBER_SEQ.NEXTVAL, #rv_title#, #rv_content#, #rv_pass#, #rv_name#, #rv_date#,
+     #rv_score#, #rv_ref#, #rv_ref_step#, #rv_ref_level#)
+  </insert>
+  
+  <!-- ★delete문들 ★ -->
+  <delete id="deleteReview" parameterClass="review">
+     delete from review where rv_number=#rv_number#
+  </delete>
+  
+  <!-- ★update문들 ★ -->
+  <update id="updateReview" parameterClass="review">
+     update REVIEW set RV_TITLE=#title#, RV_CONTENT=#content# where RV_NUMBER=#number#
+  </update>
+  <update id="updateRvFile">
+     update REVIEW set RV_ORG_IMAGE = #rv_org_image#, RV_SAV_IAMGE = #rv_sav_image#
+     where RV_NUMBER=#rv_number#
+  </update>
+  <update id="updateRvReadHit" parameterClass="int">
+     update REVIEW set RV_READHIT=RV_READHIT+1 where RV_NUMBER=#number#
+  </update>
+  <update id="updateReplyStep" parameterClass="review">
+     update REVIEW set RV_REF_STEP=RV_REF_STEP+1 where RV_REF= #RV_REF# and RV_STEP > #RV_STEP#
+  </update>
+  <update id="updateFile" parameterClass="review">
+     update REVIEW set RV_ORG_IMAGE = #RV_ORG_IMAGE#, RV_SAV_IMAGEV = #RV_SAV_IMAGE# where RV_NUMBER=#RV_NUMBER#
+  </update>
+</sqlMap>

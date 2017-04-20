@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 
+'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+
+
+<sqlMap>
+	
+	<typeAlias alias="orders" type="orders.ordersVO"/>
+	
+	
+	<!-- 회원정보 맵핑 -->
+	
+   
+   <!-- 주문맵핑 -->
+   <resultMap id="ordersRes" class="orders">
+      <result property="o_number" column="o_number"/>
+      <result property="o_m_id" column="o_m_id"/>
+      <result property="o_name" column="o_name"/>
+      <result property="o_rphone" column="o_rphone"/>
+      <result property="o_zipcode" column="o_zipcode"/>
+      <result property="o_addr1" column="o_addr1"/>
+      <result property="o_addr2" column="o_addr2"/>
+      <result property="o_comment" column="o_comment"/>
+      <result property="o_pay" column="o_pay"/>
+      <result property="o_date" column="o_date"/>
+      <result property="o_allprice" column="o_allprice"/>
+      <result property="o_allprice_f" column="o_allprice_f"/>
+      <result property="o_g_number" column="o_g_number"/>
+      <result property="o_g_amount" column="o_g_amount"/>
+      <result property="o_g_bottle" column="o_g_bottle"/>
+   </resultMap>
+   
+   <select id="order_selectOne" resultMap="orderRes">
+		SELECT * FROM ORDERS
+		WHERE O_M_ID = #o_m_id# AND O_NAME = #o_name#
+	</select>
+	<!-- <select id="orderDetail" resultMap="orderRes" parameterClass="int">
+		SELECT * FROM ORDERS WHERE ORDER_NUM=#order_num#
+	</select> -->
+	<select id="orderList" resultMap="orderRes" parameterClass="string">
+		SELECT * FROM ORDERS WHERE O_M_ID = #o_m_id#
+		ORDER BY o_number
+		desc
+	</select>
+	<insert id="insert_order" parameterClass="order">
+		INSERT INTO
+		ORDERS(O_NUMBER,
+		O_M_ID,
+		O_NAME,
+		O_RPHONE,
+		O_ZIPCODE,
+		O_ADDR1,
+		O_ADDR2,
+		O_COMMENT,
+		O_PAY,
+		O_DATE,
+		O_ALLPRICE,
+		O_ALLPRICE_F,
+		O_G_NUMBER,
+		O_G_AMOUNT,
+		O_G_BOTTLE
+		)VALUES(
+		O_NUMBER_SEQ.NEXTVAL,
+		#o_m_id#,
+		#o_name#,
+		#o_rphone#,
+		#o_zipcode#,
+		#o_addr1#,
+		#o_addr2#,
+		#o_comment#,
+		#o_pay#,
+		#o_date#,
+		#o_allprice#,
+		#o_allprice_f#,
+		#o_g_number#,
+		#o_g_amount#,
+		#o_g_bottle#
+		)
+	</insert>
+	<delete id="orderDelete" parameterClass="order">
+		DELETE FROM ORDERS
+		WHERE O_NUMBER=#o_number#
+	</delete>
+	<!--쇼핑몰 어드민 Order list select 쿼리문 정의 -->
+	<select id="selectOrderList" resultMap="orderRes">
+		SELECT * FROM ORDERS
+		ORDER BY O_NUMBER DESC
+	</select>
+
+	
+
+	<!--쇼핑몰 어드민 Order select 쿼리문 정의 
+	<select id="selectProductOrder" resultMap="orderRes">
+		SELECT * FROM ORDERS
+		WHERE O_NUMBER=#o_number#
+	</select>
+	
+	<update id="updateProductOrder" parameterClass="order">
+		UPDATE ORDERS SET
+		ORDER_TRANS_NUM=#order_trans_num#,
+		ORDER_STATUS=#order_status#
+		WHERE ORDER_NUM=#order_num#
+	</update>
+	<delete id="adminorderDelete" parameterClass="order">
+		DELETE FROM ORDERS WHERE ORDER_NUM=#order_num#
+	</delete>-->
+   
+ 
+  
+</sqlMap>

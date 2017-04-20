@@ -1,0 +1,249 @@
+
+
+/* #################### 초기화 reset #################### */
+
+	* { margin:0; padding:0; }
+	.square { font-family: 'Nanum Square'; }
+	a { letter-spacing:-0.5px; }
+	ul , li { list-style:none; }
+	
+	/* #################### 공통 common #################### */
+
+	.clear { clear:none; }
+	.clear:after { display:block; clear:both; content:''; }
+	.clear > li { float:left; }
+	.clear > .left { float:left; }
+	.clear > .right { float:right; }
+	
+	.mt10 { margin-top:10px; }
+	.mt20 { margin-top:20px; }
+	.mt30 { margin-top:30px; }
+	.mt40 { margin-top:40px; }
+	.mt50 { margin-top:50px; }
+
+	.mb10 { margin-bottom:10px; }
+	.mb20 { margin-bottom:20px; }
+	.mb30 { margin-bottom:30px; }
+	.mb40 { margin-bottom:40px; }
+	.mb50 { margin-bottom:50px; }
+
+	.btn { display:inline-block; width:140px; height:40px; line-height:40px; text-align:center; color:#fff; font-weight:bold; background:#cfde00; }
+	.btn:hover { color:#fff; }
+	
+
+/* #################### 상단 header #################### */
+	
+	/* 최상단 배너 */
+	#header .topBanner {	
+	position:relative;
+	background:#36231d;
+	height:80px;
+	width:100%;
+	}
+	/*백그라운드 두개로 나누기*/
+	#header .topBanner:after{
+	position:absolute;
+	top:0;
+	left:0;
+	width:50%;
+	content:'';
+	background-color:#fde811;
+	height:80px;
+	}
+	#header .topBanner .area { position:relative; width:1100px; margin:0 auto; z-index:99; }
+	#header .topBanner .btnCloseTopBanner { position:absolute; right:282px; bottom:19px; display:inline-block; /*width:120px; height:30px;*/ width:0px; height:0px;  }
+
+	/* 상단 메뉴 */
+	#header .top { height:36px;  text-align:right; }
+	#header .top .area { position:relative; width:1100px; margin:0 auto; }
+	#header .top .area .icon { position:absolute; left:0; top:13px;  }
+	#header .top .area .icon a { display:inline-block; width:15px; height:14px; margin-right:2px; background:url('./img/dp/btn_social.jpg') no-repeat; }
+	#header .top .area .icon a.fb { background-position-X:-15px; }
+	#header .top ul { display:inline-block; }
+	#header .top li { padding-left:20px; height:36px; line-height:36px; }
+	
+	/* 상단 로고 */
+	#header .mid  { position:relative; width:1100px; height:100px; margin:0 auto; }
+	#header .mid h1 { width:131px; height:82px; background:#fff; left:0; right:0; bottom:10px; margin-right:auto; margin-left:auto;  }
+	
+	/* 검색 */
+	#header .mid .search { position:absolute; right:0; bottom:35px; }
+	#header .mid .search table input[type="text"] { text-indent:10px; font-weight:normal; width:250px; height:32px; border:1px solid #ddd; }
+
+	/* 상단 카테고리 */
+	#header .bot { position:relative; width:1100px; height:36px; margin:0 auto;  z-index:20;  }
+	#header .gnb { position:relative; height:36px; line-height:36px;  }
+	#header .gnb li { position:relative; width:12.5%; text-align:center; }
+	#header .gnb li a { display:block; width:100%; height:100%; text-transform:uppercase; font-size:14px; font-weight:bold; color:#666; }	
+	
+	#header .gnb li:hover > a { color:#cfde00; }
+	#header .gnb li:hover .two { display:block; }
+	#header .gnb li .two { position:absolute; top:36px; left:0; width:100%; background:#fff;  display:none;  }
+	#header .gnb li .two p:hover { background:#cfde00; }
+
+/* #################### 하단 footer #################### */
+
+	#footer {  border-top:1px solid #aaa; }
+	#footer * { font-family:'Nanum Square';  color:#555;  }
+	#footer .area { width:1100px; margin:0 auto; text-align:center; padding-bottom:40px; }
+	
+	/* 전화정보 */
+	#footer .info { padding:50px 0; }
+	#footer .info .tel { font-size:40px; font-weight:bold;  }
+	#footer .info .cs { font-size:14px;  }
+	
+	/* 하단메뉴 */
+	#footer .menu { display:inline-block; margin-bottom:30px; }
+	#footer .menu ul li { margin-left:2px; width:145px; height:34px; line-height:34px; }
+	#footer .menu ul li a { display:block; border:1px solid #888; text-align:center; font-size:14px; }
+
+	/* 주소 */
+	#footer .addr { padding-bottom:20px;  }
+	#footer .addr address {  font-style:normal; }
+	#footer .addr span { position:relative; line-height:1.8; font-size:13px; padding-left:10px; }
+	#footer .addr div span:before { position:absolute;  top:3px; left:4px; content:''; width:1px; height:10px; background:#999; }
+	#footer .addr div span:first-child { padding-left:0; }
+	#footer .addr div span:first-child:before { display:none; }
+
+	#footer .addr .rights { text-transform:uppercase; font-size:13px; }
+	
+	/* 아이콘 */
+	#footer .icon a { display:inline-block; width:23px; height:22px; background:url('./img/dp/btn_social_bot.jpg') no-repeat; }
+	#footer .icon .fb { width:14px; background-position-x:-35px; margin-left:8px; }
+
+/* #################### 메인 index #################### */
+	
+	/* 배너 */
+	#visual { position:relative; height:530px; overflow:hidden; } 
+	#visual { width:100%; height:485px; } 
+	#visual ul { position:relative;} 
+	#visual ul li { position:absolute; left:0; top:0; width:100%; height:470px; } 
+	#visual ul li div { width:1100px; height:530px; margin:0 auto; } 
+
+/***********************  PC메인배너 배경색지정  ************************************/
+	#visual ul li.slider01 { background:#64d7e9; }
+    #visual ul li.slider02 { background:#64d7e9; }
+    #visual ul li.slider03 { background:#d9f4ff; }
+	#visual ul li.slider04 { background:#; }
+	#visual ul li.slider05 {}
+	#visual ul li.slider06 {}
+	#visual ul li.slider07 {}
+	#visual ul li.slider08 {}
+	#visual ul li.slider09 {}
+	#visual ul li.slider10 {}
+
+
+
+	#visual .navi { position:absolute; width:1100px; height:43px; left:50%; margin-left:-550px; bottom:0; padding-top:30px; text-align:center; z-index:2; }
+	#visual .navi ol { display:inline-block;  }
+	#visual .navi ol li { width:60px; height:4px; margin-left:5px; background:#fff; cursor:pointer; }
+	#visual .navi ol li.on { background:#cfde00; }
+	#visual .navi ol li:first-child { margin-left:0; }
+
+	#visual .button { position:absolute; top:-20; left:50%; margin-left:-550px; width:1100px; height:0; z-index:3; }
+	#visual .button div { position:absolute; top:230px; padding:10px; cursor:pointer; }
+	#visual .button .prev { left:0;  }
+	#visual .button .next { right:0;  }
+	
+	/* 컨텐츠 */
+	#cont { position:relative; }
+	#cont .area { width:1100px; margin:0 auto; }
+	#cont h4 { text-align:center; padding:00px 0; }
+
+	#cont .banner01 { position:relative; height:170px; margin:30px 0; padding:30px 0; border-top:1px solid #aaa; border-bottom:1px solid #aaa;   }
+	#cont .banner01 ul li{float:left; margin-left:159px;}
+	#cont .banner01 ul li:first-child { margin-left:0; }
+	#cont .banner02  {margin-bottom:20px;}
+	#cont .banner02 ul li{float:left; margin-left:10px;}
+	#cont .banner02 ul li:first-child { margin-left:0; }
+	
+	#cont .bannerL { background:#5ad0ee;  }
+	#cont .bannerL .area { position:relative; width:1100px; height:193px; background:url('./img/dp/main_banner_L.jpg') no-repeat center center; margin:40px auto; text-align:center; }
+	#cont .bannerL .area a { position:absolute; bottom:25px; right:20px; display:inline-block; width:205px; height:55px; background:transparent; }
+
+	/* #################### 메인진열관리 tpl_01_best.htm #################### */
+
+	.tpl01Best td * { font-family:'Nanum Square'; text-align:center;  }
+	.tpl01Best .goodsImg { position:relative;  }
+	.tpl01Best .goodsNm { font-size:18px; color:#cfde00; padding:15px 0 0 0; }
+	.tpl01Best .shortdesc { color:#999; }
+	.tpl01Best .pprice { display:block; color:#b7c30b; font-size:18px; padding:10px 0; }
+	.tpl01Best .percent {     position: absolute;
+    margin: 0 auto;
+    top: 0;
+    width: 0;}
+	.tpl01Best .percent:before { position:absolute; content:''; border-left:70px solid red; border-bottom:70px solid transparent; z-index:1; }
+	.tpl01Best .percent span { position:relative; color:#fff; font-size:18px; top:5px; left:5px; font-weight:bold; z-index:2; }
+
+	/* #################### 메인진열관리 tpl_01_carousel.htm #################### */
+
+	/* 캐러셀 초기화 */
+	.owlArea { position:relative; }
+	.owlArea .item { text-align:center; }
+	.owlArea .button { position:absolute; top:50%; margin-top:-50px;  cursor:pointer; }
+	.owlArea .prev { left:0; }
+	.owlArea .next { right:0; }
+
+	.owlArea .owl-theme .owl-controls { margin-top:20px; }
+	.owlArea .owl-theme .owl-controls .owl-page span { border-radius:0; width:60px; height:4px; margin:0; margin-left:5px; background:#ddd;  }
+	.owlArea .owl-theme .owl-controls .owl-page.active span { background:#cfde00; }
+	
+	.owl .goodsImg a { position:relative; display:inline-block; width:225px; height:225px; overflow:hidden; }
+	.owl .goodsImg a:after { content:''; position:absolute; width:100%; height:100%;  left:0; top:0; background:url('../../img/dp/img_wrap.png') no-repeat; }
+	.owl .goodsImg a img { position:absolute; top:0; bottom:0; left:0; right:0; margin:auto; }
+
+	/* #################### 1:1문의 mypage/mypage_qna_register.htm #################### */
+
+	#from_qna_tit { margin:0; border:none; padding-bottom:40px; }
+	#from_qna_tit .tit { text-indent:5px;  }
+	#form_qna table#form { border-top:2px solid #444; }
+	#form_qna table td { border-bottom:1px solid #eee; }
+
+	/* 입력상자 */
+	#form_qna td { height:56px; line-height:56px; padding-left:15px; padding-right:15px; } 
+	#form_qna td.input_txt , #form_qna th { padding:0; font:normal 13px "Nanum Square"; padding-left:15px; text-align:left; background:#f9f9f9; }
+	.select { width:240px; background:#fff; color:#444; border:1px solid #ccc; height:36px; line-height:36px;  }
+	#form_qna input { background:#fff; padding:8px; border:1px solid #ddd; }
+	#form_qna textarea { width:100%; margin:7px 0; padding:8px; background:#fff; border:1px solid #ddd; min-height:140px; }
+	#form_qna input:focus, #form_qna textarea:focus { border-color:#111; }
+	
+	/* 입력상자 개별 */
+	#form_qna input[type="text"] { width:240px; }
+	#form_qna input[name="file[]"] { border:none; width:585px; background:#f9f9f9; padding:5px; border:1px solid #ddd; }
+	#form_qna input[name="file[]"]:hover { background:#f1f1f1; }
+	
+	/* 문자메시지 */
+	#form_qna .mobile { font-size:0; display:inline-block; }
+	#form_qna .mobile em { display:inline-block; width:15px; text-align:center; font-size:10px; color:#999;  }
+	#form_qna .mobile input { width:70px; }
+	
+	/* 이미지첨부 */
+	#table tr td { border:none !important; padding:0; }
+	#table tr td:first-child { font-size:0; width:0; padding:0; } 
+	#table .btnUp { position:relative; top:-1px; display:inline-block; width:100px; height:36px; line-height:36px; background:#f9f9f9; text-align:center; font-size:11px; }
+	#table .btnUp:hover { background:#f1f1f1; }
+	
+	/* 이미지첨부 - 버튼 */
+	#form_qna .button { display:inline-block; margin-left:10px; width:100px; height:36px; line-height:36px; text-align:center; background:#f9f9f9; }
+	#form_qna .button:hover { background:#f1f1f1; }
+	#form_qna .noline input { position:relative; top:2px; }
+	#form_qna .noline span { color:#999; font-size:14px; padding-left:4px; }
+	
+	/* 동의영역 */
+	#agree-area .area { border:1px dashed #ddd; padding:10px; }
+	#agree-area .area { color:#999; }
+	#agree-area .area strong { display:block; font-size:20px; font-weight:100; color:#222; padding-bottom:5px; }
+	#agree-area .area p { text-align:left; padding:20px 10px 10px 0; }
+	#agree-area .area p label { padding-right:10px; }
+	#agree-area .area p label input { position:relative; top:3px; margin-right:5px; }
+	
+	/* 전송버튼 */
+	.btnArea { text-align:center; padding:20px 0; }
+	#form_qna button.btn { position:relative; top:0px; border:none; background:#444; }
+	#form_qna .btn.list { background:#fff; color:#444; height:38px; line-height:38px; font-weight:normal; border-color:#444; }
+
+
+
+
+
+

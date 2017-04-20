@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+	<definition name="main" template="/template/layout.jsp">
+		<put-attribute name="title" value="Hello, Healthy Green !"/>
+		<put-attribute name="header" value="/template/header.jsp"/>
+		<put-attribute name="body" value="/template/mainCont.jsp"/>
+		<put-attribute name="footer" value="/template/footer.jsp"/>
+	</definition>
+	
+	<definition name="goodsList" template="/template/layout.jsp">
+		<put-attribute name="title" value="Hello, Healthy Green !"/>
+		<put-attribute name="header" value="/template/header.jsp"/>
+		<put-attribute name="body" value="/template/goods/listCont.jsp"/>
+		<put-attribute name="footer" value="/template/footer.jsp"/>
+	</definition>
+	
+	
+	<definition name="goodsView" template="/template/layout.jsp">
+		<put-attribute name="title" value="Hello, Healthy Green !"/>
+		<put-attribute name="header" value="/template/header.jsp"/>
+		<put-attribute name="body" value="/template/goods/viewCont.jsp"/>
+		<put-attribute name="footer" value="/template/footer.jsp"/>
+	</definition>
+	
+	<definition name="about" template="/template/layout.jsp">
+		<put-attribute name="title" value="Hello, Healthy Green !"/>
+		<put-attribute name="header" value="/template/header.jsp"/>
+		<put-attribute name="body" value="/template/about/aboutCont.jsp"/>
+		<put-attribute name="footer" value="/template/footer.jsp"/>
+	</definition>
+	
+	<definition name="notice.listCont" template="/template/layout.jsp">
+		<put-attribute name="title" value="Hello, Healthy Green !"/>
+		<put-attribute name="header" value="/template/header.jsp"/>
+		<put-attribute name="body" value="/template/board/notice/listCont.jsp"/>
+		<put-attribute name="footer" value="/template/footer.jsp"/>
+	</definition>
+	
+	<definition name="notice.viewCont" template="/template/layout.jsp">
+		<put-attribute name="title" value="Hello, Healthy Green !"/>
+		<put-attribute name="header" value="/template/header.jsp"/>
+		<put-attribute name="body" value="/template/board/notice/viewCont.jsp"/>
+		<put-attribute name="footer" value="/template/footer.jsp"/>
+	</definition>
+	
+	<definition name="notice.writeCont" template="/template/layout.jsp">
+		<put-attribute name="title" value="Hello, Healthy Green !"/>
+		<put-attribute name="header" value="/template/header.jsp"/>
+		<put-attribute name="body" value="/template/board/notice/writeCont.jsp"/>
+		<put-attribute name="footer" value="/template/footer.jsp"/>
+	</definition>
+	
+	<definition name="reviewForm" extends="main">
+		<put-attribute name="body" value="/review/reviewWriteForm.jsp"/>
+	</definition>
+	<definition name="reviewList" extends="main">
+		<put-attribute name="body" value="/review/reviewList.jsp"/>
+	</definition>
+	<definition name="reviewView" extends="main">
+		<put-attribute name="body" value="/review/reviewView.jsp"/>
+	</definition>
+	<definition name="reviewModify" extends="main">
+		<put-attribute name="body" value="/review/reviewWriteForm.jsp"/>
+	</definition>
+	<definition name="reviewPass" extends="main">
+		<put-attribute name="body" value="/review/passForRpForm.jsp"/>
+	</definition>
+	
+	<definition name="custom" template="/template/layout.jsp">
+		<put-attribute name="title" value="Hello, Healthy Green !"/>
+		<put-attribute name="header" value="/template/header.jsp"/>
+		<put-attribute name="body" value="/template/custom/customViewCont.jsp"/>
+		<put-attribute name="footer" value="/template/footer.jsp"/>
+	</definition>
+	
+	<definition name="idsearch" template="/template/layout.jsp">
+		<put-attribute name="title" value="Hello, Healthy Green !"/>
+		<put-attribute name="header" value="/template/header.jsp"/>
+		<put-attribute name="body" value="/template/member/idsearchCont.jsp"/>
+		<put-attribute name="footer" value="/template/footer.jsp"/>
+	</definition>
+	
+	<definition name="join" template="/template/layout.jsp">
+		<put-attribute name="title" value="Hello, Healthy Green !"/>
+		<put-attribute name="header" value="/template/header.jsp"/>
+		<put-attribute name="body" value="/template/member/joinCont.jsp"/>
+		<put-attribute name="footer" value="/template/footer.jsp"/>
+	</definition>
+	
+	<definition name="joinOK" template="/template/layout.jsp">
+		<put-attribute name="title" value="Hello, Healthy Green !"/>
+		<put-attribute name="header" value="/template/header.jsp"/>
+		<put-attribute name="body" value="/template/member/joinOKCont.jsp"/>
+		<put-attribute name="footer" value="/template/footer.jsp"/>
+	</definition>
+	
+	<definition name="login" template="/template/layout.jsp">
+		<put-attribute name="title" value="Hello, Healthy Green !"/>
+		<put-attribute name="header" value="/template/header.jsp"/>
+		<put-attribute name="body" value="/template/member/loginCont.jsp"/>
+		<put-attribute name="footer" value="/template/footer.jsp"/>
+	</definition>
+	
+	<definition name="myInfo" template="/template/layout.jsp">
+		<put-attribute name="title" value="Hello, Healthy Green !"/>
+		<put-attribute name="header" value="/template/header.jsp"/>
+		<put-attribute name="body" value="/template/member/myInfoCont.jsp"/>
+		<put-attribute name="footer" value="/template/footer.jsp"/>
+	</definition>
+	
+	<definition name="myPage" template="/template/layout.jsp">
+		<put-attribute name="title" value="Hello, Healthy Green !"/>
+		<put-attribute name="header" value="/template/header.jsp"/>
+		<put-attribute name="body" value="/template/member/myPageCont.jsp"/>
+		<put-attribute name="footer" value="/template/footer.jsp"/>
+	</definition>
+	
+	<definition name="pop_address" template="/template/layout.jsp">
+		<put-attribute name="title" value="Hello, Healthy Green !"/>
+		<put-attribute name="header" value="/template/header.jsp"/>
+		<put-attribute name="body" value="/template/member/pop_address.jsp"/>
+		<put-attribute name="footer" value="/template/footer.jsp"/>
+	</definition>
+	
+	<definition name="promise" template="/template/layout.jsp">
+		<put-attribute name="title" value="Hello, Healthy Green !"/>
+		<put-attribute name="header" value="/template/header.jsp"/>
+		<put-attribute name="body" value="/template/member/promiseCont.jsp"/>
+		<put-attribute name="footer" value="/template/footer.jsp"/>
+	</definition>
+	
+	<definition name="pwsearch" template="/template/layout.jsp">
+		<put-attribute name="title" value="Hello, Healthy Green !"/>
+		<put-attribute name="header" value="/template/header.jsp"/>
+		<put-attribute name="body" value="/template/member/pwsearchCont.jsp"/>
+		<put-attribute name="footer" value="/template/footer.jsp"/>
+	</definition>
+	
+	
+	<definition name="promise.privacy" template="/template/layout.jsp">
+		<put-attribute name="title" value="Hello, Healthy Green !"/>
+		<put-attribute name="header" value="/template/header.jsp"/>
+		<put-attribute name="body" value="/template/promise/privacyViewCont.jsp"/>
+		<put-attribute name="footer" value="/template/footer.jsp"/>
+	</definition>
+	
+	<definition name="promise.promise" template="/template/layout.jsp">
+		<put-attribute name="title" value="Hello, Healthy Green !"/>
+		<put-attribute name="header" value="/template/header.jsp"/>
+		<put-attribute name="body" value="/template/promise/promiseViewCont.jsp"/>
+		<put-attribute name="footer" value="/template/footer.jsp"/>
+	</definition>
+	
+	<definition name="order" template="/template/layout.jsp">
+		<put-attribute name="title" value="Hello, Healthy Green !"/>
+		<put-attribute name="header" value="/template/header.jsp"/>
+		<put-attribute name="body" value="/template/goods/orderCont.jsp"/>
+		<put-attribute name="footer" value="/template/footer.jsp"/>
+	</definition>
+	
+	
+	
+</tiles-definitions> 

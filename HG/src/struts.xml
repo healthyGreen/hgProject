@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="main" extends="struts-default, tiles-default">
+		<action name="main" class="main.mainAction">
+			<result type="tiles">main</result>
+		</action>
+	</package>
+	<package name="review" extends="struts-default, tiles-default">
+		<action name="reviewWriteForm" class="review.reviewWriteAction" method="form">
+			<result type="tiles">reviewForm</result>
+		</action>
+		<action name="reviewWritePro" class="review.reviewWriteAction">
+			<result name="success">reviewList</result>
+		</action>
+		<action name="reviewList" class="review.reviewListAction">
+			<result type="tiles">reviewList</result>
+		</action>
+		<action name="reviewView" class="review.reviewViewAction">
+			<result type="tiles">reviewView</result>
+		</action>
+		<action name="reviewCheckPassForm" class="review.reviewCheckPassAction" method="form">
+			<result type="tiles">reviewPass</result>
+		</action>
+		<action name="reviewCheckPassPro" class="review.reviewCheckPassAction" method="execute">
+			<result name="error">/review/passError.jsp</result>
+			<result name="success">/review/passForRpSuccess.jsp</result>
+		</action>
+		<action name="reviewModifyForm" class="review.reviewModifyAction" method="form">
+			<result type="tiles">reviewModify</result>
+		</action>
+		<action name="reviewModifyPro" class="review.reviewModifyAction">
+			<result name="success">reviewView</result>
+		</action>
+		<action name="reviewDelete" class="review.reviewDeleteAction">
+			<result name="success">reviewList</result>
+		</action>
+	</package>
+</struts>
