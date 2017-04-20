@@ -1,4 +1,4 @@
-/*package notice;
+package notice;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -121,4 +121,3 @@ public class noticeListAction extends ActionSupport{
 	  
 	  
 }
-*/
