@@ -17,6 +17,7 @@ public class loginAction extends ActionSupport implements SessionAware{
 	private memberVO paramClass;
 	private memberVO resultClass;
 	private int M_ADMIN;
+	
 	public String index() throws Exception{
 		if(session.get("session_id")==null)
 			return LOGIN;
