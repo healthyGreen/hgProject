@@ -25,8 +25,8 @@ public class goodsDeleteAction extends ActionSupport{
 		private int currentPage;
 
 		private int no;
-		private int goods_num;
-		private String goods_category;
+		private int G_NUMBER;
+		private String G_CATEGORY;
 		private String category;
 
 		// 생성자
@@ -48,10 +48,10 @@ public class goodsDeleteAction extends ActionSupport{
 
 			// 해당번호의 글을 가져온다.
 			goods_resultClass = (goodsVO) sqlMapper.queryForObject(
-					"goodsselectOne", getGoods_num());
+					"goodsselectOne", getG_NUMBER());
 
 			// 삭제할 항목 설정.
-			goods_paramClass.setG_NUMBER(getGoods_num());
+			goods_paramClass.setG_NUMBER(getG_NUMBER());
 
 			// 삭제 쿼리 수행.
 			sqlMapper.update("deleteGoods", goods_paramClass);
@@ -130,20 +130,20 @@ public class goodsDeleteAction extends ActionSupport{
 			this.reResult = reResult;
 		}
 
-		public int getGoods_num() {
-			return goods_num;
+		public int getG_NUMBER() {
+			return G_NUMBER;
 		}
 
-		public void setGoods_num(int goods_num) {
-			this.goods_num = goods_num;
+		public void setG_NUMBER(int goods_num) {
+			this.G_NUMBER = goods_num;
 		}
 
-		public String getGoods_category() {
-			return goods_category;
+		public String getG_CATEGORY() {
+			return G_CATEGORY;
 		}
 
-		public void setGoods_category(String goods_category) {
-			this.goods_category = goods_category;
+		public void setG_CATEGORY(String goods_category) {
+			this.G_CATEGORY = goods_category;
 		}
 
 		public String getCategory() {

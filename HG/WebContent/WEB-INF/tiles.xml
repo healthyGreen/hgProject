@@ -68,7 +68,15 @@
 	<definition name="reviewPass" extends="main">
 		<put-attribute name="body" value="/review/passForRpForm.jsp"/>
 	</definition>
-	
+	<definition name="basketInput">
+		<put-attribute name="body" value="/basket/isOkToBasketList.jsp"/>
+	</definition>
+	<definition name="basketList" extends="main">
+		<put-attribute name="body" value="/basket/basketList.jsp"/>
+	</definition>
+	<definition name="basketModify" extends="main">
+		<put-attribute name="body" value="/basket/basketList.jsp"/>
+	</definition>
 	<definition name="custom" template="/template/layout.jsp">
 		<put-attribute name="title" value="Hello, Healthy Green !"/>
 		<put-attribute name="header" value="/template/header.jsp"/>
