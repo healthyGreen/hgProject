@@ -66,7 +66,7 @@ public class reviewWriteAction extends ActionSupport{
          sqlMapper.update("updateReplyStep",paramClass);
          paramClass.setRV_REF_STEP(getRv_ref_step()+1);
          paramClass.setRV_REF_LEVEL(getRv_ref_level()+1);
-         //paramClass.setRV_REF(getRv_ref());
+         paramClass.setRV_REF(getRv_ref());
       }
       paramClass.setRV_TITLE(getRv_title());
       paramClass.setRV_CONTENT(getRv_content());
