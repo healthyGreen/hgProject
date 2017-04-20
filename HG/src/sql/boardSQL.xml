@@ -90,6 +90,11 @@
    		order by n_number DESC
   
    </select>
+   <select id="selectOneNotice" resultMap="noticeRes" parameterClass="int">
+   	<include refid="select-notice" />
+   	 where n_number = #n_number#
+   </select>
+   
 
    
 
@@ -109,6 +114,11 @@
      RV_SCORE, RV_REF, RV_REF_STEP, RV_REF_LEVEL) 
      values (RV_NUMBER_SEQ.NEXTVAL, #rv_title#, #rv_content#, #rv_pass#, #rv_name#, #rv_date#,
      #rv_score#, #rv_ref#, #rv_ref_step#, #rv_ref_level#)
+  </insert>
+  
+  <insert id="insertNotice" parameterClass="notice">
+  	insert into NOTICE (N_NUMBER, N_TITLE, N_NAME, N_DATE, N_HIT, N_CONTENT)
+  	values (N_NUMBER_SEQ.NEXTVAL, #n_title#, #n_name#, #n_date#, #n_hit#, #n_content#)	
   </insert>
   
   <!-- ★delete문들 ★ -->
@@ -133,4 +143,9 @@
   <update id="updateFile" parameterClass="review">
      update REVIEW set RV_ORG_IMAGE = #RV_ORG_IMAGE#, RV_SAV_IMAGEV = #RV_SAV_IMAGE# where RV_NUMBER=#RV_NUMBER#
   </update>
+  
+  <update id="updateNReadHit" parameterClass="int">
+  	update notice set N_HIT=N_HIT+1 where N_NUMBER=#n_number#
+  </update>
+  
 </sqlMap>

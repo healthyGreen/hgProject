@@ -25,7 +25,7 @@
       <result property="" column=""/>
    </resultMap>
    
-   <select id="goods_selectOne" resultMap="orderRes">
+   <select id="goods_selectOne" resultMap="orderRes" parameterClass="int">
 		SELECT * FROM GOODS
 		WHERE G_NUMBER = #g_number# 
 	</select>
