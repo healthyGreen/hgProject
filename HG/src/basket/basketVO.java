@@ -11,6 +11,7 @@ public class basketVO {
 	private int B_ALLPRICE;
 	private String B_IMAGE;
 	private Date B_DATE;
+	private String B_G_BOTTLE;
 	
 	public String getB_M_ID() {
 		return B_M_ID;
@@ -53,6 +54,12 @@ public class basketVO {
 	}
 	public void setB_DATE(Date b_DATE) {
 		B_DATE = b_DATE;
+	}
+	public String getB_G_BOTTLE() {
+		return B_G_BOTTLE;
+	}
+	public void setB_G_BOTTLE(String b_G_BOTTLE) {
+		B_G_BOTTLE = b_G_BOTTLE;
 	}
 	
 	
