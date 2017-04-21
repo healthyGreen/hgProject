@@ -8,27 +8,40 @@
 	<typeAlias alias="goods" type="goods.goodsVO"/>
 	
 	
-	<!-- 회원정보 맵핑 -->
-	
-   
    <!-- 주문맵핑 -->
    <resultMap id="goodsRes" class="goods">
-      <result property="" column=""/>
-      <result property="" column=""/>
-      <result property="" column=""/>
-      <result property="" column=""/>
-      <result property="" column=""/>
-      <result property="" column=""/>
-      <result property="" column=""/>
-      <result property="" column=""/>
-      <result property="" column=""/>
-      <result property="" column=""/>
+      <result property="g_number" column="g_number"/>
+      <result property="g_name" column="g_name"/>
+      <result property="g_content" column="g_content"/>
+      <result property="g_info" column="g_info"/>
+      <result property="g_image" column="g_image"/>
+      <result property="g_price" column="g_price"/>
+      <result property="g_ingr" column="g_ingr"/>
+      <result property="g_hit" column="g_hit"/>
+      <result property="g_category" column="g_category"/>
+      <result property="g_amount" column="g_amount"/>
    </resultMap>
    
-   <select id="goods_selectOne" resultMap="orderRes" parameterClass="int">
-		SELECT * FROM GOODS
-		WHERE G_NUMBER = #g_number# 
+   <!-- 상품 리스트 -->
+   <select id="g_list_selectAll" resultMap="goodsRes" >
+		SELECT * FROM GOODS 
+		ORDER BY g_number DESC
 	</select>
+	
+	<!-- 상품 삭제 -->
+	<delete id="g_delete" parameterClass="goods">
+		DELETE * FROM GOODS
+		WHERE g_number=#g_number#	
+	</delete>
+	
+	<!-- 상품 등록 -->
+	<insert id="g_write" parameterClass="goodsRes">
+	INSERT INTO GOODS (g_number, g_name, g_content, g_info, g_image, g_price, g_ingr,
+	g_hit, g_category, g_amount)
+	VALUES (G_NUMBER_SEQ.NEXTVAL, #name#, #content#, #info#, #image#, #price#, #ingr#, 
+	#hit#, #category#, #amount#)
+	
+	</insert>
 	
 
 

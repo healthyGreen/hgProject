@@ -45,6 +45,7 @@ public class loginAction extends ActionSupport implements SessionAware{
 			session.put("session_id", resultClass.getM_ID());
 			session.put("session_name", resultClass.getM_NAME());
 			session.put("session_admin", resultClass.getM_ADMIN());
+			session.put("session_point" , resultClass.getM_POINT());
 
 			return SUCCESS;
 		}
@@ -52,12 +53,11 @@ public class loginAction extends ActionSupport implements SessionAware{
 		}
 	public String logout() throws Exception{
 		if(session.get("session_id") != null){
-			if((int)session.get("session_admin") == 0){
-				session.remove("session_stat");
-			}
 			session.remove("session_id");
 			session.remove("session_name");
 			session.remove("session_admin");
+			session.remove("session_point");
+			
 		}
 		return SUCCESS;
 	}

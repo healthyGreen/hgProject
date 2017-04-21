@@ -48,7 +48,7 @@ public class goodsDeleteAction extends ActionSupport{
 
 			// 해당번호의 글을 가져온다.
 			goods_resultClass = (goodsVO) sqlMapper.queryForObject(
-					"goodsselectOne", getG_NUMBER());
+					"g_delete", getG_NUMBER());
 
 			// 삭제할 항목 설정.
 			goods_paramClass.setG_NUMBER(getG_NUMBER());

@@ -63,17 +63,17 @@ public class basketListAction extends ActionSupport{
 		String session_id = (String) session.get("m_id");
 		memresultClass = (memberVO) sqlMapper.queryForObject("UserCheck", session_id);
 		basketList = sqlMapper.queryForList("basketList", session_id);
+		if(basketList!=null){
 		for(int i=1; i<= basketList.size(); i++){
 			goodsresultClass=(goodsVO)sqlMapper.queryForObject("goods_selectOne", basketList.get(0).getB_G_NUMBER());
 			if(goodsresultClass!=null){
-				goodsparamClass.setG_NAME(goodsresultClass.getG_NAME());
+				//goodsparamClass.setG_NAME(goodsresultClass.getG_NAME());
 				goodsparamClass.setG_PRICE(goodsresultClass.getG_PRICE());
 				goodsparamClass.setG_SAV_IMAGE(goodsresultClass.getG_SAV_IMAGE());
 			}else return ERROR;
 			goodsList.add(goodsparamClass);
 		}
-		/*vector.add(basketList); //jsp에서 orderSetAction으로 넘어가는 값에 hidden으로 넘겨줄것
-		vector.add(goodsList); *///jsp에서 orderSetAction으로 넘어가는 값에 hidden으로 넘겨줄것
+		}
 
 		totalCount = basketList.size();  // 전체 글의 갯수를 구함
 		page = new basketPageAction(currentPage, totalCount, blockCount, blockPage);
