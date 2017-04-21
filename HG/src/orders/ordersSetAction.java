@@ -5,7 +5,7 @@ import java.io.Reader;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
+//import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,18 +31,20 @@ public class ordersSetAction extends ActionSupport {
 	public int amount;
 	public String bottle;
 	public int price;
-	public int totalprice;
 	public String image;
 	public basketVO basket;
 	public memberVO member;
-	public goodsVO goods;
+	public goodsVO goodsparamClass;
+	public goodsVO goodsresultClass;
 	HttpSession session = request.getSession();
 	public String session_id = (String)session.getAttribute("session_id");
 	public String orderType;
 	public List orderInfo = new ArrayList();
 	public List<basketVO> basketList; // 장바구니에서 '주문하기'버튼 클릭시 넘어오는 값을  setter로 셋팅 
 	public List<goodsVO> goodsList; // 장바구니에서 '주문하기'버튼 클릭시 장바구니 list에서 3개 셋팅해준 값을 setter로 셋팅
-	public Vector vector = new Vector<>();
+	//public Vector orderVector = new Vector<>();
+	
+	public int totalPrice=0;
 	
 	public ordersSetAction() throws IOException {
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
@@ -57,16 +59,24 @@ public class ordersSetAction extends ActionSupport {
 			orderInfo.add(bottle);
 			orderInfo.add(price);
 			orderInfo.add(image);
-			
-			//request.setAttribute("orderInfo", orderInfo);
-			//request.setAttribute("orderType", orderType);
+			totalPrice = amount*price;
 		}else if(orderType.equals("basket")){
-			//basketList = sqlMapper.queryForList("basketList",g_number);
+			basketList = sqlMapper.queryForList("basketList",session_id);
+			
 			if(basketList!=null){
-				goods = (goodsVO)sqlMapper.queryForObject("getGoodsforOrder",g_number);
-				vector.add(basketList);
-				vector.add(goodsList);	
+				for(int i=1; i<= basketList.size(); i++){
+					goodsresultClass=(goodsVO)sqlMapper.queryForObject("goods_selectOne", basketList.get(0).getB_G_NUMBER());
+					if(goodsresultClass!=null){
+						//goodsparamClass.setG_NAME(goodsresultClass.getG_NAME());
+						goodsparamClass.setG_PRICE(goodsresultClass.getG_PRICE());
+						goodsparamClass.setG_SAV_IMAGE(goodsresultClass.getG_SAV_IMAGE());
+					}
+					goodsList.add(goodsparamClass);
+					totalPrice += goodsresultClass.getG_AMOUNT()*goodsresultClass.getG_PRICE();
+				/*orderVector.add(basketList);
+				orderVector.add(goodsList);*/	
 			}
+			}return ERROR;
 		}
 		return SUCCESS;
 	}
@@ -118,12 +128,12 @@ public class ordersSetAction extends ActionSupport {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public int getTotalprice() {
+/*	public int getTotalprice() {
 		return totalprice;
 	}
 	public void setTotalprice(int totalprice) {
 		this.totalprice = totalprice;
-	}
+	}*/
 	public String getImage() {
 		return image;
 	}
@@ -142,11 +152,17 @@ public class ordersSetAction extends ActionSupport {
 	public void setMember(memberVO member) {
 		this.member = member;
 	}
-	public goodsVO getGoods() {
-		return goods;
+	public goodsVO getGoodsparamClass() {
+		return goodsparamClass;
 	}
-	public void setGoods(goodsVO goods) {
-		this.goods = goods;
+	public void setGoodsparamClass(goodsVO goodsparamClass) {
+		this.goodsparamClass = goodsparamClass;
+	}
+	public goodsVO getGoodsresultClass() {
+		return goodsresultClass;
+	}
+	public void setGoodsresultClass(goodsVO goodsresultClass) {
+		this.goodsresultClass = goodsresultClass;
 	}
 	public HttpSession getSession() {
 		return session;
@@ -184,11 +200,18 @@ public class ordersSetAction extends ActionSupport {
 	public void setGoodsList(List<goodsVO> goodsList) {
 		this.goodsList = goodsList;
 	}
-	public Vector getVector() {
-		return vector;
+	public int getTotalPrice() {
+		return totalPrice;
 	}
-	public void setVector(Vector vector) {
-		this.vector = vector;
+/*	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}*/
+	
+	/*public Vector getOrderVector() {
+		return orderVector;
 	}
+	public void setOrderVector(Vector orderVector) {
+		this.orderVector = orderVector;
+	}*/
 	
 }

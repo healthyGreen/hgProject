@@ -103,16 +103,16 @@
   
   <!-- ★insert문들 ★ -->
   <insert id="insertReview" parameterClass="review">
-     insert into REVIEW (RV_NUMBER, RV_TITLE, RV_CONTENT, RV_PASS, RV_NAME, RV_DATE,
+     insert into REVIEW (RV_NUMBER, RV_M_ID, RV_TITLE, RV_CONTENT, RV_PASS, RV_NAME, RV_DATE,
      RV_SCORE, RV_REF, RV_REF_STEP, RV_REF_LEVEL) 
-     values (RV_NUMBER_SEQ.NEXTVAL, #rv_title#, #rv_content#, #rv_pass#, #rv_name#, #rv_date#,
+     values (RV_NUMBER_SEQ.NEXTVAL, #session_id#, #rv_title#, #rv_content#, #rv_pass#, #rv_name#, #rv_date#,
      #rv_score#, RV_NUMBER_SEQ.CURRVAL, #rv_ref_step#, #rv_ref_level#)
   </insert>
   
   <insert id="insertReviewReply">
-     insert into REVIEW (RV_NUMBER, RV_TITLE, RV_CONTENT, RV_PASS, RV_NAME, RV_DATE,
+     insert into REVIEW (RV_NUMBER, RV_M_ID, RV_TITLE, RV_CONTENT, RV_PASS, RV_NAME, RV_DATE,
      RV_SCORE, RV_REF, RV_REF_STEP, RV_REF_LEVEL) 
-     values (RV_NUMBER_SEQ.NEXTVAL, #rv_title#, #rv_content#, #rv_pass#, #rv_name#, #rv_date#,
+     values (RV_NUMBER_SEQ.NEXTVAL, #session_id#, #rv_title#, #rv_content#, #rv_pass#, #rv_name#, #rv_date#,
      #rv_score#, #rv_ref#, #rv_ref_step#, #rv_ref_level#)
   </insert>
   

@@ -14,8 +14,8 @@ public class ordersVO {
 	private String O_COMMENT;
 	private String O_PAY;
 	private Date O_DATE;
+	private int O_PRICE;
 	private int O_ALLPRICE;
-	private int O_ALLPRICE_F;
 	private int O_G_NUMBER;
 	private int O_G_AMOUNT;
 	private String O_G_BOTTEL;
@@ -80,17 +80,17 @@ public class ordersVO {
 	public void setO_DATE(Date o_DATE) {
 		O_DATE = o_DATE;
 	}
+	public int getO_PRICE() {
+		return O_PRICE;
+	}
+	public void setO_PRICE(int o_PRICE) {
+		O_PRICE = o_PRICE;
+	}
 	public int getO_ALLPRICE() {
 		return O_ALLPRICE;
 	}
 	public void setO_ALLPRICE(int o_ALLPRICE) {
 		O_ALLPRICE = o_ALLPRICE;
-	}
-	public int getO_ALLPRICE_F() {
-		return O_ALLPRICE_F;
-	}
-	public void setO_ALLPRICE_F(int o_ALLPRICE_F) {
-		O_ALLPRICE_F = o_ALLPRICE_F;
 	}
 	public int getO_G_NUMBER() {
 		return O_G_NUMBER;
