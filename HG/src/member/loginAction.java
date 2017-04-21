@@ -18,17 +18,24 @@ public class loginAction extends ActionSupport implements SessionAware{
 	private memberVO resultClass;
 	private int M_ADMIN;
 	
-	public String index() throws Exception{
+	/*public String index() throws Exception{
+
+
 		if(session.get("session_id")==null)
 			return LOGIN;
 		else
 			return SUCCESS;
-	}
+	}*/
 	public loginAction() throws Exception{
 		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
 	}
+	
+	public String form() throws Exception{
+		return SUCCESS;
+	}
+	
 	public String execute() throws Exception{
 		paramClass = new memberVO();
 		paramClass.setM_ID(m_id);
