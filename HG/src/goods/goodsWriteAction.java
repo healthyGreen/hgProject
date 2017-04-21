@@ -100,7 +100,7 @@ public String execute() throws Exception {
 		paramClass.setG_CONTENT(getContent());
 		
 		// 등록 쿼리 수행		
-		sqlMapper.insert("saleboard.insertBoard", paramClass);
+		sqlMapper.insert("g_write", paramClass);
 		
 		// 첨부파일을 선택했다면 파일을 업로드한다.
 				resultClass = (goodsVO) sqlMapper.queryForObject("saleboard.prodselectLastNo");

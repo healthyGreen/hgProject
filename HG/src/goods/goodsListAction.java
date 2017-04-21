@@ -38,7 +38,7 @@ public class goodsListAction extends ActionSupport{
 	{
 		return search();
 }
-	list = sqlMapper.queryForList("selectAll");
+	list = sqlMapper.queryForList("g_list_selectAll");
 	
 	totalCount = list.size();
 	page = new goodsPageAction(currentPage, totalCount, blockCount, blockPage, num, blockCount, "");
