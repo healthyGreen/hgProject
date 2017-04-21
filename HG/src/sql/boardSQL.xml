@@ -76,6 +76,13 @@
   <select id="selectAboutPass" resultMap="reviewRes" parameterClass="review">
      select rv_pass from review where rv_number=#rv_number#
   </select>
+  
+  <select id="myWriteBoard" resultMap="reviewRes" parameterClass="review">
+  	<include refid="select-review"/>
+  	where rv_m_id = #rv_m_id#
+  </select>
+  
+  
   <!-- 상품후기 비밀번호 확인 -->
      <select id="selectPasswordRV" resultMap="reviewRes">
       <include refid="select-review"/>
@@ -125,6 +132,11 @@
   <delete id="deleteReview" parameterClass="review">
      delete from review where rv_number=#rv_number#
   </delete>
+  
+  <delete id="deleteNotice" parameterClass="notice">
+  	delete from notice where n_number = #n_number#
+  </delete>
+  
   
   <!-- ★update문들 ★ -->
   <update id="updateReview" parameterClass="review">

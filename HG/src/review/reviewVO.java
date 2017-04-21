@@ -10,6 +10,7 @@ public class reviewVO {
 	private String RV_TITLE;
 	private String RV_CONTENT;
 	private String RV_PASS;
+	private String RV_M_ID;
 	private String RV_NAME;
 	private Date RV_DATE;
 	private String RV_SCORE;
@@ -17,6 +18,7 @@ public class reviewVO {
 	private int RV_REF_STEP;
 	private int RV_REF_LEVEL;
 	private int RV_READHIT;
+	
 	
 	public int getRV_NUMBER() {
 		return RV_NUMBER;
@@ -53,6 +55,13 @@ public class reviewVO {
 	}
 	public void setRV_PASS(String rV_PASS) {
 		RV_PASS = rV_PASS;
+	}
+
+	public String getRV_M_ID() {
+		return RV_M_ID;
+	}
+	public void setRV_M_ID(String rV_M_ID) {
+		RV_M_ID = rV_M_ID;
 	}
 	public String getRV_NAME() {
 		return RV_NAME;
