@@ -45,9 +45,9 @@ public class reviewPageAction{
       paginHtml = new StringBuffer();
       if(currentPage>pageBlocks){
          if(search!="")
-            paginHtml.append("<a href=reviewListAction.action?currentPage="+(startPage-1)+"&search="+search+"&forSearch="+forSearch+">");
+            paginHtml.append("<a href=reviewList.action?currentPage="+(startPage-1)+"&search="+search+"&forSearch="+forSearch+">");
          else
-            paginHtml.append("<a href=reviewListAction.action?currentPage="+(startPage-1)+">");
+            paginHtml.append("<a href=reviewList.action?currentPage="+(startPage-1)+">");
          paginHtml.append("[¿Ã¿¸]");
          paginHtml.append("</a>");
       }
@@ -58,7 +58,7 @@ public class reviewPageAction{
             paginHtml.append(i);
             paginHtml.append("</font></b>");
          }else{
-            paginHtml.append("&nbsp;<a href='reviewListAction?currentPage=");
+            paginHtml.append("&nbsp;<a href='reviewList.action?currentPage=");
             paginHtml.append(i);
             
             if(search!="")
@@ -72,7 +72,7 @@ public class reviewPageAction{
       paginHtml.append("&nbsp;|&nbsp;");
       
       if(endPage<totalPage){
-         paginHtml.append("&nbsp;<a href='reviewListAction?currentPage=");
+         paginHtml.append("&nbsp;<a href='reviewList.action?currentPage=");
          paginHtml.append(endPage+1);
          
          if(search!="")

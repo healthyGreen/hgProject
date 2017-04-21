@@ -23,11 +23,11 @@
       <result property="o_comment" column="o_comment"/>
       <result property="o_pay" column="o_pay"/>
       <result property="o_date" column="o_date"/>
+      <result property="o_g_price" column="o_g_price"/>
       <result property="o_allprice" column="o_allprice"/>
-      <result property="o_allprice_f" column="o_allprice_f"/>
       <result property="o_g_number" column="o_g_number"/>
-      <result property="o_g_amount" column="o_g_amount"/>
-      <result property="o_g_bottle" column="o_g_bottle"/>
+      <result property="o_amount" column="o_amount"/>
+      <result property="o_bottle" column="o_bottle"/>
    </resultMap>
    
    <select id="order_selectOne" resultMap="orderRes">
@@ -42,40 +42,9 @@
 		ORDER BY o_number
 		desc
 	</select>
-	<insert id="insert_order" parameterClass="order">
-		INSERT INTO
-		ORDERS(O_NUMBER,
-		O_M_ID,
-		O_NAME,
-		O_RPHONE,
-		O_ZIPCODE,
-		O_ADDR1,
-		O_ADDR2,
-		O_COMMENT,
-		O_PAY,
-		O_DATE,
-		O_ALLPRICE,
-		O_ALLPRICE_F,
-		O_G_NUMBER,
-		O_G_AMOUNT,
-		O_G_BOTTLE
-		)VALUES(
-		O_NUMBER_SEQ.NEXTVAL,
-		#o_m_id#,
-		#o_name#,
-		#o_rphone#,
-		#o_zipcode#,
-		#o_addr1#,
-		#o_addr2#,
-		#o_comment#,
-		#o_pay#,
-		#o_date#,
-		#o_allprice#,
-		#o_allprice_f#,
-		#o_g_number#,
-		#o_g_amount#,
-		#o_g_bottle#
-		)
+	<insert id="insertOrder" parameterClass="order">
+		INSERT INTO ORDERS(O_NUMBER, O_M_ID, O_NAME, O_RPHONE, O_ZIPCODE,O_ADDR1,O_ADDR2,O_COMMENT,O_PAY,O_DATE,O_G_PRICE,O_ALLPRICE,O_G_NUMBER,O_AMOUNT,O_BOTTLE)VALUES
+		(O_NUMBER_SEQ.NEXTVAL,#o_m_id#,#o_name#,#o_rphone#,#o_zipcode#,#o_addr1#,#o_addr2#,#o_comment#,#o_pay#,#o_date#,#o_g_price#,#o_allprice#,#o_g_number#,#o_amount#,#o_bottle#)
 	</insert>
 	<delete id="orderDelete" parameterClass="order">
 		DELETE FROM ORDERS

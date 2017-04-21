@@ -12,6 +12,7 @@ public class goodsVO {
 	private String G_INGR;
 	private String G_CATEGORY;
 	private int G_AMOUNT;
+	private String bottle;
 	
 	public int getG_NUMBER() {
 		return G_NUMBER;
@@ -49,7 +50,6 @@ public class goodsVO {
 	public void setG_INGR(String g_INGR) {
 		G_INGR = g_INGR;
 	}
-
 	public String getG_CATEGORY() {
 		return G_CATEGORY;
 	}
@@ -74,7 +74,10 @@ public class goodsVO {
 	public void setG_SAV_IMAGE(String g_SAV_IMAGE) {
 		G_SAV_IMAGE = g_SAV_IMAGE;
 	}
-	
-	
-
+	public String getBottle() {
+		return bottle;
+	}
+	public void setBottle(String bottle) {
+		this.bottle = bottle;
+	}
 }
