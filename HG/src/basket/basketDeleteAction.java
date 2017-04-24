@@ -35,9 +35,9 @@ public class basketDeleteAction extends ActionSupport{
 		ActionContext context = ActionContext.getContext();
 		Map<String, Object> session = context.getSession();
 		String session_id = (String)session.get("m_id");
-		memresultClass = (memberVO) sqlMapper.queryForObject("UserCheck", session_id);
+		memresultClass = (memberVO) sqlMapper.queryForObject("Member.UserCheck", session_id);
 		basparamClass.setB_G_NUMBER(b_g_number);
-		sqlMapper.delete("basketDelete", basparamClass);
+		sqlMapper.delete("Basket.basketDelete", basparamClass);
 		return SUCCESS;
 	}
 
