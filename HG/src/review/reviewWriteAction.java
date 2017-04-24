@@ -65,7 +65,7 @@ public class reviewWriteAction extends ActionSupport{
       }else{
          paramClass.setRV_REF_STEP(getRv_ref_step());
          paramClass.setRV_REF_LEVEL(getRv_ref_level());
-         sqlMapper.update("updateReplyStep",paramClass);
+         sqlMapper.update("Board.updateReplyStep",paramClass);
          paramClass.setRV_REF_STEP(getRv_ref_step()+1);
          paramClass.setRV_REF_LEVEL(getRv_ref_level()+1);
          paramClass.setRV_REF(getRv_ref());
@@ -78,12 +78,12 @@ public class reviewWriteAction extends ActionSupport{
       paramClass.setRV_SCORE(getRv_score());
       
       if(rv_ref==0)
-         sqlMapper.insert("insertReview", paramClass);
+         sqlMapper.insert("Board.insertReview", paramClass);
       else
-         sqlMapper.insert("insertReviewReply",paramClass);
+         sqlMapper.insert("Board.insertReviewReply",paramClass);
       
       if(getUpload()!=null){
-         resultClass = (reviewVO)sqlMapper.queryForObject("selectLastNo",paramClass);
+         resultClass = (reviewVO)sqlMapper.queryForObject("Board.selectLastNo",paramClass);
          
          String fileName = "file_" + getRv_no();
          String fileExt = getUploadFileName().substring(getUploadFileName().lastIndexOf('.')+1,getUploadFileName().length());
@@ -95,7 +95,7 @@ public class reviewWriteAction extends ActionSupport{
          paramClass.setRV_ORG_IMAGE(getUploadFileName());
          paramClass.setRV_SAV_IMAGE(fileName+"."+fileExt);
          
-         sqlMapper.update("updateFile",paramClass);
+         sqlMapper.update("Board.updateFile",paramClass);
       }
       return SUCCESS;
    }

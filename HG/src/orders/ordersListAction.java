@@ -67,7 +67,7 @@ public class ordersListAction extends ActionSupport {
 				session_id);
 
 		// orderparamClass.setOrder_id(session_id);
-		orderList = sqlMapper.queryForList("orderList", session_id);
+		orderList = sqlMapper.queryForList("Order.orderList", session_id);
 
 		totalCount = orderList.size();
 		page = new orderListPageAction(currentPage, totalCount, blockCount,

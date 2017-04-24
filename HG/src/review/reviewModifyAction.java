@@ -38,7 +38,7 @@ public class reviewModifyAction extends ActionSupport{
       paramClass.setRV_NUMBER(number);
       paramClass.setRV_TITLE(title);
       paramClass.setRV_CONTENT(content);
-      sqlMapper.update("updateReview", paramClass);
+      sqlMapper.update("Board.updateReview", paramClass);
       if(getUpload()!=null){
          String file_name="file_"+getNumber();
          String file_ext = getUploadFileName().substring(getUploadFileName().lastIndexOf('.')+1,getUploadFileName().length());
@@ -49,9 +49,9 @@ public class reviewModifyAction extends ActionSupport{
          FileUtils.copyFile(getUpload(), destFile);
          paramClass.setRV_ORG_IMAGE(uploadFileName);
          paramClass.setRV_SAV_IMAGE(file_name+"."+file_ext);
-         sqlMapper.update("updateRvFile",paramClass);
+         sqlMapper.update("Board.updateRvFile",paramClass);
       }
-      resultClass=(reviewVO)sqlMapper.queryForObject("selectOneReview",number);
+      resultClass=(reviewVO)sqlMapper.queryForObject("Board.selectOneReview",number);
       return SUCCESS;
    }
    public reviewVO getParamClass() {

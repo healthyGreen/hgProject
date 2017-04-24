@@ -40,7 +40,7 @@ public class reviewListAction extends ActionSupport{
    public String execute() throws SQLException{
       if(search!=null)
          return search();
-      list = sqlMapper.queryForList("selectAllReview");
+      list = sqlMapper.queryForList("Board.selectAllReview");
       totalBlock=list.size();  
       page = new reviewPageAction(currentPage, OnePageBlock, pageBlocks, totalBlock, "", "");
       list=list.subList(page.getStartBlock(),page.getEndBlock());
@@ -49,11 +49,11 @@ public class reviewListAction extends ActionSupport{
    }
    public String search() throws SQLException{
       if(forSearch.equals("writer"))
-         list=sqlMapper.queryForList("selectRvSearchW","%"+search+"%");
+         list=sqlMapper.queryForList("Board.selectRvSearchW","%"+search+"%");
       else if(forSearch.equals("content"))
-         list=sqlMapper.queryForList("selectRvSearchC","%"+search+"%");
+         list=sqlMapper.queryForList("Board.selectRvSearchC","%"+search+"%");
       else if(forSearch.equals("title"))
-         list=sqlMapper.queryForList("selectRvSearchT","%"+search+"%");
+         list=sqlMapper.queryForList("Board.selectRvSearchT","%"+search+"%");
       totalBlock=list.size();
       page = new reviewPageAction(currentPage, OnePageBlock, pageBlocks, totalBlock, search, forSearch);
       pagingHtml = page.getPaginHtml().toString();

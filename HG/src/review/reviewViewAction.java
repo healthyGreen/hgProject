@@ -23,8 +23,8 @@ public class reviewViewAction extends ActionSupport{
 	}
 	
 	public String execute() throws SQLException{
-		resultClass=(reviewVO)sqlMapper.queryForObject("selectOneReview", number);
-		sqlMapper.update("updateRvReadHit", number);
+		resultClass=(reviewVO)sqlMapper.queryForObject("Board.selectOneReview", number);
+		sqlMapper.update("Board.updateRvReadHit", number);
 		return SUCCESS;
 	}	
 	
