@@ -3,7 +3,7 @@
 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 
 
-<sqlMap>
+<sqlMap namespace="Board">
   
    <typeAlias alias="notice" type="notice.noticeVO"/>
    <typeAlias alias="review" type="review.reviewVO"/>
@@ -102,7 +102,9 @@
    	 where n_number = #n_number#
    </select>
    
-
+	<select id="selectLastNo" parameterClass="review">
+		select max(rv_number) as rv_number from review
+	</select>
    
 
    

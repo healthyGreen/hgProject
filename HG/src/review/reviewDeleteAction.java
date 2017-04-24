@@ -25,7 +25,7 @@ public class reviewDeleteAction extends ActionSupport{
 	public String execute() throws SQLException{
 		paramClass.setRV_NUMBER(number);
 		paramClass.setRV_PASS(pass);
-		sqlMapper.delete("deleteReview", paramClass);
+		sqlMapper.delete("Board.deleteReview", paramClass);
 		return SUCCESS;
 	}
 

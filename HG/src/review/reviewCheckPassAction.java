@@ -29,7 +29,7 @@ public class reviewCheckPassAction extends ActionSupport{
 	public String execute() throws SQLException{
 		paramClass.setRV_NUMBER(number);
 		paramClass.setRV_PASS(pass);
-		passCheckClass = (reviewVO)sqlMapper.queryForObject("selectAboutPass", paramClass);
+		passCheckClass = (reviewVO)sqlMapper.queryForObject("Board.selectAboutPass", paramClass);
 		if(passCheckClass!=null) return SUCCESS;
 		else return ERROR;
 	}
