@@ -25,7 +25,7 @@ public class ordersAction extends ActionSupport{
 	public goodsVO goodsresultClass;
 	public List<basketVO> basketList;
 	public List<goodsVO> goodsList;
-	public Vector forOrder; 
+	//public Vector forOrder; 
 	public String orderType;
 	public int g_number;
 	public String g_name;
@@ -74,21 +74,13 @@ public class ordersAction extends ActionSupport{
 			goods.setG_PRICE(price);
 		}else if(orderType.equals("basket")){
 			basketList = sqlMapper.queryForList("basketList", session_id);
-			if(basketList!=null){
-				for(int i=1; i<= basketList.size(); i++){
-					goodsresultClass=(goodsVO)sqlMapper.queryForObject("goods_selectOne", basketList.get(0).getB_G_NUMBER());
-					if(goodsresultClass!=null)
-						goods.setG_PRICE(goodsresultClass.getG_PRICE());
-					goodsList.add(goods);
-				}
-				
-			}else return ERROR;
 			
 		}
-		forOrder.add(basketList);
+		/*forOrder.add(basketList);
 		forOrder.add(goodsList);
+		for(int i=0; i<basketList.size(); i++){
 		sqlMapper.insert("insertOrder",forOrder);
-		
+		}*/
 		return SUCCESS;
 	}
 }

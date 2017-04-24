@@ -34,9 +34,6 @@ public class reviewModifyAction extends ActionSupport{
       sqlMapper=SqlMapClientBuilder.buildSqlMapClient(reader);
       reader.close();
    }
-   public String form(){
-      return SUCCESS;
-   }
    public String execute() throws SQLException, IOException{
       paramClass.setRV_NUMBER(number);
       paramClass.setRV_TITLE(title);

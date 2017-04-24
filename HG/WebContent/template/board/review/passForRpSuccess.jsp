@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<!-- 수정인지 삭제인지 script를 통해서  설정 -->
 </body>
 </html>

@@ -64,8 +64,8 @@ public class ordersSetAction extends ActionSupport {
 			basketList = sqlMapper.queryForList("basketList",session_id);
 			
 			if(basketList!=null){
-				for(int i=1; i<= basketList.size(); i++){
-					goodsresultClass=(goodsVO)sqlMapper.queryForObject("goods_selectOne", basketList.get(0).getB_G_NUMBER());
+				for(int i=0; i< basketList.size(); i++){
+					goodsresultClass=(goodsVO)sqlMapper.queryForObject("goods_selectOne", basketList.get(i).getB_G_NUMBER());
 					if(goodsresultClass!=null){
 						//goodsparamClass.setG_NAME(goodsresultClass.getG_NAME());
 						goodsparamClass.setG_PRICE(goodsresultClass.getG_PRICE());

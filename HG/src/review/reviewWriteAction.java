@@ -52,7 +52,9 @@ public class reviewWriteAction extends ActionSupport{
    public String form(){
       return SUCCESS;
    }
-   
+   public String reply(){
+	   return SUCCESS;
+   }
    public String execute() throws SQLException, IOException{
       paramClass = new reviewVO();
       resultClass = new reviewVO();
