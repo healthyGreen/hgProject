@@ -9,7 +9,6 @@ public class basketVO {
 	private String B_G_NAME;
 	private int B_G_AMOUNT;
 	private int B_ALLPRICE;
-	private String B_IMAGE;
 	private Date B_DATE;
 	private String B_G_BOTTLE;
 	
@@ -42,12 +41,6 @@ public class basketVO {
 	}
 	public void setB_ALLPRICE(int b_ALLPRICE) {
 		B_ALLPRICE = b_ALLPRICE;
-	}
-	public String getB_IMAGE() {
-		return B_IMAGE;
-	}
-	public void setB_IMAGE(String b_IMAGE) {
-		B_IMAGE = b_IMAGE;
 	}
 	public Date getB_DATE() {
 		return B_DATE;

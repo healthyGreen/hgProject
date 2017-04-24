@@ -35,6 +35,10 @@ public class joinAction extends ActionSupport{
 		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
 	}
+	// 회원가입 약관 동의 페이지 이동
+	public String joinCheck() throws Exception{
+		return SUCCESS;
+	}
 	
 	// 회원가입 폼
 	public String form() throws Exception{

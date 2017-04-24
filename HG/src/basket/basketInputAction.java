@@ -33,7 +33,7 @@ public class basketInputAction extends ActionSupport{
 	private String b_g_name;
 	private int b_g_amout;
 	private int b_allprice;
-	private String b_image;
+	private String b_bottle;
 	private Date b_date;
 	Calendar today = Calendar.getInstance();
 
@@ -55,7 +55,7 @@ public class basketInputAction extends ActionSupport{
 		basparamClass.setB_G_NAME(getB_g_name());
 		basparamClass.setB_G_AMOUNT(getB_g_amout());
 		basparamClass.setB_ALLPRICE(getB_allprice());
-		basparamClass.setB_IMAGE(getB_image());
+		basparamClass.setB_G_BOTTLE(getB_bottle());
 		basparamClass.setB_DATE(getB_date());
 		basparamClass.setB_G_NUMBER(getB_g_number());  // 굳이 넣지 않아도 됩니다!!!(장바구니에 상품 번호 안뜨기 때문에)
 		sqlMapper.insert("Basket.basketInsert", basparamClass);
@@ -173,15 +173,6 @@ public class basketInputAction extends ActionSupport{
 	public void setB_allprice(int b_allprice) {
 		this.b_allprice = b_allprice;
 	}
-
-	public String getB_image() {
-		return b_image;
-	}
-
-	public void setB_image(String b_image) {
-		this.b_image = b_image;
-	}
-
 	public Date getB_date() {
 		return b_date;
 	}
@@ -197,5 +188,30 @@ public class basketInputAction extends ActionSupport{
 	public void setToday(Calendar today) {
 		this.today = today;
 	}
+
+	public static Reader getReader() {
+		return reader;
+	}
+
+	public static void setReader(Reader reader) {
+		basketInputAction.reader = reader;
+	}
+
+	public static SqlMapClient getSqlMapper() {
+		return sqlMapper;
+	}
+
+	public static void setSqlMapper(SqlMapClient sqlMapper) {
+		basketInputAction.sqlMapper = sqlMapper;
+	}
+
+	public String getB_bottle() {
+		return b_bottle;
+	}
+
+	public void setB_bottle(String b_bottle) {
+		this.b_bottle = b_bottle;
+	}
+	
 
 }
