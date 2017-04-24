@@ -61,7 +61,7 @@ public class ordersSetAction extends ActionSupport {
 			orderInfo.add(image);
 			totalPrice = amount*price;
 		}else if(orderType.equals("basket")){
-			basketList = sqlMapper.queryForList("basketList",session_id);
+			basketList = sqlMapper.queryForList("Basket.basketList",session_id);
 			
 			if(basketList!=null){
 				for(int i=0; i< basketList.size(); i++){
