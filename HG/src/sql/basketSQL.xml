@@ -11,7 +11,7 @@
 		<result property="b_g_name" column="b_g_name" />
 		<result property="b_g_amount" column="b_g_amount" />
 		<result property="b_allprice" column="b_allprice" />
-		<result property="b_image" column="b_image" />
+		<result property="b_g_bottle" column="b_g_bottle" />
 		<result property="b_date" column="b_date" />
 	</resultMap>
 	
@@ -28,14 +28,14 @@
 		#b_g_name#,
 		#b_g_amount#,
 		#b_allprice#,
-		#b_image#,
+		#b_g_bottle#,
 		#b_date#,
 		#b_g_number#
 		)
 	</insert>
 	<!-- 장바구니 수량 수정 -->
 	<update id="amountModify" parameterClass="basket">
-		
+		UPDATE FROM BASKET WHERE b_g_amount = #b_g_amount#
 	</update>
 	
 	<!-- 장바구니 삭제 -->
