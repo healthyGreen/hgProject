@@ -51,7 +51,7 @@ public class goodsViewAction extends ActionSupport{
 		paramClass.setNo(getNo());
 		paramClass.setPassword(getPassword());
 		
-		resultClass = (replyVO) sqlMapper.queryForObject("selectPassword",
+		resultClass = (replyVO) sqlMapper.queryForObject("g_view",
 				paramClass);
 		
 		if(resultClass == null)

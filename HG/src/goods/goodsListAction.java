@@ -1,23 +1,31 @@
 package goods;
 
-
+import goods.goodsPageAction;
+import member.memberVO;
 import java.net.*;
 import java.util.*;
 import java.io.Reader;
 import java.io.IOException;
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ActionContext;
 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
 public class goodsListAction extends ActionSupport{
+	private memberVO memresultClass;
+	private memberVO memparamClass;
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 	
 	private List<goodsVO> list = new ArrayList<goodsVO>();
 	
+	private goodsVO goods_paramClass = new goodsVO();
+	private goodsVO goods_resultClass = new goodsVO();
+	
 	private String searchKeyword;
+	private String G_CATEGORY;
 	private int searchNum;
 	
 	private int currentPage = 1;
@@ -33,11 +41,45 @@ public class goodsListAction extends ActionSupport{
 		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();		
 	}
+	
+	public String category() throws Exception{
+		ActionContext context = ActionContext.getContext();
+		Map<String, Object> session = context.getSession();
+		String sessionid = (String) session.get("id");
+		memresultClass = (memberVO) sqlMapper.queryForObject("Member.UserCheck", sessionid);
+		
+		goods_paramClass = new goodsVO();
+		goods_paramClass.setG_CATEGORY(getGoods_category());
+		list=sqlMapper.queryForList("g_Category", goods_paramClass);
+		totalCount = list.size();
+		
+		page = new goodsPageAction(currentPage, totalCount, blockCount,blockPage, G_CATEGORY, "");
+		pagingHtml = page.getPagingHtml().toString();
+		
+		int lastCount = totalCount;
+		if(page.getEndCount() < totalCount)
+			lastCount = page.getEndCount() + 1;
+		
+		list= list.subList(page.getStartCount(), lastCount);
+		return SUCCESS;
+	}
+	private String getGoods_category() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	public String execute() throws Exception{
+		ActionContext context = ActionContext.getContext();
+		Map<String, Object> session = context.getSession();
+		String sessionid = (String) session.get("id");
+		memresultClass = (memberVO) sqlMapper.queryForList("Member.UserCheck", sessionid);
 	if(getSearchKeyword() != null)
 	{
 		return search();
 }
+	if(getGoods_category() !=null){
+		return category();
+	}
 	list = sqlMapper.queryForList("g_list_selectAll");
 	
 	totalCount = list.size();
@@ -52,6 +94,7 @@ public class goodsListAction extends ActionSupport{
 	list = list.subList(page.getStartCount(), lastCount);
 	return SUCCESS;
 	}
+	
 	
 	public String search() throws Exception{
 		if(searchNum == 0){

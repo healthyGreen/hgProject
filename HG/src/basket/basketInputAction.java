@@ -49,7 +49,7 @@ public class basketInputAction extends ActionSupport{
 		ActionContext context = ActionContext.getContext();
 		Map<String, Object> session = context.getSession();
 		String session_id = (String) session.get("m_id");
-		memresultClass = (memberVO) sqlMapper.queryForObject("UserCheck", session_id);
+		memresultClass = (memberVO) sqlMapper.queryForObject("Member.UserCheck", session_id);
 		
 		basparamClass.setB_M_ID(session_id);
 		basparamClass.setB_G_NAME(getB_g_name());
@@ -58,7 +58,7 @@ public class basketInputAction extends ActionSupport{
 		basparamClass.setB_IMAGE(getB_image());
 		basparamClass.setB_DATE(getB_date());
 		basparamClass.setB_G_NUMBER(getB_g_number());  // 굳이 넣지 않아도 됩니다!!!(장바구니에 상품 번호 안뜨기 때문에)
-		sqlMapper.insert("basketInsert", basparamClass);
+		sqlMapper.insert("Basket.basketInsert", basparamClass);
 		return SUCCESS;
 	}
 

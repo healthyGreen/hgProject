@@ -60,11 +60,15 @@ public class joinAction extends ActionSupport{
 		paramClass.setM_ADMIN(getAdmin());
 		paramClass.setM_JOINDATE(today.getTime());
 				
-		sqlMapper.insert("insertMember", paramClass);
+		sqlMapper.insert("Member.insertMember", paramClass);
 				
 			return SUCCESS;
 				
 		
+	}
+	// 회원가입 후 가입 성공 페이지 띄우는 처리
+	public String joinOK() throws Exception{
+		return SUCCESS;
 	}
 
 	public memberVO getParamClass() {

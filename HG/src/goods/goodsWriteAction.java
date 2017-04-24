@@ -103,7 +103,7 @@ public String execute() throws Exception {
 		sqlMapper.insert("g_write", paramClass);
 		
 		// 첨부파일을 선택했다면 파일을 업로드한다.
-				resultClass = (goodsVO) sqlMapper.queryForObject("saleboard.prodselectLastNo");
+				resultClass = (goodsVO) sqlMapper.queryForObject("g_upload");
 				if(getUpload() != null){			
 					for (int i = 0; i < upload.size(); i++) {
 						File destFile = new File(fileUploadPath
@@ -124,7 +124,7 @@ public String execute() throws Exception {
 					paramClass.setG_ORG_IMAGE(getOrgimage()); // 원래 파일 이름
 					paramClass.setG_SAV_IMAGE(getSavimage()); // 저장 파일 이름
 					// 파일 정보 업데이트
-					sqlMapper.update("saleboard.updateFile", paramClass);
+					sqlMapper.update("g_update", paramClass);
 				}
 				return SUCCESS;
 }

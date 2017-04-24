@@ -49,7 +49,7 @@ public class replyWriteAction extends ActionSupport {
 		reClass.setRP_CONTENT(getContent());
 		reClass.setRP_DATE(today.getTime());
 		
-		sqlMapper.insert("insertComment", reClass);
+		sqlMapper.insert("g_insertReply", reClass);
 
 		return SUCCESS;
 	}

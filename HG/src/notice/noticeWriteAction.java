@@ -51,7 +51,7 @@ public class noticeWriteAction extends ActionSupport{
 		paramClass.setN_DATE(n_date.getTime());
 		paramClass.setN_CONTENT(getN_content());
 		
-		sqlMapper.insert("insertNotice", paramClass); 
+		sqlMapper.insert("Board.insertNotice", paramClass); 
 		
 		
 		return SUCCESS;

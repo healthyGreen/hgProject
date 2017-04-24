@@ -19,7 +19,7 @@ public class idCheckAction extends ActionSupport{
 		reader.close();
 	}
 	public String execute() throws Exception{
-		memberVO=(memberVO) sqlMapper.queryForObject("idCheck",getM_ID());
+		memberVO=(memberVO) sqlMapper.queryForObject("Member.idCheck",getM_ID());
 		if(memberVO == null){
 			chkId=0;
 		}else{
