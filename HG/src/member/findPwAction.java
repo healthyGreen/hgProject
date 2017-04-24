@@ -39,6 +39,11 @@ public class findPwAction extends ActionSupport{
 		return SUCCESS;
 		
 	}
+	// pw찾은 후 jsp 실행 위한 메서드
+	public String pwResult() throws Exception{
+		return SUCCESS;
+	}
+	
 	public memberVO getParamClass() {
 		return paramClass;
 	}

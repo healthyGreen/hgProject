@@ -46,30 +46,25 @@ public class joinAction extends ActionSupport{
 		paramClass = new memberVO();
 		resultClass = new memberVO();
 		paramClass.setM_ID(getM_id());
-		resultClass = (memberVO)sqlMapper.queryForObject("selectOneMember", paramClass.getM_ID());
-		if(resultClass != null){
-			return INPUT;
-		} else{
-			paramClass.setM_ID(getM_id());
-			paramClass.setM_PASS(getM_pass());
-			paramClass.setM_NAME(getM_name());
-			paramClass.setM_SEX(getM_sex());
-			paramClass.setM_YEAR(getM_year());
-			paramClass.setM_MONTH(getM_month());
-			paramClass.setM_DATE(getM_date());
-			paramClass.setM_PHONE(getM_phone());
-			paramClass.setM_EMAIL(getM_email());
-			paramClass.setM_ZIPCODE(getM_zipcode());
-			paramClass.setM_ADDR1(getM_addr1());
-			paramClass.setM_ADDR2(getM_addr2());
-			paramClass.setM_ADMIN(getAdmin());
-			paramClass.setM_JOINDATE(today.getTime());
+		paramClass.setM_PASS(getM_pass());
+		paramClass.setM_NAME(getM_name());
+		paramClass.setM_SEX(getM_sex());
+		paramClass.setM_YEAR(getM_year());
+		paramClass.setM_MONTH(getM_month());
+		paramClass.setM_DATE(getM_date());
+		paramClass.setM_PHONE(getM_phone());
+		paramClass.setM_EMAIL(getM_email());
+		paramClass.setM_ZIPCODE(getM_zipcode());
+		paramClass.setM_ADDR1(getM_addr1());
+		paramClass.setM_ADDR2(getM_addr2());
+		paramClass.setM_ADMIN(getAdmin());
+		paramClass.setM_JOINDATE(today.getTime());
 				
-				sqlMapper.insert("insertMember", paramClass);
+		sqlMapper.insert("insertMember", paramClass);
 				
-				return SUCCESS;
+			return SUCCESS;
 				
-		}
+		
 	}
 
 	public memberVO getParamClass() {

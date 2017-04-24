@@ -34,6 +34,10 @@ public class findIdAction extends ActionSupport{
 		return SUCCESS;
 
 	}
+	public String idResult() throws Exception{
+		return SUCCESS;
+	}
+	
 	public memberVO getParamClass() {
 		return paramClass;
 	}
