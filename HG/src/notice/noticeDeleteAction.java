@@ -22,7 +22,7 @@ public class noticeDeleteAction extends ActionSupport{
 	}
 	
 	public String execute() throws SQLException{
-		sqlMapper.delete("deleteNotice", paramClass);
+		sqlMapper.delete("Board.deleteNotice", paramClass);
 		return SUCCESS;
 	}
 

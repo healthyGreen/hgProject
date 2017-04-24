@@ -60,7 +60,7 @@ public class joinAction extends ActionSupport{
 		paramClass.setM_ADMIN(getAdmin());
 		paramClass.setM_JOINDATE(today.getTime());
 				
-		sqlMapper.insert("insertMember", paramClass);
+		sqlMapper.insert("Member.insertMember", paramClass);
 				
 			return SUCCESS;
 				

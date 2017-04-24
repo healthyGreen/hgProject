@@ -40,7 +40,7 @@ public class loginAction extends ActionSupport implements SessionAware{
 		paramClass = new memberVO();
 		paramClass.setM_ID(m_id);
 		paramClass.setM_PASS(m_pass);
-		resultClass = (memberVO)sqlMapper.queryForObject("loginCheck",paramClass);
+		resultClass = (memberVO)sqlMapper.queryForObject("Member.loginCheck",paramClass);
 		if(resultClass != null){
 			session.put("session_id", resultClass.getM_ID());
 			session.put("session_name", resultClass.getM_NAME());

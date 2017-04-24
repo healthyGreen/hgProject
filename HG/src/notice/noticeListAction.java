@@ -5,16 +5,23 @@ import java.io.Reader;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+
+import member.memberVO;
 
 public class noticeListAction extends ActionSupport{
 	private static Reader reader;
 	private static SqlMapClient sqlMapper;
-
+	
+	  private memberVO memresultClass;
+	  private memberVO memparamClass;
 	  private int currentPage=1;
 	  private int OnePageBlock=10;
 	  private int pageBlocks=5;
@@ -31,7 +38,14 @@ public class noticeListAction extends ActionSupport{
 	   }
 	  
 	  public String execute() throws SQLException{
-		  list = sqlMapper.queryForList("selectAllNotice");
+		  memparamClass = new memberVO();
+		  memresultClass = new memberVO();
+		  ActionContext context = ActionContext.getContext();
+			Map<String, Object> session = context.getSession();
+			String session_id = (String) session.get("m_id");
+			memresultClass = (memberVO) sqlMapper.queryForObject("Member.UserCheck",
+					session_id);
+		  list = sqlMapper.queryForList("Board.selectAllNotice");
 		  totalBlock=list.size();  
 	      page = new noticePageAction(currentPage, OnePageBlock, pageBlocks, totalBlock, "", "");
 	      list=list.subList(page.getStartBlock(),page.getEndBlock());
