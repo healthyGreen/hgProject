@@ -46,6 +46,10 @@ public class myInfoViewAction extends ActionSupport{
 		   resultClass = (memberVO)sqlMapper.queryForObject("selectOneMember", m_id);
 		   return SUCCESS;
 	   }
+	   // 개인정보 조회 폼 보여주는 처리
+	   public String infoView() throws Exception{
+		   return SUCCESS;
+	   }
 
 	public memberVO getParamClass() {
 		return paramClass;
