@@ -73,7 +73,7 @@ public class ordersAction extends ActionSupport{
 			basket.setB_G_BOTTLE(bottle);
 			goods.setG_PRICE(price);
 		}else if(orderType.equals("basket")){
-			basketList = sqlMapper.queryForList("basketList", session_id);
+			basketList = sqlMapper.queryForList("Basket.basketList", session_id);
 			
 		}
 		/*forOrder.add(basketList);

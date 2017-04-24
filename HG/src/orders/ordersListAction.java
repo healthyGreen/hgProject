@@ -63,7 +63,7 @@ public class ordersListAction extends ActionSupport {
 		ActionContext context = ActionContext.getContext();
 		Map<String, Object> session = context.getSession();
 		String session_id = (String) session.get("m_id");
-		memresultClass = (memberVO) sqlMapper.queryForObject("UserCheck",
+		memresultClass = (memberVO) sqlMapper.queryForObject("Member.UserCheck",
 				session_id);
 
 		// orderparamClass.setOrder_id(session_id);
