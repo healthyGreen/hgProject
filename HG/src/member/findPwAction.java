@@ -32,9 +32,9 @@ public class findPwAction extends ActionSupport{
 		paramClass.setM_ID(getM_id());
 		paramClass.setM_NAME(getM_name());
 		paramClass.setM_PHONE(getM_phone());
-		resultClass = (memberVO)sqlMapper.queryForObject("findPassword", paramClass);
+		resultClass = (memberVO)sqlMapper.queryForObject("Member.findPassword", paramClass);
 		if(resultClass != null){
-			sqlMapper.update("setPassword1111", paramClass.getM_ID());
+			sqlMapper.update("Member.setPassword1111", paramClass.getM_ID());
 		}
 		return SUCCESS;
 		

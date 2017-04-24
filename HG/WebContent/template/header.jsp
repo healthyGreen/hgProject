@@ -11,21 +11,21 @@
 
 	<title>Healthy Life Curation, Çï½Ã±×¸°</title>
 
-	<script src="../css/common.js"></script>
-	<script src="../js/cart_tab/godo.cart_tab.js"></script>
-	<link rel="styleSheet" href="../css/cart_tab/style.css">
-	<link rel="styleSheet" href="../css/style.css">
-	<script src="../js/jquery-1.10.2.min.js"></script>
+	<script src="css/common.js"></script>
+	<script src="js/cart_tab/godo.cart_tab.js"></script>
+	<link rel="styleSheet" href="css/cart_tab/style.css">
+	<link rel="styleSheet" href="css/style.css">
+	<script src="js/jquery-1.10.2.min.js"></script>
 	 
 	<!--// Æ©´× -->  
-	<link rel="stylesheet" href="../css/fonts/nanumsquare.css" />
-	<link rel="stylesheet" href="../css/style_dp.css" />
+	<link rel="stylesheet" href="css/fonts/nanumsquare.css" />
+	<link rel="stylesheet" href="css/style_dp.css" />
 
 	<!--// ´Ù»ê¸ÞµðÄ® css Â÷¿ë -->
-	<link rel="styleSheet" href="../css/dsm/all.css">
-	<link rel="styleSheet" href="../css/dsm/layout.css">
-	<link rel="styleSheet" href="../css/dsm/sub.css">
-	<link rel="styleSheet" href="../css/dsm/goods.css">
+	<link rel="styleSheet" href="css/dsm/all.css">
+	<link rel="styleSheet" href="css/dsm/layout.css">
+	<link rel="styleSheet" href="css/dsm/sub.css">
+	<link rel="styleSheet" href="css/dsm/goods.css">
 
 				
 
@@ -57,7 +57,7 @@
 						</colgroup>
 						<tr>
 							<td><input name="" type="text" id="" class="search_input" onkeyup="" onclick="" value="" required label="°Ë»ö¾î"></td>
-							<td class="btnTd"><input type=image src="../images/btn_search.jpg"></td>
+							<td class="btnTd"><input type=image src="images/btn_search.jpg"></td>
 						</tr>
 					</table>
 				</form>
@@ -65,7 +65,7 @@
 			</div><!--// search -->
 
 			<h1>
-				<a href=""><img src="../images/logo.jpg" alt="" /></a>
+				<a href=""><img src="images/logo.jpg" alt="" /></a>
 			</h1><!--// logo -->
 
 

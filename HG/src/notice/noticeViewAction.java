@@ -34,8 +34,8 @@ public class noticeViewAction extends ActionSupport{
 	}
 	
 	public String execute() throws SQLException{
-		resultClass=(noticeVO)sqlMapper.queryForObject("selectOneNotice", n_number);
-		sqlMapper.update("updateNReadHit", n_number);
+		resultClass=(noticeVO)sqlMapper.queryForObject("Board.selectOneNotice", n_number);
+		sqlMapper.update("Board.updateNReadHit", n_number);
 		return SUCCESS;
 	}
 
