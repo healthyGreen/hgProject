@@ -66,6 +66,10 @@ public class joinAction extends ActionSupport{
 				
 		
 	}
+	// 회원가입 후 가입 성공 페이지 띄우는 처리
+	public String joinOK() throws Exception{
+		return SUCCESS;
+	}
 
 	public memberVO getParamClass() {
 		return paramClass;
