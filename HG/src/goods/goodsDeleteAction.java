@@ -47,14 +47,14 @@ public class goodsDeleteAction extends ActionSupport{
 			goods_resultClass = new goodsVO();
 
 			// 해당번호의 글을 가져온다.
-			goods_resultClass = (goodsVO) sqlMapper.queryForObject(
-					"g_delete", getG_NUMBER());
+		/*	goods_resultClass = (goodsVO) sqlMapper.queryForObject(
+					"g_list_selectOne", getG_NUMBER());*/
 
 			// 삭제할 항목 설정.
 			goods_paramClass.setG_NUMBER(getG_NUMBER());
 
 			// 삭제 쿼리 수행.
-			sqlMapper.update("deleteGoods", goods_paramClass);
+			sqlMapper.delete("g_delete", goods_paramClass);
 
 			return SUCCESS;
 		}
@@ -69,7 +69,7 @@ public class goodsDeleteAction extends ActionSupport{
 			reClass.setNo(getNo());
 
 			// 삭제할 쿼리 수행.
-			sqlMapper.update("deleteComment", reClass);
+			sqlMapper.update("g_deleteReply", reClass);
 
 			return SUCCESS;
 		}
