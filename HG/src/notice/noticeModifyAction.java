@@ -42,9 +42,9 @@ public class noticeModifyAction extends ActionSupport {
 		paramClass.setN_NAME(n_name);
 		paramClass.setN_CONTENT(n_content);
 		
-		sqlMapper.update("updateNotice", paramClass);
+		sqlMapper.update("Board.updateNotice", paramClass);
 		
-		resultClass=(noticeVO)sqlMapper.queryForObject("selectOneNotice", n_number);
+		resultClass=(noticeVO)sqlMapper.queryForObject("Board.selectOneNotice", n_number);
 		return SUCCESS;
 
 		
