@@ -45,11 +45,11 @@ public class noticeWriteAction extends ActionSupport{
 		paramClass = new noticeVO();
 		resultClass = new noticeVO();
 		
-		paramClass.setN_NUMBER(getN_number());
-		paramClass.setN_TITLE(getN_title());
-		paramClass.setN_NAME(getN_name());
-		paramClass.setN_DATE(n_date.getTime());
-		paramClass.setN_CONTENT(getN_content());
+		paramClass.setN_number(getN_number());
+		paramClass.setN_title(getN_title());
+		paramClass.setN_name(getN_name());
+		paramClass.setN_date(n_date.getTime());
+		paramClass.setN_content(getN_content());
 		
 		sqlMapper.insert("Board.insertNotice", paramClass); 
 		
