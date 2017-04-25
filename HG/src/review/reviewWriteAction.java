@@ -60,22 +60,22 @@ public class reviewWriteAction extends ActionSupport{
       resultClass = new reviewVO();
       
       if(rv_ref==0){
-         paramClass.setRV_REF_LEVEL(0);
-         paramClass.setRV_REF_STEP(0);   
+         paramClass.setRv_ref_level(0);
+         paramClass.setRv_ref_step(0);   
       }else{
-         paramClass.setRV_REF_STEP(getRv_ref_step());
-         paramClass.setRV_REF_LEVEL(getRv_ref_level());
+         paramClass.setRv_ref_step(getRv_ref_step());
+         paramClass.setRv_ref_level(getRv_ref_level());
          sqlMapper.update("Board.updateReplyStep",paramClass);
-         paramClass.setRV_REF_STEP(getRv_ref_step()+1);
-         paramClass.setRV_REF_LEVEL(getRv_ref_level()+1);
-         paramClass.setRV_REF(getRv_ref());
+         paramClass.setRv_ref_step(getRv_ref_step()+1);
+         paramClass.setRv_ref_level(getRv_ref_level()+1);
+         paramClass.setRv_ref(getRv_ref());
       }
-      paramClass.setRV_TITLE(getRv_title());
-      paramClass.setRV_CONTENT(getRv_content());
-      paramClass.setRV_PASS(getRv_pass());
-      paramClass.setRV_NAME(getRv_name());
-      paramClass.setRV_DATE(rv_date.getTime());
-      paramClass.setRV_SCORE(getRv_score());
+      paramClass.setRv_title(getRv_title());
+      paramClass.setRv_content(getRv_content());
+      paramClass.setRv_pass(getRv_pass());
+      paramClass.setRv_name(getRv_name());
+      paramClass.setRv_date(rv_date.getTime());
+      paramClass.setRv_score(getRv_score());
       
       if(rv_ref==0)
          sqlMapper.insert("Board.insertReview", paramClass);
@@ -91,9 +91,9 @@ public class reviewWriteAction extends ActionSupport{
          File newFile = new File(FileUploadPath+fileName+"."+fileExt);
          FileUtils.copyFile(getUpload(), newFile);
          
-         paramClass.setRV_NUMBER(resultClass.getRV_NUMBER());
-         paramClass.setRV_ORG_IMAGE(getUploadFileName());
-         paramClass.setRV_SAV_IMAGE(fileName+"."+fileExt);
+         paramClass.setRv_number(resultClass.getRv_number());
+         paramClass.setRv_org_image(getUploadFileName());
+         paramClass.setRv_sav_image(fileName+"."+fileExt);
          
          sqlMapper.update("Board.updateFile",paramClass);
       }

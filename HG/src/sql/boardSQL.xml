@@ -26,7 +26,9 @@
    <!-- 후기 맵핑 -->
    <resultMap id="reviewRes" class="review">
       <result property="rv_number" column="rv_number"/>
-      <result property="rv_image" column="rv_image"/>
+      <result property="rv_m_id" column="rv_m_id"/>
+      <result property="rv_sav_image" column="rv_sav_image"/>
+      <result property="rv_org_image" column="rv_org_image"/>
       <result property="rv_title" column="rv_title"/>
       <result property="rv_content" column="rv_content"/>
       <result property="rv_pass" column="rv_pass"/>
@@ -36,6 +38,7 @@
       <result property="rv_ref" column="rv_ref"/>
       <result property="rv_ref_step" column="rv_ref_step"/>
       <result property="rv_ref_level" column="rv_ref_level"/>
+      <result property="rv_readhit" column="rv_readhit"/>
    </resultMap>
    
    
@@ -47,6 +50,10 @@
   
   <sql id="select-review">
         SELECT * FROM REVIEW
+  </sql>
+  
+  <sql id="where-no">
+  	where rv_number = #rv_number#
   </sql>
   
 
@@ -87,7 +94,7 @@
      <select id="selectPasswordRV" resultMap="reviewRes">
       <include refid="select-review"/>
       <include refid="where-no" />
-      AND password = #password#
+      AND rv_pass = #rv_pass#
    </select>
    
    
@@ -159,7 +166,7 @@
   </update>
   
   <update id="updateNReadHit" parameterClass="int">
-  	update notice set N_HIT=N_HIT+1 where N_NUMBER=#n_number#
+  	update notice set RV_READHIT=RV_READHIT+1 where RV_NUMBER=#rv_number#
   </update>
   
 </sqlMap>

@@ -35,9 +35,9 @@ public class reviewModifyAction extends ActionSupport{
       reader.close();
    }
    public String execute() throws SQLException, IOException{
-      paramClass.setRV_NUMBER(number);
-      paramClass.setRV_TITLE(title);
-      paramClass.setRV_CONTENT(content);
+      paramClass.setRv_number(number);
+      paramClass.setRv_title(title);
+      paramClass.setRv_content(content);
       sqlMapper.update("Board.updateReview", paramClass);
       if(getUpload()!=null){
          String file_name="file_"+getNumber();
@@ -47,8 +47,8 @@ public class reviewModifyAction extends ActionSupport{
          
          File destFile = new File(fileUploadPath + file_name + "." +file_ext);
          FileUtils.copyFile(getUpload(), destFile);
-         paramClass.setRV_ORG_IMAGE(uploadFileName);
-         paramClass.setRV_SAV_IMAGE(file_name+"."+file_ext);
+         paramClass.setRv_org_image(uploadFileName);
+         paramClass.setRv_sav_image(file_name+"."+file_ext);
          sqlMapper.update("Board.updateRvFile",paramClass);
       }
       resultClass=(reviewVO)sqlMapper.queryForObject("Board.selectOneReview",number);

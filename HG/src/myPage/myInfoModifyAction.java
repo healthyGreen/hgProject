@@ -41,7 +41,7 @@ public class myInfoModifyAction extends ActionSupport{
 	}
 	//비밀번호 확인후 맞을시 수정폼이동 아닐시 에러페이지.
 	public String form() throws Exception{
-		if(resultClass.getM_PASS().equals(m_pass)){
+		if(resultClass.getM_pass().equals(m_pass)){
 			checkPass = 1;
 		return SUCCESS;
 		}
@@ -59,18 +59,18 @@ public class myInfoModifyAction extends ActionSupport{
 			return LOGIN;
 		}
 		paramClass = new memberVO();
-		paramClass.setM_PASS(getM_pass());
-		paramClass.setM_NAME(getM_name());
-		paramClass.setM_SEX(getM_sex());
-		paramClass.setM_YEAR(getM_year());
-		paramClass.setM_MONTH(getM_month());
-		paramClass.setM_DATE(getM_date());
-		paramClass.setM_PHONE(getM_phone());
-		paramClass.setM_EMAIL(getM_email());
-		paramClass.setM_ZIPCODE(getM_zipcode());
-		paramClass.setM_ADDR1(getM_addr1());
-		paramClass.setM_ADDR2(getM_addr2());
-		paramClass.setM_ID(getM_id());
+		paramClass.setM_pass(getM_pass());
+		paramClass.setM_name(getM_name());
+		paramClass.setM_sex(getM_sex());
+		paramClass.setM_year(getM_year());
+		paramClass.setM_month(getM_month());
+		paramClass.setM_date(getM_date());
+		paramClass.setM_phone(getM_phone());
+		paramClass.setM_email(getM_email());
+		paramClass.setM_zipcode(getM_zipcode());
+		paramClass.setM_addr1(getM_addr1());
+		paramClass.setM_addr2(getM_addr2());
+		paramClass.setM_id(getM_id());
 		sqlMapper.update("modifyMember",paramClass);
 		return SUCCESS;
 		

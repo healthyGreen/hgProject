@@ -4,72 +4,60 @@ import java.util.Date;
 
 public class replyVO {
 	
-	private int RP_NUMBER;
-	private String RP_M_ID;
-	private String RP_CONTENT;
-	private String RP_PASS;
-	private Date RP_DATE;
-	private int RP_REF;
-	private int RP_REF_STEP;
-	private int RP_REF_LEVEL;
-	
-	
-	public int getRP_NUMBER() {
-		return RP_NUMBER;
+	private int rp_number;
+	private String rp_m_id;
+	private String rp_content;
+	private String rp_pass;
+	private Date rp_date;
+	private int rp_ref;
+	private int rp_ref_step;
+	private int rp_ref_level;
+	public int getRp_number() {
+		return rp_number;
 	}
-	public void setRP_NUMBER(int rP_NUMBER) {
-		RP_NUMBER = rP_NUMBER;
+	public void setRp_number(int rp_number) {
+		this.rp_number = rp_number;
 	}
-	public String getRP_M_ID() {
-		return RP_M_ID;
+	public String getRp_m_id() {
+		return rp_m_id;
 	}
-	public void setRP_M_ID(String rP_M_ID) {
-		RP_M_ID = rP_M_ID;
+	public void setRp_m_id(String rp_m_id) {
+		this.rp_m_id = rp_m_id;
 	}
-	public String getRP_CONTENT() {
-		return RP_CONTENT;
+	public String getRp_content() {
+		return rp_content;
 	}
-	public void setRP_CONTENT(String rP_CONTENT) {
-		RP_CONTENT = rP_CONTENT;
+	public void setRp_content(String rp_content) {
+		this.rp_content = rp_content;
 	}
-	public String getRP_PASS() {
-		return RP_PASS;
+	public String getRp_pass() {
+		return rp_pass;
 	}
-	public void setRP_PASS(String rP_PASS) {
-		RP_PASS = rP_PASS;
+	public void setRp_pass(String rp_pass) {
+		this.rp_pass = rp_pass;
 	}
-	public Date getRP_DATE() {
-		return RP_DATE;
+	public Date getRp_date() {
+		return rp_date;
 	}
-	public void setRP_DATE(Date rP_DATE) {
-		RP_DATE = rP_DATE;
+	public void setRp_date(Date rp_date) {
+		this.rp_date = rp_date;
 	}
-	public int getRP_REF() {
-		return RP_REF;
+	public int getRp_ref() {
+		return rp_ref;
 	}
-	public void setRP_REF(int rP_REF) {
-		RP_REF = rP_REF;
+	public void setRp_ref(int rp_ref) {
+		this.rp_ref = rp_ref;
 	}
-	public int getRP_REF_STEP() {
-		return RP_REF_STEP;
+	public int getRp_ref_step() {
+		return rp_ref_step;
 	}
-	public void setRP_REF_STEP(int rP_REF_STEP) {
-		RP_REF_STEP = rP_REF_STEP;
+	public void setRp_ref_step(int rp_ref_step) {
+		this.rp_ref_step = rp_ref_step;
 	}
-	public int getRP_REF_LEVEL() {
-		return RP_REF_LEVEL;
+	public int getRp_ref_level() {
+		return rp_ref_level;
 	}
-	public void setRP_REF_LEVEL(int rP_REF_LEVEL) {
-		RP_REF_LEVEL = rP_REF_LEVEL;
-	}
-	public void setNo(int no) {
-	
-	}
-	public void setPassword(String password) {
-		
-		
-	}
-	
-	
-
+	public void setRp_ref_level(int rp_ref_level) {
+		this.rp_ref_level = rp_ref_level;
+	}	
 }

@@ -37,10 +37,10 @@ public class noticeModifyAction extends ActionSupport {
 	}
 	
 	public String execute() throws SQLException, IOException{
-		paramClass.setN_NUMBER(n_number);
-		paramClass.setN_TITLE(n_title);
-		paramClass.setN_NAME(n_name);
-		paramClass.setN_CONTENT(n_content);
+		paramClass.setN_number(getN_number());
+		paramClass.setN_title(getN_title());
+		paramClass.setN_name(getN_name());
+		paramClass.setN_content(getN_content());
 		
 		sqlMapper.update("Board.updateNotice", paramClass);
 		

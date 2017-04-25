@@ -56,22 +56,22 @@ public class ordersAction extends ActionSupport{
 	
 	public String execute() throws SQLException{
 		
-		order.setO_M_ID(session_id);
-		order.setO_NAME(o_name);
-		order.setO_RPHONE(o_rphone);
-		order.setO_ZIPCODE(o_zipcode);
-		order.setO_ADDR1(o_addr1);
-		order.setO_ADDR2(o_addr2);
-		order.setO_COMMENT(o_comment);
-		order.setO_PAY(o_pay);
-		order.setO_DATE(o_date.getTime());
+		order.setO_m_id(session_id);
+		order.setO_name(o_name);
+		order.setO_rphone(o_rphone);
+		order.setO_zipcode(o_zipcode);
+		order.setO_addr1(o_addr1);
+		order.setO_addr2(o_addr2);
+		order.setO_comment(o_comment);
+		order.setO_pay(o_pay);
+		order.setO_date(o_date.getTime());
 		
 		if(orderType.equals("goods")){
-			basket.setB_G_NUMBER(g_number);
-			basket.setB_G_NAME(g_name);
-			basket.setB_G_AMOUNT(amount);
-			basket.setB_G_BOTTLE(bottle);
-			goods.setG_PRICE(price);
+			basket.setB_g_number(g_number);
+			basket.setB_g_name(g_name);
+			basket.setB_g_amout(amount);
+			basket.setB_g_bottle(bottle);
+			goods.setG_price(price);
 		}else if(orderType.equals("basket")){
 			basketList = sqlMapper.queryForList("Basket.basketList", session_id);
 			

@@ -46,7 +46,7 @@ public class existAction extends ActionSupport{
 	}
 	//비밀번호 확인후 SUCCESS시 경고문이동 ERROR 시 passerror.jsp 이동
 	public String form() throws Exception{
-		if(resultClass.getM_PASS().equals(M_PASS)){
+		if(resultClass.getM_pass().equals(M_PASS)){
 			checkPass = 1;
 		return SUCCESS;
 		}
@@ -63,7 +63,7 @@ public class existAction extends ActionSupport{
 		Map<String, Object> session = context.getSession();
 		String session_id = (String) session.get("m_id");
 		resultClass = (memberVO) sqlMapper.queryForObject("UserCheck", session_id);	
-			paramClass.setM_ID(session_id);
+			paramClass.setM_id(session_id);
 			sqlMapper.delete("deleteMember", paramClass);
 			context.getSession().clear();
 			return SUCCESS;

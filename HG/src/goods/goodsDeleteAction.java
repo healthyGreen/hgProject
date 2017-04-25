@@ -51,7 +51,7 @@ public class goodsDeleteAction extends ActionSupport{
 					"g_list_selectOne", getG_NUMBER());*/
 
 			// 삭제할 항목 설정.
-			goods_paramClass.setG_NUMBER(getG_NUMBER());
+			goods_paramClass.setG_number(getG_NUMBER());
 
 			// 삭제 쿼리 수행.
 			sqlMapper.delete("g_delete", goods_paramClass);
@@ -66,7 +66,7 @@ public class goodsDeleteAction extends ActionSupport{
 			reResult = new replyVO();
 
 			// 삭제할 항목 설정.
-			reClass.setNo(getNo());
+			reClass.setRp_number(getNo());
 
 			// 삭제할 쿼리 수행.
 			sqlMapper.update("g_deleteReply", reClass);

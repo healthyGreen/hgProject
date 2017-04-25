@@ -4,111 +4,111 @@ import java.util.Date;
 
 public class memberVO {
 	
-	private String M_ID;
-	private String M_PASS;
-	private String M_NAME;
-	private String M_SEX;
-	private int M_YEAR;
-	private int M_MONTH;
-	private int M_DATE;
-	private int M_PHONE;
-	private String M_EMAIL;
-	private String M_ZIPCODE;
-	private String M_ADDR1;
-	private String M_ADDR2;
-	private Date M_JOINDATE;
-	private int M_POINT;
-	private int M_ADMIN;
+	private String m_id;
+	private String m_pass;
+	private String m_name;
+	private String m_sex;
+	private int m_year;
+	private int m_month;
+	private int m_date;
+	private int m_phone;
+	private String m_email;
+	private String m_zipcode;
+	private String m_addr1;
+	private String m_addr2;
+	private Date m_joindate;
+	private int m_point;
+	private int m_admin;
 	
-	public String getM_ID() {
-		return M_ID;
+	public String getM_id() {
+		return m_id;
 	}
-	public void setM_ID(String m_ID) {
-		M_ID = m_ID;
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
 	}
-	public String getM_PASS() {
-		return M_PASS;
+	public String getM_pass() {
+		return m_pass;
 	}
-	public void setM_PASS(String m_PASS) {
-		M_PASS = m_PASS;
+	public void setM_pass(String m_pass) {
+		this.m_pass = m_pass;
 	}
-	public String getM_NAME() {
-		return M_NAME;
+	public String getM_name() {
+		return m_name;
 	}
-	public void setM_NAME(String m_NAME) {
-		M_NAME = m_NAME;
+	public void setM_name(String m_name) {
+		this.m_name = m_name;
 	}
-	public String getM_SEX() {
-		return M_SEX;
+	public String getM_sex() {
+		return m_sex;
 	}
-	public void setM_SEX(String m_SEX) {
-		M_SEX = m_SEX;
+	public void setM_sex(String m_sex) {
+		this.m_sex = m_sex;
 	}
-	public int getM_YEAR() {
-		return M_YEAR;
+	public int getM_year() {
+		return m_year;
 	}
-	public void setM_YEAR(int m_YEAR) {
-		M_YEAR = m_YEAR;
+	public void setM_year(int m_year) {
+		this.m_year = m_year;
 	}
-	public int getM_MONTH() {
-		return M_MONTH;
+	public int getM_month() {
+		return m_month;
 	}
-	public void setM_MONTH(int m_MONTH) {
-		M_MONTH = m_MONTH;
+	public void setM_month(int m_month) {
+		this.m_month = m_month;
 	}
-	public int getM_DATE() {
-		return M_DATE;
+	public int getM_date() {
+		return m_date;
 	}
-	public void setM_DATE(int m_DATE) {
-		M_DATE = m_DATE;
+	public void setM_date(int m_date) {
+		this.m_date = m_date;
 	}
-	public int getM_PHONE() {
-		return M_PHONE;
+	public int getM_phone() {
+		return m_phone;
 	}
-	public void setM_PHONE(int m_PHONE) {
-		M_PHONE = m_PHONE;
+	public void setM_phone(int m_phone) {
+		this.m_phone = m_phone;
 	}
-	public String getM_EMAIL() {
-		return M_EMAIL;
+	public String getM_email() {
+		return m_email;
 	}
-	public void setM_EMAIL(String m_EMAIL) {
-		M_EMAIL = m_EMAIL;
+	public void setM_email(String m_email) {
+		this.m_email = m_email;
 	}
-	public String getM_ZIPCODE() {
-		return M_ZIPCODE;
+	public String getM_zipcode() {
+		return m_zipcode;
 	}
-	public void setM_ZIPCODE(String m_ZIPCODE) {
-		M_ZIPCODE = m_ZIPCODE;
+	public void setM_zipcode(String m_zipcode) {
+		this.m_zipcode = m_zipcode;
 	}
-	public String getM_ADDR1() {
-		return M_ADDR1;
+	public String getM_addr1() {
+		return m_addr1;
 	}
-	public void setM_ADDR1(String m_ADDR1) {
-		M_ADDR1 = m_ADDR1;
+	public void setM_addr1(String m_addr1) {
+		this.m_addr1 = m_addr1;
 	}
-	public String getM_ADDR2() {
-		return M_ADDR2;
+	public String getM_addr2() {
+		return m_addr2;
 	}
-	public void setM_ADDR2(String m_ADDR2) {
-		M_ADDR2 = m_ADDR2;
+	public void setM_addr2(String m_addr2) {
+		this.m_addr2 = m_addr2;
 	}
-	public Date getM_JOINDATE() {
-		return M_JOINDATE;
+	public Date getM_joindate() {
+		return m_joindate;
 	}
-	public void setM_JOINDATE(Date m_JOINDATE) {
-		M_JOINDATE = m_JOINDATE;
+	public void setM_joindate(Date m_joindate) {
+		this.m_joindate = m_joindate;
 	}
-	public int getM_POINT() {
-		return M_POINT;
+	public int getM_point() {
+		return m_point;
 	}
-	public void setM_POINT(int m_POINT) {
-		M_POINT = m_POINT;
+	public void setM_point(int m_point) {
+		this.m_point = m_point;
 	}
-	public int getM_ADMIN() {
-		return M_ADMIN;
+	public int getM_admin() {
+		return m_admin;
 	}
-	public void setM_ADMIN(int m_ADMIN) {
-		M_ADMIN = m_ADMIN;
+	public void setM_admin(int m_admin) {
+		this.m_admin = m_admin;
 	}
 	
 	

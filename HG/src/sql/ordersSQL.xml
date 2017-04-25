@@ -23,11 +23,11 @@
       <result property="o_comment" column="o_comment"/>
       <result property="o_pay" column="o_pay"/>
       <result property="o_date" column="o_date"/>
-      <result property="o_g_price" column="o_g_price"/>
+      <result property="o_price" column="o_g_price"/>
       <result property="o_allprice" column="o_allprice"/>
       <result property="o_g_number" column="o_g_number"/>
-      <result property="o_amount" column="o_amount"/>
-      <result property="o_bottle" column="o_bottle"/>
+      <result property="o_g_amount" column="o_amount"/>
+      <result property="o_g_bottle" column="o_bottle"/>
    </resultMap>
    
    <select id="order_selectOne" resultMap="orderRes">

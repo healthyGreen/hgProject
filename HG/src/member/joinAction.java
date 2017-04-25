@@ -49,20 +49,20 @@ public class joinAction extends ActionSupport{
 	public String execute() throws Exception{
 		paramClass = new memberVO();
 		resultClass = new memberVO();
-		paramClass.setM_ID(getM_id());
-		paramClass.setM_PASS(getM_pass());
-		paramClass.setM_NAME(getM_name());
-		paramClass.setM_SEX(getM_sex());
-		paramClass.setM_YEAR(getM_year());
-		paramClass.setM_MONTH(getM_month());
-		paramClass.setM_DATE(getM_date());
-		paramClass.setM_PHONE(getM_phone());
-		paramClass.setM_EMAIL(getM_email());
-		paramClass.setM_ZIPCODE(getM_zipcode());
-		paramClass.setM_ADDR1(getM_addr1());
-		paramClass.setM_ADDR2(getM_addr2());
-		paramClass.setM_ADMIN(getAdmin());
-		paramClass.setM_JOINDATE(today.getTime());
+		paramClass.setM_id(getM_id());
+		paramClass.setM_pass(getM_pass());
+		paramClass.setM_name(getM_name());
+		paramClass.setM_sex(getM_sex());
+		paramClass.setM_year(getM_year());
+		paramClass.setM_month(getM_month());
+		paramClass.setM_date(getM_date());
+		paramClass.setM_phone(getM_phone());
+		paramClass.setM_email(getM_email());
+		paramClass.setM_zipcode(getM_zipcode());
+		paramClass.setM_addr1(getM_addr1());
+		paramClass.setM_addr2(getM_addr2());
+		paramClass.setM_admin(getAdmin());
+		paramClass.setM_joindate(today.getTime());
 				
 		sqlMapper.insert("Member.insertMember", paramClass);
 				

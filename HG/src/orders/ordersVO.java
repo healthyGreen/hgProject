@@ -4,111 +4,111 @@ import java.util.Date;
 
 public class ordersVO {
 	
-	private int O_NUMBER;
-	private String O_M_ID;
-	private String O_NAME;
-	private int O_RPHONE;
-	private String O_ZIPCODE;
-	private String O_ADDR1;
-	private String O_ADDR2;
-	private String O_COMMENT;
-	private String O_PAY;
-	private Date O_DATE;
-	private int O_PRICE;
-	private int O_ALLPRICE;
-	private int O_G_NUMBER;
-	private int O_G_AMOUNT;
-	private String O_G_BOTTEL;
+	private int o_number;
+	private String o_m_id;
+	private String o_name;
+	private int o_rphone;
+	private String o_zipcode;
+	private String o_addr1;
+	private String o_addr2;
+	private String o_comment;
+	private String o_pay;
+	private Date o_date;
+	private int o_price;
+	private int o_allprice;
+	private int o_g_number;
+	private int o_g_amount;
+	private String o_g_bottle;
+	public int getO_number() {
+		return o_number;
+	}
+	public void setO_number(int o_number) {
+		this.o_number = o_number;
+	}
+	public String getO_m_id() {
+		return o_m_id;
+	}
+	public void setO_m_id(String o_m_id) {
+		this.o_m_id = o_m_id;
+	}
+	public String getO_name() {
+		return o_name;
+	}
+	public void setO_name(String o_name) {
+		this.o_name = o_name;
+	}
+	public int getO_rphone() {
+		return o_rphone;
+	}
+	public void setO_rphone(int o_rphone) {
+		this.o_rphone = o_rphone;
+	}
+	public String getO_zipcode() {
+		return o_zipcode;
+	}
+	public void setO_zipcode(String o_zipcode) {
+		this.o_zipcode = o_zipcode;
+	}
+	public String getO_addr1() {
+		return o_addr1;
+	}
+	public void setO_addr1(String o_addr1) {
+		this.o_addr1 = o_addr1;
+	}
+	public String getO_addr2() {
+		return o_addr2;
+	}
+	public void setO_addr2(String o_addr2) {
+		this.o_addr2 = o_addr2;
+	}
+	public String getO_comment() {
+		return o_comment;
+	}
+	public void setO_comment(String o_comment) {
+		this.o_comment = o_comment;
+	}
+	public String getO_pay() {
+		return o_pay;
+	}
+	public void setO_pay(String o_pay) {
+		this.o_pay = o_pay;
+	}
+	public Date getO_date() {
+		return o_date;
+	}
+	public void setO_date(Date o_date) {
+		this.o_date = o_date;
+	}
+	public int getO_price() {
+		return o_price;
+	}
+	public void setO_price(int o_price) {
+		this.o_price = o_price;
+	}
+	public int getO_allprice() {
+		return o_allprice;
+	}
+	public void setO_allprice(int o_allprice) {
+		this.o_allprice = o_allprice;
+	}
+	public int getO_g_number() {
+		return o_g_number;
+	}
+	public void setO_g_number(int o_g_number) {
+		this.o_g_number = o_g_number;
+	}
+	public int getO_g_amount() {
+		return o_g_amount;
+	}
+	public void setO_g_amount(int o_g_amount) {
+		this.o_g_amount = o_g_amount;
+	}
+	public String getO_g_bottle() {
+		return o_g_bottle;
+	}
+	public void setO_g_bottle(String o_g_bottle) {
+		this.o_g_bottle = o_g_bottle;
+	}
 	
-	public int getO_NUMBER() {
-		return O_NUMBER;
-	}
-	public void setO_NUMBER(int o_NUMBER) {
-		O_NUMBER = o_NUMBER;
-	}
-	public String getO_M_ID() {
-		return O_M_ID;
-	}
-	public void setO_M_ID(String o_M_ID) {
-		O_M_ID = o_M_ID;
-	}
-	public String getO_NAME() {
-		return O_NAME;
-	}
-	public void setO_NAME(String o_NAME) {
-		O_NAME = o_NAME;
-	}
-	public int getO_RPHONE() {
-		return O_RPHONE;
-	}
-	public void setO_RPHONE(int o_RPHONE) {
-		O_RPHONE = o_RPHONE;
-	}
-	public String getO_ZIPCODE() {
-		return O_ZIPCODE;
-	}
-	public void setO_ZIPCODE(String o_ZIPCODE) {
-		O_ZIPCODE = o_ZIPCODE;
-	}
-	public String getO_ADDR1() {
-		return O_ADDR1;
-	}
-	public void setO_ADDR1(String o_ADDR1) {
-		O_ADDR1 = o_ADDR1;
-	}
-	public String getO_ADDR2() {
-		return O_ADDR2;
-	}
-	public void setO_ADDR2(String o_ADDR2) {
-		O_ADDR2 = o_ADDR2;
-	}
-	public String getO_COMMENT() {
-		return O_COMMENT;
-	}
-	public void setO_COMMENT(String o_COMMENT) {
-		O_COMMENT = o_COMMENT;
-	}
-	public String getO_PAY() {
-		return O_PAY;
-	}
-	public void setO_PAY(String o_PAY) {
-		O_PAY = o_PAY;
-	}
-	public Date getO_DATE() {
-		return O_DATE;
-	}
-	public void setO_DATE(Date o_DATE) {
-		O_DATE = o_DATE;
-	}
-	public int getO_PRICE() {
-		return O_PRICE;
-	}
-	public void setO_PRICE(int o_PRICE) {
-		O_PRICE = o_PRICE;
-	}
-	public int getO_ALLPRICE() {
-		return O_ALLPRICE;
-	}
-	public void setO_ALLPRICE(int o_ALLPRICE) {
-		O_ALLPRICE = o_ALLPRICE;
-	}
-	public int getO_G_NUMBER() {
-		return O_G_NUMBER;
-	}
-	public void setO_G_NUMBER(int o_G_NUMBER) {
-		O_G_NUMBER = o_G_NUMBER;
-	}
-	public int getO_G_AMOUNT() {
-		return O_G_AMOUNT;
-	}
-	public void setO_G_AMOUNT(int o_G_AMOUNT) {
-		O_G_AMOUNT = o_G_AMOUNT;
-	}
-	public String getO_G_BOTTEL() {
-		return O_G_BOTTEL;
-	}
-	public void setO_G_BOTTEL(String o_G_BOTTEL) {
-		O_G_BOTTEL = o_G_BOTTEL;
-	}
-
+	
 }

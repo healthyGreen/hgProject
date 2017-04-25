@@ -4,108 +4,104 @@ import java.util.Date;
 
 
 public class reviewVO {
-	private int RV_NUMBER;
-	private String RV_ORG_IMAGE;
-	private String RV_SAV_IMAGE;
-	private String RV_TITLE;
-	private String RV_CONTENT;
-	private String RV_PASS;
-	private String RV_M_ID;
-	private String RV_NAME;
-	private Date RV_DATE;
-	private String RV_SCORE;
-	private int RV_REF;
-	private int RV_REF_STEP;
-	private int RV_REF_LEVEL;
-	private int RV_READHIT;
-	
-	
-	public int getRV_NUMBER() {
-		return RV_NUMBER;
+	private int rv_number;
+	private String rv_org_image;
+	private String rv_sav_image;
+	private String rv_title;
+	private String rv_content;
+	private String rv_pass;
+	private String rv_m_id;
+	private String rv_name;
+	private Date rv_date;
+	private String rv_score;
+	private int rv_ref;
+	private int rv_ref_step;
+	private int rv_ref_level;
+	private int rv_readhit;
+	public int getRv_number() {
+		return rv_number;
 	}
-	public void setRV_NUMBER(int rV_NUMBER) {
-		RV_NUMBER = rV_NUMBER;
+	public void setRv_number(int rv_number) {
+		this.rv_number = rv_number;
 	}
-	public String getRV_ORG_IMAGE() {
-		return RV_ORG_IMAGE;
+	public String getRv_org_image() {
+		return rv_org_image;
 	}
-	public void setRV_ORG_IMAGE(String rV_ORG_IMAGE) {
-		RV_ORG_IMAGE = rV_ORG_IMAGE;
+	public void setRv_org_image(String rv_org_image) {
+		this.rv_org_image = rv_org_image;
 	}
-	public String getRV_SAV_IMAGE() {
-		return RV_SAV_IMAGE;
+	public String getRv_sav_image() {
+		return rv_sav_image;
 	}
-	public void setRV_SAV_IMAGE(String rV_SAV_IMAGE) {
-		RV_SAV_IMAGE = rV_SAV_IMAGE;
+	public void setRv_sav_image(String rv_sav_image) {
+		this.rv_sav_image = rv_sav_image;
 	}
-	public String getRV_TITLE() {
-		return RV_TITLE;
+	public String getRv_title() {
+		return rv_title;
 	}
-	public void setRV_TITLE(String rV_TITLE) {
-		RV_TITLE = rV_TITLE;
+	public void setRv_title(String rv_title) {
+		this.rv_title = rv_title;
 	}
-	public String getRV_CONTENT() {
-		return RV_CONTENT;
+	public String getRv_content() {
+		return rv_content;
 	}
-	public void setRV_CONTENT(String rV_CONTENT) {
-		RV_CONTENT = rV_CONTENT;
+	public void setRv_content(String rv_content) {
+		this.rv_content = rv_content;
 	}
-	public String getRV_PASS() {
-		return RV_PASS;
+	public String getRv_pass() {
+		return rv_pass;
 	}
-	public void setRV_PASS(String rV_PASS) {
-		RV_PASS = rV_PASS;
+	public void setRv_pass(String rv_pass) {
+		this.rv_pass = rv_pass;
 	}
-
-	public String getRV_M_ID() {
-		return RV_M_ID;
+	public String getRv_m_id() {
+		return rv_m_id;
 	}
-	public void setRV_M_ID(String rV_M_ID) {
-		RV_M_ID = rV_M_ID;
+	public void setRv_m_id(String rv_m_id) {
+		this.rv_m_id = rv_m_id;
 	}
-	public String getRV_NAME() {
-		return RV_NAME;
+	public String getRv_name() {
+		return rv_name;
 	}
-	public void setRV_NAME(String rV_NAME) {
-		RV_NAME = rV_NAME;
+	public void setRv_name(String rv_name) {
+		this.rv_name = rv_name;
 	}
-	public Date getRV_DATE() {
-		return RV_DATE;
+	public Date getRv_date() {
+		return rv_date;
 	}
-	public void setRV_DATE(Date rV_DATE) {
-		RV_DATE = rV_DATE;
+	public void setRv_date(Date rv_date) {
+		this.rv_date = rv_date;
 	}
-	public String getRV_SCORE() {
-		return RV_SCORE;
+	public String getRv_score() {
+		return rv_score;
 	}
-	public void setRV_SCORE(String rV_SCORE) {
-		RV_SCORE = rV_SCORE;
+	public void setRv_score(String rv_score) {
+		this.rv_score = rv_score;
 	}
-	public int getRV_REF() {
-		return RV_REF;
+	public int getRv_ref() {
+		return rv_ref;
 	}
-	public void setRV_REF(int rV_REF) {
-		RV_REF = rV_REF;
+	public void setRv_ref(int rv_ref) {
+		this.rv_ref = rv_ref;
 	}
-	public int getRV_REF_STEP() {
-		return RV_REF_STEP;
+	public int getRv_ref_step() {
+		return rv_ref_step;
 	}
-	public void setRV_REF_STEP(int rV_REF_STEP) {
-		RV_REF_STEP = rV_REF_STEP;
+	public void setRv_ref_step(int rv_ref_step) {
+		this.rv_ref_step = rv_ref_step;
 	}
-	public int getRV_REF_LEVEL() {
-		return RV_REF_LEVEL;
+	public int getRv_ref_level() {
+		return rv_ref_level;
 	}
-	public void setRV_REF_LEVEL(int rV_REF_LEVEL) {
-		RV_REF_LEVEL = rV_REF_LEVEL;
+	public void setRv_ref_level(int rv_ref_level) {
+		this.rv_ref_level = rv_ref_level;
 	}
-	public int getRV_READHIT() {
-		return RV_READHIT;
+	public int getRv_readhit() {
+		return rv_readhit;
 	}
-	public void setRV_READHIT(int rV_READHIT) {
-		RV_READHIT = rV_READHIT;
+	public void setRv_readhit(int rv_readhit) {
+		this.rv_readhit = rv_readhit;
 	}
-	
 	
 	
 	

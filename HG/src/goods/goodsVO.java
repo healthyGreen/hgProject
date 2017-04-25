@@ -2,82 +2,83 @@ package goods;
 
 public class goodsVO {
 	
-	private int G_NUMBER;
-	private String G_NAME;
-	private String G_CONTENT;
-	private String G_INFO;
-	private String G_ORG_IMAGE;
-	private String G_SAV_IMAGE;
-	private int G_PRICE;
-	private String G_INGR;
-	private String G_CATEGORY;
-	private int G_AMOUNT;
-	private String bottle;
-	
-	public int getG_NUMBER() {
-		return G_NUMBER;
+	private int g_number;
+	private String g_name;
+	private String g_content;
+	private String g_info;
+	private String g_org_image;
+	private String g_sav_image;
+	private int g_price;
+	private String g_ingr;
+	private String g_category;
+	private int g_amount;
+	private String g_bottle;
+	public int getG_number() {
+		return g_number;
 	}
-	public void setG_NUMBER(int g_NUMBER) {
-		G_NUMBER = g_NUMBER;
+	public void setG_number(int g_number) {
+		this.g_number = g_number;
 	}
-	public String getG_NAME() {
-		return G_NAME;
+	public String getG_name() {
+		return g_name;
 	}
-	public void setG_NAME(String g_NAME) {
-		G_NAME = g_NAME;
+	public void setG_name(String g_name) {
+		this.g_name = g_name;
 	}
-	public String getG_CONTENT() {
-		return G_CONTENT;
+	public String getG_content() {
+		return g_content;
 	}
-	public void setG_CONTENT(String g_CONTENT) {
-		G_CONTENT = g_CONTENT;
+	public void setG_content(String g_content) {
+		this.g_content = g_content;
 	}
-	public String getG_INFO() {
-		return G_INFO;
+	public String getG_info() {
+		return g_info;
 	}
-	public void setG_INFO(String g_INFO) {
-		G_INFO = g_INFO;
+	public void setG_info(String g_info) {
+		this.g_info = g_info;
 	}
-	public int getG_PRICE() {
-		return G_PRICE;
+	public String getG_org_image() {
+		return g_org_image;
 	}
-	public void setG_PRICE(int g_PRICE) {
-		G_PRICE = g_PRICE;
+	public void setG_org_image(String g_org_image) {
+		this.g_org_image = g_org_image;
 	}
-	public String getG_INGR() {
-		return G_INGR;
+	public String getG_sav_image() {
+		return g_sav_image;
 	}
-	public void setG_INGR(String g_INGR) {
-		G_INGR = g_INGR;
+	public void setG_sav_image(String g_sav_image) {
+		this.g_sav_image = g_sav_image;
 	}
-	public String getG_CATEGORY() {
-		return G_CATEGORY;
+	public int getG_price() {
+		return g_price;
 	}
-	public void setG_CATEGORY(String g_CATEGORY) {
-		G_CATEGORY = g_CATEGORY;
+	public void setG_price(int g_price) {
+		this.g_price = g_price;
 	}
-	public int getG_AMOUNT() {
-		return G_AMOUNT;
+	public String getG_ingr() {
+		return g_ingr;
 	}
-	public void setG_AMOUNT(int g_AMOUNT) {
-		G_AMOUNT = g_AMOUNT;
+	public void setG_ingr(String g_ingr) {
+		this.g_ingr = g_ingr;
 	}
-	public String getG_ORG_IMAGE() {
-		return G_ORG_IMAGE;
+	public String getG_category() {
+		return g_category;
 	}
-	public void setG_ORG_IMAGE(String g_ORG_IMAGE) {
-		G_ORG_IMAGE = g_ORG_IMAGE;
+	public void setG_category(String g_category) {
+		this.g_category = g_category;
 	}
-	public String getG_SAV_IMAGE() {
-		return G_SAV_IMAGE;
+	public int getG_amount() {
+		return g_amount;
 	}
-	public void setG_SAV_IMAGE(String g_SAV_IMAGE) {
-		G_SAV_IMAGE = g_SAV_IMAGE;
+	public void setG_amount(int g_amount) {
+		this.g_amount = g_amount;
 	}
-	public String getBottle() {
-		return bottle;
+	public String getG_bottle() {
+		return g_bottle;
 	}
-	public void setBottle(String bottle) {
-		this.bottle = bottle;
+	public void setG_bottle(String g_bottle) {
+		this.g_bottle = g_bottle;
 	}
 }
+	
+	

@@ -4,50 +4,49 @@ import java.util.Date;
 
 public class noticeVO {
 	
-	private int N_NUMBER;
-	private String N_TITLE;
-	private String N_NAME;
-	private Date N_DATE;
-	private int N_HIT;
-	private String N_CONTENT;
+	private int n_number;
+	private String n_title;
+	private String n_name;
+	private Date n_date;
+	private int n_hit;
+	private String n_content;
+	public int getN_number() {
+		return n_number;
+	}
+	public void setN_number(int n_number) {
+		this.n_number = n_number;
+	}
+	public String getN_title() {
+		return n_title;
+	}
+	public void setN_title(String n_title) {
+		this.n_title = n_title;
+	}
+	public String getN_name() {
+		return n_name;
+	}
+	public void setN_name(String n_name) {
+		this.n_name = n_name;
+	}
+	public Date getN_date() {
+		return n_date;
+	}
+	public void setN_date(Date n_date) {
+		this.n_date = n_date;
+	}
+	public int getN_hit() {
+		return n_hit;
+	}
+	public void setN_hit(int n_hit) {
+		this.n_hit = n_hit;
+	}
+	public String getN_content() {
+		return n_content;
+	}
+	public void setN_content(String n_content) {
+		this.n_content = n_content;
+	}
 	
-	public int getN_NUMBER() {
-		return N_NUMBER;
-	}
-	public void setN_NUMBER(int n_NUMBER) {
-		N_NUMBER = n_NUMBER;
-	}
-	public String getN_TITLE() {
-		return N_TITLE;
-	}
-	public void setN_TITLE(String n_TITLE) {
-		N_TITLE = n_TITLE;
-	}
-	public String getN_NAME() {
-		return N_NAME;
-	}
-	public void setN_NAME(String n_NAME) {
-		N_NAME = n_NAME;
-	}
-	public Date getN_DATE() {
-		return N_DATE;
-	}
-	public void setN_DATE(Date n_DATE) {
-		N_DATE = n_DATE;
-	}
-	public int getN_HIT() {
-		return N_HIT;
-	}
-	public void setN_HIT(int n_HIT) {
-		N_HIT = n_HIT;
-	}
-	public String getN_CONTENT() {
-		return N_CONTENT;
-	}
-	public void setN_CONTENT(String n_CONTENT) {
-		N_CONTENT = n_CONTENT;
-	}
-	
-	
+		
 
 }

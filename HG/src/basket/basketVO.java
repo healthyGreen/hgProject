@@ -3,57 +3,56 @@ package basket;
 import java.util.Date;
 
 public class basketVO {
-	
-	private String B_M_ID;
-	private int B_G_NUMBER;
-	private String B_G_NAME;
-	private int B_G_AMOUNT;
-	private int B_ALLPRICE;
-	private Date B_DATE;
-	private String B_G_BOTTLE;
-	
-	public String getB_M_ID() {
-		return B_M_ID;
-	}
-	public void setB_M_ID(String b_M_ID) {
-		B_M_ID = b_M_ID;
-	}
-	public int getB_G_NUMBER() {
-		return B_G_NUMBER;
-	}
-	public void setB_G_NUMBER(int b_G_NUMBER) {
-		B_G_NUMBER = b_G_NUMBER;
-	}
-	public String getB_G_NAME() {
-		return B_G_NAME;
-	}
-	public void setB_G_NAME(String b_G_NAME) {
-		B_G_NAME = b_G_NAME;
-	}
-	public int getB_G_AMOUNT() {
-		return B_G_AMOUNT;
-	}
-	public void setB_G_AMOUNT(int b_G_AMOUNT) {
-		B_G_AMOUNT = b_G_AMOUNT;
-	}
-	public int getB_ALLPRICE() {
-		return B_ALLPRICE;
-	}
-	public void setB_ALLPRICE(int b_ALLPRICE) {
-		B_ALLPRICE = b_ALLPRICE;
-	}
-	public Date getB_DATE() {
-		return B_DATE;
-	}
-	public void setB_DATE(Date b_DATE) {
-		B_DATE = b_DATE;
-	}
-	public String getB_G_BOTTLE() {
-		return B_G_BOTTLE;
-	}
-	public void setB_G_BOTTLE(String b_G_BOTTLE) {
-		B_G_BOTTLE = b_G_BOTTLE;
-	}
-	
-	
+   
+   private String b_m_id;;
+   private int b_g_number;
+   private String b_g_name;
+   private int b_g_amout;
+   private int b_allPrice;
+   private Date b_date;
+   private String b_g_bottle;
+   public String getB_m_id() {
+      return b_m_id;
+   }
+   public void setB_m_id(String b_m_id) {
+      this.b_m_id = b_m_id;
+   }
+   public int getB_g_number() {
+      return b_g_number;
+   }
+   public void setB_g_number(int b_g_number) {
+      this.b_g_number = b_g_number;
+   }
+   public String getB_g_name() {
+      return b_g_name;
+   }
+   public void setB_g_name(String b_g_name) {
+      this.b_g_name = b_g_name;
+   }
+   public int getB_g_amout() {
+      return b_g_amout;
+   }
+   public void setB_g_amout(int b_g_amout) {
+      this.b_g_amout = b_g_amout;
+   }
+   public int getB_allPrice() {
+      return b_allPrice;
+   }
+   public void setB_allPrice(int b_allPrice) {
+      this.b_allPrice = b_allPrice;
+   }
+   public Date getB_date() {
+      return b_date;
+   }
+   public void setB_date(Date b_date) {
+      this.b_date = b_date;
+   }
+public String getB_g_bottle() {
+	return b_g_bottle;
+}
+public void setB_g_bottle(String b_g_bottle) {
+	this.b_g_bottle = b_g_bottle;
+}
+ 
+   
 }

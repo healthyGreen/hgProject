@@ -35,8 +35,8 @@ public class basketModifyAction extends ActionSupport{
 			return LOGIN;
 		}
 		paramClass = new basketVO();
-		paramClass.setB_G_NUMBER(getB_g_number());
-		paramClass.setB_G_AMOUNT(getB_g_amount());
+		paramClass.setB_g_number(getB_g_number());
+		paramClass.setB_g_amout(getB_g_amount());
 		sqlMapper.update("Basket.amountModify",paramClass);
 		return SUCCESS;
 	}

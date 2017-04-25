@@ -28,8 +28,8 @@ public class findIdAction extends ActionSupport{
 	public String execute() throws Exception{
 		paramClass = new memberVO();
 		resultClass = new memberVO();
-		paramClass.setM_NAME(getM_name());
-		paramClass.setM_PHONE(getM_phone());
+		paramClass.setM_name(getM_name());
+		paramClass.setM_phone(getM_phone());
 		resultClass = (memberVO)sqlMapper.queryForObject("Member.findId", paramClass);
 		return SUCCESS;
 

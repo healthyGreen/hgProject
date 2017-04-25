@@ -65,14 +65,14 @@ public class ordersSetAction extends ActionSupport {
 			
 			if(basketList!=null){
 				for(int i=0; i< basketList.size(); i++){
-					goodsresultClass=(goodsVO)sqlMapper.queryForObject("goods_selectOne", basketList.get(i).getB_G_NUMBER());
+					goodsresultClass=(goodsVO)sqlMapper.queryForObject("goods_selectOne", basketList.get(i).getB_g_number());
 					if(goodsresultClass!=null){
 						//goodsparamClass.setG_NAME(goodsresultClass.getG_NAME());
-						goodsparamClass.setG_PRICE(goodsresultClass.getG_PRICE());
-						goodsparamClass.setG_SAV_IMAGE(goodsresultClass.getG_SAV_IMAGE());
+						goodsparamClass.setG_price(goodsresultClass.getG_price());
+						goodsparamClass.setG_sav_image(goodsresultClass.getG_sav_image());
 					}
 					goodsList.add(goodsparamClass);
-					totalPrice += goodsresultClass.getG_AMOUNT()*goodsresultClass.getG_PRICE();
+					totalPrice += goodsresultClass.getG_amount()*goodsresultClass.getG_price();
 				/*orderVector.add(basketList);
 				orderVector.add(goodsList);*/	
 			}

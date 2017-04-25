@@ -38,14 +38,14 @@ public class loginAction extends ActionSupport implements SessionAware{
 	
 	public String execute() throws Exception{
 		paramClass = new memberVO();
-		paramClass.setM_ID(m_id);
-		paramClass.setM_PASS(m_pass);
+		paramClass.setM_id(m_id);
+		paramClass.setM_pass(m_pass);
 		resultClass = (memberVO)sqlMapper.queryForObject("Member.loginCheck",paramClass);
 		if(resultClass != null){
-			session.put("session_id", resultClass.getM_ID());
-			session.put("session_name", resultClass.getM_NAME());
-			session.put("session_admin", resultClass.getM_ADMIN());
-			session.put("session_point" , resultClass.getM_POINT());
+			session.put("session_id", resultClass.getM_id());
+			session.put("session_name", resultClass.getM_name());
+			session.put("session_admin", resultClass.getM_admin());
+			session.put("session_point" , resultClass.getM_point());
 
 			return SUCCESS;
 		}

@@ -56,7 +56,7 @@
 	</select>
 	<!-- 로그인 값 얻어오기 -->
 	<select id="UserCheck" resultMap="memberRes" parameterClass="string">
-		SELECT * FROM MEMBER WHERE M_ID = #M_ID#
+		SELECT * FROM MEMBER WHERE M_ID = #m_id#
 	</select>
 	<!-- 회원가입 입력 -->
 	<insert id="insertMember" parameterClass="member">
@@ -77,20 +77,20 @@
 		M_JOINDATE
 		)
 		VALUES(
-		#M_ID#,
-		#M_PASS#,
-		#M_NAME#,
-		#M_SEX#,
-		#M_YEAR#,
-		#M_MONTH#,
-		#M_DATE#,
-		#M_PHONE#,
-		#M_EMAIL#,
-		#M_ZIPCODE#,
-		#M_ADDR1#,
-		#M_ADDR2#,
-		#M_ADMIN#,
-		#M_JOINDATE#
+		#m_id#,
+		#m_pass#,
+		#m_name#,
+		#m_sex#,
+		#m_year#,
+		#m_month#,
+		#m_date#,
+		#m_phone#,
+		#m_email#,
+		#m_zipcode#,
+		#m_addr1#,
+		#m_addr2#,
+		#m_admin#,
+		#m_joindate#
 		)
 	</insert>
 	<!-- 비밀번호 찾기 후 비밀번호 1111 초기화 -->

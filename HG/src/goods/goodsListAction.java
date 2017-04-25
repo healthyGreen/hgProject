@@ -49,7 +49,7 @@ public class goodsListAction extends ActionSupport{
 		memresultClass = (memberVO) sqlMapper.queryForObject("Member.UserCheck", sessionid);
 		
 		goods_paramClass = new goodsVO();
-		goods_paramClass.setG_CATEGORY(getGoods_category());
+		goods_paramClass.setG_category(getGoods_category());
 		list=sqlMapper.queryForList("g_Category", goods_paramClass);
 		totalCount = list.size();
 		
@@ -64,7 +64,7 @@ public class goodsListAction extends ActionSupport{
 		return SUCCESS;
 	}
 	private String getGoods_category() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 

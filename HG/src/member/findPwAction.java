@@ -29,12 +29,12 @@ public class findPwAction extends ActionSupport{
 	public String execute() throws Exception{
 		paramClass = new memberVO();
 		resultClass = new memberVO();
-		paramClass.setM_ID(getM_id());
-		paramClass.setM_NAME(getM_name());
-		paramClass.setM_PHONE(getM_phone());
+		paramClass.setM_id(getM_id());
+		paramClass.setM_name(getM_name());
+		paramClass.setM_phone(getM_phone());
 		resultClass = (memberVO)sqlMapper.queryForObject("Member.findPassword", paramClass);
 		if(resultClass != null){
-			sqlMapper.update("Member.setPassword1111", paramClass.getM_ID());
+			sqlMapper.update("Member.setPassword1111", paramClass.getM_id());
 		}
 		return SUCCESS;
 		

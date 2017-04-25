@@ -51,13 +51,13 @@ public class basketInputAction extends ActionSupport{
 		String session_id = (String) session.get("m_id");
 		memresultClass = (memberVO) sqlMapper.queryForObject("Member.UserCheck", session_id);
 		
-		basparamClass.setB_M_ID(session_id);
-		basparamClass.setB_G_NAME(getB_g_name());
-		basparamClass.setB_G_AMOUNT(getB_g_amout());
-		basparamClass.setB_ALLPRICE(getB_allprice());
-		basparamClass.setB_G_BOTTLE(getB_bottle());
-		basparamClass.setB_DATE(getB_date());
-		basparamClass.setB_G_NUMBER(getB_g_number());  // 굳이 넣지 않아도 됩니다!!!(장바구니에 상품 번호 안뜨기 때문에)
+		basparamClass.setB_m_id(session_id);
+		basparamClass.setB_g_name(getB_g_name());
+		basparamClass.setB_g_amout(getB_g_amout());
+		basparamClass.setB_allPrice(getB_allprice());
+		basparamClass.setB_g_bottle(getB_bottle());
+		basparamClass.setB_date(getB_date());
+		basparamClass.setB_g_number(getB_g_number());  // 굳이 넣지 않아도 됩니다!!!(장바구니에 상품 번호 안뜨기 때문에)
 		sqlMapper.insert("Basket.basketInsert", basparamClass);
 		return SUCCESS;
 	}

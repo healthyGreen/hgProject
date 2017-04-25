@@ -92,12 +92,12 @@ public String execute() throws Exception {
 			paramClass.setRef(getRef());
 		}		*/
 		// 등록할 항목 설정
-		paramClass.setG_NUMBER(getNumber());
-		paramClass.setG_CATEGORY(getCategory());
-		paramClass.setG_NAME(getProdname());
-		paramClass.setG_AMOUNT(getUnit());
-		paramClass.setG_PRICE(getPrice());
-		paramClass.setG_CONTENT(getContent());
+		paramClass.setG_number(getNumber());
+		paramClass.setG_category(getCategory());
+		paramClass.setG_name(getProdname());
+		paramClass.setG_amount(getUnit());
+		paramClass.setG_price(getPrice());
+		paramClass.setG_content(getContent());
 		
 		// 등록 쿼리 수행		
 		sqlMapper.insert("g_write", paramClass);
@@ -120,9 +120,9 @@ public String execute() throws Exception {
 					}
 
 					// 파일 정보 파라미터 설정.
-					paramClass.setG_NUMBER(resultClass.getG_NUMBER());
-					paramClass.setG_ORG_IMAGE(getOrgimage()); // 원래 파일 이름
-					paramClass.setG_SAV_IMAGE(getSavimage()); // 저장 파일 이름
+					paramClass.setG_number(resultClass.getG_number());
+					paramClass.setG_org_image(getOrgimage()); // 원래 파일 이름
+					paramClass.setG_sav_image(getSavimage()); // 저장 파일 이름
 					// 파일 정보 업데이트
 					sqlMapper.update("g_update", paramClass);
 				}

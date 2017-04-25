@@ -43,11 +43,11 @@ public class replyWriteAction extends ActionSupport {
 		reClass = new replyVO();
 		reresult = new replyVO();
 
-		reClass.setRP_NUMBER(getOriginno());
-		reClass.setRP_M_ID(getName());
-		reClass.setPassword(getPassword());
-		reClass.setRP_CONTENT(getContent());
-		reClass.setRP_DATE(today.getTime());
+		reClass.setRp_number(getOriginno());
+		reClass.setRp_m_id(getName());
+		reClass.setRp_pass(getPassword());
+		reClass.setRp_content(getContent());
+		reClass.setRp_date(today.getTime());
 		
 		sqlMapper.insert("g_insertReply", reClass);
 

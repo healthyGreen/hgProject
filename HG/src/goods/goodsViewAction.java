@@ -37,10 +37,10 @@ public class goodsViewAction extends ActionSupport{
 	}
 	
 	public String execute() throws Exception{
-		paramClass.setNo(getNo());
-		sqlMapper.update("updateReadHit", paramClass);
+		/*paramClass.setNo(getNo());
+		sqlMapper.update("rp_readhit", paramClass);
 		
-		resultClass = (replyVO) sqlMapper.queryForObject("selectOne", getNo());
+		resultClass = (replyVO) sqlMapper.queryForObject("rp_selectOne", getNo());*/
 		return SUCCESS;
 	}
 	public String checkForm() throws Exception{
@@ -48,8 +48,8 @@ public class goodsViewAction extends ActionSupport{
 	}
 	
 	public String checkAction() throws Exception{
-		paramClass.setNo(getNo());
-		paramClass.setPassword(getPassword());
+		paramClass.setRp_number(getNo());
+		paramClass.setRp_pass(getPassword());
 		
 		resultClass = (replyVO) sqlMapper.queryForObject("g_view",
 				paramClass);
