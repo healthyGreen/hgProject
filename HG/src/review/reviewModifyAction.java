@@ -51,7 +51,7 @@ public class reviewModifyAction extends ActionSupport{
          paramClass.setRv_sav_image(file_name+"."+file_ext);
          sqlMapper.update("Board.updateRvFile",paramClass);
       }
-      resultClass=(reviewVO)sqlMapper.queryForObject("Board.selectOneReview",number);
+      //resultClass=(reviewVO)sqlMapper.queryForObject("Board.selectOneReview",number);
       return SUCCESS;
    }
    public reviewVO getParamClass() {

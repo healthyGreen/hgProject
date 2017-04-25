@@ -1,6 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@page contentType="text/html; charset=euc-kr"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<script>
+	function boardcheck() {
+		if (!document.boardWrite.n_name.value) {
+			alert("작성자를 입력하세요");
+			document.boardWrite.n_name.focus();
+			return false;
+		}
+		if (!document.boardWrite.n_title.value) {
+			alert("제목을 입력하세요");
+			document.boardWrite.n_title.focus();
+			return false;
+		}
+		if (!document.boardWrite.n_content.value) {
+			alert("내용을 입력하세요");
+			document.boardWrite.n_content.focus();
+			return false;
+		}
+		
+	}
+	</script>
+	
+	
 <div class="sub_tit" style="width:1100px;margin:0 auto ; padding:30px 0;">
 	  <div class="tit">공지사항<span>/ NOTICE</span></div>
 	  <div class="local">홈 > <span>공지사항</span></div>

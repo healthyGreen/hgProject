@@ -53,7 +53,7 @@
   </sql>
   
   <sql id="where-no">
-  	where rv_number = #rv_number#
+     where rv_number = #rv_number#
   </sql>
   
 
@@ -65,7 +65,7 @@
   </select>
   <select id="selectOneReview" resultMap="reviewRes" parameterClass="int">
      <include refid="select-review"/>
-     where rv_number = #number#
+     where rv_number = #rv_number#
   </select>
   
   <select id="selectRvSearchW" resultMap="reviewRes" parameterClass="string">
@@ -85,8 +85,8 @@
   </select>
   
   <select id="myWriteBoard" resultMap="reviewRes" parameterClass="review">
-  	<include refid="select-review"/>
-  	where rv_m_id = #rv_m_id#
+     <include refid="select-review"/>
+     where rv_m_id = #rv_m_id#
   </select>
   
   
@@ -100,18 +100,18 @@
    
    <!-- 공지사항 로직 -->
    <select id="selectAllNotice" resultMap="noticeRes">
-   	<include refid="select-notice"/>
-   		order by n_number DESC
+      <include refid="select-notice"/>
+         order by n_number DESC
   
    </select>
    <select id="selectOneNotice" resultMap="noticeRes" parameterClass="int">
-   	<include refid="select-notice" />
-   	 where n_number = #n_number#
+      <include refid="select-notice" />
+       where n_number = #n_number#
    </select>
    
-	<select id="selectLastNo" parameterClass="review">
-		select max(rv_number) as rv_number from review
-	</select>
+   <select id="selectLastNo" parameterClass="review">
+      select max(rv_number) as rv_number from review
+   </select>
    
 
    
@@ -121,20 +121,20 @@
   <insert id="insertReview" parameterClass="review">
      insert into REVIEW (RV_NUMBER, RV_M_ID, RV_TITLE, RV_CONTENT, RV_PASS, RV_NAME, RV_DATE,
      RV_SCORE, RV_REF, RV_REF_STEP, RV_REF_LEVEL) 
-     values (RV_NUMBER_SEQ.NEXTVAL, #session_id#, #rv_title#, #rv_content#, #rv_pass#, #rv_name#, #rv_date#,
+     values (RV_NUMBER_SEQ.NEXTVAL, #rv_m_id#, #rv_title#, #rv_content#, #rv_pass#, #rv_name#, #rv_date#,
      #rv_score#, RV_NUMBER_SEQ.CURRVAL, #rv_ref_step#, #rv_ref_level#)
   </insert>
   
   <insert id="insertReviewReply">
      insert into REVIEW (RV_NUMBER, RV_M_ID, RV_TITLE, RV_CONTENT, RV_PASS, RV_NAME, RV_DATE,
      RV_SCORE, RV_REF, RV_REF_STEP, RV_REF_LEVEL) 
-     values (RV_NUMBER_SEQ.NEXTVAL, #session_id#, #rv_title#, #rv_content#, #rv_pass#, #rv_name#, #rv_date#,
+     values (RV_NUMBER_SEQ.NEXTVAL, #rv_m_id#, #rv_title#, #rv_content#, #rv_pass#, #rv_name#, #rv_date#,
      #rv_score#, #rv_ref#, #rv_ref_step#, #rv_ref_level#)
   </insert>
   
   <insert id="insertNotice" parameterClass="notice">
-  	insert into NOTICE (N_NUMBER, N_TITLE, N_NAME, N_DATE, N_HIT, N_CONTENT)
-  	values (N_NUMBER_SEQ.NEXTVAL, #n_title#, #n_name#, #n_date#, #n_hit#, #n_content#)	
+     insert into NOTICE (N_NUMBER, N_TITLE, N_NAME, N_DATE, N_HIT, N_CONTENT)
+     values (N_NUMBER_SEQ.NEXTVAL, #n_title#, #n_name#, #n_date#, #n_hit#, #n_content#)   
   </insert>
   
   <!-- ★delete문들 ★ -->
@@ -143,30 +143,30 @@
   </delete>
   
   <delete id="deleteNotice" parameterClass="notice">
-  	delete from notice where n_number = #n_number#
+     delete from notice where n_number = #n_number#
   </delete>
   
   
   <!-- ★update문들 ★ -->
   <update id="updateReview" parameterClass="review">
-     update REVIEW set RV_TITLE=#title#, RV_CONTENT=#content# where RV_NUMBER=#number#
+     update REVIEW set RV_TITLE=#rv_title#, RV_CONTENT=#rv_content# where RV_NUMBER=#rv_number#
   </update>
   <update id="updateRvFile">
      update REVIEW set RV_ORG_IMAGE = #rv_org_image#, RV_SAV_IAMGE = #rv_sav_image#
      where RV_NUMBER=#rv_number#
   </update>
   <update id="updateRvReadHit" parameterClass="int">
-     update REVIEW set RV_READHIT=RV_READHIT+1 where RV_NUMBER=#number#
+     update REVIEW set RV_READHIT=RV_READHIT+1 where RV_NUMBER=#rv_number#
   </update>
   <update id="updateReplyStep" parameterClass="review">
-     update REVIEW set RV_REF_STEP=RV_REF_STEP+1 where RV_REF= #RV_REF# and RV_STEP > #RV_STEP#
+     update REVIEW set RV_REF_STEP=RV_REF_STEP+1 where RV_REF= #rv_ref# and RV_REF_STEP > #rv_ref_step#
   </update>
   <update id="updateFile" parameterClass="review">
-     update REVIEW set RV_ORG_IMAGE = #RV_ORG_IMAGE#, RV_SAV_IMAGEV = #RV_SAV_IMAGE# where RV_NUMBER=#RV_NUMBER#
+     update REVIEW set RV_ORG_IMAGE = #rv_org_image#, RV_SAV_IMAGE = #rv_sav_image# where RV_NUMBER=#rv_number#
   </update>
   
   <update id="updateNReadHit" parameterClass="int">
-  	update notice set RV_READHIT=RV_READHIT+1 where RV_NUMBER=#rv_number#
+     update notice set N_HIT=N_HIT+1 where N_NUMBER=#N_number#
   </update>
   
 </sqlMap>

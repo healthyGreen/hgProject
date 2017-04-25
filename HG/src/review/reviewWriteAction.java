@@ -83,7 +83,7 @@ public class reviewWriteAction extends ActionSupport{
          sqlMapper.insert("Board.insertReviewReply",paramClass);
       
       if(getUpload()!=null){
-         resultClass = (reviewVO)sqlMapper.queryForObject("Board.selectLastNo",paramClass);
+         resultClass = (reviewVO)sqlMapper.queryForObject("Board.selectLastNo");
          
          String fileName = "file_" + getRv_no();
          String fileExt = getUploadFileName().substring(getUploadFileName().lastIndexOf('.')+1,getUploadFileName().length());

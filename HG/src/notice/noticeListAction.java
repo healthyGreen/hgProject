@@ -17,121 +17,132 @@ import com.opensymphony.xwork2.ActionSupport;
 import member.memberVO;
 
 public class noticeListAction extends ActionSupport{
-	private static Reader reader;
-	private static SqlMapClient sqlMapper;
-	
-	  private memberVO memresultClass;
-	  private memberVO memparamClass;
-	  private int currentPage=1;
-	  private int OnePageBlock=10;
-	  private int pageBlocks=5;
-	  private int totalPage;
-	  private int totalBlock;
-	  private String pagingHtml;
-	  private noticePageAction page;
-	  List<noticeVO> list = new ArrayList<>();
-	  
-	  public noticeListAction() throws IOException {
-	      reader = Resources.getResourceAsReader("sqlMapConfig.xml");
-	      sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
-	      reader.close();
-	   }
-	  
-	  public String execute() throws SQLException{
-		  memparamClass = new memberVO();
-		  memresultClass = new memberVO();
-		  ActionContext context = ActionContext.getContext();
-			Map<String, Object> session = context.getSession();
-			String session_id = (String) session.get("m_id");
-			memresultClass = (memberVO) sqlMapper.queryForObject("Member.UserCheck",
-					session_id);
-		  list = sqlMapper.queryForList("Board.selectAllNotice");
-		  totalBlock=list.size();  
-	      page = new noticePageAction(currentPage, OnePageBlock, pageBlocks, totalBlock, "", "");
-	      list=list.subList(page.getStartBlock(),page.getEndBlock());
-	      pagingHtml=page.getPaginHtml().toString();
-	      return SUCCESS;
-	  }
+   private static Reader reader;
+   private static SqlMapClient sqlMapper;
+   
+     private memberVO memresultClass;
+     private memberVO memparamClass;
+     private int currentPage=1;
+     private int OnePageBlock=10;
+     private int pageBlocks=5;
+     private int totalPage;
+     private int totalBlock;
+     private String pagingHtml;
+     private noticePageAction page;
+     private Map session;
+     List<noticeVO> list = new ArrayList<noticeVO>();
+     
+     public noticeListAction() throws IOException {
+         reader = Resources.getResourceAsReader("sqlMapConfig.xml");
+         sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
+         reader.close();
+      }
+     
+     public String execute() throws SQLException{
+        memparamClass = new memberVO();
+        memresultClass = new memberVO();
+        ActionContext context = ActionContext.getContext();
+         Map<String, Object> session = context.getSession();
+         String session_id = (String) session.get("m_id");
+         memresultClass = (memberVO) sqlMapper.queryForObject("Member.UserCheck",
+               session_id);
+        list = sqlMapper.queryForList("Board.selectAllNotice");
+        totalBlock=list.size();  
+         page = new noticePageAction(currentPage, OnePageBlock, pageBlocks, totalBlock, "", "");
+         list=list.subList(page.getStartBlock(),page.getEndBlock());
+         pagingHtml=page.getPaginHtml().toString();
+         return SUCCESS;
+     }
 
-	public static Reader getReader() {
-		return reader;
-	}
+   public int getCurrentPage() {
+      return currentPage;
+   }
 
-	public static void setReader(Reader reader) {
-		noticeListAction.reader = reader;
-	}
+   public void setCurrentPage(int currentPage) {
+      this.currentPage = currentPage;
+   }
 
-	public static SqlMapClient getSqlMapper() {
-		return sqlMapper;
-	}
+   public int getOnePageBlock() {
+      return OnePageBlock;
+   }
 
-	public static void setSqlMapper(SqlMapClient sqlMapper) {
-		noticeListAction.sqlMapper = sqlMapper;
-	}
+   public void setOnePageBlock(int onePageBlock) {
+      OnePageBlock = onePageBlock;
+   }
 
-	public int getCurrentPage() {
-		return currentPage;
-	}
+   public int getPageBlocks() {
+      return pageBlocks;
+   }
 
-	public void setCurrentPage(int currentPage) {
-		this.currentPage = currentPage;
-	}
+   public void setPageBlocks(int pageBlocks) {
+      this.pageBlocks = pageBlocks;
+   }
 
-	public int getOnePageBlock() {
-		return OnePageBlock;
-	}
+   public int getTotalPage() {
+      return totalPage;
+   }
 
-	public void setOnePageBlock(int onePageBlock) {
-		OnePageBlock = onePageBlock;
-	}
+   public void setTotalPage(int totalPage) {
+      this.totalPage = totalPage;
+   }
 
-	public int getPageBlocks() {
-		return pageBlocks;
-	}
+   public int getTotalBlock() {
+      return totalBlock;
+   }
 
-	public void setPageBlocks(int pageBlocks) {
-		this.pageBlocks = pageBlocks;
-	}
+   public void setTotalBlock(int totalBlock) {
+      this.totalBlock = totalBlock;
+   }
 
-	public int getTotalPage() {
-		return totalPage;
-	}
+   public String getPagingHtml() {
+      return pagingHtml;
+   }
 
-	public void setTotalPage(int totalPage) {
-		this.totalPage = totalPage;
-	}
+   public void setPagingHtml(String pagingHtml) {
+      this.pagingHtml = pagingHtml;
+   }
 
-	public int getTotalBlock() {
-		return totalBlock;
-	}
+   public noticePageAction getPage() {
+      return page;
+   }
 
-	public void setTotalBlock(int totalBlock) {
-		this.totalBlock = totalBlock;
-	}
+   public void setPage(noticePageAction page) {
+      this.page = page;
+   }
 
-	public String getPagingHtml() {
-		return pagingHtml;
-	}
+   public List<noticeVO> getList() {
+      return list;
+   }
 
-	public void setPagingHtml(String pagingHtml) {
-		this.pagingHtml = pagingHtml;
-	}
+   public void setList(List<noticeVO> list) {
+      this.list = list;
+   }
 
-	public noticePageAction getPage() {
-		return page;
-	}
+   public Map getSession() {
+      return session;
+   }
 
-	public void setPage(noticePageAction page) {
-		this.page = page;
-	}
+   public void setSession(Map session) {
+      this.session = session;
+   }
 
-	public List<noticeVO> getList() {
-		return list;
-	}
+   public memberVO getMemresultClass() {
+      return memresultClass;
+   }
 
-	public void setList(List<noticeVO> list) {
-		this.list = list;
-	}
-	  
-	  
+   public void setMemresultClass(memberVO memresultClass) {
+      this.memresultClass = memresultClass;
+   }
+
+   public memberVO getMemparamClass() {
+      return memparamClass;
+   }
+
+   public void setMemparamClass(memberVO memparamClass) {
+      this.memparamClass = memparamClass;
+   }
+   
+   
+     
+     
 }

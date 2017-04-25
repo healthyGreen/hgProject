@@ -46,6 +46,7 @@ public class basketListAction extends ActionSupport{
 	private String pagingHtml; // 페이징을 구현한 HTML
 	private basketPageAction page; // 페이징 클래스
 	private int num = 0;
+	private Map session;
 	
 	public basketListAction() throws Exception{
 		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
@@ -274,6 +275,14 @@ public class basketListAction extends ActionSupport{
 
 	public void setBasketList(List<basketVO> basketList) {
 		this.basketList = basketList;
+	}
+
+	public Map getSession() {
+		return session;
+	}
+
+	public void setSession(Map session) {
+		this.session = session;
 	}
 	
 	

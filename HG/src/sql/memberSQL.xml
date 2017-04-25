@@ -35,7 +35,7 @@
 	<!-- id로 회원정보 한 줄 검색 -->
 	<select id="selectOneMember" resultMap="memberRes">
 		<include refid="select-all"/>
-		<include refid="where-m_id"/>
+		<include refid="where-id"/>
 	</select>
 	<!-- 아이디 중복 확인 -->
 	<select id="idCheck" resultClass="member">
@@ -109,7 +109,7 @@
 		m_zipcode = #m_zipcode#,
 		m_addr1 = #m_addr1#,
 		m_addr2 = #m_addr2#
-		<include refid = "where-m_id"/>
+		<include refid = "where-id"/>
 	</update>
 	<!-- 회원 탈퇴 -->
 	<delete id="deleteMember" parameterClass="member">

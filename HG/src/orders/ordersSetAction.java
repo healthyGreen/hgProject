@@ -1,4 +1,4 @@
-package orders;
+/*package orders;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -73,14 +73,14 @@ public class ordersSetAction extends ActionSupport {
 					}
 					goodsList.add(goodsparamClass);
 					totalPrice += goodsresultClass.getG_amount()*goodsresultClass.getG_price();
-				/*orderVector.add(basketList);
-				orderVector.add(goodsList);*/	
+				orderVector.add(basketList);
+				orderVector.add(goodsList);	
 			}
 			}return ERROR;
 		}
 		return SUCCESS;
 	}
-/*	public HttpServletResponse getResponse() {
+	public HttpServletResponse getResponse() {
 		return response;
 	}
 	public void setResponse(HttpServletResponse response) {
@@ -91,7 +91,7 @@ public class ordersSetAction extends ActionSupport {
 	}
 	public void setRequest(HttpServletRequest request) {
 		this.request = request;
-	}*/
+	}
 	public int getG_number() {
 		return g_number;
 	}
@@ -128,12 +128,12 @@ public class ordersSetAction extends ActionSupport {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-/*	public int getTotalprice() {
+	public int getTotalprice() {
 		return totalprice;
 	}
 	public void setTotalprice(int totalprice) {
 		this.totalprice = totalprice;
-	}*/
+	}
 	public String getImage() {
 		return image;
 	}
@@ -203,15 +203,16 @@ public class ordersSetAction extends ActionSupport {
 	public int getTotalPrice() {
 		return totalPrice;
 	}
-/*	public void setTotalPrice(int totalPrice) {
+	public void setTotalPrice(int totalPrice) {
 		this.totalPrice = totalPrice;
-	}*/
+	}
 	
-	/*public Vector getOrderVector() {
+	public Vector getOrderVector() {
 		return orderVector;
 	}
 	public void setOrderVector(Vector orderVector) {
 		this.orderVector = orderVector;
-	}*/
+	}
 	
 }
+*/

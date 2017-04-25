@@ -1,4 +1,4 @@
-package orders;
+/*package orders;
 
 public class orderListPageAction {
 	private int currentPage;// 현재 페이지
@@ -160,3 +160,4 @@ public class orderListPageAction {
 	}
 
 }
+*/

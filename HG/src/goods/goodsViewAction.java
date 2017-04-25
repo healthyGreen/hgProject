@@ -12,116 +12,208 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.catalina.Session;
+
 import goods.replyVO;
 
-public class goodsViewAction extends ActionSupport{
-	public static Reader reader;
-	public static SqlMapClient sqlMapper;
-	
-	private replyVO paramClass = new replyVO();
-	private replyVO resultClass = new replyVO();
-	
-	private int currentPage;
-	
-	private int no;
-	private String password;
-	
-	private InputStream inputStream;
-	private String contentDisposition;
-	private long contentLength;
-	
-	public goodsViewAction() throws IOException{
-		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
-		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
-		reader.close();
-	}
-	
-	public String execute() throws Exception{
-		/*paramClass.setNo(getNo());
-		sqlMapper.update("rp_readhit", paramClass);
-		
-		resultClass = (replyVO) sqlMapper.queryForObject("rp_selectOne", getNo());*/
-		return SUCCESS;
-	}
-	public String checkForm() throws Exception{
-		return SUCCESS;
-	}
-	
-	public String checkAction() throws Exception{
-		paramClass.setRp_number(getNo());
-		paramClass.setRp_pass(getPassword());
-		
-		resultClass = (replyVO) sqlMapper.queryForObject("g_view",
-				paramClass);
-		
-		if(resultClass == null)
-			return ERROR;
-		
-		return SUCCESS;
-	}
+public class goodsViewAction extends ActionSupport {
+   public static Reader reader;
+   public static SqlMapClient sqlMapper;
 
-	public replyVO getParamClass() {
-		return paramClass;
-	}
+   private goodsVO goodsResult = new goodsVO();
+   private replyVO replyParam = new replyVO();
+   private replyVO replyResult = new replyVO();
+   HttpServletRequest request;
+   HttpSession session = request.getSession();
+   private String sesssion_id = (String) session.getAttribute("session_id");
+   private int currentPage = 1;
+   private int totalCount;
+   private int blockCount = 10;
+   private int blockPage = 5;
+   private List<replyVO> rp_list = new ArrayList<>();
+   private int no;
+   private String password;
 
-	public void setParamClass(replyVO paramClass) {
-		this.paramClass = paramClass;
-	}
+   replyPagingAction rp_page;
+   private String pagingHtml;
+   private InputStream inputStream;
+   private String contentDisposition;
+   private long contentLength;
 
-	public replyVO getResultClass() {
-		return resultClass;
-	}
+   public goodsViewAction() throws IOException {
+      reader = Resources.getResourceAsReader("sqlMapConfig.xml");
+      sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
+      reader.close();
+   }
 
-	public void setResultClass(replyVO resultClass) {
-		this.resultClass = resultClass;
-	}
+   public String execute() throws Exception {
+      goodsResult = (goodsVO) sqlMapper.queryForObject("goods.g_view", no);
+      if (sesssion_id != null) {
+         rp_list = sqlMapper.queryForList("reply.g_selectReply");
+      } else return LOGIN;
+      
+      totalCount = rp_list.size();
+      
+      rp_page = new replyPagingAction(currentPage, totalCount, blockCount, blockPage);
+      pagingHtml = rp_page.getPagingHtml().toString();
+      int endCount = rp_page.getEndCount();
+      if(endCount>totalCount) endCount=totalCount;
+      rp_list=rp_list.subList(rp_page.getStartCount(),endCount);
+      
+      if (goodsResult == null) return ERROR;
+      return SUCCESS;
+   }
 
-	public int getCurrentPage() {
-		return currentPage;
-	}
+   public String insertRp() {
+      
+      return SUCCESS;
+   }
 
-	public void setCurrentPage(int currentPage) {
-		this.currentPage = currentPage;
-	}
 
-	public int getNo() {
-		return no;
-	}
 
-	public void setNo(int no) {
-		this.no = no;
-	}
+   
+   
+   public goodsVO getGoodsResult() {
+      return goodsResult;
+   }
 
-	public String getPassword() {
-		return password;
-	}
+   public void setGoodsResult(goodsVO goodsResult) {
+      this.goodsResult = goodsResult;
+   }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+   public replyVO getReplyParam() {
+      return replyParam;
+   }
 
-	public InputStream getInputStream() {
-		return inputStream;
-	}
+   public void setReplyParam(replyVO replyParam) {
+      this.replyParam = replyParam;
+   }
 
-	public void setInputStream(InputStream inputStream) {
-		this.inputStream = inputStream;
-	}
+   public replyVO getReplyResult() {
+      return replyResult;
+   }
 
-	public String getContentDisposition() {
-		return contentDisposition;
-	}
+   public void setReplyResult(replyVO replyResult) {
+      this.replyResult = replyResult;
+   }
 
-	public void setContentDisposition(String contentDisposition) {
-		this.contentDisposition = contentDisposition;
-	}
+   public HttpSession getSession() {
+      return session;
+   }
 
-	public long getContentLength() {
-		return contentLength;
-	}
+   public void setSession(HttpSession session) {
+      this.session = session;
+   }
 
-	public void setContentLength(long contentLength) {
-		this.contentLength = contentLength;
-	}
-			
+   public String getSesssion_id() {
+      return sesssion_id;
+   }
+
+   public void setSesssion_id(String sesssion_id) {
+      this.sesssion_id = sesssion_id;
+   }
+
+   public int getCurrentPage() {
+      return currentPage;
+   }
+
+   public void setCurrentPage(int currentPage) {
+      this.currentPage = currentPage;
+   }
+
+   public int getTotalCount() {
+      return totalCount;
+   }
+
+   public void setTotalCount(int totalCount) {
+      this.totalCount = totalCount;
+   }
+
+   public int getBlockCount() {
+      return blockCount;
+   }
+
+   public void setBlockCount(int blockCount) {
+      this.blockCount = blockCount;
+   }
+
+   public int getBlockPage() {
+      return blockPage;
+   }
+
+   public void setBlockPage(int blockPage) {
+      this.blockPage = blockPage;
+   }
+
+   public List<replyVO> getRp_list() {
+      return rp_list;
+   }
+
+   public void setRp_list(List<replyVO> rp_list) {
+      this.rp_list = rp_list;
+   }
+
+   public int getNo() {
+      return no;
+   }
+
+   public void setNo(int no) {
+      this.no = no;
+   }
+
+   public String getPassword() {
+      return password;
+   }
+
+   public void setPassword(String password) {
+      this.password = password;
+   }
+
+   public replyPagingAction getRp_page() {
+      return rp_page;
+   }
+
+   public void setRp_page(replyPagingAction rp_page) {
+      this.rp_page = rp_page;
+   }
+
+   public String getPagingHtml() {
+      return pagingHtml;
+   }
+
+   public void setPagingHtml(String pagingHtml) {
+      this.pagingHtml = pagingHtml;
+   }
+
+   public InputStream getInputStream() {
+      return inputStream;
+   }
+
+   public void setInputStream(InputStream inputStream) {
+      this.inputStream = inputStream;
+   }
+
+   public String getContentDisposition() {
+      return contentDisposition;
+   }
+
+   public void setContentDisposition(String contentDisposition) {
+      this.contentDisposition = contentDisposition;
+   }
+
+   public long getContentLength() {
+      return contentLength;
+   }
+
+   public void setContentLength(long contentLength) {
+      this.contentLength = contentLength;
+   }
+
+   
 }

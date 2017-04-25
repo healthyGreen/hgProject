@@ -3,16 +3,16 @@
 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 
 
-<sqlMap namespace="Order">
+<sqlMap namespace="Orders">
 	
 	<typeAlias alias="orders" type="orders.ordersVO"/>
 	
 	
-	<!-- 회원정보 맵핑 -->
+<!-- 	회원정보 맵핑
 	
    
-   <!-- 주문맵핑 -->
-   <resultMap id="ordersRes" class="orders">
+   주문맵핑 -->
+   <resultMap id="orderRes" class="order">
       <result property="o_number" column="o_number"/>
       <result property="o_m_id" column="o_m_id"/>
       <result property="o_name" column="o_name"/>
@@ -34,9 +34,9 @@
 		SELECT * FROM ORDERS
 		WHERE O_M_ID = #o_m_id# AND O_NAME = #o_name#
 	</select>
-	<!-- <select id="orderDetail" resultMap="orderRes" parameterClass="int">
+	<select id="orderDetail" resultMap="orderRes" parameterClass="int">
 		SELECT * FROM ORDERS WHERE ORDER_NUM=#order_num#
-	</select> -->
+	</select>
 	<select id="orderList" resultMap="orderRes" parameterClass="string">
 		SELECT * FROM ORDERS WHERE O_M_ID = #o_m_id#
 		ORDER BY o_number
@@ -50,7 +50,7 @@
 		DELETE FROM ORDERS
 		WHERE O_NUMBER=#o_number#
 	</delete>
-	<!--쇼핑몰 어드민 Order list select 쿼리문 정의 -->
+<!-- 	쇼핑몰 어드민 Order list select 쿼리문 정의 -->
 	<select id="selectOrderList" resultMap="orderRes">
 		SELECT * FROM ORDERS
 		ORDER BY O_NUMBER DESC
@@ -58,7 +58,7 @@
 
 	
 
-	<!--쇼핑몰 어드민 Order select 쿼리문 정의 
+<!-- 	쇼핑몰 어드민 Order select 쿼리문 정의  -->
 	<select id="selectProductOrder" resultMap="orderRes">
 		SELECT * FROM ORDERS
 		WHERE O_NUMBER=#o_number#
@@ -72,7 +72,7 @@
 	</update>
 	<delete id="adminorderDelete" parameterClass="order">
 		DELETE FROM ORDERS WHERE ORDER_NUM=#order_num#
-	</delete>-->
+	</delete>
    
  
   

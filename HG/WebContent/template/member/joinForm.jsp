@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 </tr>
 <tr>
 <td height=100%>
@@ -18,7 +20,53 @@
 
 <div class="indiv" style="width:1100px; margin:0 auto;"><!-- Start indiv -->
 
-<script src="../../js/godo.password_strength.js" type="text/javascript"></script>
+<script src="js/godo.password_strength.js" type="text/javascript"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script>
+    function sample6_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var fullAddr = ''; // 최종 주소 변수
+                var extraAddr = ''; // 조합형 주소 변수
+
+                // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    fullAddr = data.roadAddress;
+
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    fullAddr = data.jibunAddress;
+                }
+
+                // 사용자가 선택한 주소가 도로명 타입일때 조합한다.
+                if(data.userSelectedType === 'R'){
+                    //법정동명이 있을 경우 추가한다.
+                    if(data.bname !== ''){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있을 경우 추가한다.
+                    if(data.buildingName !== ''){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+                    fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('sample6_postcode').value = data.zonecode; //5자리 새우편번호 사용
+                document.getElementById('sample6_address').value = fullAddr;
+
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById('sample6_address2').focus();
+            }
+        }).open();
+    }
+</script>
+
+
 
 <style type="text/css">
 div.passwordStrenth {background-color:#FFFFFF; border:1px #CCCCCC solid; padding:10px; width:263px;display:none; position:absolute;}
@@ -31,7 +79,7 @@ div.passwordStrenth dl dd {display:inline;font-size:11px; margin:0;height:15px;l
 
 div.passwordStrenth dl dt {color:#363636; font-weight:bold; width:95px;}
 
-div.passwordStrenth dl dd {text-indent:0px;font-size:12px; width:110px;background:url('../../images/password_level.gif') no-repeat top left;}
+div.passwordStrenth dl dd {text-indent:0px;font-size:12px; width:110px;background:url('images/password_level.gif') no-repeat top left;}
 div.passwordStrenth dl dd.lv0 {color:#F52D00;background-position:20px 0;}
 div.passwordStrenth dl dd.lv1 {color:#F52D00;background-position:20px -29px;}
 div.passwordStrenth dl dd.lv2 {color:#F52D00;background-position:20px -44px;}
@@ -68,7 +116,7 @@ scrollbar-arrow-color: #838383;
 #boxScroll{width:96%; height:130px; overflow: auto; BACKGROUND: #ffffff; COLOR: #585858; font:9pt;border:1px #dddddd solid; overflow-x:hidden;text-align:left; }
 
 #pwdManual { border:2px solid #BFBFBF; display:none; position:absolute; width:410px; background:#ffffff;margin-top:10px; }
-#pwdManual p { background:#F1F1F1 url('../../images/blt_tip_gr.gif') no-repeat 10px center;margin:0;padding:12px 10px 12px 50px;color:#373737;font-weight:bold;}
+#pwdManual p { background:#F1F1F1 url('images/blt_tip_gr.gif') no-repeat 10px center;margin:0;padding:12px 10px 12px 50px;color:#373737;font-weight:bold;}
 #pwdManual p.close { background:none;padding:0px 10px 5px 0;margin:0;text-align:right;}
 #pwdManual ul {list-style:none;margin:0;padding:15px;}
 #pwdManual ul li {color:#6E6E6E; font-size:11px; line-height:17px;letter-spacing:-1px;}
@@ -106,13 +154,14 @@ scrollbar-arrow-color: #838383;
     .jogin_infotbl td input[type=text],.jogin_infotbl td input[type=password]{ min-width:50px;height:23px; line-height:23px; box-sizing:content-box; border:1px solid #dedede;}
     .jogin_infotbl td textarea { height:100px; line-height:18px;  box-sizing:content-box; border:1px solid #dedede;}
     </style>
+ <form action="joinPro.action" method="post" enctype="multipart/form-data">
     <table width=97% cellpadding=5 cellspacing=0 border=0 class="jogin_infotbl">
     <tr>
         <td class=memberCols1><font color=FF6000>*</font> 아이디</td>
         <td class=memberCols2>
-        <input type=text name=m_id value="" style="background:#FFF" maxlength=16 required fld_esssential option=regId label="아이디">
+        <input type=text name=M_id value="" style="background:#FFF" maxlength=16 required fld_esssential option=regId label="아이디">
         <input type=hidden name=chk_id required fld_esssential label="아이디중복체크">
-        <a href="javascript:chkId()"><img src="../../images/join_btn_id.jpg" border=0 align=absmiddle></a>
+        <a href="javascript:chkId()"><img src="images/join_btn_id.jpg" border=0 align=absmiddle></a>
         <div class="description_wrap" style="font-size: 11px;color: #8d8d8d;">
 					<div class="description">6~16자의 영문자, 숫자조합</div>
 					<div class="description wrong" id="id_description">아이디는 6자 이상으로 입력해 주세요</div>
@@ -123,7 +172,7 @@ scrollbar-arrow-color: #838383;
     <tr>
         <td class=memberCols1><font color=FF6000>*</font> 비밀번호</td>
         <td class=memberCols2>
-        <input type=password name=password required fld_esssential option=regPass label="비밀번호" style="background:#FFF" >
+        <input type=password name=M_pass required fld_esssential option=regPass label="비밀번호" style="background:#FFF" >
     	<div class="description" id="el-password-strength-indicator-msg"style="font-size: 11px;color: #8d8d8d;">10~16자의 영문자, 숫자조합</div> 
         </td>
     </tr>
@@ -133,24 +182,24 @@ scrollbar-arrow-color: #838383;
     <tr>
         <td class=memberCols1><font color=FF6000>*</font> 이름</td>
         <td class=memberCols2>
-        <input type=text name=name value="" required fld_esssential label="이름" style="background:#FFF">
+        <input type=text name=M_name value="" required fld_esssential label="이름" style="background:#FFF">
         </td>
     </tr>
     
     <tr>
         <td class=memberCols1><font color=FF6000>*</font> 성별</td>
         <td class=memberCols2><span class=noline>
-        <input type=radio name=sex required fld_esssential label="성별" value="m" checked> 남자
-        <input type=radio name=sex required fld_esssential label="성별" value="w" > 여자
+        <input type=radio name=M_sex required fld_esssential label="성별" value="m" checked> 남자
+        <input type=radio name=M_sex required fld_esssential label="성별" value="w" > 여자
         </span></td>
     </tr>
     
     <tr>
         <td class=memberCols1><font color=FF6000>*</font> 생년월일</td>
         <td class=memberCols2>
-        <input type=text name=birth_year value="" required fld_esssential label="생년월일" style="background:#FFF" size=4 maxlength=4>년
-        <input type=text name=birth[] value="" required fld_esssential label="생년월일" style="background:#FFF" size=2 maxlength=2>월
-        <input type=text name=birth[] value="" required fld_esssential label="생년월일" style="background:#FFF" size=2 maxlength=2>일
+        <input type=text name=M_year value="" required fld_esssential label="생년월일" style="background:#FFF" size=4 maxlength=4>년
+        <input type=text name=M_month value="" required fld_esssential label="생년월일" style="background:#FFF" size=2 maxlength=2>월
+        <input type=text name=M_date value="" required fld_esssential label="생년월일" style="background:#FFF" size=2 maxlength=2>일
     
     
         </td>
@@ -162,7 +211,7 @@ scrollbar-arrow-color: #838383;
     <tr>
         <td class=memberCols1><font color=FF6000>*</font> 이메일</td>
         <td class=memberCols2>
-        <input type=text name=email value="" size=30 required fld_esssential option=regEmail label="이메일" style="background:#FFF">
+        <input type=text name=M_email value="" size=30 required fld_esssential option=regEmail label="이메일" style="background:#FFF">
 		<input type=hidden name=chk_email required fld_esssential >        </a>
         <span class=noline style="padding-left:10px"></span>
        
@@ -180,19 +229,10 @@ scrollbar-arrow-color: #838383;
 	<table>
 	<tr>
 		<td>
-		<input type=text name="zonecode" id="zonecode" size=5 class="line" readonly value="" label="우편번호">
-		( <input type=text name=zipcode[] id="zipcode0" size=3 class=line readonly value="" required fld_esssential label="우편번호"> -
-		<input type=text name=zipcode[] id="zipcode1" size=3 class=line readonly value="" required fld_esssential label="우편번호"> )
-		<a href="javascript:popup('../proc/popup_address.php',500,432)"><img src="../../images/btn_zipcode.gif" border=0 align=absmiddle></a>
-            </td>
-        </tr>
-        <tr>
-		<td id="mmber1">
-		<input type=text name=address id="address" value="" readonlY size=30 required fld_esssential label="주소">
-		<input type=text name=address_sub id="address_sub" value="" size=30 onkeyup="SameAddressSub(this)" oninput="SameAddressSub(this)" label="세부주소"><br />
-		<input type="hidden" name="road_address" id="road_address" value="">
-		<div style="padding:5px 5px 0 1px;font:12px dotum;color:#999;float:left;" id="div_road_address"></div>
-		<div style="padding:5px 0 0 1px;font:12px dotum;color:#999;" id="div_road_address_sub"></div>
+		<input type="text" name="M_zipcode" id="sample6_postcode" placeholder="우편번호">
+		<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+		<input type="text" name="M_addr1" id="sample6_address" placeholder="주소">
+		<input type="text" name="M_addr2" size=30  id="sample6_address2" placeholder="상세주소">
             </td>
         </tr>
         </table>
@@ -204,31 +244,11 @@ scrollbar-arrow-color: #838383;
     <tr>
         <td class=memberCols1><font color=FF6000>*</font> 핸드폰</td>
         <td class=memberCols2>
-	<input type=text name=mobile[] id="mobile0" value="" size=4 maxlength=4 required fld_esssential option=regNum label="핸드폰" > -
-	<input type=text name=mobile[] id="mobile1" value="" size=4 maxlength=4 required fld_esssential option=regNum label="핸드폰" > -
-	<input type=text name=mobile[] id="mobile2" value="" size=4 maxlength=4 required fld_esssential option=regNum label="핸드폰" >
+	<input type=text name=M_phone value="" size=12 maxlength=15 required fld_esssential option=regNum label="핸드폰" >
 	<span class=noline style="padding-left:10px"></span>
 	</td>
 </tr>
     
-
-<tr>
-	<td class=memberCols1>전화번호</td>
-	<td class=memberCols2>
-	<input type=text name=phone[] value="" size=4 maxlength=4  option=regNum label="전화번호"> -
-	<input type=text name=phone[] value="" size=4 maxlength=4  option=regNum label="전화번호"> -
-	<input type=text name=phone[] value="" size=4 maxlength=4  option=regNum label="전화번호">
-	</td>
-</tr>
-    
-
-
-
-
-
-
-
-
 
 
 
@@ -243,8 +263,8 @@ scrollbar-arrow-color: #838383;
 <tr>
 <td id=avoidDbl align=center height=100>
 <div style="width:100%" class=noline>
-    <input type=image src="../../images/btn_join.jpg">
-    <img src="../../images/btn_prev.jpg" border=0 onClick="history.back()" style="cursor:pointer;">
+    <input type=image src="images/btn_join.jpg" >
+    <img src="images/btn_prev.jpg" border=0 onClick="history.back()" style="cursor:pointer;">
 </div>
 </td>
 </tr>

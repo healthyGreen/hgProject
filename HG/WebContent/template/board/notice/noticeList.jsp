@@ -29,10 +29,10 @@
 							</tr>
 							</thead>
 							<tbody>
-							<s:iterator value="noticeList" status="stat">
+							<s:iterator value="list" status="stat">
 								<tr>
 									<td><s:property value="n_number"/></td>
-									<td><a href="noticeView.action?no=<s:property value="n_number"/>&currentPage=<s:property value="currentPage"/>">&nbsp;&nbsp;&nbsp;<s:property value="n_title" /></a></td>
+									<td><a href="noticeView.action?n_number=<s:property value="n_number"/>&currentPage=<s:property value="currentPage"/>">&nbsp;&nbsp;&nbsp;<s:property value="n_title" /></a></td>
 									<td><s:property value="n_name"/></td>
 									<td><s:property value="n_date"/></td>
 								</tr>

@@ -11,53 +11,57 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class reviewListAction extends ActionSupport{
+public class reviewListAction extends ActionSupport {
    private static Reader reader;
    private static SqlMapClient sqlMapper;
-//   private reviewVO resultClass
-   
+   // private reviewVO resultClass
+
    private String search;
    private String forSearch;
-   private int currentPage=1;
-   private int OnePageBlock=10;
-   private int pageBlocks=5;
-/*   private int startBLlock;
-   private int endBlock;
-   private int startPage;
-   private int endPage;*/
+   private int currentPage = 1;
+   private int OnePageBlock = 10;
+   private int pageBlocks = 5;
+   /*
+    * private int startBLlock; private int endBlock; private int startPage;
+    * private int endPage;
+    */
    private int totalPage;
    private int totalBlock;
    private String pagingHtml;
    private reviewPageAction page;
    List<reviewVO> list = new ArrayList<>();
-   
+
    public reviewListAction() throws IOException {
       reader = Resources.getResourceAsReader("sqlMapConfig.xml");
       sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
       reader.close();
    }
-   
-   public String execute() throws SQLException{
-      if(search!=null)
+
+   public String execute() throws SQLException {
+      if (search != null)
          return search();
       list = sqlMapper.queryForList("Board.selectAllReview");
-      totalBlock=list.size();  
+      totalBlock = list.size();
       page = new reviewPageAction(currentPage, OnePageBlock, pageBlocks, totalBlock, "", "");
-      list=list.subList(page.getStartBlock(),page.getEndBlock());
-      pagingHtml=page.getPaginHtml().toString();
+      int endBlock = page.getEndBlock();
+      if(endBlock>totalBlock) endBlock = totalBlock;
+
+      list = list.subList(page.getStartBlock(), endBlock);
+      pagingHtml = page.getPaginHtml().toString();
       return SUCCESS;
    }
-   public String search() throws SQLException{
-      if(forSearch.equals("writer"))
-         list=sqlMapper.queryForList("Board.selectRvSearchW","%"+search+"%");
-      else if(forSearch.equals("content"))
-         list=sqlMapper.queryForList("Board.selectRvSearchC","%"+search+"%");
-      else if(forSearch.equals("title"))
-         list=sqlMapper.queryForList("Board.selectRvSearchT","%"+search+"%");
-      totalBlock=list.size();
+
+   public String search() throws SQLException {
+      if (forSearch.equals("writer"))
+         list = sqlMapper.queryForList("Board.selectRvSearchW", "%" + search + "%");
+      else if (forSearch.equals("content"))
+         list = sqlMapper.queryForList("Board.selectRvSearchC", "%" + search + "%");
+      else if (forSearch.equals("title"))
+         list = sqlMapper.queryForList("Board.selectRvSearchT", "%" + search + "%");
+      totalBlock = list.size();
       page = new reviewPageAction(currentPage, OnePageBlock, pageBlocks, totalBlock, search, forSearch);
       pagingHtml = page.getPaginHtml().toString();
-      list=list.subList(page.getStartBlock(), page.getEndBlock());
+      list = list.subList(page.getStartBlock(), page.getEndBlock());
       return SUCCESS;
    }
 
@@ -132,5 +136,5 @@ public class reviewListAction extends ActionSupport{
    public void setList(List<reviewVO> list) {
       this.list = list;
    }
-   
+
 }

@@ -4,10 +4,10 @@
 
 
 <sqlMap>
-	
-	<typeAlias alias="goods" type="goods.goodsVO"/>
-	<typeAlias alias="reply" type="goods.replyVO"/>
-	
+   
+   <typeAlias alias="goods" type="goods.goodsVO"/>
+   <typeAlias alias="reply" type="goods.replyVO"/>
+   
   
    <resultMap id="goodsRes" class="goods">
       <result property="g_number" column="g_number"/>
@@ -45,82 +45,86 @@
    
    <!-- 상품 리스트 -->
    <select id="g_list_selectAll" resultMap="goodsRes" >
-		SELECT * FROM GOODS 
-		ORDER BY g_number DESC
-	</select>
-	
-	<select id="g_list_selectOne" resultMap="goodsRes" >
-		<include refid = "select-all"/>
-		<include refid = "where-no"/>
-	</select>
-	
-	<!-- 상품 카테고리 -->
-	<select id="g_Category" resultMap="goodsRes" parameterClass="string">
-	SELECT * FROM GOODS
-	WHERE g_category = #g_category# ORDER BY g_number DESC
-	</select>
-	<!-- 상품 상세보기 -->
-	<select id="g_view" resultMap="goodsRes" parameterClass="int">
-	<include refid = "select-all"/>
-	<include refid = "where-no"/>
-	</select>
-	
-	<!-- 검색 로직 -->
-	<select id="selectSearchW" resultMap="goodsRes" parameterClass="string">
-		<include refid="select-all" />
-		 WHERE name like #searchKeyword#
-		 ORDER BY no DESC
-	</select>
-	<select id="selectSearchS" resultMap="goodsRes" parameterClass="string">
-		<include refid="select-all" />
-		 WHERE subject like #searchKeyword#
-		 ORDER BY no DESC
-	</select>
-	<select id="selectSearchC" resultMap="goodsRes" parameterClass="string">
-		<include refid="select-all" />
-		 WHERE content like #searchKeyword#
-		 ORDER BY no DESC
-	</select>
-	
-	<!-- 상품 삭제 -->
-	<delete id="g_delete" parameterClass="goods">
-		DELETE * FROM GOODS
-		WHERE G_NUMBER=#g_number#	
-	</delete>
-	
-	<!-- 댓글 삭제 -->
-	<delete id="g_deleteReply" parameterClass="reply">
-	DELETE * FROM REPLY
-	WHERE G_NUMBER=#g_number#
-	</delete>
-	
-	<!-- 상품 등록 -->
-	<insert id="g_write" parameterClass="goods">
-	INSERT INTO GOODS (g_number, g_name, g_content, g_info, g_image, g_price, g_ingr,
-	g_hit, g_category, g_amount, g_bottle)
-	VALUES (G_NUMBER_SEQ.NEXTVAL, #name#, #content#, #info#, #image#, #price#, #ingr#, 
-	#hit#, #category#, #amount#, #bottle#)
-	</insert>
-	
-	<!-- 상품 업로드 -->
-	<insert id="g_upload" parameterClass="goods">
-	INSERT INTO GOODS (g_number, g_name, g_content, g_info, g_image, g_price, g_ingr,
-	g_hit, g_category, g_amount, g_bottle)
-	VALUES (G_NUMBER_SEQ.NEXTVAL, #name#, #content#, #info#, #image#, #price#, #ingr#, 
-	#hit#, #category#, #amount#, #bottle#)
-	</insert>
-	
-	<!-- 상품 업데이트 -->
-	<update id="g_update" parameterClass="goods">
-	 UPDATE GOODS SET G_ORG_IMAGE, G_SAV_IMAGE = #g_org_image#, #g_sav_image#
-	</update>
-	
-	
-	<!-- 댓글 -->
-	<insert id="g_insertReply" parameterClass="reply">
-	INSERT INTO REPLY (rp_number, rp_m_id, rp_content, rp_date, rp_ref, rp_ref_step, rp_ref_level)
-	VALUES (rp_number_seq.NEXVAL, #id#, #content#, #date#, #ref#, #ref_step#, #ref_level#)
-	</insert>
+      SELECT * FROM GOODS 
+      ORDER BY g_number DESC
+   </select>
+   
+   <select id="g_list_selectOne" resultMap="goodsRes" >
+      <include refid = "select-all"/>
+      <include refid = "where-no"/>
+   </select>
+   
+   <!-- 상품 카테고리 -->
+   <select id="g_Category" resultMap="goodsRes" parameterClass="goods">
+   SELECT * FROM GOODS
+   WHERE g_category = #g_category# ORDER BY g_number DESC
+   </select>
+   <!-- 상품 상세보기 -->
+   <select id="g_view" resultMap="goodsRes" parameterClass="int">
+   <include refid = "select-all"/>
+   <include refid = "where-no"/>
+   </select>
+   
+   <!-- 검색 로직 -->
+   <select id="selectSearchW" resultMap="goodsRes" parameterClass="string">
+      <include refid="select-all" />
+       WHERE name like #searchKeyword#
+       ORDER BY no DESC
+   </select>
+   <select id="selectSearchS" resultMap="goodsRes" parameterClass="string">
+      <include refid="select-all" />
+       WHERE subject like #searchKeyword#
+       ORDER BY no DESC
+   </select>
+   <select id="selectSearchC" resultMap="goodsRes" parameterClass="string">
+      <include refid="select-all" />
+       WHERE content like #searchKeyword#
+       ORDER BY no DESC
+   </select>
+   
+   <!-- 상품 삭제 -->
+   <delete id="g_delete" parameterClass="goods">
+      DELETE * FROM GOODS
+      WHERE G_NUMBER=#g_number#   
+   </delete>
+   
+   <!-- 댓글 삭제 -->
+   <delete id="g_deleteReply" parameterClass="reply">
+   DELETE * FROM REPLY
+   WHERE G_NUMBER=#g_number#
+   </delete>
+   
+   <!-- 상품 등록 -->
+   <insert id="g_write" parameterClass="goods">
+   INSERT INTO GOODS (g_number, g_name, g_content, g_info, g_price, g_ingr,
+   g_hit, g_category, g_amount, g_bottle)
+   VALUES (G_NUMBER_SEQ.NEXTVAL, #g_name#, #g_content#, #g_info#, #g_price#, #g_ingr#, 
+   #g_hit#, #g_category#, #g_amount#, #g_bottle#)
+   </insert>
+   
+   <!-- 상품 파일 업로드 -->
+   <insert id="g_upload" parameterClass="goods">
+   update goods set 
+   INSERT INTO GOODS (g_number, g_name, g_content, g_info, g_org_image, g_sav_image, g_price, g_ingr,
+   g_hit, g_category, g_amount, g_bottle)
+   VALUES (G_NUMBER_SEQ.NEXTVAL, #name#, #content#, #info#, #g_org_image#, #g_sav_image#, #price#, #ingr#, 
+   #hit#, #category#, #amount#, #bottle#)
+   </insert> 
+   
+   <!-- <update id="g_upload" parameterClass="goods">
+    UPDATE GOODS SET G_ORG_IMAGE, G_SAV_IMAGE = #g_org_image#, #g_sav_image# where g_number = #g_number#
+   </update> -->
+   
+   
+   <!-- 댓글 -->
+   <insert id="g_insertReply" parameterClass="reply">
+   INSERT INTO REPLY (rp_number, rp_m_id, rp_content, rp_date, rp_ref, rp_ref_step, rp_ref_level)
+   VALUES (rp_number_seq.NEXVAL, #id#, #content#, #date#, #ref#, #ref_step#, #ref_level#)
+   </insert>
+   
+   <select id="g_selectReply" resultClass="reply">
+      select * from reply order by rp_number desc
+   </select>
 
   
 </sqlMap>
