@@ -4,20 +4,26 @@ import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
 import java.sql.SQLException;
+import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+
+import member.memberVO;
 
 public class noticeModifyAction extends ActionSupport {
 	private static Reader reader;
 	private static SqlMapClient sqlMapper;
 	private noticeVO paramClass;
 	private noticeVO resultClass;
-	
+	private memberVO memresultClass;
+	private memberVO memparamClass;
+
 	private int currentPAge;
 	
 	private int n_number;
@@ -32,7 +38,43 @@ public class noticeModifyAction extends ActionSupport {
 		
 	}
 	
-	public String form(){
+	
+	public String form() throws Exception {
+		memparamClass = new memberVO();
+		memresultClass = new memberVO();
+		paramClass= new noticeVO();
+		resultClass = new noticeVO();
+		ActionContext context = ActionContext.getContext();
+		Map<String, Object> session = context.getSession();
+		String session_id = (String) session.get("m_id");
+		memresultClass = (memberVO) sqlMapper.queryForObject("Member.UserCheck",
+				session_id);
+		paramClass.setN_number(getN_number());
+		resultClass = (noticeVO) sqlMapper.queryForObject("Board.selectOneNotice", n_number);
+		return SUCCESS;
+	}
+
+	public String modify() throws Exception {
+		memparamClass = new memberVO();
+		memresultClass = new memberVO();
+		ActionContext context = ActionContext.getContext();
+		Map<String, Object> session = context.getSession();
+		String session_id = (String) session.get("m_id");
+		memresultClass = (memberVO) sqlMapper.queryForObject("Member.UserCheck",
+				session_id);
+
+		paramClass= new noticeVO();
+		resultClass = new noticeVO();
+
+		paramClass.setN_number(getN_number());
+		// resultClass=(noticeVO) sqlMapper.queryForObject("boardView",no);
+		paramClass.setN_name(getN_name());
+		paramClass.setN_title(getN_title());
+		paramClass.setN_content(getN_content());
+		sqlMapper.update("Board.updateNotice", paramClass);
+
+		
+		resultClass = (noticeVO) sqlMapper.queryForObject("Board.selectOneNotice", getN_number());
 		return SUCCESS;
 	}
 	

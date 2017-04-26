@@ -134,7 +134,7 @@
   
   <insert id="insertNotice" parameterClass="notice">
      insert into NOTICE (N_NUMBER, N_TITLE, N_NAME, N_DATE, N_HIT, N_CONTENT)
-     values (N_NUMBER_SEQ.NEXTVAL, #n_title#, #n_name#, #n_date#, #n_hit#, #n_content#)   
+     values (N_NUMBER_SEQ.NEXTVAL, #n_title#, #n_name#, sysdate, #n_hit#, #n_content#)   
   </insert>
   
   <!-- ★delete문들 ★ -->
@@ -168,5 +168,10 @@
   <update id="updateNReadHit" parameterClass="int">
      update notice set N_HIT=N_HIT+1 where N_NUMBER=#N_number#
   </update>
+  
+  <update id="updateNotice" parameterClass="notice">
+     update NOTICE set N_TITLE=#n_title#, N_CONTENT=#n_content# where N_NUMBER=#n_number#
+  </update>
+  
   
 </sqlMap>

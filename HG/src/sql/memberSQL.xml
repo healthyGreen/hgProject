@@ -2,119 +2,119 @@
 <!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN'
 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 <sqlMap namespace="Member">
-	<typeAlias alias="member" type="member.memberVO"/>
+   <typeAlias alias="member" type="member.memberVO"/>
 
-	<!-- 회원정보 맵핑 -->
-	<resultMap id="memberRes" class="member">
-		<result property="m_id" column="m_id"/>
-		<result property="m_pass" column="m_pass"/>
-		<result property="m_name" column="m_name"/>
-		<result property="m_sex" column="m_sex"/>
-		<result property="m_year" column="m_year"/>
-		<result property="m_month" column="m_month"/>
-		<result property="m_date" column="m_date"/>
-		<result property="m_phone" column="m_phone"/>
-		<result property="m_email" column="m_email"/>
-		<result property="m_zipcode" column="m_zipcode"/>
-		<result property="m_addr1" column="m_addr1"/>
-		<result property="m_addr2" column="m_addr2"/>
-		<result property="m_joindate" column="m_joindate"/>
-		<result property="m_point" column="m_point"/>
-		<result property="m_admin" column="m_admin"/>
-	</resultMap>
-	
-	<!-- 회원정보 select -->
-	<sql id="select-all">
-		SELECT * FROM MEMBER
-	</sql>
-	<!-- 공통 where id -->
-	<sql id="where-id">
-		WHERE m_id = #m_id#
-	</sql>
-	
-	<!-- id로 회원정보 한 줄 검색 -->
-	<select id="selectOneMember" resultMap="memberRes">
-		<include refid="select-all"/>
-		<include refid="where-id"/>
-	</select>
-	<!-- 아이디 중복 확인 -->
-	<select id="idCheck" resultClass="member">
-		select * from member where m_id = #m_id#
-	</select>
-	<!-- 로그인 체크 -->
-	<select id="loginCheck" resultClass="member" parameterClass="member">
-		select * from member
-		where m_id = #m_id# and m_pass = #m_pass#
-	</select>
-	<!-- 아이디 찾기 -->
-	<select id="findId" resultMap="memberRes">
-		select * from member where m_name = #m_name# and m_phone = #m_phone#
-	</select>
-	<!-- 비밀번호 찾기 -->
-	<select id="findPassword" resultMap="memberRes">
-		select * from member where m_id = #m_id# and m_name = #m_name# and m_phone = #m_phone#
-	</select>
-	<!-- 로그인 값 얻어오기 -->
-	<select id="UserCheck" resultMap="memberRes" parameterClass="string">
-		SELECT * FROM MEMBER WHERE M_ID = #m_id#
-	</select>
-	<!-- 회원가입 입력 -->
-	<insert id="insertMember" parameterClass="member">
-		INSERT INTO MEMBER(
-		M_ID,
-		M_PASS,
-		M_NAME,
-		M_SEX,
-		M_YEAR,
-		M_MONTH,
-		M_DATE,
-		M_PHONE,
-		M_EMAIL,
-		M_ZIPCODE,
-		M_ADDR1,
-		M_ADDR2,
-		M_ADMIN,
-		M_POINT,
-		M_JOINDATE
-		)
-		VALUES(
-		#m_id#,
-		#m_pass#,
-		#m_name#,
-		#m_sex#,
-		#m_year#,
-		#m_month#,
-		#m_date#,
-		#m_phone#,
-		#m_email#,
-		#m_zipcode#,
-		#m_addr1#,
-		#m_addr2#,
-		#m_admin#,
-		#m_point#,
-		#m_joindate#
-		)
-	</insert>
-	<!-- 비밀번호 찾기 후 비밀번호 1111 초기화 -->
-	<update id="setPassword1111" parameterClass="String">
-		update member set m_pass = '1111' where m_id = #m_id#
-	</update>
-	<!-- 회원정보 수정 -->
-	<update id="modifyMember" parameterClass="member">
-		update member set m_pass = #m_pass#,
-		m_sex = #m_sex#,
-		m_year = #m_year#,
-		m_monty = #m_month#,
-		m_date = #m_date#,
-		m_phone = #m_phone#,
-		m_email = #m_email#,
-		m_zipcode = #m_zipcode#,
-		m_addr1 = #m_addr1#,
-		m_addr2 = #m_addr2#
-		<include refid = "where-id"/>
-	</update>
-	<!-- 회원 탈퇴 -->
-	<delete id="deleteMember" parameterClass="member">
-		DELETE FROM MEMBER WHERE M_ID=#m_id#
-	</delete>
+   <!-- 회원정보 맵핑 -->
+   <resultMap id="memberRes" class="member">
+      <result property="m_id" column="m_id"/>
+      <result property="m_pass" column="m_pass"/>
+      <result property="m_name" column="m_name"/>
+      <result property="m_sex" column="m_sex"/>
+      <result property="m_year" column="m_year"/>
+      <result property="m_month" column="m_month"/>
+      <result property="m_date" column="m_date"/>
+      <result property="m_phone" column="m_phone"/>
+      <result property="m_email" column="m_email"/>
+      <result property="m_zipcode" column="m_zipcode"/>
+      <result property="m_addr1" column="m_addr1"/>
+      <result property="m_addr2" column="m_addr2"/>
+      <result property="m_joindate" column="m_joindate"/>
+      <result property="m_point" column="m_point"/>
+      <result property="m_admin" column="m_admin"/>
+   </resultMap>
+   
+   <!-- 회원정보 select -->
+   <sql id="select-all">
+      SELECT * FROM MEMBER
+   </sql>
+   <!-- 공통 where id -->
+   <sql id="where-id">
+      WHERE m_id = #m_id#
+   </sql>
+   
+   <!-- id로 회원정보 한 줄 검색 -->
+   <select id="selectOneMember" resultMap="memberRes">
+      <include refid="select-all"/>
+      <include refid="where-id"/>
+   </select>
+   <!-- 아이디 중복 확인 -->
+   <select id="idCheck" resultClass="member" parameterClass="string">
+      select * from member where m_id = #m_id#
+   </select>
+   <!-- 로그인 체크 -->
+   <select id="loginCheck" resultClass="member" parameterClass="member">
+      select * from member
+      where m_id = #m_id# and m_pass = #m_pass#
+   </select>
+   <!-- 아이디 찾기 -->
+   <select id="findId" resultMap="memberRes">
+      select * from member where m_name = #m_name# and m_phone = #m_phone#
+   </select>
+   <!-- 비밀번호 찾기 -->
+   <select id="findPassword" resultMap="memberRes">
+      select * from member where m_id = #m_id# and m_name = #m_name# and m_phone = #m_phone#
+   </select>
+   <!-- 로그인 값 얻어오기 -->
+   <select id="UserCheck" resultMap="memberRes" parameterClass="string">
+      SELECT * FROM MEMBER WHERE M_ID = #m_id#
+   </select>
+   <!-- 회원가입 입력 -->
+   <insert id="insertMember" parameterClass="member">
+      INSERT INTO MEMBER(
+      M_ID,
+      M_PASS,
+      M_NAME,
+      M_SEX,
+      M_YEAR,
+      M_MONTH,
+      M_DATE,
+      M_PHONE,
+      M_EMAIL,
+      M_ZIPCODE,
+      M_ADDR1,
+      M_ADDR2,
+      M_ADMIN,
+      M_POINT,
+      M_JOINDATE
+      )
+      VALUES(
+      #m_id#,
+      #m_pass#,
+      #m_name#,
+      #m_sex#,
+      #m_year#,
+      #m_month#,
+      #m_date#,
+      #m_phone#,
+      #m_email#,
+      #m_zipcode#,
+      #m_addr1#,
+      #m_addr2#,
+      #m_admin#,
+      #m_point#,
+      #m_joindate#
+      )
+   </insert>
+   <!-- 비밀번호 찾기 후 비밀번호 1111 초기화 -->
+   <update id="setPassword1111" parameterClass="String">
+      update member set m_pass = '1111' where m_id = #m_id#
+   </update>
+   <!-- 회원정보 수정 -->
+   <update id="modifyMember" parameterClass="member">
+      update member set m_pass = #m_pass#,
+      m_sex = #m_sex#,
+      m_year = #m_year#,
+      m_monty = #m_month#,
+      m_date = #m_date#,
+      m_phone = #m_phone#,
+      m_email = #m_email#,
+      m_zipcode = #m_zipcode#,
+      m_addr1 = #m_addr1#,
+      m_addr2 = #m_addr2#
+      <include refid = "where-id"/>
+   </update>
+   <!-- 회원 탈퇴 -->
+   <delete id="deleteMember" parameterClass="member">
+      DELETE FROM MEMBER WHERE M_ID=#m_id#
+   </delete>
 </sqlMap>

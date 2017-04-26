@@ -3,6 +3,8 @@ body,table,input,textarea,select {
 font:12px dotum;
 color:#333333;
 }
+table{border-spacing:0px;}
+textarea{    width: 100%;   height: 100%;   border: none !important; padding: 0px 5px !important; boxs-sizing: border-box; }
 img	{border:0}
 form	{margin:0}
 
@@ -252,7 +254,7 @@ width:100%;
 /*Ãß°¡*/
 
 .board-type01 {clear:both;margin-top:5px;}
-.board-type01 th {padding: 0px; margin: 0px; border-collapse: collapse;border-top:1px solid #444444;text-align:center;font-weight:bold;color:#373737;height:50px;vertical-align:middle;background:#cadb3d;border-bottom:1px solid #d9d9d9;}
+.board-type01 th {padding: 0px; margin: 0px; border-collapse: collapse;border-top:1px solid #444444;text-align:center;font-weight:bold;color:#373737;height:50px;vertical-align:middle;font-size: 14px; background:#f5f5f5;border-bottom:1px solid #d9d9d9;}
 .board-type01 td {text-align:center;color:#373737;height:44px;vertical-align:middle;border-bottom:1px solid #d9d9d9;}
 .board-type01 td.subject {text-align:left;padding-left:28px;}
 .board-type01 td.subject:hover{text-decoration: underline; font-weight: bold;}
@@ -267,23 +269,24 @@ width:100%;
 .pageing >  a.current, .pageing > a:hover {background:#fff;color: #cadb3d; border: 1px solid #cadb3d;}
 
 .board-type02 {clear:both;margin-top:18px;}
-.board-type02 th {border-top:1px solid #444444;text-align:left;font-weight:bold;color:#373737;height:50px;vertical-align:middle;background:#cadb3d;border-bottom:1px solid #d9d9d9;}
+.board-type02 th {border-top:1px solid #444444;text-align:left;font-weight:bold;color:#373737;height:50px;vertical-align:middle;background:#f5f5f5;border-bottom:1px solid #d9d9d9;font-size: 14px;}
 .board-type02 th .tit {margin-left:20px;}
 .board-type02 td {color:#373737;padding:10px 20px;vertical-align:middle;border-bottom:1px solid #d9d9d9;}
 .board-type02 td.content {text-align:left;padding:35px 15px;vertical-align:top;border-bottom:1px solid #b2b2b2;line-height:150%;}
 .board-type03 tr {border-top:1px solid #444;     text-align: left;}
 .board-type03 tr.first {border-top:1px solid #444;     text-align: left;}
-.board-type03 th {background:#cadb3d;border-bottom:1px solid #dbdbdb;font-size:14px;color:#4f4f4f;vertical-align:middle;padding:20px 0 20px 20px;width:120px;}
+.board-type03 th {background:#f5f5f5;border-bottom:1px solid #dbdbdb;font-size:14px;color:#4f4f4f;vertical-align:middle;padding:20px 0 20px 20px;width:120px;}
 .board-type03 th.vertical-t {vertical-align:top;}
 .board-type03 td {border-bottom:1px solid #dbdbdb;font-size:14px;color:#4f4f4f;vertical-align:middle;padding:10px 0 10px 20px}
-.board-type03 td .input1 {border:1px solid #e6e6e6;padding:3px 0;width:90%;}
-.board-type03 td .input2 {border:1px solid #e6e6e6;padding:3px 0;width:30%;}
-.board-type03 td .input3 {border:1px solid #e6e6e6;padding:3px 0;width:706px;height:300px;}
+.board-type03 td .input1 {border:1px solid #e6e6e6;padding:3px 5px; width: 100%; }
+.board-type03 td .input2 {border:1px solid #e6e6e6;padding:3px 5px; width: 100%; }
+.board-type03 td .input3 {border:1px solid #e6e6e6;padding:3px 5px;height:300px; }
 .cont-box{ width: 100%; border-bottom:1px dashed #b2b2b2 !important;padding-bottom: 40px;}
  
+ .subject{text-align: left; margin-left: 20px;}
 
-.wBtn{width: 1100px; margin: 10px auto; }
-.wBtn span{float: right; width: 120px; height: 40px; background: #cadb3d; text-align: center; color: #373737; display: block; font-size: 13px; padding-top: 10px; box-sizing: border-box; border-radius: 10px; }
+.wBtn{width: 1100px; margin: 10px auto; cursor: pointer; }
+.wBtn span{cursor: pointer; float: right; width: 120px; height: 40px; background: #484647; text-align: center; color: #fff; display: block; font-size: 13px; padding-top: 10px; box-sizing: border-box;  }
 
 /* clera */
 .clear:after{content:".";height:0;font-size:0;display:block;clear:both;}

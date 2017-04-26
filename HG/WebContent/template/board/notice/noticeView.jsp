@@ -28,7 +28,7 @@
 											<div class="board-infor">
 												<strong>작성자</strong>
 												<span><s:property value="resultClass.n_name" /></span>
-												<span class="line"><img src="../../../images/board_line.gif" class="vertical-m"  alt="" width="0.5px" /></span>
+												<span >/</span>
 												<strong>작성일</strong>
 												<span><s:property value="resultClass.n_date"/></span>
 	
@@ -44,8 +44,10 @@
 									</tr>
 									</tbody>
 								</table>
-</form>
-								<div class="wBtn clear" ><span>목록가기</span></div>
+</form>							<div style="width: 1100px; margin: 0 auto; ">
+									<div class="wBtn clear" style="float: left; width: 120px;" onclick="javascript:window.location.href='noticeModifyForm.action?n_number=<s:property value="resultClass.n_number"/>&currentPage=<s:property value="currentPage"/>'"><span>수정하기</span></div>
+									<div class="wBtn clear" style="float: right; width: 120px;" onclick="location.href='javascript:history.go(-1)'"><span>목록가기</span></div>
+								</div>
 </td>
 </tr>
 <tr>
