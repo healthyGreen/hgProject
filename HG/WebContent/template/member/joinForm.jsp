@@ -22,7 +22,22 @@
 
 <script src="js/godo.password_strength.js" type="text/javascript"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script>
+<script type="text/javascript">
+
+	function IdConfirm(join) {
+    	var m_id = document.join.M_id.value;
+    	var url = "idCheck.action?m_id="+m_id;
+    	
+    	if(m_id ==""){
+       		alert("아이디를 입력해주세요!")
+       		document.join.M_id.focus();
+    	}else{
+    		open(url, "IdConfirm", "toolbar=no,location=no,status=no,menubar=no,"+
+          	"scrollbars=no,resizable=no,width=400,height=600");
+
+    		}
+ }
+   
     function sample6_execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
@@ -104,7 +119,7 @@ width:100px;
 color:#5D5D5D;
 letter-spacing:-1;
 }
-.scroll	{
+.scroll   {
 scrollbar-face-color: #FFFFFF;
 scrollbar-shadow-color: #AFAFAF;
 scrollbar-highlight-color: #AFAFAF;
@@ -146,7 +161,7 @@ scrollbar-arrow-color: #838383;
     
     
     
-	<style>
+   <style>
     .jogin_infotbl caption{display:none;}
     .jogin_infotbl {border-collapse:collapse;border-spacing:0;width:100%;}
     .jogin_infotbl th{ border-bottom:#e7e7e7 solid 1px;height:39px;text-indent:20px; color:#414141; font-weight:bold;}
@@ -154,25 +169,25 @@ scrollbar-arrow-color: #838383;
     .jogin_infotbl td input[type=text],.jogin_infotbl td input[type=password]{ min-width:50px;height:23px; line-height:23px; box-sizing:content-box; border:1px solid #dedede;}
     .jogin_infotbl td textarea { height:100px; line-height:18px;  box-sizing:content-box; border:1px solid #dedede;}
     </style>
- <form action="joinPro.action" method="post" enctype="multipart/form-data">
+ <form action="joinPro.action" method="post" enctype="multipart/form-data" name="join">
     <table width=97% cellpadding=5 cellspacing=0 border=0 class="jogin_infotbl">
     <tr>
         <td class=memberCols1><font color=FF6000>*</font> 아이디</td>
         <td class=memberCols2>
         <input type=text name=M_id value="" style="background:#FFF" maxlength=16 required fld_esssential option=regId label="아이디">
-        <input type=hidden name=M_id required fld_esssential label="아이디중복체크">
-        <a href="idCheck.action"><img src="images/join_btn_id.jpg" border=0 align=absmiddle></a>
+       <!--  <input type=hidden name=M_id required fld_esssential label="아이디중복체크"> -->
+       	<sapn onclick="javasript:IdConfirm(this.form)"><img src="images/join_btn_id.jpg" border=0 align=absmiddle/></sapn>
         <div class="description_wrap" style="font-size: 11px;color: #8d8d8d;">
-					<div class="description">6~16자의 영문자, 숫자조합</div>
-					<div class="description wrong" id="id_description">아이디는 6자 이상으로 입력해 주세요</div>
-				</div>
+               <div class="description">6~16자의 영문자, 숫자조합</div>
+               <div class="description wrong" id="id_description">아이디는 6자 이상으로 입력해 주세요</div>
+            </div>
         </td>
     </tr>
     <tr>
         <td class=memberCols1><font color=FF6000>*</font> 비밀번호</td>
         <td class=memberCols2>
         <input type=password name=M_pass required fld_esssential option=regPass label="비밀번호" style="background:#FFF" >
-    	<div class="description" id="el-password-strength-indicator-msg"style="font-size: 11px;color: #8d8d8d;">10~16자의 영문자, 숫자조합</div> 
+       <div class="description" id="el-password-strength-indicator-msg"style="font-size: 11px;color: #8d8d8d;">10~16자의 영문자, 숫자조합</div> 
         </td>
     </tr>
     
@@ -211,27 +226,27 @@ scrollbar-arrow-color: #838383;
         <td class=memberCols1><font color=FF6000>*</font> 이메일</td>
         <td class=memberCols2>
         <input type=text name=M_email value="" size=30 required fld_esssential option=regEmail label="이메일" style="background:#FFF">
-		<input type=hidden name=chk_email required fld_esssential >        </a>
+      <input type=hidden name=chk_email required fld_esssential >        </a>
         <span class=noline style="padding-left:10px"></span>
        
         <div class="description "style="font-size: 11px;color: #8d8d8d;">
-						※ 아이디 / 비밀번호 찾기에 활용 되므로 정확하게 입력해 주세요.
-					</div>
+                  ※ 아이디 / 비밀번호 찾기에 활용 되므로 정확하게 입력해 주세요.
+               </div>
         </td>
     </tr>
     
     
     <tr>
         <td class=memberCols1><font color=FF6000>*</font> 주소</td>
-	<td class="memberCols2">
+   <td class="memberCols2">
 
-	<table>
-	<tr>
-		<td>
-		<input type="text" name="M_zipcode" id="sample6_postcode" placeholder="우편번호">
-		<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-		<input type="text" name="M_addr1" id="sample6_address" placeholder="주소">
-		<input type="text" name="M_addr2" size=30  id="sample6_address2" placeholder="상세주소">
+   <table>
+   <tr>
+      <td>
+      <input type="text" name="M_zipcode" id="sample6_postcode" placeholder="우편번호">
+      <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+      <input type="text" name="M_addr1" id="sample6_address" placeholder="주소">
+      <input type="text" name="M_addr2" size=30  id="sample6_address2" placeholder="상세주소">
             </td>
         </tr>
         </table>
@@ -243,9 +258,9 @@ scrollbar-arrow-color: #838383;
     <tr>
         <td class=memberCols1><font color=FF6000>*</font> 핸드폰</td>
         <td class=memberCols2>
-	<input type=text name=M_phone value="" size=12 maxlength=15 required fld_esssential option=regNum label="핸드폰" >
-	<span class=noline style="padding-left:10px"></span>
-	</td>
+   <input type=text name=M_phone value="" size=12 maxlength=15 required fld_esssential option=regNum label="핸드폰" >
+   <span class=noline style="padding-left:10px"></span>
+   </td>
 </tr>
     
 
