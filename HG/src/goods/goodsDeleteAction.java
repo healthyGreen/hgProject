@@ -6,6 +6,7 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
 import java.io.Reader;
+import java.sql.SQLException;
 import java.io.File;
 import java.io.IOException;
 
@@ -21,13 +22,14 @@ public class goodsDeleteAction extends ActionSupport{
 
 		private replyVO reClass = new replyVO(); // 댓글의 파라미터를 저장할 객체
 		private replyVO reResult = new replyVO(); // 댓글의 쿼리 결과값을 저장할 객체
-
+		private replyVO passResult = new replyVO();
 		private int currentPage;
-
+		private String rp_pass;
 		private int no;
 		private int G_NUMBER;
 		private String G_CATEGORY;
 		private String category;
+		private int rp_number;
 
 		// 생성자
 		public goodsDeleteAction() throws IOException {
@@ -73,7 +75,19 @@ public class goodsDeleteAction extends ActionSupport{
 
 			return SUCCESS;
 		}
-
+		public String checkform(){
+			return SUCCESS;
+		}
+		
+		public String checkAction() throws SQLException{
+			reClass = new replyVO();
+			reClass.setRp_pass(rp_pass);
+			reClass.setRp_number(rp_number);
+			passResult = (replyVO)sqlMapper.queryForObject("reply_passCheck",reClass);
+			if(reResult!=null)
+				return SUCCESS;
+			else return ERROR;
+		}
 		public static Reader getReader() {
 			return reader;
 		}
@@ -169,6 +183,23 @@ public class goodsDeleteAction extends ActionSupport{
 		public void setGoods_resultClass(goodsVO goods_resultClass) {
 			this.goods_resultClass = goods_resultClass;
 		}
+
+		public String getRp_pass() {
+			return rp_pass;
+		}
+
+		public void setRp_pass(String rp_pass) {
+			this.rp_pass = rp_pass;
+		}
+
+		public int getRp_number() {
+			return rp_number;
+		}
+
+		public void setRp_number(int rp_number) {
+			this.rp_number = rp_number;
+		}
+		
 
 	}
 

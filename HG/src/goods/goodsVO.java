@@ -13,6 +13,7 @@ public class goodsVO {
 	private String g_category;
 	private int g_amount;
 	private String g_bottle;
+	
 	public int getG_number() {
 		return g_number;
 	}

@@ -25,7 +25,7 @@ public class goodsListAction extends ActionSupport {
    private goodsVO goods_resultClass = new goodsVO();
 
    private String searchKeyword;
-   private String G_CATEGORY;
+   private String g_category;
    private int searchNum;
 
    private int currentPage = 1;
@@ -53,7 +53,7 @@ public class goodsListAction extends ActionSupport {
       list = sqlMapper.queryForList("g_Category", goods_paramClass);
       totalCount = list.size();
 
-      page = new goodsPageAction(currentPage, totalCount, blockCount, blockPage, G_CATEGORY, "");
+      page = new goodsPageAction(currentPage, totalCount, blockCount, blockPage, g_category, "");
       pagingHtml = page.getPagingHtml().toString();
 
       int lastCount = totalCount;

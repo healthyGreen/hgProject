@@ -27,8 +27,8 @@ public class replyWriteAction extends ActionSupport {
 	private String content;
 	private int originno;
 	
-	
-
+    // private int ref; private int re_step; private int re_level;
+	 // boolean reply = false;
 	Calendar today = Calendar.getInstance();
 
 	// »ý¼ºÀÚ

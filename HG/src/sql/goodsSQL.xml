@@ -103,17 +103,17 @@
    </insert>
    
    <!-- 상품 파일 업로드 -->
-   <insert id="g_upload" parameterClass="goods">
+<!--    <insert id="g_upload" parameterClass="goods">
    update goods set 
    INSERT INTO GOODS (g_number, g_name, g_content, g_info, g_org_image, g_sav_image, g_price, g_ingr,
    g_hit, g_category, g_amount, g_bottle)
    VALUES (G_NUMBER_SEQ.NEXTVAL, #name#, #content#, #info#, #g_org_image#, #g_sav_image#, #price#, #ingr#, 
    #hit#, #category#, #amount#, #bottle#)
-   </insert> 
+   </insert>  -->
    
-   <!-- <update id="g_upload" parameterClass="goods">
-    UPDATE GOODS SET G_ORG_IMAGE, G_SAV_IMAGE = #g_org_image#, #g_sav_image# where g_number = #g_number#
-   </update> -->
+   <update id="g_upload" parameterClass="goods">
+    UPDATE GOODS SET G_ORG_IMAGE = #g_org_image#, G_SAV_IMAGE = #g_sav_image# where g_number = #g_number#
+   </update> 
    
    
    <!-- 댓글 -->
@@ -125,6 +125,8 @@
    <select id="g_selectReply" resultClass="reply">
       select * from reply order by rp_number desc
    </select>
-
+<select id="reply_passCheck" parameterClass="reply" resultClass="reply">
+         select*from reply where rp_number=#rp_number# and rp_pass=#rp_pass#
+   </select>
   
 </sqlMap>

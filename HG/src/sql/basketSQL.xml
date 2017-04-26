@@ -2,8 +2,8 @@
 <!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN'
 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 <sqlMap namespace="Basket">
-	<typeAlias alias="member" type="basket.basketVO"/>
-	
+	<typeAlias alias="basket" type="basket.basketVO"/>
+	<typeAlias alias="setOrder" type="orders.setOrderVO"/>
 	<!-- 장바구니 맵핑 -->
 	<resultMap id="basketRes" class="basket">
 		<result property="b_m_id" column="b_m_id" />
@@ -15,10 +15,26 @@
 		<result property="b_date" column="b_date" />
 	</resultMap>
 	
+	<resultMap id="setOrderRes" class="setOrder">
+		<result property="b_m_id" column="b_m_id" />
+		<result property="b_g_name" column="b_g_name" />
+		<result property="b_g_amount" column="b_g_amount" />
+		<result property="b_allprice" column="b_allprice" />
+		<result property="b_g_bottle" column="b_g_bottle" />
+		<result property="b_date" column="b_date" />
+		<result property="g_price" column="g_price" />
+		<result property="g_sav_image" column="g_sav_image" />
+	</resultMap>
+	
 	<!-- 장바구니 리스트 -->
-	<select id="basketList" resultMap="basketRes" parameterClass="string">
+	<!-- <select id="basketList" resultMap="basketRes" parameterClass="string">
 		SELECT * FROM BASKET WHERE B_M_ID = #B_M_ID#
 		ORDER BY B_DATE DESC
+	</select> -->
+	
+	<select id="basketList" resultMap="setOrderRes" parameterClass="string">
+		SELECT b_m_id, b_g_name, b_g_amount, b_allprice, b_g_bottle, b_date, g_price, g_sav_image 
+		FROM BASKET, GOODS WHERE BASKET.B_M_ID=#B_M_ID# AND BASKET.B_M_NUMBER = GOODS.G_NUMBER ORDER BY B_DATE DESC
 	</select>
 	
 	<!-- 장바구니 담기 -->

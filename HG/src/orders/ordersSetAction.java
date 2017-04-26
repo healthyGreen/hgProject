@@ -1,4 +1,4 @@
-/*package orders;
+package orders;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -31,6 +31,7 @@ public class ordersSetAction extends ActionSupport {
 	public int amount;
 	public String bottle;
 	public int price;
+	public int totalPrice;
 	public String image;
 	public basketVO basket;
 	public memberVO member;
@@ -40,11 +41,11 @@ public class ordersSetAction extends ActionSupport {
 	public String session_id = (String)session.getAttribute("session_id");
 	public String orderType;
 	public List orderInfo = new ArrayList();
-	public List<basketVO> basketList; // 장바구니에서 '주문하기'버튼 클릭시 넘어오는 값을  setter로 셋팅 
+	public List<setOrderVO> setOrderList;
 	public List<goodsVO> goodsList; // 장바구니에서 '주문하기'버튼 클릭시 장바구니 list에서 3개 셋팅해준 값을 setter로 셋팅
 	//public Vector orderVector = new Vector<>();
 	
-	public int totalPrice=0;
+	public int EverytotalPrice=0;
 	
 	public ordersSetAction() throws IOException {
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
@@ -60,21 +61,21 @@ public class ordersSetAction extends ActionSupport {
 			orderInfo.add(price);
 			orderInfo.add(image);
 			totalPrice = amount*price;
+			orderInfo.add(totalPrice);
 		}else if(orderType.equals("basket")){
-			basketList = sqlMapper.queryForList("Basket.basketList",session_id);
+			setOrderList = sqlMapper.queryForList("Basket.basketList",session_id);
 			
-			if(basketList!=null){
-				for(int i=0; i< basketList.size(); i++){
-					goodsresultClass=(goodsVO)sqlMapper.queryForObject("goods_selectOne", basketList.get(i).getB_g_number());
+			if(setOrderList!=null){
+				for(int i=0; i< setOrderList.size(); i++){
+					/*goodsresultClass=(goodsVO)sqlMapper.queryForObject("goods_selectOne", basketList.get(i).getB_g_number());
 					if(goodsresultClass!=null){
 						//goodsparamClass.setG_NAME(goodsresultClass.getG_NAME());
 						goodsparamClass.setG_price(goodsresultClass.getG_price());
 						goodsparamClass.setG_sav_image(goodsresultClass.getG_sav_image());
-					}
+					}*/
 					goodsList.add(goodsparamClass);
-					totalPrice += goodsresultClass.getG_amount()*goodsresultClass.getG_price();
-				orderVector.add(basketList);
-				orderVector.add(goodsList);	
+					EverytotalPrice += goodsresultClass.getG_amount()*goodsresultClass.getG_price();
+		
 			}
 			}return ERROR;
 		}
@@ -127,12 +128,6 @@ public class ordersSetAction extends ActionSupport {
 	}
 	public void setPrice(int price) {
 		this.price = price;
-	}
-	public int getTotalprice() {
-		return totalprice;
-	}
-	public void setTotalprice(int totalprice) {
-		this.totalprice = totalprice;
 	}
 	public String getImage() {
 		return image;
@@ -188,17 +183,17 @@ public class ordersSetAction extends ActionSupport {
 	public void setOrderInfo(List orderInfo) {
 		this.orderInfo = orderInfo;
 	}
-	public List<basketVO> getBasketList() {
-		return basketList;
-	}
-	public void setBasketList(List<basketVO> basketList) {
-		this.basketList = basketList;
-	}
 	public List<goodsVO> getGoodsList() {
 		return goodsList;
 	}
 	public void setGoodsList(List<goodsVO> goodsList) {
 		this.goodsList = goodsList;
+	}
+	public int getEverytotalPrice() {
+		return EverytotalPrice;
+	}
+	public void setEverytotalPrice(int everytotalPrice) {
+		EverytotalPrice = everytotalPrice;
 	}
 	public int getTotalPrice() {
 		return totalPrice;
@@ -207,12 +202,5 @@ public class ordersSetAction extends ActionSupport {
 		this.totalPrice = totalPrice;
 	}
 	
-	public Vector getOrderVector() {
-		return orderVector;
-	}
-	public void setOrderVector(Vector orderVector) {
-		this.orderVector = orderVector;
-	}
 	
 }
-*/

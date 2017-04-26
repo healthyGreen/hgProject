@@ -80,9 +80,9 @@
        ORDER BY RV_REF DESC, RV_REF_STEP ASC
   </select> 
   
-  <select id="selectAboutPass" resultMap="reviewRes" parameterClass="review">
+<!--   <select id="selectAboutPass" resultMap="reviewRes" parameterClass="review">
      select rv_pass from review where rv_number=#rv_number#
-  </select>
+  </select> -->
   
   <select id="myWriteBoard" resultMap="reviewRes" parameterClass="review">
      <include refid="select-review"/>
