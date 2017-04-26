@@ -67,8 +67,8 @@ window.onload = function(){ document.form.m_id.focus(); }
       <div class="sidebox"> 
         <div class="acc"><img src="../../images/login_1_icon.jpg"></div>
         <ul class="side">
-          <li><a HREF="/shop/member/find_id.php?&" onFocus="blur()">아이디 찾기</a></li>
-          <li><a HREF="/shop/member/find_pwd.php?&" onFocus="blur()">비밀번호 찾기</a></li>
+          <li><a HREF="/HG/findIdForm.action" onFocus="blur()">아이디 찾기</a></li>
+          <li><a HREF="/HG/findPassForm.action" onFocus="blur()">비밀번호 찾기</a></li>
         </ul>
       </div>
     </div>
@@ -83,7 +83,7 @@ window.onload = function(){ document.form.m_id.focus(); }
     <div class="box">
       <div class="tit"><img src="../../images/login_2_tit.jpg"></div>
       <div class="txt"><img src="../../images/login_2_txt.jpg"></div>
-      <div class="gobtn"><a href="/shop/member/join.php?&"><img src="../../images/login_2_btn.jpg"></a></div>
+      <div class="gobtn"><a href="/HG/joinForm.action"><img src="../../images/login_2_btn.jpg"></a></div>
     </div>
     <!--가입폼끝--> 
     
