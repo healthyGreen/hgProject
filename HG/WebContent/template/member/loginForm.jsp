@@ -50,15 +50,15 @@ window.onload = function(){ document.form.m_id.focus(); }
     <!--로그인폼시작-->
     <div class="box boxbg">
       <div class="tit"><img src="../../images/login_1_tit.jpg"></div>
-      <form method=post action="/shop/member/login_ok.php" id=form name=form>
+     <form action="logInPro.action" method="post" enctype="multipart/form-data">
         <input type=hidden name=returnUrl value="http://www.wondergreen.kr/shop/main/index.php?&">
         <div class="form">
           <ul>
             <li><span>아이디</span>
-              <input type=text name=m_id size=20 tabindex=1>
+              <input type=text name=M_id size=20 tabindex=1>
             </li>
             <li style="margin:0;"><span>비밀번호</span>
-              <input type=password name=password size=20 tabindex=2>
+              <input type=password name=M_pass size=20 tabindex=2>
             </li>
           </ul>
           <input type=image src="../../images/login_1_btn.jpg" class="btn">

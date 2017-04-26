@@ -160,15 +160,14 @@ scrollbar-arrow-color: #838383;
         <td class=memberCols1><font color=FF6000>*</font> 아이디</td>
         <td class=memberCols2>
         <input type=text name=M_id value="" style="background:#FFF" maxlength=16 required fld_esssential option=regId label="아이디">
-        <input type=hidden name=chk_id required fld_esssential label="아이디중복체크">
-        <a href="javascript:chkId()"><img src="images/join_btn_id.jpg" border=0 align=absmiddle></a>
+        <input type=hidden name=M_id required fld_esssential label="아이디중복체크">
+        <a href="idCheck.action"><img src="images/join_btn_id.jpg" border=0 align=absmiddle></a>
         <div class="description_wrap" style="font-size: 11px;color: #8d8d8d;">
 					<div class="description">6~16자의 영문자, 숫자조합</div>
 					<div class="description wrong" id="id_description">아이디는 6자 이상으로 입력해 주세요</div>
 				</div>
         </td>
     </tr>
-    
     <tr>
         <td class=memberCols1><font color=FF6000>*</font> 비밀번호</td>
         <td class=memberCols2>

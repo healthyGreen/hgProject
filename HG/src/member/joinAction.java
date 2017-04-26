@@ -27,7 +27,8 @@ public class joinAction extends ActionSupport{
 	private String m_zipcode;
 	private String m_addr1;
 	private String m_addr2;
-	private int admin;
+	private int m_admin;
+	private int m_point;
 	Calendar today = Calendar.getInstance();
 	
 	public joinAction() throws IOException{
@@ -61,7 +62,8 @@ public class joinAction extends ActionSupport{
 		paramClass.setM_zipcode(getM_zipcode());
 		paramClass.setM_addr1(getM_addr1());
 		paramClass.setM_addr2(getM_addr2());
-		paramClass.setM_admin(getAdmin());
+		paramClass.setM_admin(getM_admin());
+		paramClass.setM_point(getM_point());
 		paramClass.setM_joindate(today.getTime());
 				
 		sqlMapper.insert("Member.insertMember", paramClass);
@@ -187,14 +189,18 @@ public class joinAction extends ActionSupport{
 		this.m_addr2 = m_addr2;
 	}
 
-	public int getAdmin() {
-		return admin;
+	public int getM_admin() {
+		return m_admin;
 	}
-
-	public void setAdmin(int admin) {
-		this.admin = admin;
+	public void setM_admin(int m_admin) {
+		this.m_admin = m_admin;
 	}
-
+	public int getM_point() {
+		return m_point;
+	}
+	public void setM_point(int m_point) {
+		this.m_point = m_point;
+	}
 	public Calendar getToday() {
 		return today;
 	}

@@ -37,8 +37,8 @@
 		<div class="top">
 			<div class="area">
 				<ul class="clear">
-					<li><a href="">로그인</a></li>
-					<li><a href="">회원가입</a></li>
+					<li><a href="/HG/logInForm.action">로그인</a></li>
+					<li><a href="/HG/joinCheck.action">회원가입</a></li>
 					<li><a href="">고객센터</a></li>
 					<li><a href="">장바구니</a></li>
 
@@ -65,7 +65,7 @@
 			</div><!--// search -->
 
 			<h1>
-				<a href=""><img src="images/logo.jpg" alt="" /></a>
+				<a href="main.action"><img src="images/logo.jpg" alt="" /></a>
 			</h1><!--// logo -->
 
 
@@ -105,7 +105,7 @@
 					<li style="width:16.6%">
 						<a href="" class="cate1">REFRESH WATER</a>
 					</li>
-					<li><a href="">NOTICE</a></li>
+					<li><a href="noticeList.action">NOTICE</a></li>
 					<li><a href="">상품후기</a></li>
 					<li><a href="">ABOUT</a></li>
 				</ul>

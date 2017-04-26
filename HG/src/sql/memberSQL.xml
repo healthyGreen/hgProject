@@ -74,6 +74,7 @@
 		M_ADDR1,
 		M_ADDR2,
 		M_ADMIN,
+		M_POINT,
 		M_JOINDATE
 		)
 		VALUES(
@@ -90,6 +91,7 @@
 		#m_addr1#,
 		#m_addr2#,
 		#m_admin#,
+		#m_point#,
 		#m_joindate#
 		)
 	</insert>
