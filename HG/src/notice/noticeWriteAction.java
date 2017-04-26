@@ -3,20 +3,31 @@ package notice;
 import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
-import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
-import org.apache.commons.io.FileUtils;
+import member.memberVO;
 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class noticeWriteAction extends ActionSupport{
 	private static Reader reader;
 	private static SqlMapClient sqlMapper;
+	
+	private memberVO memresultClass;
+	private memberVO memparamClass;
+	private noticeVO paramClass;
+	private noticeVO resultClass;
+	
+	private List<noticeVO> noticeList = new ArrayList<noticeVO>();
 	
 	private int n_currentPage;
 	
@@ -26,8 +37,7 @@ public class noticeWriteAction extends ActionSupport{
 	Calendar n_date = Calendar.getInstance();
 	private String n_content;
 	
-	private noticeVO paramClass;
-	private noticeVO resultClass;
+	
 	
 	public noticeWriteAction() throws IOException{
 		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
@@ -35,26 +45,39 @@ public class noticeWriteAction extends ActionSupport{
 		reader.close();
 	}
 	
-	public String form(){
+	public String form() throws Exception{
+		System.out.println(n_date);
+		memparamClass = new memberVO();
+		memresultClass = new memberVO();
+		ActionContext context = ActionContext.getContext();
+		Map<String, Object> session = context.getSession();
+		String session_id = (String) session.get("m_id");
+		memresultClass = (memberVO) sqlMapper.queryForObject("Member.UserCheck",
+				session_id);
 		return SUCCESS;
 	}
 	
 	
+	
 	public String execute() throws Exception{
-		
+		memparamClass = new memberVO();
+		memresultClass = new memberVO();
 		paramClass = new noticeVO();
 		resultClass = new noticeVO();
-		
-		paramClass.setN_number(getN_number());
-		paramClass.setN_title(getN_title());
+		ActionContext context = ActionContext.getContext();
+		Map<String, Object> session = context.getSession();
+		String session_id = (String) session.get("m_id");
+		memresultClass = (memberVO) sqlMapper.queryForObject("Member.UserCheck",
+				session_id);
 		paramClass.setN_name(getN_name());
-		paramClass.setN_date(n_date.getTime());
+		System.out.println(getN_title());
+		paramClass.setN_title(getN_title());
 		paramClass.setN_content(getN_content());
-		
-		sqlMapper.insert("Board.insertNotice", paramClass); 
+		sqlMapper.insert("Board.insertNotice", paramClass);
 		
 		
 		return SUCCESS;
+		
 	}
 
 	public static Reader getReader() {
@@ -71,6 +94,46 @@ public class noticeWriteAction extends ActionSupport{
 
 	public static void setSqlMapper(SqlMapClient sqlMapper) {
 		noticeWriteAction.sqlMapper = sqlMapper;
+	}
+
+	public memberVO getMemresultClass() {
+		return memresultClass;
+	}
+
+	public void setMemresultClass(memberVO memresultClass) {
+		this.memresultClass = memresultClass;
+	}
+
+	public memberVO getMemparamClass() {
+		return memparamClass;
+	}
+
+	public void setMemparamClass(memberVO memparamClass) {
+		this.memparamClass = memparamClass;
+	}
+
+	public noticeVO getParamClass() {
+		return paramClass;
+	}
+
+	public void setParamClass(noticeVO paramClass) {
+		this.paramClass = paramClass;
+	}
+
+	public noticeVO getResultClass() {
+		return resultClass;
+	}
+
+	public void setResultClass(noticeVO resultClass) {
+		this.resultClass = resultClass;
+	}
+
+	public List<noticeVO> getNoticeList() {
+		return noticeList;
+	}
+
+	public void setNoticeList(List<noticeVO> noticeList) {
+		this.noticeList = noticeList;
 	}
 
 	public int getN_currentPage() {
@@ -120,22 +183,9 @@ public class noticeWriteAction extends ActionSupport{
 	public void setN_content(String n_content) {
 		this.n_content = n_content;
 	}
+	
+	
 
-	public noticeVO getParamClass() {
-		return paramClass;
-	}
-
-	public void setParamClass(noticeVO paramClass) {
-		this.paramClass = paramClass;
-	}
-
-	public noticeVO getResultClass() {
-		return resultClass;
-	}
-
-	public void setResultClass(noticeVO resultClass) {
-		this.resultClass = resultClass;
-	}
 	
 	
 	

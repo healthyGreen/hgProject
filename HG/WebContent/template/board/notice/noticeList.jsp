@@ -32,16 +32,16 @@
 							<s:iterator value="list" status="stat">
 								<tr>
 									<td><s:property value="n_number"/></td>
-									<td><a href="noticeView.action?n_number=<s:property value="n_number"/>&currentPage=<s:property value="currentPage"/>">&nbsp;&nbsp;&nbsp;<s:property value="n_title" /></a></td>
+									<td class="subject"><a href="noticeView.action?n_number=<s:property value="n_number"/>&currentPage=<s:property value="currentPage"/>">&nbsp;&nbsp;&nbsp;<s:property value="n_title" /></a></td>
 									<td><s:property value="n_name"/></td>
 									<td><s:property value="n_date"/></td>
 								</tr>
 							</s:iterator>
 							</tbody>
 						</table>
-						<s:if test="memresultClass.getM_ID() == 'admin'">
-							<div class="wBtn"onClick="javascript:location.href='noticeWrite.action?currentPage=<s:property value="currentPage"/>"><span>작성하기</span></div>
-						</s:if>
+						
+							<div class="wBtn" ><span onclick="location.href='noticeForm.action?currentPage=<s:property value="currentPage"/>'">작성하기</span></div>
+						
 						<div class="pageing" >
 							<s:property value="pagingHtml" escape="false"/>
 						</div>
