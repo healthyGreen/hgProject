@@ -23,11 +23,11 @@
 
 <table width=100% cellpadding=0 cellspacing=0 border=0 style="margin:40px 0">
 
-<tr><td align=center><img src="images/join_ok.jpg" border=0></td></tr>
+<tr><td align=center><img src="../../images/join_ok.jpg" border=0></td></tr>
 <tr><td height="30"></td></tr>
 <tr>
 	<td align=center>
-		<a href="/HG/main.action"><img src="images/find_login.jpg"></a>
+		<a href="/HG/main.action"><img src="../../images/find_login.jpg"></a>
     </td>
 </tr>
 <tr><td height="60"></td></tr>
