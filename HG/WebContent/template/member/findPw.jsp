@@ -54,13 +54,13 @@ function gohpauthDream(){ //휴대폰본인인증
 <div class="findbox">
           <ul>
             <li><span>아이디</span>
-             <input name="srch_id" type="text" size="29" required label="아이디" tabindex=1 class="fm">
+             <input name="M_id" type="text" size="29" required label="아이디" tabindex=1 class="fm">
             </li>
             <li><span>이름</span>
-             <input name="srch_name" type="text" size="29" required label="이름" tabindex=2 class="fm">
+             <input name="M_name" type="text" size="29" required label="이름" tabindex=2 class="fm">
             </li>
             <li><span>이메일</span>
-             <input name="srch_mail" type="text" size="29" required label="메일주소" tabindex=5 class="fm">
+             <input name="M_phone" type="text" size="29" required label="휴대폰번호" tabindex=5 class="fm">
             </li>
             <li><span></span>
               <input type=image src="../../images/find_scbtn.jpg" tabindex=6>
@@ -77,8 +77,8 @@ function gohpauthDream(){ //휴대폰본인인증
 <div class="findbox">
           <ul>
             <li><span></span>
-              <a href="/shop/member/find_id.php?&"><img src="../../images/find_id.jpg"></a>
-<a href="/shop/member/login.php?&"><img src="../../images/find_login.jpg"></a>
+              <a href="/HG/findIdForm.action"><img src="../../images/find_id.jpg"></a>
+<a href="/HG/main.action"><img src="../../images/find_login.jpg"></a>
             </li>
           </ul>
           
