@@ -5,8 +5,8 @@ import java.util.Date;
 public class setOrderVO {
 	private String b_m_id;
 	private String b_g_name;
-	private String  b_g_amount;
-	private String b_allprice;
+	private int  b_g_amount;
+	private int b_allprice;
 	private String b_g_bottle;
 	private Date b_date;
 	private int g_price;
@@ -23,16 +23,16 @@ public class setOrderVO {
 	public void setB_g_name(String b_g_name) {
 		this.b_g_name = b_g_name;
 	}
-	public String getB_g_amount() {
+	public int getB_g_amount() {
 		return b_g_amount;
 	}
-	public void setB_g_amount(String b_g_amount) {
+	public void setB_g_amount(int b_g_amount) {
 		this.b_g_amount = b_g_amount;
 	}
-	public String getB_allprice() {
+	public int getB_allprice() {
 		return b_allprice;
 	}
-	public void setB_allprice(String b_allprice) {
+	public void setB_allprice(int b_allprice) {
 		this.b_allprice = b_allprice;
 	}
 	public String getB_g_bottle() {

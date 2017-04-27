@@ -64,23 +64,13 @@ public class ordersSetAction extends ActionSupport {
 			orderInfo.add(totalPrice);
 		}else if(orderType.equals("basket")){
 			setOrderList = sqlMapper.queryForList("Basket.basketList",session_id);
-			
-			if(setOrderList!=null){
-				for(int i=0; i< setOrderList.size(); i++){
-					/*goodsresultClass=(goodsVO)sqlMapper.queryForObject("goods_selectOne", basketList.get(i).getB_g_number());
-					if(goodsresultClass!=null){
-						//goodsparamClass.setG_NAME(goodsresultClass.getG_NAME());
-						goodsparamClass.setG_price(goodsresultClass.getG_price());
-						goodsparamClass.setG_sav_image(goodsresultClass.getG_sav_image());
-					}*/
-					goodsList.add(goodsparamClass);
-					EverytotalPrice += goodsresultClass.getG_amount()*goodsresultClass.getG_price();
-		
-			}
-			}return ERROR;
-		}
-		return SUCCESS;
+	if(setOrderList!=null){
+				for(int i=0; i< setOrderList.size(); i++)
+					EverytotalPrice += setOrderList.get(i).getB_allprice();	
+		}else return ERROR;
+		}return SUCCESS;
 	}
+		
 	public HttpServletResponse getResponse() {
 		return response;
 	}
