@@ -46,7 +46,7 @@
 								</table>
 </form>							<div style="width: 1100px; margin: 0 auto; ">
 									<div class="wBtn clear" style="float: left; width: 120px;" onclick="javascript:window.location.href='noticeModifyForm.action?n_number=<s:property value="resultClass.n_number"/>&currentPage=<s:property value="currentPage"/>'"><span>수정하기</span></div>
-									<div class="wBtn clear" style="float: right; width: 120px;" onclick="location.href='javascript:history.go(-1)'"><span>목록가기</span></div>
+									<div class="wBtn clear" style="float: right; width: 120px;" onclick="javascript:window.location.href='noticeList.action?currentPage=<s:property value="currentPage"/>'"><span>목록가기</span></div>
 								</div>
 </td>
 </tr>
