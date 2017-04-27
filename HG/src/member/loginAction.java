@@ -18,14 +18,6 @@ public class loginAction extends ActionSupport implements SessionAware{
 	private memberVO resultClass;
 	private int M_ADMIN;
 	
-	/*public String index() throws Exception{
-
-
-		if(session.get("session_id")==null)
-			return LOGIN;
-		else
-			return SUCCESS;
-	}*/
 	public loginAction() throws Exception{
 		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
@@ -45,7 +37,7 @@ public class loginAction extends ActionSupport implements SessionAware{
 			session.put("session_id", resultClass.getM_id());
 			session.put("session_name", resultClass.getM_name());
 			session.put("session_admin", resultClass.getM_admin());
-			/*session.put("session_point" , resultClass.getM_point());*/
+			session.put("session_point" , resultClass.getM_point());
 
 			return SUCCESS;
 		}
@@ -56,7 +48,7 @@ public class loginAction extends ActionSupport implements SessionAware{
 			session.remove("session_id");
 			session.remove("session_name");
 			session.remove("session_admin");
-			/*session.remove("session_point");*/
+			session.remove("session_point");
 			
 		}
 		return SUCCESS;

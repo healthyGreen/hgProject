@@ -43,7 +43,7 @@ public class myInfoViewAction extends ActionSupport{
 			   return LOGIN;  // 아이디 없을 때 로그인으로 돌아가라
 		   }
 		   m_id = (String)session.get("session_id");
-		   resultClass = (memberVO)sqlMapper.queryForObject("selectOneMember", m_id);
+		   resultClass = (memberVO)sqlMapper.queryForObject("Member.selectOneMember", m_id);
 		   return SUCCESS;
 	   }
 	   // 개인정보 조회 폼 보여주는 처리

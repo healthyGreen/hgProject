@@ -203,8 +203,8 @@ scrollbar-arrow-color: #838383;
     <tr>
         <td class=memberCols1><font color=FF6000>*</font> 성별</td>
         <td class=memberCols2><span class=noline>
-        <input type=radio name=M_sex required fld_esssential label="성별" value="m" checked> 남자
-        <input type=radio name=M_sex required fld_esssential label="성별" value="w" > 여자
+        <input type=radio name=M_sex required fld_esssential label="성별" value="남자" checked> 남자
+        <input type=radio name=M_sex required fld_esssential label="성별" value="여자" > 여자
         </span></td>
     </tr>
     
