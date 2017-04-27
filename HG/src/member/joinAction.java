@@ -51,6 +51,11 @@ public class joinAction extends ActionSupport{
 		paramClass = new memberVO();
 		resultClass = new memberVO();
 		paramClass.setM_id(getM_id());
+		resultClass=(memberVO)sqlMapper.queryForObject("Member.selectOneMember", paramClass.getM_id());
+		if(resultClass != null){
+			return ERROR;
+		}else{
+		
 		paramClass.setM_pass(getM_pass());
 		paramClass.setM_name(getM_name());
 		paramClass.setM_sex(getM_sex());
@@ -69,7 +74,7 @@ public class joinAction extends ActionSupport{
 		sqlMapper.insert("Member.insertMember", paramClass);
 				
 			return SUCCESS;
-				
+		}
 		
 	}
 	// 회원가입 후 가입 성공 페이지 띄우는 처리

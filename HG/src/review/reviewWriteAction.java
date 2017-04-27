@@ -6,12 +6,14 @@ import java.io.Reader;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 
@@ -31,7 +33,7 @@ public class reviewWriteAction extends ActionSupport{
    private String rv_pass;
    private String rv_name;
    Calendar rv_date = Calendar.getInstance();
-   private String rv_score;
+  // private String rv_score;
    private int rv_ref;
    private int rv_ref_step;
    private int rv_ref_level;
@@ -40,7 +42,7 @@ public class reviewWriteAction extends ActionSupport{
    private String uploadContentType;
    private String uploadFileName;
    private String FileUploadPath = "C:\\Java\\upload\\";
-   
+   public Calendar today = Calendar.getInstance();
    private boolean reply = false;
    
    public reviewWriteAction() throws IOException {
@@ -58,6 +60,9 @@ public class reviewWriteAction extends ActionSupport{
    public String execute() throws SQLException, IOException{
       paramClass = new reviewVO();
       resultClass = new reviewVO();
+      ActionContext context = ActionContext.getContext();
+		Map<String, Object> session = context.getSession();
+		String session_id = (String) session.get("session_id");
       
       if(rv_ref==0){
          paramClass.setRv_ref_level(0);
@@ -70,12 +75,14 @@ public class reviewWriteAction extends ActionSupport{
          paramClass.setRv_ref_level(getRv_ref_level()+1);
          paramClass.setRv_ref(getRv_ref());
       }
+      paramClass.setRv_m_id(session_id);
+      paramClass.setRv_date(today.getTime());
       paramClass.setRv_title(getRv_title());
       paramClass.setRv_content(getRv_content());
       paramClass.setRv_pass(getRv_pass());
       paramClass.setRv_name(getRv_name());
       paramClass.setRv_date(rv_date.getTime());
-      paramClass.setRv_score(getRv_score());
+      paramClass.setRv_score("0");
       
       if(rv_ref==0)
          sqlMapper.insert("Board.insertReview", paramClass);
@@ -95,7 +102,7 @@ public class reviewWriteAction extends ActionSupport{
          paramClass.setRv_org_image(getUploadFileName());
          paramClass.setRv_sav_image(fileName+"."+fileExt);
          
-         sqlMapper.update("Board.updateFile",paramClass);
+         sqlMapper.update("Board.updateRvFile",paramClass);
       }
       return SUCCESS;
    }
@@ -165,12 +172,12 @@ public class reviewWriteAction extends ActionSupport{
    public void setRv_date(Calendar rv_date) {
       this.rv_date = rv_date;
    }
-   public String getRv_score() {
+ /*  public String getRv_score() {
       return rv_score;
    }
    public void setRv_score(String rv_score) {
       this.rv_score = rv_score;
-   }
+   }*/
    public int getRv_ref() {
       return rv_ref;
    }

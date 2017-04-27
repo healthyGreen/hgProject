@@ -18,16 +18,15 @@
       <result property="g_sav_image" column="g_sav_image"/>
       <result property="g_price" column="g_price"/>
       <result property="g_ingr" column="g_ingr"/>
-      <result property="g_hit" column="g_hit"/>
       <result property="g_category" column="g_category"/>
       <result property="g_amount" column="g_amount"/>
       <result property="g_bottle" column="g_bottle"/>
    </resultMap>
    
    <resultMap id="replyRes" class="reply">
-   <result property="rp_number" column="rp_number"/>
-   <result property="rp_m_id" column="rp_m_id"/>
-   <result property="rp_content" column="rp_content"/>
+  	<result property="rp_number" column="rp_number"/>
+  	<result property="rp_m_id" column="rp_m_id"/>
+   	<result property="rp_content" column="rp_content"/>
    <result property="rp_date" column="rp_date"/>
    <result property="rp_ref" column="rp_ref"/>
    <result property="rp_ref_step" column="rp_ref_step"/>
@@ -57,7 +56,8 @@
    <!-- 상품 카테고리 -->
    <select id="g_Category" resultMap="goodsRes" parameterClass="goods">
    SELECT * FROM GOODS
-   WHERE g_category = #g_category# ORDER BY g_number DESC
+   WHERE g_category = #g_category#
+   ORDER BY g_number DESC
    </select>
    <!-- 상품 상세보기 -->
    <select id="g_view" resultMap="goodsRes" parameterClass="int">
@@ -89,7 +89,7 @@
    </delete>
    
    <!-- 댓글 삭제 -->
-   <delete id="g_deleteReply" parameterClass="reply">
+   <delete id="g_deleteReply" parameterClass="goods">
    DELETE * FROM REPLY
    WHERE G_NUMBER=#g_number#
    </delete>
@@ -97,18 +97,18 @@
    <!-- 상품 등록 -->
    <insert id="g_write" parameterClass="goods">
    INSERT INTO GOODS (g_number, g_name, g_content, g_info, g_price, g_ingr,
-   g_hit, g_category, g_amount, g_bottle)
+   g_category, g_amount, g_bottle)
    VALUES (G_NUMBER_SEQ.NEXTVAL, #g_name#, #g_content#, #g_info#, #g_price#, #g_ingr#, 
-   #g_hit#, #g_category#, #g_amount#, #g_bottle#)
+    #g_category#, #g_amount#, #g_bottle#)
    </insert>
    
    <!-- 상품 파일 업로드 -->
 <!--    <insert id="g_upload" parameterClass="goods">
    update goods set 
    INSERT INTO GOODS (g_number, g_name, g_content, g_info, g_org_image, g_sav_image, g_price, g_ingr,
-   g_hit, g_category, g_amount, g_bottle)
+    g_category, g_amount, g_bottle)
    VALUES (G_NUMBER_SEQ.NEXTVAL, #name#, #content#, #info#, #g_org_image#, #g_sav_image#, #price#, #ingr#, 
-   #hit#, #category#, #amount#, #bottle#)
+    #category#, #amount#, #bottle#)
    </insert>  -->
    
    <update id="g_upload" parameterClass="goods">
@@ -119,13 +119,13 @@
    <!-- 댓글 -->
    <insert id="g_insertReply" parameterClass="reply">
    INSERT INTO REPLY (rp_number, rp_m_id, rp_content, rp_date, rp_ref, rp_ref_step, rp_ref_level)
-   VALUES (rp_number_seq.NEXVAL, #id#, #content#, #date#, #ref#, #ref_step#, #ref_level#)
+   VALUES (rp_number_seq.NEXVAL, #rp_m_id#, #rp_content#, #rp_date#, #rp_ref#, #rp_ref_step#, #rp_ref_level#)
    </insert>
    
    <select id="g_selectReply" resultClass="reply">
       select * from reply order by rp_number desc
    </select>
-<select id="reply_passCheck" parameterClass="reply" resultClass="reply">
+	<select id="reply_passCheck" parameterClass="reply" resultClass="reply">
          select*from reply where rp_number=#rp_number# and rp_pass=#rp_pass#
    </select>
   
