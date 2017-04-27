@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
 
@@ -36,16 +39,23 @@
 	<div id="header">
 		<div class="top">
 			<div class="area">
-				<ul class="clear">
-					<li><a href="/HG/logInForm.action">로그인</a></li>
-					<li><a href="/HG/joinCheck.action">회원가입</a></li>
-					<li><a href="">고객센터</a></li>
-					<li><a href="">장바구니</a></li>
-
-				</ul>
-			</div><!--// area -->
+        
+            <ul class="clear">
+                  <c:if test="${session.session_id != null }">
+                  	<li><a href="logout.action">로그아웃</a></li>
+               		<li><a href="">마이헬시</a></li>
+               		<li><a href="">고객센터</a></li>
+               		<li><a href="">장바구니</a></li>
+               	 </c:if>
+             	<c:if test="${session.session_id == null }">
+                   	<li><a href="/HG/logInForm.action">로그인</a></li>
+               		<li><a href="/HG/joinCheck.action">회원가입</a></li>
+               		<li><a href="">고객센터</a></li>
+               		<li><a href="">장바구니</a></li>
+               	</c:if>
+            </ul>
+         </div><!--// area -->
 		</div><!--// top -->
-
 		<div class="mid">
 			<div class="search">
 				<!-- 검색 시작----------------------------------->

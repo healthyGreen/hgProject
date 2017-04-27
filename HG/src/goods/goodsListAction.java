@@ -43,19 +43,27 @@ public class goodsListAction extends ActionSupport {
    }
 
    public String category() throws Exception {
+	   
+	  System.out.println("111111111");
       ActionContext context = ActionContext.getContext();
       Map<String, Object> session = context.getSession();
-      String sessionid = (String) session.get("id");
+      String sessionid = (String) session.get("session_id");
+      
+      System.out.println("sessionid:"+sessionid);
+     
       memresultClass = (memberVO) sqlMapper.queryForObject("Member.UserCheck", sessionid);
 
       goods_paramClass = new goodsVO();
       goods_paramClass.setG_category(getGoods_category());
       list = sqlMapper.queryForList("g_Category", goods_paramClass);
-      totalCount = list.size();
-
-      page = new goodsPageAction(currentPage, totalCount, blockCount, blockPage, g_category, "");
+     totalCount = list.size();
+     	
+      page = new goodsPageAction(currentPage, totalCount, blockCount, blockPage, searchNum, "");
       pagingHtml = page.getPagingHtml().toString();
-
+      
+      System.out.println("page :"+page);
+      System.out.println("pagingHtml :"+pagingHtml);
+      
       int lastCount = totalCount;
       if (page.getEndCount() < totalCount)
          lastCount = page.getEndCount() + 1;
@@ -83,7 +91,7 @@ public class goodsListAction extends ActionSupport {
       list = sqlMapper.queryForList("g_list_selectAll");
 
       totalCount = list.size();
-      page = new goodsPageAction(currentPage, totalCount, blockCount, blockPage, num, blockCount, "");
+      page = new goodsPageAction(currentPage, totalCount, blockCount, blockPage, searchNum, "");
       pagingHtml = page.getPagingHtml().toString();
 
       int lastCount = totalCount;
@@ -107,8 +115,7 @@ public class goodsListAction extends ActionSupport {
       }
 
       totalCount = list.size();
-      page = new goodsPageAction(currentPage, totalCount, blockCount, blockPage, searchNum, blockCount,
-            getSearchKeyword());
+      page = new goodsPageAction(currentPage, totalCount, blockCount, blockPage, searchNum, getSearchKeyword());
       pagingHtml = page.getPagingHtml().toString();
 
       int lastCount = totalCount;
