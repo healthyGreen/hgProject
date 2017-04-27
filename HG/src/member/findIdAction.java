@@ -31,6 +31,9 @@ public class findIdAction extends ActionSupport{
 		paramClass.setM_name(getM_name());
 		paramClass.setM_phone(getM_phone());
 		resultClass = (memberVO)sqlMapper.queryForObject("Member.findId", paramClass);
+		if(resultClass==null){
+			return ERROR;
+		}
 		return SUCCESS;
 
 	}

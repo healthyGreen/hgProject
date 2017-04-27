@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-    <%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-당신의 아이디는 ${ resultClass.m_id } 입니다.
+에러페이지입니다.
 </body>
 </html>
