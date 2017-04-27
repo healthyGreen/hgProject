@@ -4,39 +4,173 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-	<package name="main" extends="struts-default, tiles-default">
-		<action name="main" class="main.mainAction">
-			<result type="tiles">main</result>
-		</action>
-	</package>
-	<package name="review" extends="struts-default, tiles-default">
-		<action name="reviewWriteForm" class="review.reviewWriteAction" method="form">
-			<result type="tiles">reviewForm</result>
-		</action>
-		<action name="reviewWritePro" class="review.reviewWriteAction">
-			<result name="success">reviewList</result>
-		</action>
-		<action name="reviewList" class="review.reviewListAction">
-			<result type="tiles">reviewList</result>
-		</action>
-		<action name="reviewView" class="review.reviewViewAction">
-			<result type="tiles">reviewView</result>
-		</action>
-		<action name="reviewCheckPassForm" class="review.reviewCheckPassAction" method="form">
-			<result type="tiles">reviewPass</result>
-		</action>
-		<action name="reviewCheckPassPro" class="review.reviewCheckPassAction" method="execute">
-			<result name="error">/review/passError.jsp</result>
-			<result name="success">/review/passForRpSuccess.jsp</result>
-		</action>
-		<action name="reviewModifyForm" class="review.reviewModifyAction" method="form">
-			<result type="tiles">reviewModify</result>
-		</action>
-		<action name="reviewModifyPro" class="review.reviewModifyAction">
-			<result name="success">reviewView</result>
-		</action>
-		<action name="reviewDelete" class="review.reviewDeleteAction">
-			<result name="success">reviewList</result>
-		</action>
-	</package>
+   <package name="main" extends="struts-default, tiles-default">
+      <action name="main" class="main.mainAction">
+         <result type="tiles">main</result>
+      </action>
+   </package>
+   <package name="review" extends="struts-default, tiles-default">
+      <action name="reviewWriteForm" class="review.reviewWriteAction" method="form">
+         <result type="tiles">reviewWrite</result>
+      </action>
+      <action name="reviewWritePro" class="review.reviewWriteAction">
+         <result name="redirect-action"><param name="actionName">reviewList</param>></result>
+      </action>
+      <action name="reviewList" class="review.reviewListAction">
+         <result type="tiles">reviewList</result>
+      </action>
+      <action name="reviewView" class="review.reviewViewAction">
+         <result type="tiles">reviewView</result>
+      </action>
+      <action name="reviewCheckPassForm" class="review.reviewCheckPassAction" method="form">
+         <result type="tiles">reviewPass</result>
+      </action>
+      <action name="reviewCheckPassPro" class="review.reviewCheckPassAction" method="execute">
+         <result name="success">/template/board/review/passForRpSuccess.jsp</result>
+      </action>
+      <action name="reviewModifyForm" class="review.reviewViewAction">
+         <result type="chain">reviewWriteForm</result>
+      </action>
+      <action name="reviewModifyPro" class="review.reviewModifyAction">
+         <result name="redirect-action"><param name="actionName">reviewView</param></result>
+      </action>
+      <action name="reviewDelete" class="review.reviewDeleteAction">
+         <result name="redirect-action"><param name="actionName">reviewList</param></result>
+      </action>
+   </package>
+   
+   <package name="member" extends="struts-default, tiles-default">
+      <action name="findIdForm" class="member.findIdAction" method="form">
+         <result type="tiles">findId</result>
+      </action>
+      <action name="findIdPro" class="member.findIdAction" method="execute">
+         <result name="success" type="chain">findIdResult</result>
+      </action>
+      <action name="findIdResult" class="member.findIdAction" method="idResult">
+         <result type="tiles">idResult</result>
+      </action>
+      <action name="findPassForm" class="member.findPwAction" method="form">
+         <result type="tiles">findPw</result>
+      </action>
+      <action name="findPassPro" class="member.findPwAction" method="execute">
+         <result type="redirect-action">
+         <param name="actionName">findPassResult</param>
+         </result>
+      </action>
+      <action name="findPassResult" class="member.findPwAction" method="pwResult">
+         <result type="tiles">pwResult</result>
+      </action>
+      <action name="idCheck" class="member.idCheckAction">
+         <result name="success">/template/member/idCheck.jsp</result>
+      </action>
+      <action name="joinForm" class="member.joinAction" method="form">
+         <result type="tiles">joinForm</result>
+      </action>
+      <action name="joinPro" class="member.joinAction" method="execute">
+         <result type="redirect-action">
+         <param name="actionName">joinOK</param>
+         </result>
+      </action>
+      <action name="joinOK" class="member.joinAction" method="joinOK">
+         <result type="tiles">joinOK</result>
+      </action>
+      <action name="joinCheck" class="member.joinAction" method="joinCheck">
+         <result type="tiles">joinCheck</result>
+      </action>
+      <action name="logInForm" class="member.loginAction" method="form">
+         <result type="tiles">loginForm</result>
+      </action>
+      <action name="logInPro" class="member.loginAction" method="execute">
+         <result name="success" type="redirect-action">
+         <param name="actionName">main</param>
+         </result>
+         <result name="error" type="tiles">loginForm</result>
+      </action>
+      <action name="logout" class="member.loginAction" method="logout">
+         <result type="redirect-action">
+         <param name="actionName">main</param>
+         </result>
+      </action>
+   </package>
+   
+   <package name="basket" extends="struts-default, tiles-default">
+      <action name="basketInput" class="basket.basketInputAction">
+         <result type="tiles">basketInput</result>
+      </action>
+      <action name="basketList" class="basket.basketListAction">
+         <result type="tiles">basketList</result>
+      </action>
+      <action name="basketModify" class="basket.basketModifyAction">
+         <result type="tiles">basketList</result>
+      </action>
+      <action name="basketDelete" class="basket.basketDeleteAction">
+         <result type="tiles">basketList</result>
+      </action>
+   </package>
+   
+   <package name="mypage" extends="struts-default, tiles-default">
+      <action name="existForm" class="myPage.existAction" method="form">
+         <result name="success" type="tiles">existWarning</result>
+         <result name="error">/template/mypage/passError.jsp</result>
+      </action>
+      <action name="existPro" class="myPage.existAction" method="execute">
+         <result type="redirect-action">
+         <param name="actionName">main</param>
+         </result>
+      </action>
+      <action name="existPassForm" class="myPage.existAction" method="checkForm">
+         <result type="tiles">infoPassForm</result>
+      </action>
+      <action name="myInfoModifyForm" class="myPage.myInfoModifyAction" method="form">
+         <result name="success" type="tiles">infoModifyForm</result>
+         <result name="error">/template/mypage/passError.jsp</result>
+      </action>
+      <action name="modifyPassForm" class="myPage.myInfoModifyAction" method="checkForm">
+         <result type="tiles">infoPassForm</result>
+      </action>
+      <action name="myInfoModifyPro" class="myPage.myInfoModifyAction" method="execute">
+         <result name="login" type="redirect-action">
+         <param name="actionName">logInForm</param>
+         </result>
+         <result name="success" type="redirect-action">
+         <param name="actionName">myInfoView</param>
+         </result>
+      </action>
+      <action name="myInfoView" class="myPage.myInfoViewAction" method="execute">
+         <result name="login" type="redirect-action">
+         <param name="actionName">logInForm</param>
+         </result>
+         <result name="success" type="chain">infoView</result>
+      </action>
+      <action name="infoView" class="myPage.myInfoModifyAction" method="infoView">
+         <result name="success" type="tiles">infoView</result>
+      </action>
+      
+   </package>
+   <package name="notice" extends="struts-default, tiles-default">
+      <action name="noticeForm" class="notice.noticeWriteAction" method="form">
+         <result type="tiles">noticeForm</result>
+      </action>
+      <action name="noticePro" class="notice.noticeWriteAction" >
+         <result name="success" type="chain">noticeList</result>
+      </action>
+      <action name="noticeList" class="notice.noticeListAction">
+         <result type="tiles">noticeList</result>
+      </action>
+      <action name="noticeView" class="notice.noticeViewAction">
+         <result type="tiles">noticeView</result>
+      </action>
+      <action name="noticeModifyForm" class="notice.noticeModifyAction" method="form">
+         <result type="tiles">noticeModify</result>
+      </action>
+      <action name="noticeModifyPro" class="notice.noticeModifyAction" method="execute">
+         <result name="success" type="chain">noticeView</result>
+      </action>
+      <action name="noticeDelete" class="notice.noticeDeleteAction">
+         <result name="success">noticeList</result>
+      </action>
+      
+   </package>
+   
+   
 </struts>

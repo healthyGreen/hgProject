@@ -29,7 +29,7 @@ public class noticeWriteAction extends ActionSupport{
 	
 	private List<noticeVO> noticeList = new ArrayList<noticeVO>();
 	
-	private int n_currentPage;
+	private int currentPage;
 	
 	private int n_number;
 	private String n_title;
@@ -137,11 +137,11 @@ public class noticeWriteAction extends ActionSupport{
 	}
 
 	public int getN_currentPage() {
-		return n_currentPage;
+		return currentPage;
 	}
 
 	public void setN_currentPage(int n_currentPage) {
-		this.n_currentPage = n_currentPage;
+		this.currentPage = currentPage;
 	}
 
 	public int getN_number() {

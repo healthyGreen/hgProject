@@ -10,23 +10,6 @@
 
 <td valign=top width=100%  bgcolor="" background="" class=outline_side>
 
-<script language="javascript">
-function goIDCheckIpin()
-{
-	var fm ;
-	fm = document.getElementById("form");
-	var popupWindow = window.open( "", "popupCertKey", "width=450, height=550, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no" );
-	return;
-}
-
-function gohpauthDream(){ //휴대폰본인인증
-	var protocol = location.protocol;
-	var callbackUrl = "https://www.wondergreen.kr:14035/shop/member/hpauthDream/hpauthDream_Result.php";
-	ifrmHpauth.location.href=protocol+"//hpauthdream.godo.co.kr/module/NEW_hpauthDream_Main.php?callType=findpwd&shopUrl="+callbackUrl+"&cpid=godowond";
-	return;
-}
-</script>
-
 <!-- 상단이미지 || 현재위치 -->
 <div class="sub_tit">
   <div class="tit">비밀번호 찾기<span>/ FIND PASSWORD</span></div>
@@ -48,22 +31,23 @@ function gohpauthDream(){ //휴대폰본인인증
 
 <div class="indiv"><!-- Start indiv -->
 
-<form method=post name=fm action="" >
+<form method=post name=fm action="findPassPro.action" >
 
 
 <div class="findbox">
           <ul>
             <li><span>아이디</span>
-             <input name="M_id" type="text" size="29" required label="아이디" tabindex=1 class="fm">
+             <input name="m_id" type="text" size="29" required label="아이디" tabindex=1 class="fm">
             </li>
             <li><span>이름</span>
-             <input name="M_name" type="text" size="29" required label="이름" tabindex=2 class="fm">
+             <input name="m_name" type="text" size="29" required label="이름" tabindex=2 class="fm">
             </li>
-            <li><span>이메일</span>
-             <input name="M_phone" type="text" size="29" required label="휴대폰번호" tabindex=5 class="fm">
+            <li><span>휴대폰번호</span>
+             <input name="m_phone" type="text" size="29" required label="휴대폰번호" tabindex=5 class="fm">
             </li>
             <li><span></span>
-              <input type=image src="../../images/find_scbtn.jpg" tabindex=6>
+            <a href="/HG/findPassPro.action">
+              <input type=image src="../../images/find_scbtn.jpg" tabindex=6></a>
             </li>
        
           </ul>
