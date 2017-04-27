@@ -22,7 +22,7 @@ public class noticeViewAction extends ActionSupport{
 	
 	private noticeVO paramClass;
 	private noticeVO resultClass;
-	
+	private int currentPage;
 	private int n_number;
 
 	
@@ -81,6 +81,15 @@ public class noticeViewAction extends ActionSupport{
 	public void setN_number(int n_number) {
 		this.n_number = n_number;
 	}
+
+	public int getCurrentPage() {
+		return currentPage;
+	}
+
+	public void setCurrentPage(int currentPage) {
+		this.currentPage = currentPage;
+	}
+	
 	
 	
 	

@@ -24,7 +24,7 @@ public class noticeModifyAction extends ActionSupport {
 	private memberVO memresultClass;
 	private memberVO memparamClass;
 
-	private int currentPAge;
+	private int currentPage;
 	
 	private int n_number;
 	private String n_title;
@@ -45,51 +45,37 @@ public class noticeModifyAction extends ActionSupport {
 		paramClass= new noticeVO();
 		resultClass = new noticeVO();
 		ActionContext context = ActionContext.getContext();
-		Map<String, Object> session = context.getSession();
-		String session_id = (String) session.get("m_id");
+		//Map<String, Object> session = context.getSession();
+		/*String session_id = (String) session.get("m_id");
 		memresultClass = (memberVO) sqlMapper.queryForObject("Member.UserCheck",
-				session_id);
+				session_id);*/
 		paramClass.setN_number(getN_number());
 		resultClass = (noticeVO) sqlMapper.queryForObject("Board.selectOneNotice", n_number);
 		return SUCCESS;
 	}
 
-	public String modify() throws Exception {
+	public String execute() throws Exception {
 		memparamClass = new memberVO();
 		memresultClass = new memberVO();
-		ActionContext context = ActionContext.getContext();
+	/*	ActionContext context = ActionContext.getContext();
 		Map<String, Object> session = context.getSession();
 		String session_id = (String) session.get("m_id");
 		memresultClass = (memberVO) sqlMapper.queryForObject("Member.UserCheck",
-				session_id);
+				session_id);*/
 
 		paramClass= new noticeVO();
 		resultClass = new noticeVO();
 
 		paramClass.setN_number(getN_number());
 		// resultClass=(noticeVO) sqlMapper.queryForObject("boardView",no);
-		paramClass.setN_name(getN_name());
+		//paramClass.setN_name(getN_name());
 		paramClass.setN_title(getN_title());
 		paramClass.setN_content(getN_content());
 		sqlMapper.update("Board.updateNotice", paramClass);
 
 		
-		resultClass = (noticeVO) sqlMapper.queryForObject("Board.selectOneNotice", getN_number());
+		//resultClass = (noticeVO) sqlMapper.queryForObject("Board.selectOneNotice", n_number);
 		return SUCCESS;
-	}
-	
-	public String execute() throws SQLException, IOException{
-		paramClass.setN_number(getN_number());
-		paramClass.setN_title(getN_title());
-		paramClass.setN_name(getN_name());
-		paramClass.setN_content(getN_content());
-		
-		sqlMapper.update("Board.updateNotice", paramClass);
-		
-		resultClass=(noticeVO)sqlMapper.queryForObject("Board.selectOneNotice", n_number);
-		return SUCCESS;
-
-		
 	}
 
 	public static Reader getReader() {
@@ -124,13 +110,17 @@ public class noticeModifyAction extends ActionSupport {
 		this.resultClass = resultClass;
 	}
 
-	public int getCurrentPAge() {
-		return currentPAge;
+	
+
+	public int getCurrentPage() {
+		return currentPage;
 	}
 
-	public void setCurrentPAge(int currentPAge) {
-		this.currentPAge = currentPAge;
+
+	public void setCurrentPage(int currentPage) {
+		this.currentPage = currentPage;
 	}
+
 
 	public int getN_number() {
 		return n_number;

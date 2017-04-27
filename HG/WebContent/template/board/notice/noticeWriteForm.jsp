@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <script>
-	function noticecheck() {
+	function noticecheck(noticeWrite) {
 		if (!document.noticeWrite.n_name.value) {
 			alert("작성자를 입력하세요");
 			document.boardWrite.n_name.focus();
@@ -30,7 +30,9 @@
 	</div>
 
 <s:if test="resultClass.getN_number() != null">
-	<form name="noticeWrite" method="post" enctype="multipart/form-data" onsubmit="return noticecheck()" action="noticeModifyPro.action?no=<s:property value="resultClass.getN_number()"/>">
+	<form name="noticeWrite" method="post" enctype="multipart/form-data" onsubmit="return noticecheck()" 
+	action="noticeModifyPro.action?n_number=<s:property value="resultClass.getN_number()"/>&
+	currentPage=<s:property value="resultClass.getCurrentPage()"/>">
 		<table width="100%" class="board-type03" style="width:1100px;margin:0 auto ;">
 					<colgroup>
 						<col width="" />
@@ -51,7 +53,7 @@
 								작성자
 							</th>
 							<td>
-								<div><input type="text" class="input1 write-box" name="n_name" value="<s:property value="resultClass.n_name"/>"/></div>
+								<div><s:property value="resultClass.n_name"/></div>
 							</td>
 						</tr>
 						
@@ -61,7 +63,7 @@
 							</th>
 							<td>
 								<div class="input3">
-									<textarea name="" id="" cols="30" rows="10" width="100%; "><s:property value="resultClass.n_content" /></textarea>
+									<textarea name="n_content" cols="30" rows="10" width="100%; "><s:property value="resultClass.n_content" /></textarea>
 								</div>
 							</td>
 						</tr>
@@ -103,7 +105,7 @@
 							</th>
 							<td>
 								<div class="input3">
-									<textarea name="n_content" id="" cols="30" rows="10" width="100%; " ></textarea>
+									<textarea name="n_content" id="" cols="30" rows="10" width="100%;" ></textarea>
 								</div>
 							</td>
 						</tr>

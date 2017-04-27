@@ -22,7 +22,19 @@ scrollbar-arrow-color: #838383;
 }
 #boxScroll{width:96%; height:130px; overflow: auto; BACKGROUND: #ffffff; COLOR: #585858; font:9pt 돋움;border:1px #dddddd solid; overflow-x:hidden;text-align:left;margin-left:10px;}
 </style>
-
+<script language="javascript">
+function checkForm(){
+	if(!joinCheck.agree1[0].checked){
+		alert("이용약관  동의하셔야 됩니다");
+		form1.agree1[0].focus();
+	}else if(!joinCheck.agree2[0].checked){
+		alert("개인정보 수집 동의하셔야 됩니다");
+		joinCheck.agree2[0].focus();
+	}else{	
+		joinCheck.submit();
+	}
+	}
+</script>
 
 <!-- 상단이미지 || 현재위치 -->
 <div class="sub_tit">
@@ -30,9 +42,8 @@ scrollbar-arrow-color: #838383;
   <div class="local">홈 > 회원가입 > <span>이용약관</span></div>
 </div>
 
-
+<form name="joinCheck" action="joinForm.action">
 <div class="indiv"><!-- Start indiv -->
-
 
 
 <!-- 이용약관 -->
@@ -247,8 +258,8 @@ scrollbar-arrow-color: #838383;
 
 부칙 (시행일) 이 약관은 2016년 12월 12일부터 적용됩니다.</textarea>
 <div align=center class=noline style="height:30;margin-top:10px;" >
-<input type="radio" name="agree" value="y"> 동의합니다 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="radio" name="agree" value="n"> 동의하지 않습니다
+<input type="radio" name="agree1" value="yes"> 동의합니다 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="agree1" value="no"> 동의하지 않습니다
 </div>
 </div>
 <p>
@@ -322,39 +333,23 @@ scrollbar-arrow-color: #838383;
 종이에 출력된 개인정보는 분쇄기로 분쇄하거나 소각을 통하여 파기합니다. 전자적 파일 형태로 저장된 개인정보는 기록을 재생할 수 없는 기술적 방법을 사용하여 삭제합니다.
 </div>
 <div align=center class=noline style="height:30;margin-top:10px;" >
-<input type="radio" name="private1" value="y"> 동의합니다 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="radio" name="private1" value="n"> 동의하지 않습니다
+<input type="radio" name="agree2" value="yes"> 동의합니다 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="agree2" value="no"> 동의하지 않습니다
 </div>
 </div>
 <p>
-
-<!-- 본인확인 인증수단 -->
-
-
-
- <script language="javascript">
-	function validate(fm)
-	{
-		if (chkRadioSelect(fm,'agree','y','[회원가입 이용약관]에 동의를 하셔야 회원가입이 가능합니다.') === false) return false;
-		if (chkRadioSelect(fm,'private1','y','[개인정보취급방침]에 동의를 하셔야 회원가입이 가능합니다.') === false) return false;
-
-
-		return true;
-	}
-
-</script>
 
 
 
 
 <!-- 하단버튼 -->
 <div align=center style="padding:50px 0 20px 0" class=noline>
-<a href="javascript:checkSubmit();"><img src="../../images/btn_join.gif"></a>
+<span onclick="return checkForm()"><img src="../../images/btn_join.gif"></span>
 <a href="javascript:history.back()"><img src="../../images/btn_back.gif" border=0></a>
 </div>
+</form>
 
 
-</div><!-- End indiv -->
 
 
 
@@ -373,4 +368,4 @@ scrollbar-arrow-color: #838383;
 </td>
 </tr>
 <tr>
-  <td> l>
+  <td>
