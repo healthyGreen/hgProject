@@ -19,6 +19,7 @@ public class ordersVO {
 	private int o_g_number;
 	private int o_g_amount;
 	private String o_g_bottle;
+	private String o_orderType;
 	public int getO_number() {
 		return o_number;
 	}
@@ -109,6 +110,13 @@ public class ordersVO {
 	public void setO_g_bottle(String o_g_bottle) {
 		this.o_g_bottle = o_g_bottle;
 	}
+	public String getO_orderType() {
+		return o_orderType;
+	}
+	public void setO_orderType(String o_orderType) {
+		this.o_orderType = o_orderType;
+	}
+	
 	
 	
 }

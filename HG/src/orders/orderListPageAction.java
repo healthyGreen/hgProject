@@ -1,16 +1,17 @@
-/*package orders;
+package orders;
 
 public class orderListPageAction {
-	private int currentPage;// 현재 페이지
-	private int totalCount; // 전체 게시물 수
-	private int totalPage;// 전체 페이지 수
-	private int blockCount;// 한 페이지의 게시물의 수
+	 private int currentPage=1;// 현재 페이지
+	 private int totalCount; // 전체 게시물 수
+	 private int totalPage;// 전체 페이지 수
+	 private int blockCount;// 한 페이지의 게시물의 수
 	private int blockPage; // 한 화면에 보여줄 페이지 수
 	private int startCount;// 한 페이지에서 보여줄 게시글의 시작 번호
 	private int endCount;// 한 페이지에서 보여줄 게시글의 끝 번호
 	private int startPage; // 시작 페이지
 	private int endPage;// 마지막 페이지
 	private StringBuffer pagingHtml;
+
 
 	// 페이징 생성자
 	public orderListPageAction(int currentPage, int totalCount, int blockCount,
@@ -44,7 +45,8 @@ public class orderListPageAction {
 		if (currentPage > blockPage) {
 			pagingHtml.append("<a href=buyList.action?currentPage="
 					+ (startPage - 1) + ">");
-			pagingHtml.append("<img src="+"images/basket/prew.png"+">");
+			//pagingHtml.append("<img src="+"images/basket/prew.png"+">");
+			pagingHtml.append("[이전]");
 			pagingHtml.append("</a>");
 		}
 		pagingHtml.append("&nbsp;&nbsp;");
@@ -74,7 +76,7 @@ public class orderListPageAction {
 			pagingHtml.append("<a href='buyList.action?currentPage="
 					+ (endPage + 1));
 			pagingHtml.append("'>");
-			pagingHtml.append("<img src="+"images/basket/next.png"+">");
+			pagingHtml.append("[다음]");
 			pagingHtml.append("</a>");
 		}
 	}
@@ -160,4 +162,3 @@ public class orderListPageAction {
 	}
 
 }
-*/

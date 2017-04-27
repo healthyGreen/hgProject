@@ -54,9 +54,10 @@ public class basketInputAction extends ActionSupport{
 		basparamClass.setB_m_id(session_id);
 		basparamClass.setB_g_name(getB_g_name());
 		basparamClass.setB_g_amout(getB_g_amout());
+		basparamClass.setB_g_price(getG_price());
 		basparamClass.setB_allPrice(getB_g_amout()*getG_price());
 		basparamClass.setB_g_bottle(getB_bottle());
-		basparamClass.setB_date(getB_date());
+		basparamClass.setB_date(today.getTime());
 		basparamClass.setB_g_number(getB_g_number());  // 굳이 넣지 않아도 됩니다!!!(장바구니에 상품 번호 안뜨기 때문에)
 		sqlMapper.insert("Basket.basketInsert", basparamClass);
 		return SUCCESS;

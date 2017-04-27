@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 //import java.util.Vector;
 
@@ -41,8 +42,8 @@ public class ordersSetAction extends ActionSupport {
 	public String session_id = (String)session.getAttribute("session_id");
 	public String orderType;
 	public List orderInfo = new ArrayList();
-	public List<setOrderVO> setOrderList;
-	public List<goodsVO> goodsList; // 장바구니에서 '주문하기'버튼 클릭시 장바구니 list에서 3개 셋팅해준 값을 setter로 셋팅
+	public List<basketVO> basketList;
+	//public List<goodsVO> goodsList; // 장바구니에서 '주문하기'버튼 클릭시 장바구니 list에서 3개 셋팅해준 값을 setter로 셋팅
 	//public Vector orderVector = new Vector<>();
 	
 	public int EverytotalPrice=0;
@@ -52,6 +53,10 @@ public class ordersSetAction extends ActionSupport {
 		sqlMapper=SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
 	}
+	
+	public String form(){
+		return SUCCESS;
+	}
 	public String execute() throws SQLException{
 		if(orderType.equals("goods")){
 			orderInfo.add(g_number);
@@ -59,15 +64,15 @@ public class ordersSetAction extends ActionSupport {
 			orderInfo.add(amount);
 			orderInfo.add(bottle);
 			orderInfo.add(price);
-			orderInfo.add(image);
+			//orderInfo.add(image);
 			totalPrice = amount*price;
 			orderInfo.add(totalPrice);
 		}else if(orderType.equals("basket")){
-			setOrderList = sqlMapper.queryForList("Basket.basketList",session_id);
-	if(setOrderList!=null){
-				for(int i=0; i< setOrderList.size(); i++)
-					EverytotalPrice += setOrderList.get(i).getB_allprice();	
-		}else return ERROR;
+			basketList = sqlMapper.queryForList("Basket.basketList",session_id);
+			if(basketList!=null){
+				for(int i=0; i< basketList.size(); i++)
+					EverytotalPrice += basketList.get(i).getB_allPrice();	
+			}else return ERROR;
 		}return SUCCESS;
 	}
 		
@@ -172,12 +177,6 @@ public class ordersSetAction extends ActionSupport {
 	}
 	public void setOrderInfo(List orderInfo) {
 		this.orderInfo = orderInfo;
-	}
-	public List<goodsVO> getGoodsList() {
-		return goodsList;
-	}
-	public void setGoodsList(List<goodsVO> goodsList) {
-		this.goodsList = goodsList;
 	}
 	public int getEverytotalPrice() {
 		return EverytotalPrice;

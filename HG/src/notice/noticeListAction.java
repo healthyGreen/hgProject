@@ -20,8 +20,8 @@ public class noticeListAction extends ActionSupport{
    private static Reader reader;
    private static SqlMapClient sqlMapper;
    
-     private memberVO memresultClass;
-     private memberVO memparamClass;
+   //  private memberVO memresultClass;
+   //  private memberVO memparamClass;
      private int currentPage=1;
      private int OnePageBlock=10;
      private int pageBlocks=5;
@@ -39,16 +39,16 @@ public class noticeListAction extends ActionSupport{
       }
      
      public String execute() throws SQLException{
-        memparamClass = new memberVO();
-        memresultClass = new memberVO();
+      //  memparamClass = new memberVO();
+       // memresultClass = new memberVO();
         ActionContext context = ActionContext.getContext();
-         Map<String, Object> session = context.getSession();
-         String session_id = (String) session.get("m_id");
+       //  Map<String, Object> session = context.getSession();
+        /* String session_id = (String) session.get("session_id");
          memresultClass = (memberVO) sqlMapper.queryForObject("Member.UserCheck",
-               session_id);
+               session_id);*/
         list = sqlMapper.queryForList("Board.selectAllNotice");
         totalBlock=list.size();  
-         page = new noticePageAction(currentPage, OnePageBlock, pageBlocks, totalBlock, "", "");
+         page = new noticePageAction(currentPage, OnePageBlock, pageBlocks, totalBlock);
          list=list.subList(page.getStartBlock(),page.getEndBlock());
          pagingHtml=page.getPaginHtml().toString();
          return SUCCESS;
@@ -124,25 +124,5 @@ public class noticeListAction extends ActionSupport{
 
    public void setSession(Map session) {
       this.session = session;
-   }
-
-   public memberVO getMemresultClass() {
-      return memresultClass;
-   }
-
-   public void setMemresultClass(memberVO memresultClass) {
-      this.memresultClass = memresultClass;
-   }
-
-   public memberVO getMemparamClass() {
-      return memparamClass;
-   }
-
-   public void setMemparamClass(memberVO memparamClass) {
-      this.memparamClass = memparamClass;
-   }
-   
-   
-     
-     
+   }     
 }

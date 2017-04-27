@@ -28,6 +28,7 @@
       <result property="o_g_number" column="o_g_number"/>
       <result property="o_g_amount" column="o_amount"/>
       <result property="o_g_bottle" column="o_bottle"/>
+      <result property="o_orderType" column="o_orderType"/>
    </resultMap>
    
    <select id="order_selectOne" resultMap="orderRes">
@@ -43,8 +44,8 @@
 		desc
 	</select>
 	<insert id="insertOrder" parameterClass="order">
-		INSERT INTO ORDERS(O_NUMBER, O_M_ID, O_NAME, O_RPHONE, O_ZIPCODE,O_ADDR1,O_ADDR2,O_COMMENT,O_PAY,O_DATE,O_G_PRICE,O_ALLPRICE,O_G_NUMBER,O_AMOUNT,O_BOTTLE)VALUES
-		(O_NUMBER_SEQ.NEXTVAL,#o_m_id#,#o_name#,#o_rphone#,#o_zipcode#,#o_addr1#,#o_addr2#,#o_comment#,#o_pay#,#o_date#,#o_g_price#,#o_allprice#,#o_g_number#,#o_amount#,#o_bottle#)
+		INSERT INTO ORDERS(O_NUMBER, O_M_ID, O_NAME, O_RPHONE, O_ZIPCODE,O_ADDR1,O_ADDR2,O_COMMENT,O_PAY,O_DATE,O_G_PRICE,O_ALLPRICE,O_G_NUMBER,O_AMOUNT,O_BOTTLE,O_ORDERTYPE)VALUES
+		(O_NUMBER_SEQ.NEXTVAL,#o_m_id#,#o_name#,#o_rphone#,#o_zipcode#,#o_addr1#,#o_addr2#,#o_comment#,#o_pay#,#o_date#,#o_g_price#,#o_allprice#,#o_g_number#,#o_amount#,#o_bottle#,#o_orderType#)
 	</insert>
 	<delete id="orderDelete" parameterClass="order">
 		DELETE FROM ORDERS

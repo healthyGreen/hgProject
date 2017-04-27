@@ -13,6 +13,7 @@
 		<result property="b_allprice" column="b_allprice" />
 		<result property="b_g_bottle" column="b_g_bottle" />
 		<result property="b_date" column="b_date" />
+		<result property="b_g_price" column="b_g_price" />
 	</resultMap>
 	
 	<resultMap id="setOrderRes" class="setOrder">
@@ -27,15 +28,15 @@
 	</resultMap>
 	
 	<!-- 장바구니 리스트 -->
-	<!-- <select id="basketList" resultMap="basketRes" parameterClass="string">
+	 <select id="basketList" resultMap="basketRes" parameterClass="string">
 		SELECT * FROM BASKET WHERE B_M_ID = #B_M_ID#
 		ORDER BY B_DATE DESC
-	</select> -->
+	</select> 
 	
-	<select id="basketList" resultMap="setOrderRes" parameterClass="string">
-		SELECT b_m_id, b_g_name, b_g_amount, b_allprice, b_g_bottle, b_date, g_price, g_sav_image 
+	<!-- <select id="basketList" resultMap="setOrderRes" parameterClass="string">
+		SELECT b_m_id, b_g_name, b_g_amount, b_allprice, b_g_bottle, g_price
 		FROM BASKET, GOODS WHERE BASKET.B_M_ID=#B_M_ID# AND BASKET.B_M_NUMBER = GOODS.G_NUMBER ORDER BY B_DATE DESC
-	</select>
+	</select> -->
 	
 	<!-- 장바구니 담기 -->
 	<insert id="basketInsert" parameterClass="basket">
@@ -47,6 +48,7 @@
 		#b_g_bottle#,
 		#b_date#,
 		#b_g_number#
+		#b_g_price#
 		)
 	</insert>
 	<!-- 장바구니 수량 수정 -->

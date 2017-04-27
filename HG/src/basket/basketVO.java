@@ -4,13 +4,15 @@ import java.util.Date;
 
 public class basketVO {
    
-   private String b_m_id;;
+   private String b_m_id;
    private int b_g_number;
    private String b_g_name;
    private int b_g_amout;
    private int b_allPrice;
    private Date b_date;
    private String b_g_bottle;
+   private int b_g_price;
+   
    public String getB_m_id() {
       return b_m_id;
    }
@@ -53,6 +55,12 @@ public String getB_g_bottle() {
 public void setB_g_bottle(String b_g_bottle) {
 	this.b_g_bottle = b_g_bottle;
 }
- 
+public int getB_g_price() {
+	return b_g_price;
+}
+public void setB_g_price(int b_g_price) {
+	this.b_g_price = b_g_price;
+}
+
    
 }

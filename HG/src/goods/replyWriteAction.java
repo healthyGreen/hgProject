@@ -19,8 +19,8 @@ public class replyWriteAction extends ActionSupport {
 
 	private int currentPage;
 	private int G_NUMBER;
-	private String G_CATEGORY;
-	private String G_SAV_IMAGE;
+	//private String G_CATEGORY;
+	//private String G_SAV_IMAGE;
 	
 	private String name;
 	private String password;
@@ -62,13 +62,13 @@ public class replyWriteAction extends ActionSupport {
 		replyWriteAction.reader = reader;
 	}
 
-	public String G_SAV_IMAGE() {
+/*	public String G_SAV_IMAGE() {
 		return G_SAV_IMAGE;
 	}
 
 	public void setG_SAV_IMAGE(String goods_savimage) {
 		this.G_SAV_IMAGE = goods_savimage;
-	}
+	}*/
 
 	public static SqlMapClient getSqlMapper() {
 		return sqlMapper;
@@ -122,13 +122,13 @@ public class replyWriteAction extends ActionSupport {
 		this.G_NUMBER = goods_num;
 	}
 
-	public String getG_CATEGORY() {
+/*	public String getG_CATEGORY() {
 		return G_CATEGORY;
 	}
 
 	public void setG_CATEGORY(String goods_category) {
 		this.G_CATEGORY = goods_category;
-	}
+	}*/
 
 	public void setOriginno(int originno) {
 		this.originno = originno;
