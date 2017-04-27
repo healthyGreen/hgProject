@@ -7,6 +7,10 @@
 	//--></script>
 	<script type="text/javascript" src="js/rolling.js"></script>
 	<script type="text/javascript">
+	function goodsdelete(goods_num,currentPage){
+		document.goodsform.action="goodsDelete.action?G_NUMBER="+G_NUMBER+"&currentPage="+currentPage;
+		document.goodsform.submit();
+	}
 	$(function(){ 
 		$('#visual').rolling({ 
 			autoPlay : true, 
@@ -30,13 +34,13 @@
 				<div class="subtab">
 				  <ul>
 				 
-					<li  class="on" ><a href="?category=002001">착즙주스키트</a>
+					<li  class="on" ><a href="goodsList.action?g_category=<s:property value="g_number"/>&currentPage=<s:property value="currentPage"/>">&nbsp;&nbsp;&nbsp;<s:property value="g_name" />착즙주스키트</a>
 					</li>
 				 
-					<li ><a href="?category=002002">스무디키트</a>
+					<li ><a href="goodsList.action?g_category=">스무디키트</a>
 					</li>
 				 
-					<li ><a href="?category=002003">샐러드</a>
+					<li ><a href="goodsList.action?g_category=">샐러드</a>
 					</li>
 				  </ul>
 				</div>
@@ -74,41 +78,14 @@
 				.percent:before { position:absolute; content:''; border-left:70px solid red; border-bottom:70px solid transparent; z-index:1; }
 				.percent span { position:relative; color:#fff; font-size:18px; top:5px; left:5px; font-weight:bold; z-index:2; }
 				</style>
-				<ul class="goodsbox">
-					<li>
-						<div class="goods">
-							<div class="img"><a href=""><img src='../images/1480927871423s0.jpg' width=290 class="" /></a>
-						</div>
-						<span class="name fb"><a href="">그린메디신(warm green) 1L 기준</a></span> 
-						<span class="txt">약보다 그린 주스</span> 
-						<span class="price"><span class="b_p feb">19,800원 </span> </span>
-			 
-					</li>
-					<li>
-						<div class="goods">
-							<div class="img"><a href=""><img src='../images/1482136934800s0.jpg' width=290 class=""/></a>
-						</div>
-						<span class="name fb"><a href="">댄싱래빗(orange) 1L 기준</a></span> 
-						<span class="txt">에너지 부스터</span> 				
-						<span class="price"><span class="b_p feb">17,900원 </span> </span>
-					</li>
-					<li>
-						<div class="goods">
-							<div class="img"><a href=""><img src='../images/1482135834999s0.jpg' width=290 class="" /></a>
-						</div>
-						<span class="name fb"><a href="">원더그린(dark green) 1L 기준</a></span> 
-						<span class="txt">녹색 채소의 디톡스 파워</span> 
-						<span class="price"><span class="b_p feb">17,900원 </span> </span>
-					 </li>
-					 <li>
-						 <div class="goods">
-							<div class="img"><a href=""><img src='../images/1482135725250s0.jpg' width=290 class="" /></a>
-						 </div>
-						<span class="name fb"><a href="">하트비트(red) 1L 기준</a></span> 
-						<span class="txt">몸 속까지 깨끗하게</span> 	
-						<span class="price"><span class="b_p feb">19,800원 </span> </span>
-					 </li>
-				</ul>
+				<s:iterator value="list" status="stat">
+                        <tr>
+                           <td><s:property value="g_number"/></td>
+                           <td class="subject"><a href="goodsView.action?g_number=<s:property value="g_number"/>&currentPage=<s:property value="currentPage"/>">&nbsp;&nbsp;&nbsp;<s:property value="g_name" /></a></td>
+                           <td><s:property value="g_name"/></td>
+                           
+                        </tr>
+                     </s:iterator>
 			</td>
 		  </tr>
 		  <tr>

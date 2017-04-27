@@ -14,8 +14,8 @@ public class goodsPageAction {
 	
 	private StringBuffer pagingHtml;
 	
-	public goodsPageAction(int currentPage, int totalCount, int totalPage, int blockCount,
-			int blockPage, int searchNum, String isSearch){
+	public goodsPageAction(int currentPage, int totalCount, int blockCount, int blockPage, int searchNum, String isSearch
+			){
 		
 		this.blockCount = blockCount;
 		this.blockPage = blockPage;
@@ -93,10 +93,6 @@ public class goodsPageAction {
 	}
 	}
 
-	public goodsPageAction(int currentPage2, int totalCount2, int blockCount2, int blockPage2, String g_CATEGORY,
-			String string) {
-		// TODO Auto-generated constructor stub
-	}
 
 	public int getCurrentPage() {
 		return currentPage;
