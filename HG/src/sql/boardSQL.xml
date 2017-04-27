@@ -38,7 +38,7 @@
       <result property="rv_ref" column="rv_ref"/>
       <result property="rv_ref_step" column="rv_ref_step"/>
       <result property="rv_ref_level" column="rv_ref_level"/>
-      <result property="rv_readhit" column="rv_readhit"/>
+      <result property="rv_readhit" column="rv_readhit"/>	
    </resultMap>
    
    
@@ -120,9 +120,9 @@
   <!-- ★insert문들 ★ -->
   <insert id="insertReview" parameterClass="review">
      insert into REVIEW (RV_NUMBER, RV_M_ID, RV_TITLE, RV_CONTENT, RV_PASS, RV_NAME, RV_DATE,
-     RV_SCORE, RV_REF, RV_REF_STEP, RV_REF_LEVEL) 
-     values (RV_NUMBER_SEQ.NEXTVAL, #rv_m_id#, #rv_title#, #rv_content#, #rv_pass#, #rv_name#, #rv_date#,
-     #rv_score#, RV_NUMBER_SEQ.CURRVAL, #rv_ref_step#, #rv_ref_level#)
+     RV_SCORE, RV_REF, RV_REF_STEP, RV_REF_LEVEL, RV_READHIT) 
+     values (RV_NUMBER_SEQ.NEXTVAL, #rv_name#, #rv_title#, #rv_content#, #rv_pass#, #rv_m_id#, #rv_date#,
+     #rv_score#, RV_NUMBER_SEQ.CURRVAL, #rv_ref_step#, #rv_ref_level#, #rv_readhit#)
   </insert>
   
   <insert id="insertReviewReply">
@@ -151,7 +151,7 @@
   <update id="updateReview" parameterClass="review">
      update REVIEW set RV_TITLE=#rv_title#, RV_CONTENT=#rv_content# where RV_NUMBER=#rv_number#
   </update>
-  <update id="updateRvFile">
+  <update id="reUpdateRvFile">
      update REVIEW set RV_ORG_IMAGE = #rv_org_image#, RV_SAV_IAMGE = #rv_sav_image#
      where RV_NUMBER=#rv_number#
   </update>
@@ -161,7 +161,7 @@
   <update id="updateReplyStep" parameterClass="review">
      update REVIEW set RV_REF_STEP=RV_REF_STEP+1 where RV_REF= #rv_ref# and RV_REF_STEP > #rv_ref_step#
   </update>
-  <update id="updateFile" parameterClass="review">
+  <update id="updateRvFile" parameterClass="review">
      update REVIEW set RV_ORG_IMAGE = #rv_org_image#, RV_SAV_IMAGE = #rv_sav_image# where RV_NUMBER=#rv_number#
   </update>
   

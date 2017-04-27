@@ -28,7 +28,7 @@ public class reviewModifyAction extends ActionSupport{
    private String uploadContentType;
    private String uploadFileName;
    private String fileUploadPath = "C:\\Java\\upload\\";
-   
+   private String rv_old_file;
    public reviewModifyAction() throws IOException {
       reader=Resources.getResourceAsReader("sqlMapConfig.xml");
       sqlMapper=SqlMapClientBuilder.buildSqlMapClient(reader);
@@ -40,16 +40,16 @@ public class reviewModifyAction extends ActionSupport{
       paramClass.setRv_content(content);
       sqlMapper.update("Board.updateReview", paramClass);
       if(getUpload()!=null){
-         String file_name="file_"+getNumber();
+       String file_name="file_"+getNumber();
          String file_ext = getUploadFileName().substring(getUploadFileName().lastIndexOf('.')+1,getUploadFileName().length());
          File deleteFile = new File(fileUploadPath+file_name+"."+file_ext);
          deleteFile.delete();
-         
-         File destFile = new File(fileUploadPath + file_name + "." +file_ext);
+       
+         File destFile = new File(fileUploadPath + getOld_file());
          FileUtils.copyFile(getUpload(), destFile);
          paramClass.setRv_org_image(uploadFileName);
          paramClass.setRv_sav_image(file_name+"."+file_ext);
-         sqlMapper.update("Board.updateRvFile",paramClass);
+         sqlMapper.update("Board.reUpdateRvFile",paramClass);
       }
       //resultClass=(reviewVO)sqlMapper.queryForObject("Board.selectOneReview",number);
       return SUCCESS;
@@ -126,5 +126,11 @@ public class reviewModifyAction extends ActionSupport{
    public void setFileUploadPath(String fileUploadPath) {
       this.fileUploadPath = fileUploadPath;
    }
+public String getRv_old_file() {
+	return rv_old_file;
+}
+public void setRv_old_file(String rv_old_file) {
+	this.rv_old_file = rv_old_file;
+}
    
 }

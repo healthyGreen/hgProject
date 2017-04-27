@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.util.HashMap"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <div class="sub_tit" style="width:1100px;margin:0 auto ; padding:30px 0;">
 	  <div class="tit">후기<span>/ PRODUCT REVIEW</span></div>
@@ -29,108 +31,36 @@
 							</tr>
 							</thead>
 							<tbody>
-							<tr>
-								<td>1</td>
-								<td><img src="" alt="" /></td>
-								<td>너무너무 맛있어요~</td>
-								<td>헬시그린에서 사먹었는데 너무 맛있는것 같아요</td>
-								<td>김헬시</td>
-								<td>2017-04-01</td>
-								<td></td>	
-							</tr>
-							<tr>
-								<td>1</td>
-								<td><img src="" alt="" /></td>
-								<td>너무너무 맛있어요~</td>
-								<td>헬시그린에서 사먹었는데 너무 맛있는것 같아요</td>
-								<td>김헬시</td>
-								<td>2017-04-01</td>
-								<td></td>		
-							</tr>
-							<tr>
-								<td>1</td>
-								<td><img src="" alt="" /></td>
-								<td>너무너무 맛있어요~</td>
-								<td>헬시그린에서 사먹었는데 너무 맛있는것 같아요</td>
-								<td>김헬시</td>
-								<td>2017-04-01</td>
-								<td></td>		
-							</tr>
-							<tr>
-								<td>1</td>
-								<td><img src="" alt="" /></td>
-								<td>너무너무 맛있어요~</td>
-								<td>헬시그린에서 사먹었는데 너무 맛있는것 같아요</td>
-								<td>김헬시</td>
-								<td>2017-04-01</td>
-								<td></td>		
-							</tr>
-							<tr>
-								<td>1</td>
-								<td><img src="" alt="" /></td>
-								<td>너무너무 맛있어요~</td>
-								<td>헬시그린에서 사먹었는데 너무 맛있는것 같아요</td>
-								<td>김헬시</td>
-								<td>2017-04-01</td>
-								<td></td>	
-							</tr>
-							<tr>
-								<td>1</td>
-								<td><img src="" alt="" /></td>
-								<td>너무너무 맛있어요~</td>
-								<td>헬시그린에서 사먹었는데 너무 맛있는것 같아요</td>
-								<td>김헬시</td>
-								<td>2017-04-01</td>
-								<td></td>		
-							</tr>
-							<tr>
-								<td>1</td>
-								<td><img src="" alt="" /></td>
-								<td>너무너무 맛있어요~</td>
-								<td>헬시그린에서 사먹었는데 너무 맛있는것 같아요</td>
-								<td>김헬시</td>
-								<td>2017-04-01</td>
-								<td></td>		
-							</tr>
-							<tr>
-								<td>1</td>
-								<td><img src="" alt="" /></td>
-								<td>너무너무 맛있어요~</td>
-								<td>헬시그린에서 사먹었는데 너무 맛있는것 같아요</td>
-								<td>김헬시</td>
-								<td>2017-04-01</td>
-								<td></td>	
-							</tr>
-							<tr>
-								<td>1</td>
-								<td><img src="" alt="" /></td>
-								<td>너무너무 맛있어요~</td>
-								<td>헬시그린에서 사먹었는데 너무 맛있는것 같아요</td>
-								<td>김헬시</td>
-								<td>2017-04-01</td>
-								<td></td>		
-							</tr>
-							<tr>
-								<td>1</td>
-								<td><img src="" alt="" /></td>
-								<td>너무너무 맛있어요~</td>
-								<td>헬시그린에서 사먹었는데 너무 맛있는것 같아요</td>
-								<td>김헬시</td>
-								<td>2017-04-01</td>
-								<td></td>		
-							</tr>
+							<s:iterator value="list" status="stat">
+								<tr>
+									<td><s:property value="rv_number"/></td>
+									<td><s:property value="rv_sav_image"/></td>
+									<td class="subject"><a href="reviewView.action?rv_number=<s:property value="rv_number"/>&currentPage=<s:property value="currentPage"/>">&nbsp;&nbsp;&nbsp;<s:property value="rv_title" /></a></td>
+									<td><s:property value="rv_content"/></td>
+									<td><s:property value="rv_name"/></td>
+									<td><s:property value="rv_date"/></td>
+									<td><s:property value="rv_score"/></td>
+								</tr>
+							</s:iterator>
+							
 							</tbody>
 						</table>
-						<div class="wBtn" ><span>작성하기</span></div>
+						<form name="searchBox" action="reviewListAction.action" method="post">
+							<div style="width: 1100px; margin: 0 auto; ">
+								<select class="border" name="forSearch">
+									<option value="writer">작성자</option>
+									<option value="content">내용</option>
+									<option value="title">제목</option>
+								</select>
+								<input class="searchk" type="text" name="search">
+								<input class="click" type="submit" value="" name="submit">
+							</div>
+						</form>
+						<div class="wBtn" ><span onclick="location.href='reviewWriteForm.action?currentPage=<s:property value="currentPage"/>'">작성하기</span></div>
 						<div class="pageing" >
-							<a href="#none" class="prev"><img src="../images/prev_btn.gif" alt="이전 페이지"></a>
-							<a href="#none" class="current"><strong>1</strong></a>
-							<a href="#">2</a>
-							<a href="#">3</a>
-							<a href="#">4</a>
-							<a href="#">5</a>
-							<a href="#none" class="next"><img src="../images/next_btn.gif" alt="다음 페이지로"></a>
+							<s:property value="pagingHtml" escape="false"/>
 						</div>
+ 
  
 						
 

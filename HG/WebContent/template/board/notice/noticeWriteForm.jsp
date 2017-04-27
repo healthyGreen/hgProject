@@ -23,7 +23,9 @@
 	}
 	</script>
 	
-	
+	<style>
+		.wBtn input{border: none;    float: right;    width: 120px;    height: 40px;    background: #484647;    text-align: center;    color: #fff;    display: block;    font-size: 13px;  box-sizing: border-box;}
+	</style>
 <div class="sub_tit" style="width:1100px;margin:0 auto ; padding:30px 0;">
 	  <div class="tit">공지사항<span>/ NOTICE</span></div>
 	  <div class="local">홈 > <span>공지사항</span></div>
@@ -32,7 +34,7 @@
 <s:if test="resultClass.getN_number() != null">
 	<form name="noticeWrite" method="post" enctype="multipart/form-data" onsubmit="return noticecheck()" 
 	action="noticeModifyPro.action?n_number=<s:property value="resultClass.getN_number()"/>&
-	currentPage=<s:property value="resultClass.getCurrentPage()"/>">
+	currentPage=<s:property value="currentPage"/>">
 		<table width="100%" class="board-type03" style="width:1100px;margin:0 auto ;">
 					<colgroup>
 						<col width="" />
