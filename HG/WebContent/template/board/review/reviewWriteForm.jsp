@@ -33,8 +33,8 @@
 	  <div class="local">홈 > <span>상품후기</span></div>
 	</div>
 
-	<s:if test="resultClass.getRv_no() != null">
-		<form name="reviewWrite" method="post" enctype="multipart/form-data" onsubmit="return reviewcheck()" action="reviewModifyPro.action?no=<s:property value="resultClass.getRv_no()"/>&currentPage=<s:property value="currentPage"/>">
+	<s:if test="resultClass.getRv_number() != null">
+		<form name="reviewWrite" method="post" enctype="multipart/form-data" onsubmit="return reviewcheck()" action="reviewModifyPro.action?rv_number=<s:property value="resultClass.getRv_number()"/>&currentPage=<s:property value="currentPage"/>">
 		<table width="100%" class="board-type03" style="width:1100px;margin:0 auto ;">
 					<colgroup>
 						<col width="" />

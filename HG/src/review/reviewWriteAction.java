@@ -25,7 +25,7 @@ public class reviewWriteAction extends ActionSupport{
    private reviewVO resultClass;
 
    private int rv_currentPage;
-   private int rv_no;
+   private int rv_number;
    private String rv_file_orgName;
    private String rv_file_savName;
    private String rv_title;
@@ -37,6 +37,7 @@ public class reviewWriteAction extends ActionSupport{
    private int rv_ref;
    private int rv_ref_step;
    private int rv_ref_level;
+   private Map session;
 
    private File upload;
    private String uploadContentType;
@@ -61,7 +62,7 @@ public class reviewWriteAction extends ActionSupport{
       paramClass = new reviewVO();
       resultClass = new reviewVO();
       ActionContext context = ActionContext.getContext();
-		Map<String, Object> session = context.getSession();
+		Map session = context.getSession();
 		String session_id = (String) session.get("session_id");
       
       if(rv_ref==0){
@@ -92,7 +93,7 @@ public class reviewWriteAction extends ActionSupport{
       if(getUpload()!=null){
          resultClass = (reviewVO)sqlMapper.queryForObject("Board.selectLastNo");
          
-         String fileName = "file_" + getRv_no();
+         String fileName = "file_" + getRv_number();
          String fileExt = getUploadFileName().substring(getUploadFileName().lastIndexOf('.')+1,getUploadFileName().length());
          
          File newFile = new File(FileUploadPath+fileName+"."+fileExt);
@@ -124,11 +125,11 @@ public class reviewWriteAction extends ActionSupport{
    public void setRv_currentPage(int rv_currentPage) {
       this.rv_currentPage = rv_currentPage;
    }
-   public int getRv_no() {
-      return rv_no;
+   public int getRv_number() {
+      return rv_number;
    }
-   public void setRv_no(int rv_no) {
-      this.rv_no = rv_no;
+   public void setRv_number(int rv_number) {
+      this.rv_number = rv_number;
    }
    public String getRv_file_orgName() {
       return rv_file_orgName;
@@ -234,5 +235,14 @@ public class reviewWriteAction extends ActionSupport{
    public void setFileUploadPath(String fileUploadPath) {
       FileUploadPath = fileUploadPath;
    }
+
+public Map getSession() {
+	return session;
+}
+
+public void setSession(Map session) {
+	this.session = session;
+}
+   
    
 }

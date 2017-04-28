@@ -14,7 +14,8 @@ public class reviewViewAction extends ActionSupport{
       private static SqlMapClient sqlMapper;
       //private reviewVO paramClass;
       private reviewVO resultClass;
-      private static int number;
+      private static int rv_number;
+     
 
    public reviewViewAction() throws IOException {
       reader=Resources.getResourceAsReader("sqlMapConfig.xml");
@@ -23,8 +24,8 @@ public class reviewViewAction extends ActionSupport{
    }
    
    public String execute() throws SQLException{
-      resultClass=(reviewVO)sqlMapper.queryForObject("Board.selectOneReview", number);
-      sqlMapper.update("Board.updateRvReadHit", number);
+      resultClass=(reviewVO)sqlMapper.queryForObject("Board.selectOneReview", rv_number);
+      sqlMapper.update("Board.updateRvReadHit", rv_number);
       return SUCCESS;
    }
 
@@ -36,13 +37,16 @@ public class reviewViewAction extends ActionSupport{
       this.resultClass = resultClass;
    }
 
-   public static int getNumber() {
-      return number;
+   public static int getRv_number() {
+      return rv_number;
    }
 
-   public static void setNumber(int number) {
-      reviewViewAction.number = number;
-   }   
+   public static void setRv_number(int rv_number) {
+      reviewViewAction.rv_number = rv_number;
+   }
+
+
+   
    
    
 }

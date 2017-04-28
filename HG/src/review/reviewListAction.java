@@ -5,10 +5,12 @@ import java.io.Reader;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class reviewListAction extends ActionSupport {
@@ -29,6 +31,7 @@ public class reviewListAction extends ActionSupport {
    private int totalBlock;
    private String pagingHtml;
    private reviewPageAction page;
+   private Map session;
    List<reviewVO> list = new ArrayList<>();
 
    public reviewListAction() throws IOException {
@@ -41,6 +44,10 @@ public class reviewListAction extends ActionSupport {
       if (search != null)
          return search();
       list = sqlMapper.queryForList("Board.selectAllReview");
+      
+      ActionContext context=ActionContext.getContext();
+      session=context.getSession();
+      
       totalBlock = list.size();
       page = new reviewPageAction(currentPage, OnePageBlock, pageBlocks, totalBlock, "", "");
       int endBlock = page.getEndBlock();
@@ -48,6 +55,9 @@ public class reviewListAction extends ActionSupport {
 
       list = list.subList(page.getStartBlock(), endBlock);
       pagingHtml = page.getPaginHtml().toString();
+      
+      
+      
       return SUCCESS;
    }
 
@@ -136,5 +146,14 @@ public class reviewListAction extends ActionSupport {
    public void setList(List<reviewVO> list) {
       this.list = list;
    }
+
+public Map getSession() {
+	return session;
+}
+
+public void setSession(Map session) {
+	this.session = session;
+}
+   
 
 }

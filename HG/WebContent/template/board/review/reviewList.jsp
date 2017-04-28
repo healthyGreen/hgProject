@@ -51,6 +51,7 @@
 									<option value="writer">작성자</option>
 									<option value="content">내용</option>
 									<option value="title">제목</option>
+									
 								</select>
 								<input class="searchk" type="text" name="search">
 								<input class="click" type="submit" value="" name="submit">
@@ -60,6 +61,7 @@
 						<div class="pageing" >
 							<s:property value="pagingHtml" escape="false"/>
 						</div>
+					
  
  
 						
