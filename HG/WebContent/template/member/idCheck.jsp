@@ -5,9 +5,9 @@
 <head>
 <title>아이디 중복 확인</title>
 <script language="javascript">
-   function windowclose() {
+   function setid() {
       opener.document.join.M_id.value = "${m_id}";
-      /* opener.document.joinForm.checkConfirmId.value="true"; */
+      /* opener.document.join.IdConfirm.value="true"; */
       self.close();
    }
    function check() {
@@ -15,11 +15,13 @@
 	         alert("아이디를 입력해 주세요");
 	         document.idChk.M_id.focus();
 	         return false;
+	         
 	      }else{
 	         var m_id = document.idChk.M_id.value;
 	         var url = "idCheckAction?m_id="+m_id;   
 	         open(url, "IdConfirm", "toolbar=no,location=no,status=no,menubar=no,"+
 	               "scrollbars=no,resizable=no,width=400,height=200");
+
 	      }
 	   }
 </script>
@@ -161,7 +163,7 @@
 
          <tr>
             <td align="center"><input type="button" class="login1"
-               value="닫기" onclick="javascript:window.close();" /></td>
+               value="닫기" onclick="setid()" /></td>
          </tr>
       </table>
    </s:else>

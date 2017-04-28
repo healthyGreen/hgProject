@@ -161,7 +161,7 @@ scrollbar-arrow-color: #838383;
         </tr>
         <tr>
 		<td class=memberCols2>
-        <div><s:property value="resultClass.m_addr1"/><s:property value="resultClass.m_addr2"/></div>
+        <div><s:property value="resultClass.m_addr1"/> <s:property value="resultClass.m_addr2"/></div>
         </td>
         </tr>
         </table>
@@ -184,6 +184,15 @@ scrollbar-arrow-color: #838383;
         <div><s:property value="resultClass.m_joindate"/></div>
         </td>
     </tr>
+    
+    
+    <tr>
+        <td class=memberCols1><font color=FF6000>*</font> 포인트</td>
+        <td class=memberCols2>
+        <div><s:property value="resultClass.m_point"/> p</div>
+        </td>
+    </tr>
+    
 
 
 
@@ -207,7 +216,8 @@ scrollbar-arrow-color: #838383;
 <td id=avoidDbl align=center height=100>
 <div style="width:100%" class=noline>
     <input type="button" onclick="location.href='modifyPassForm.action'" value="수정하기">
-    <img src="../../images/btn_prev.jpg" border=0 onClick="history.back()" style="cursor:pointer;">
+    <input type="button" onclick="location.href='existPassForm.action'" value="탈퇴하기">
+    <input type="button" onClick="location.href='main.action'" value="메인으로">
 </div>
 </td>
 </tr>

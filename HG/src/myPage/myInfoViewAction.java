@@ -16,7 +16,7 @@ public class myInfoViewAction extends ActionSupport{
 	   public static SqlMapClient sqlMapper;
 	   private memberVO paramClass;
 	   private memberVO resultClass;
-	   private String m_pass;
+	  /* private String m_pass;
 	   private String m_name;
 	   private String m_sex;
 	   private int m_year;
@@ -26,7 +26,7 @@ public class myInfoViewAction extends ActionSupport{
 	   private String m_email;
 	   private String m_zipcode;
 	   private String m_addr1;
-	   private String m_addr2;
+	   private String m_addr2;*/
 	   private String m_id;
 	   private Map<String,Object> session;
 	   
@@ -67,7 +67,7 @@ public class myInfoViewAction extends ActionSupport{
 		this.resultClass = resultClass;
 	}
 
-	public String getM_pass() {
+	/*public String getM_pass() {
 		return m_pass;
 	}
 
@@ -153,7 +153,7 @@ public class myInfoViewAction extends ActionSupport{
 
 	public void setM_addr2(String m_addr2) {
 		this.m_addr2 = m_addr2;
-	}
+	}*/
 
 	public String getM_id() {
 		return m_id;

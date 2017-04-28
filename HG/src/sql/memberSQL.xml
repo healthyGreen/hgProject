@@ -54,6 +54,10 @@
    <select id="findPassword" resultMap="memberRes">
       select * from member where m_id = #m_id# and m_name = #m_name# and m_phone = #m_phone#
    </select>
+   <!-- 회원정보 수정 비밀번호 확인 -->
+   <select id="modifyPass" resultMap="memberRes">
+      select * from member where m_id = #m_id# and m_pass = #m_pass#
+   </select>
    <!-- 로그인 값 얻어오기 -->
    <select id="UserCheck" resultMap="memberRes" parameterClass="string">
       SELECT * FROM MEMBER WHERE M_ID = #m_id#
@@ -101,17 +105,18 @@
    </update>
    <!-- 회원정보 수정 -->
    <update id="modifyMember" parameterClass="member">
-      update member set m_pass = #m_pass#,
-      m_sex = #m_sex#,
+      update member set
+      m_pass = #m_pass#,
+      m_name = #m_name#,
       m_year = #m_year#,
-      m_monty = #m_month#,
+      m_month = #m_month#,
       m_date = #m_date#,
       m_phone = #m_phone#,
       m_email = #m_email#,
       m_zipcode = #m_zipcode#,
       m_addr1 = #m_addr1#,
       m_addr2 = #m_addr2#
-      <include refid = "where-id"/>
+      where m_id=#m_id#
    </update>
    <!-- 회원 탈퇴 -->
    <delete id="deleteMember" parameterClass="member">
