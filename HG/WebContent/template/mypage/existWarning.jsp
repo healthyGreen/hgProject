@@ -7,6 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+Á¤¸» Å»ÅðÇÏ½Ã°Ú½À´Ï±î??
+<table width=100% cellpadding=0 cellspacing=0 border=0>
+<tr>
+<td id=avoidDbl align=center height=100>
+<div style="width:100%" class=noline>
+    <input type="button" onclick="location.href='existPro.action'" value="Å»ÅðÇÏ±â">
+    <input type="button" onclick="location.href='main.action'" value="¸ÞÀÎÀ¸·Î">
+</div>
+</td>
+</tr>
+</table>
 </body>
 </html>
