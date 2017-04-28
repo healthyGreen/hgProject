@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+메롱 에러에용><
+${ session.session_id }
 </body>
 </html>

@@ -31,10 +31,11 @@
     	if(m_id ==""){
        		alert("아이디를 입력해주세요!")
        		document.join.M_id.focus();
+       		
     	}else{
     		open(url, "IdConfirm", "toolbar=no,location=no,status=no,menubar=no,"+
           	"scrollbars=no,resizable=no,width=400,height=600");
-
+    		
     		}
  }
    

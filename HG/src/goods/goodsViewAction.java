@@ -58,7 +58,7 @@ public class goodsViewAction extends ActionSupport {
          rp_list = sqlMapper.queryForList("reply.g_selectReply");
       } else return LOGIN;
       
-      totalCount = rp_list.size();
+     // totalCount = rp_list.size();
       
       rp_page = new replyPagingAction(currentPage, totalCount, blockCount, blockPage);
       pagingHtml = rp_page.getPagingHtml().toString();

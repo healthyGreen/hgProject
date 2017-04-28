@@ -32,8 +32,8 @@ public class goodsWriteAction extends ActionSupport implements SessionAware {
 	private int g_price;
 	private String g_ingr;
 	private String g_category;
-	private int g_amount;
-	private String g_bottle;
+	//private int g_amount;
+	//private String g_bottle;
 	private String g_org_image; // 업로드 파일 원래 이름
 	private String g_sav_image; // 서버에 저장할 업로드 파일 이름 (고유번호로 분류됨)
 
@@ -62,8 +62,8 @@ public class goodsWriteAction extends ActionSupport implements SessionAware {
 
 		// 등록할 항목 설정
 		paramClass.setG_name(g_name);
-		paramClass.setG_amount(g_amount);
-		paramClass.setG_bottle(g_bottle);
+		//paramClass.setG_amount(g_amount);
+		//paramClass.setG_bottle(g_bottle);
 		paramClass.setG_category(g_category);
 		paramClass.setG_content(g_content);
 		paramClass.setG_info(g_info);
@@ -71,10 +71,11 @@ public class goodsWriteAction extends ActionSupport implements SessionAware {
 		paramClass.setG_number(g_number);
 		paramClass.setG_price(g_price);
 
-		if (upload == null)
-			sqlMapper.insert("g_write", paramClass);
+		
+		sqlMapper.insert("g_write", paramClass);
 		// 첨부파일을 선택했다면 파일을 업로드한다.
-		else if (upload != null) {
+	if (upload != null) {
+			resultClass = (goodsVO)sqlMapper.queryForObject("selectLastNum");
 			for (int i = 0; i < upload.size(); i++) {
 				File destFile = new File(fileUploadPath + getUploadFileName().get(i));
 				FileUtils.copyFile((getUpload()).get(i), destFile);
@@ -95,7 +96,7 @@ public class goodsWriteAction extends ActionSupport implements SessionAware {
 			paramClass.setG_sav_image(g_sav_image); // 저장 파일 이름
 			// 파일 정보 업데이트
 
-			sqlMapper.update("g_update", paramClass);
+			sqlMapper.update("g_upload", paramClass);
 		}
 		return SUCCESS;
 	}
@@ -172,22 +173,6 @@ public class goodsWriteAction extends ActionSupport implements SessionAware {
 		this.g_category = g_category;
 	}
 
-	public int getG_amount() {
-		return g_amount;
-	}
-
-	public void setG_amount(int g_amount) {
-		this.g_amount = g_amount;
-	}
-
-	public String getG_bottle() {
-		return g_bottle;
-	}
-
-	public void setG_bottle(String g_bottle) {
-		this.g_bottle = g_bottle;
-	}
-
 	public String getG_org_image() {
 		return g_org_image;
 	}
@@ -252,4 +237,5 @@ public class goodsWriteAction extends ActionSupport implements SessionAware {
 		this.index = index;
 	}
 
+	
 }

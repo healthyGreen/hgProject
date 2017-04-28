@@ -19,8 +19,7 @@
       <result property="g_price" column="g_price"/>
       <result property="g_ingr" column="g_ingr"/>
       <result property="g_category" column="g_category"/>
-      <result property="g_amount" column="g_amount"/>
-      <result property="g_bottle" column="g_bottle"/>
+      
    </resultMap>
    
    <resultMap id="replyRes" class="reply">
@@ -43,9 +42,8 @@
    </sql>
    
    <!-- 상품 리스트 -->
-   <select id="g_list_selectAll" resultMap="goodsRes" >
-      SELECT * FROM GOODS 
-      ORDER BY g_number DESC
+   <select id="g_list_selectAll" resultMap="goodsRes" parameterClass="string">
+      SELECT * FROM GOODS where g_category=#g_category# ORDER BY g_number DESC
    </select>
    
    <select id="g_list_selectOne" resultMap="goodsRes" >
@@ -54,11 +52,12 @@
    </select>
    
    <!-- 상품 카테고리 -->
-   <select id="g_Category" resultMap="goodsRes" parameterClass="goods">
+  <!--  <select id="g_Category" resultMap="goodsRes" parameterClass="goods">
    SELECT * FROM GOODS
    WHERE g_category = #g_category#
    ORDER BY g_number DESC
-   </select>
+   </select> -->
+   
    <!-- 상품 상세보기 -->
    <select id="g_view" resultMap="goodsRes" parameterClass="int">
    <include refid = "select-all"/>
@@ -69,17 +68,17 @@
    <select id="selectSearchW" resultMap="goodsRes" parameterClass="string">
       <include refid="select-all" />
        WHERE name like #searchKeyword#
-       ORDER BY no DESC
+       ORDER BY g_number DESC
    </select>
    <select id="selectSearchS" resultMap="goodsRes" parameterClass="string">
       <include refid="select-all" />
        WHERE subject like #searchKeyword#
-       ORDER BY no DESC
+       ORDER BY g_number DESC
    </select>
    <select id="selectSearchC" resultMap="goodsRes" parameterClass="string">
       <include refid="select-all" />
        WHERE content like #searchKeyword#
-       ORDER BY no DESC
+       ORDER BY g_number DESC
    </select>
    
    <!-- 상품 삭제 -->
@@ -97,9 +96,7 @@
    <!-- 상품 등록 -->
    <insert id="g_write" parameterClass="goods">
    INSERT INTO GOODS (g_number, g_name, g_content, g_info, g_price, g_ingr,
-   g_category, g_amount, g_bottle)
-   VALUES (G_NUMBER_SEQ.NEXTVAL, #g_name#, #g_content#, #g_info#, #g_price#, #g_ingr#, 
-    #g_category#, #g_amount#, #g_bottle#)
+   g_category) VALUES (G_NUMBER_SEQ.NEXTVAL, #g_name#, #g_content#, #g_info#, #g_price#, #g_ingr#, #g_category#)
    </insert>
    
    <!-- 상품 파일 업로드 -->
@@ -121,6 +118,9 @@
    INSERT INTO REPLY (rp_number, rp_m_id, rp_content, rp_date, rp_ref, rp_ref_step, rp_ref_level)
    VALUES (rp_number_seq.NEXVAL, #rp_m_id#, #rp_content#, #rp_date#, #rp_ref#, #rp_ref_step#, #rp_ref_level#)
    </insert>
+   <select id="selectLastNum" resultClass="goods">
+   	select max(g_number) as g_number from goods
+   </select>
    
    <select id="g_selectReply" resultClass="reply">
       select * from reply order by rp_number desc

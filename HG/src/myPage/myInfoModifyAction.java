@@ -27,8 +27,9 @@ public class myInfoModifyAction extends ActionSupport{
 	private String m_addr1;
 	private String m_addr2;
 	private String m_id;
-	private Map<String,Object> session;
-	private int checkPass;
+	private Map session;
+
+	/*private int checkPass;*/
 	
 	public myInfoModifyAction() throws Exception{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
@@ -41,14 +42,23 @@ public class myInfoModifyAction extends ActionSupport{
 	}
 	//비밀번호 확인후 맞을시 수정폼이동 아닐시 에러페이지.
 	public String form() throws Exception{
-		if(resultClass.getM_pass().equals(m_pass)){
-			checkPass = 1;
+		paramClass = new memberVO();
+		resultClass = new memberVO();
+		ActionContext context = ActionContext.getContext();
+		Map session = context.getSession();
+		String session_id = (String) session.get("session_id");
+		paramClass.setM_pass(m_pass);
+		paramClass.setM_id(session_id);
+		resultClass = (memberVO)sqlMapper.queryForObject("Member.modifyPass", paramClass);
+		if(resultClass != null){
+			/*checkPass = 1;*/
 		return SUCCESS;
 		}
 		else{
-			checkPass = 0;
+			/*checkPass = 0;*/
 			return ERROR;
 		}
+		
 	}
 	//수정내용 처리
 	public String execute() throws Exception{
@@ -58,10 +68,12 @@ public class myInfoModifyAction extends ActionSupport{
 		if(session.get("session_id")==null){
 			return LOGIN;
 		}
+		String session_id = (String)session.get("session_id");
 		paramClass = new memberVO();
-		paramClass.setM_pass(getM_pass());
+		paramClass.setM_id(session_id);
 		paramClass.setM_name(getM_name());
-		paramClass.setM_sex(getM_sex());
+		paramClass.setM_pass(m_pass);
+		//paramClass.setM_sex(getM_sex());
 		paramClass.setM_year(getM_year());
 		paramClass.setM_month(getM_month());
 		paramClass.setM_date(getM_date());
@@ -70,8 +82,9 @@ public class myInfoModifyAction extends ActionSupport{
 		paramClass.setM_zipcode(getM_zipcode());
 		paramClass.setM_addr1(getM_addr1());
 		paramClass.setM_addr2(getM_addr2());
-		paramClass.setM_id(getM_id());
-		sqlMapper.update("modifyMember",paramClass);
+		
+		sqlMapper.update("Member.modifyMember",paramClass);
+		//resultClass=sqlMapper.queryForObject("Member.selectOneMember", m)
 		return SUCCESS;
 		
 		
@@ -189,21 +202,22 @@ public class myInfoModifyAction extends ActionSupport{
 		this.m_id = m_id;
 	}
 
-	public Map<String, Object> getSession() {
+	public Map getSession() {
 		return session;
 	}
 
-	public void setSession(Map<String, Object> session) {
+	public void setSession(Map session) {
 		this.session = session;
 	}
-
-	public int getCheckPass() {
+	
+	
+/*	public int getCheckPass() {
 		return checkPass;
 	}
 
 	public void setCheckPass(int checkPass) {
 		this.checkPass = checkPass;
-	}
+	}*/
 	
 	
 

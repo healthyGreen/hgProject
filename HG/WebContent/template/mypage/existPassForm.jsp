@@ -32,16 +32,16 @@
 </style>
 
 <script type="text/javascript">
-function modifyPass(fm){
+function deletePass(fm){
 	var m_pass = document.fm.m_pass.value;
-	var url = "myInfoModifyForm.action?m_pass="+m_pass;
+	var url = "existForm.action?m_pass="+m_pass;
 }
 
 </script>
 <div class="indiv"><!-- Start indiv -->
 
 
-<form method=post name=fm action="myInfoModifyForm.action" enctype="multipart/form-data">
+<form method=post name=fm action="existForm.action" enctype="multipart/form-data">
 
 
 <div class="findbox">
@@ -50,7 +50,7 @@ function modifyPass(fm){
               <input name="m_pass" type="text" size="29" required label="비밀번호" tabindex=2 class="fm">
             </li>
             <li><span></span>
-            <sapn onclick="javasript:modifyPass(this.form)">
+            <sapn onclick="javasript:deletePass(this.form)">
               <input type=image src="../../images/find_scbtn.jpg" tabindex=6></sapn>
             </li>
        
