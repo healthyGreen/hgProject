@@ -72,7 +72,7 @@ public class goodsPageAction {
 		pagingHtml.append("&nbsp;<a href=goodsList.action?currentPage=");
 		pagingHtml.append(i);
 		if(isSearch != ""){
-			pagingHtml.append("&searchKeyword=" + isSearch);
+			pagingHtml.append("&searchKeyword="+isSearch+"&searchNum="+searchNum);
 		}
 			pagingHtml.append("'>");
 		pagingHtml.append(i);

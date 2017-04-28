@@ -42,27 +42,25 @@ public class goodsListAction extends ActionSupport {
       reader.close();
    }
 
-   public String category() throws Exception {
+   public String execute() throws Exception {
 	   
-	  System.out.println("111111111");
-      ActionContext context = ActionContext.getContext();
+	 // System.out.println(getG_category());
+      /*ActionContext context = ActionContext.getContext();g_
       Map<String, Object> session = context.getSession();
-      String sessionid = (String) session.get("session_id");
+      String sessionid = (String) session.get("session_id");*/
       
-      System.out.println("sessionid:"+sessionid);
-     
-      memresultClass = (memberVO) sqlMapper.queryForObject("Member.UserCheck", sessionid);
-
-      goods_paramClass = new goodsVO();
-      goods_paramClass.setG_category(getGoods_category());
-      list = sqlMapper.queryForList("g_Category", goods_paramClass);
+     // System.out.println("sessionid:"+sessionid);
+	   if (getSearchKeyword() != null) {
+	         return search();
+	      }
+	   list = sqlMapper.queryForList("g_list_selectAll", g_category);
      totalCount = list.size();
      	
-      page = new goodsPageAction(currentPage, totalCount, blockCount, blockPage, searchNum, "");
+      page = new goodsPageAction(currentPage, totalCount, blockCount, blockPage, 0, "");
       pagingHtml = page.getPagingHtml().toString();
       
-      System.out.println("page :"+page);
-      System.out.println("pagingHtml :"+pagingHtml);
+      //System.out.println("page :"+page);
+      //System.out.println("pagingHtml :"+pagingHtml);
       
       int lastCount = totalCount;
       if (page.getEndCount() < totalCount)
@@ -72,19 +70,16 @@ public class goodsListAction extends ActionSupport {
       return SUCCESS;
    }
 
-   private String getGoods_category() {
+   /*private String getGoods_category() {
 
       return null;
-   }
+   }*/
 
-   public String execute() throws Exception {
+  /* public String execute() throws Exception {
       ActionContext context = ActionContext.getContext();
       Map<String, Object> session = context.getSession();
       String sessionid = (String) session.get("id");
-      memresultClass = (memberVO) sqlMapper.queryForList("Member.UserCheck", sessionid);
-      if (getSearchKeyword() != null) {
-         return search();
-      }
+      
       if (getGoods_category() != null) {
          return category();
       }
@@ -102,7 +97,7 @@ public class goodsListAction extends ActionSupport {
       list = list.subList(page.getStartCount(), lastCount);
       return SUCCESS;
    }
-
+*/
    public String search() throws Exception {
       if (searchNum == 0) {
          list = sqlMapper.queryForList("selectSearchW", "%" + getSearchKeyword() + "%");
@@ -206,4 +201,45 @@ public class goodsListAction extends ActionSupport {
    public void setNum(int num) {
       this.num = num;
    }
+
+public memberVO getMemresultClass() {
+	return memresultClass;
+}
+
+public void setMemresultClass(memberVO memresultClass) {
+	this.memresultClass = memresultClass;
+}
+
+public memberVO getMemparamClass() {
+	return memparamClass;
+}
+
+public void setMemparamClass(memberVO memparamClass) {
+	this.memparamClass = memparamClass;
+}
+
+public goodsVO getGoods_paramClass() {
+	return goods_paramClass;
+}
+
+public void setGoods_paramClass(goodsVO goods_paramClass) {
+	this.goods_paramClass = goods_paramClass;
+}
+
+public goodsVO getGoods_resultClass() {
+	return goods_resultClass;
+}
+
+public void setGoods_resultClass(goodsVO goods_resultClass) {
+	this.goods_resultClass = goods_resultClass;
+}
+
+public String getG_category() {
+	return g_category;
+}
+
+public void setG_category(String g_category) {
+	this.g_category = g_category;
+}
+   
 }

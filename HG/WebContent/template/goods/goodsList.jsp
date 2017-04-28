@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+    <%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- 메인팝업창 -->
 
@@ -7,7 +8,7 @@
 	//--></script>
 	<script type="text/javascript" src="js/rolling.js"></script>
 	<script type="text/javascript">
-	function goodsdelete(goods_num,currentPage){
+	function goodsdelete(g_number,currentPage){
 		document.goodsform.action="goodsDelete.action?G_NUMBER="+G_NUMBER+"&currentPage="+currentPage;
 		document.goodsform.submit();
 	}
@@ -34,13 +35,13 @@
 				<div class="subtab">
 				  <ul>
 				 
-					<li  class="on" ><a href="goodsList.action?g_category=<s:property value="g_number"/>&currentPage=<s:property value="currentPage"/>">&nbsp;&nbsp;&nbsp;<s:property value="g_name" />착즙주스키트</a>
+					<li  class="on"><a href="goodsList.action?g_category='착즙주스키트'&currentPage=<s:property value="currentPage"/>">착즙주스키트</a>
 					</li>
 				 
-					<li ><a href="goodsList.action?g_category=">스무디키트</a>
+					<li><a href="goodsList.action?g_category='스무디키트'&currentPage=<s:property value="currentPage"/>">스무디키트</a>
 					</li>
 				 
-					<li ><a href="goodsList.action?g_category=">샐러드</a>
+					<li><a href="goodsList.action?g_category='샐러드'&currentPage=<s:property value="currentPage"/>">샐러드</a>
 					</li>
 				  </ul>
 				</div>
@@ -89,7 +90,7 @@
 			</td>
 		  </tr>
 		  <tr>
-			<td align=center height=50> <b>1</b> </td>
+			<!-- <td align=center height=50> <b></b> </td> -->
 		  </tr>
 		</table>
 	</div>

@@ -2,7 +2,11 @@
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%
+	String salad = "salad";
+	String chacJeb = "chacJeb";
+	String smoothy = "smoothy";
+%>
 <html>
 <head>
 
@@ -93,11 +97,11 @@
 					<li style="width:16.6%">
 						<a href="" class="cate1">FRESH KIT</a>
 						<div class="two">
-							<p><a href="" class="cate2">착즙주스키트</a>
+							<p><a href="goodsList.action?g_category=<%=chacJeb %>" class="cate2">착즙주스키트</a>
 							</p>
-							<p><a href="" class="cate2">스무디키트</a>
+							<p><a href="goodsList.action?g_category=<%=smoothy %>" class="cate2">스무디키트</a>
 							</p>
-							<p><a href="" class="cate2">샐러드</a>
+							<p><a href="goodsList.action?g_category=<%=salad %>" class="cate2">샐러드</a>
 							</p>
 						</div>
 					</li>
@@ -116,7 +120,7 @@
 						<a href="" class="cate1">REFRESH WATER</a>
 					</li>
 					<li><a href="noticeList.action">NOTICE</a></li>
-					<li><a href="">상품후기</a></li>
+					<li><a href="reviewList.action">상품후기</a></li>
 					<li><a href="">ABOUT</a></li>
 				</ul>
 
