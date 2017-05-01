@@ -49,7 +49,7 @@ window.onload = function(){ document.form.m_id.focus(); }
   <div class="loginbox"> 
     <!--로그인폼시작-->
     <div class="box boxbg">
-      <div class="tit"><img src="../../images/login_1_tit.jpg"></div>
+      <div class="tit"><img src="images/login_1_tit.jpg"></div>
      <form action="logInPro.action" method="post" enctype="multipart/form-data">
         <input type=hidden name=returnUrl value="http://www.wondergreen.kr/shop/main/index.php?&">
         <div class="form">
@@ -61,11 +61,11 @@ window.onload = function(){ document.form.m_id.focus(); }
               <input type=password name=M_pass size=20 tabindex=2>
             </li>
           </ul>
-          <input type=image src="../../images/login_1_btn.jpg" class="btn">
+          <input type=image src="images/login_1_btn.jpg" class="btn">
         </div>
       </form>
       <div class="sidebox"> 
-        <div class="acc"><img src="../../images/login_1_icon.jpg"></div>
+        <div class="acc"><img src="images/login_1_icon.jpg"></div>
         <ul class="side">
           <li><a HREF="/HG/findIdForm.action" onFocus="blur()">아이디 찾기</a></li>
           <li><a HREF="/HG/findPassForm.action" onFocus="blur()">비밀번호 찾기</a></li>
@@ -81,9 +81,9 @@ window.onload = function(){ document.form.m_id.focus(); }
    
    
     <div class="box">
-      <div class="tit"><img src="../../images/login_2_tit.jpg"></div>
-      <div class="txt"><img src="../../images/login_2_txt.jpg"></div>
-      <div class="gobtn"><a href="/HG/joinForm.action"><img src="../../images/login_2_btn.jpg"></a></div>
+      <div class="tit"><img src="images/login_2_tit.jpg"></div>
+      <div class="txt"><img src="images/login_2_txt.jpg"></div>
+      <div class="gobtn"><a href="/HG/joinForm.action"><img src="images/login_2_btn.jpg"></a></div>
     </div>
     <!--가입폼끝--> 
     

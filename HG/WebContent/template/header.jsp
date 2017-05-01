@@ -51,14 +51,14 @@
             <ul class="clear">
                   <c:if test="${session.session_id != null }">
                   	<li><a href="logout.action">로그아웃</a></li>
-               		<li><a href="">마이헬시</a></li>
-               		<li><a href="">고객센터</a></li>
+               		<li><a href="myPage.action">마이헬시</a></li>
+               		<li><a href="qnacustom.action">고객센터</a></li>
                		<li><a href="">장바구니</a></li>
                	 </c:if>
              	<c:if test="${session.session_id == null }">
                    	<li><a href="/HG/logInForm.action">로그인</a></li>
                		<li><a href="/HG/joinCheck.action">회원가입</a></li>
-               		<li><a href="">고객센터</a></li>
+               		<li><a href="qnacustom.action">고객센터</a></li>
                		<li><a href="">장바구니</a></li>
                	</c:if>
             </ul>

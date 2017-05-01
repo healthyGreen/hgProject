@@ -18,7 +18,7 @@
 
 <div class="indiv2" style="    width: 880px;    margin: 0 auto;"><!-- Start indiv -->
 <div class="csbox">
-<div class="tit"><img src="../images/cs_tit.jpg"></div>
+<div class="tit"><img src="images/cs_tit.jpg"></div>
 
 <table cellpadding=0 cellspacing=0 border=0 class="cs_list">
     <colgroup>
@@ -47,14 +47,14 @@
   </table>
 </div>
   <ul class="cs_bn">
-  <li><img src="../images/bn01.jpg" align="absmiddle"></li>
+  <li><img src="images/bn01.jpg" align="absmiddle"></li>
  
   </ul>
   
   <div class="cs_info"> 
     <!--입금계좌시작-->
     <div class="infobox">
-      <div class="tit"><img src="../images/cs_2_tit1.jpg"></div>
+      <div class="tit"><img src="images/cs_2_tit1.jpg"></div>
       <ul class="con">
         <li>신한(에스엠그린) 140-011-169222</li>
       </ul>
@@ -62,18 +62,18 @@
     <!--입금계좌끝--> 
     <!--마이쇼핑시작-->
     <div class="infobox cen">
-      <div class="tit"><img src="../images/cs_2_tit2.jpg"></div>
+      <div class="tit"><img src="images/cs_2_tit2.jpg"></div>
       <ul class="con">
-        <li><a HREF="/shop/mypage/mypage_orderlist.php?&">주문내역</a></li>
-        <li style="display:none;"><a HREF="/shop/mypage/mypage_emoney.php?&">포인트내역</a></li>
-        <li><a HREF="/shop/mypage/mypage_coupon.php?&">장바구니</a></li>
-        <li><a HREF="/shop/mypage/mypage_review.php?&">나의 게시글</a></li>
+        <li><a HREF="">주문내역</a></li>
+        <li><a HREF="">포인트내역</a></li>
+        <li><a HREF="">장바구니</a></li>
+        <li><a HREF="">나의 게시글</a></li>
       </ul>
     </div>
     <!--마이쇼핑 끝--> 
     <!--자주묻는질문시작-->
     <div class="infobox">
-      <div class="tit"><img src="../images/cs_2_tit3.jpg"></div>
+      <div class="tit"><img src="images/cs_2_tit3.jpg"></div>
       <ul class="con">
         <li><a href="/shop/service/faq.php?&ssno=48" class=stxt style="line-height:normal;">가상  계좌로 결제할 경우 주문 후 ..</a></li>
         <li><a href="/shop/service/faq.php?&ssno=47" class=stxt style="line-height:normal;">주문마감시간이 있나요?</a></li>
