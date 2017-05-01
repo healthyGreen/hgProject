@@ -7,8 +7,16 @@
 <script type="text/javascript">
 	function modiBas(basketlist) {
 		var b_g_amount = document.basketlist.b_g_amount.value;
-		
-		window.location.href='basketModify.action?b_g_number=${b_g_number}&b_number=${b_number}&b_g_price=${b_g_price}&b_g_amount='+b_g_amount;
+		window.location.href='basketModify.action?b_g_number=${b_g_number}&b_number=${b_number}&b_g_price=${b_g_price}&b_m_id=${b_m_id}&b_g_amount='+b_g_amount;
+	}
+	
+	function delBas(basketlist) {
+		window.location.href='basketDelete.action?b_number=${b_number}&b_m_id=${b_m_id}';
+	}
+	function alldelBas(basketlist) {
+		if(confirm("삭제하시겠습니까?")){
+			window.location.href='basketDeleteAll.action?b_m_id=${b_m_id}';
+		}else return;
 	}
 </script>
 <%@ taglib prefix="s" uri="/struts-tags" %>
@@ -63,8 +71,8 @@ table.orderitem-list tfoot tr td table td {border:none;}
 <tbody>
 	<s:iterator value="basketList" status="sta">
 	<tr>
-	<%-- <s:hidden name="b_number" value='%{b_number}'/> --%>
-		<%-- <s:hidden name="b_number" value="b_number"/> --%>
+	<%-- <s:hidden name="b_number" value="b_number"/> --%>
+		
 		<td>${b_g_number}</td>
 		<td>${b_g_name} </td>
 		<td>${b_g_price }원</td>
@@ -80,6 +88,7 @@ table.orderitem-list tfoot tr td table td {border:none;}
 				<option value="8">8</option>
 				<option value="9">9</option>
 			</select>&nbsp;<input type="button" value="변경" onclick="return modiBas(this.form)">
+			&nbsp;<input type="button" value="삭제" onclick="return delBas(this.form)">
 		</td>
 		<td>${b_allPrice }원</td>
 	</tr><br>
@@ -95,7 +104,7 @@ table.orderitem-list tfoot tr td table td {border:none;}
 	<table style="display:block;float:right;">
 	<tr>
 		<td align=right width=80 nowrap style="padding-top:5px; padding-bottom:5px;">상품합계금액</td>
-		<td align=right style="font-weight:bold;padding-left:25px; padding-top:5px; padding-bottom:5px;"><span id="el-orderitem-total-price">0</span>원&nbsp;</td>
+		<td align=right style="font-weight:bold;padding-left:25px; padding-top:5px; padding-bottom:5px;"><span id="el-orderitem-total-price">${allTotalPrice }</span>원&nbsp;</td>
 	</tr>
 	</table>
 
@@ -103,16 +112,17 @@ table.orderitem-list tfoot tr td table td {border:none;}
 </tr>
 </tfoot>
 </table>
-</form>
+
 
 <div class="btnbox">
 <div class="left">
-<a href="javascript:history.back();"onFocus="blur()"><img src="images/btn_prev.jpg" border=0></a>
-<a href="" onFocus="blur()"><img src="images/btn_shopping.jpg" border=0></a>
+<!-- <a href="javascript:history.back();"onFocus="blur()"><img src="images/btn_prev.jpg" border=0></a> -->
+<a href="goodsView.action?g_number=${b_g_number}"><img src="images/btn_shopping.jpg" border=0></a>
 </div>
+
 <div class="rig">
 <a href=""><img src="images/btn_back2.gif" border=0></a>&nbsp;
-<a href="" ><img src="images/btn_empty2.gif" border=0></a>&nbsp;
+<a onclick="return alldelBas(this.form)" ><img src="images/btn_empty2.gif" border=0></a>&nbsp;
 <a href=""><img src="images/btn_continue2.gif" border=0></a>
 </div>
 </div>
@@ -130,6 +140,7 @@ table.orderitem-list tfoot tr td table td {border:none;}
 </td>
 </tr>
 </table>
+</form>
 </td>
 </tr>
 <tr>

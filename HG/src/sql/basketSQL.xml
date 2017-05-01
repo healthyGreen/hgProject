@@ -43,13 +43,15 @@
 	</insert>
 	<!-- 장바구니 수량 수정 -->
 	<update id="amountModify" parameterClass="basket">
-		UPDATE basket set b_g_amount = #b_g_amount#, b_allPrice = #b_allPrice# where b_g_number=#b_g_number#
+		UPDATE basket set b_g_amount = #b_g_amount#, b_allPrice = #b_allPrice# where b_number=#b_number#
 	</update>
 	
 	<!-- 장바구니 삭제 -->
 	<delete id="basketDelete" parameterClass="basket">
-		DELETE FROM BASKET WHERE B_G_NUMBER = #b_g_number#
+		DELETE FROM BASKET WHERE B_NUMBER = #b_number#
 	</delete>
-
+	 <delete id="basketDeleteAll" parameterClass="string">
+		DELETE FROM BASKET WHERE B_M_ID = #b_m_id#
+	</delete>
 
 </sqlMap>
