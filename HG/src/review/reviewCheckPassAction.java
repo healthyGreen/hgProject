@@ -33,8 +33,9 @@ public class reviewCheckPassAction extends ActionSupport{
 		
 		 paramClass = new reviewVO();
 		 resultClass = new reviewVO();
-	      paramClass.setRv_pass(rv_pass);
-	      paramClass.setRv_number(rv_number);
+	      paramClass.setRv_pass(getRv_pass());
+	      paramClass.setRv_number(getRv_number());
+	      System.out.println(rv_pass);
 	      System.out.println(rv_number);
 	      resultClass = (reviewVO)sqlMapper.queryForObject("Board.selectPasswordRV", paramClass);
 	      if(resultClass != null){

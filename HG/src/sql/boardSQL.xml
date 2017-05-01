@@ -91,7 +91,7 @@
   
   
   <!-- 상품후기 비밀번호 확인 -->
-     <select id="selectPasswordRV" resultMap="reviewRes">
+     <select id="selectPasswordRV" resultClass="review" parameterClass="review">
       <include refid="select-review"/>
       <include refid="where-no" />
       AND rv_pass = #rv_pass#

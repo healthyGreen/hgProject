@@ -31,27 +31,28 @@
 .findbox .btn{ position:absolute; right:0; top:0; width:130px; height:90px; border:none !important;}  
 </style>
 
-<script type="text/javascript">
+<%-- <script type="text/javascript">
 function modifyPass(fm){
    var rv_pass = document.fm.rv_pass.value;
    var url = "reviewModifyForm.action?rv_pass="+rv_pass;
 }
 
-</script>
+</script> --%>
 <div class="indiv"><!-- Start indiv -->
 
 
-<form method=post name=fm action="reviewModifyForm.action" enctype="multipart/form-data">
+<form method=post name=fm action="reviewCheckPassPro.action">
 
 
 <div class="findbox">
           <ul>
             <li><span>현재 비밀번호</span>
               <input name="rv_pass" type="text" size="29" required label="비밀번호" tabindex=2 class="fm">
+              <input name="rv_number" type="hidden" size="29" value="${param.rv_number}">
             </li>
             <li><span></span>
-            <sapn onclick="javasript:modifyPass(this.form)">
-              <input type=image src="images/find_scbtn.jpg" tabindex=6></sapn>
+           <%--  <sapn onclick="javasript:modifyPass(this.form)"> --%>
+              <input type=image src="images/find_scbtn.jpg" tabindex=6><%-- </sapn> --%>
             </li>
        
           </ul>
