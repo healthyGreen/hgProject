@@ -3,6 +3,7 @@ package goods;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.Calendar;
+import java.util.Date;
 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -26,6 +27,12 @@ public class replyWriteAction extends ActionSupport {
 	private String password;
 	private String content;
 	private int originno;
+	private Date rp_date;
+	private int ref;
+	private int ref_step;
+	private int ref_level;
+	
+	
 	
     // private int ref; private int re_step; private int re_level;
 	 // boolean reply = false;
@@ -44,14 +51,40 @@ public class replyWriteAction extends ActionSupport {
 		reresult = new replyVO();
 
 		reClass.setRp_number(getOriginno());
+		System.out.println(originno);
 		reClass.setRp_m_id(getName());
-		reClass.setRp_pass(getPassword());
+		System.out.println(name);
 		reClass.setRp_content(getContent());
+		System.out.println(content);
+		reClass.setRp_pass(getPassword());
+		System.out.println(password);
 		reClass.setRp_date(today.getTime());
+		System.out.println(today);
+		reClass.setRp_ref(getRef());
+		System.out.println(ref);
+		reClass.setRp_ref_step(getRef_step());
+		reClass.setRp_ref_level(getRp_level());
 		
+		
+		System.out.println(reClass);
 		sqlMapper.insert("g_insertReply", reClass);
 
 		return SUCCESS;
+	}
+
+	private int getRp_level() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	private int getRef_step() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	private int getRef() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	public static Reader getReader() {

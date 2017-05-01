@@ -38,16 +38,16 @@ public class ordersSetAction extends ActionSupport {
 	public memberVO member;
 	public goodsVO goodsparamClass;
 	public goodsVO goodsresultClass;
-	HttpSession session = request.getSession();
-	public String session_id = (String)session.getAttribute("session_id");
+	/*HttpSession session = request.getSession();
+	public String session_id = (String)session.getAttribute("session_id");*/
 	public String orderType;
 	public List orderInfo = new ArrayList();
 	public List<basketVO> basketList;
 	//public List<goodsVO> goodsList; // 장바구니에서 '주문하기'버튼 클릭시 장바구니 list에서 3개 셋팅해준 값을 setter로 셋팅
 	//public Vector orderVector = new Vector<>();
 	
-	public int EverytotalPrice=0;
-	
+	//public int EverytotalPrice=0;
+	public int baesongPrice=0;
 	public ordersSetAction() throws IOException {
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper=SqlMapClientBuilder.buildSqlMapClient(reader);
@@ -58,6 +58,8 @@ public class ordersSetAction extends ActionSupport {
 		return SUCCESS;
 	}
 	public String execute() throws SQLException{
+		member = new memberVO();
+		member=(memberVO)sqlMapper.queryForObject("Member.selectOneMember", m_id);
 		if(orderType.equals("goods")){
 			orderInfo.add(g_number);
 			orderInfo.add(g_name);
@@ -66,12 +68,15 @@ public class ordersSetAction extends ActionSupport {
 			orderInfo.add(price);
 			//orderInfo.add(image);
 			totalPrice = amount*price;
-			orderInfo.add(totalPrice);
+			if(totalPrice>50000)
+				baesongPrice=3000;
+				totalPrice=totalPrice+3000;
+			//orderInfo.add(totalPrice);
 		}else if(orderType.equals("basket")){
-			basketList = sqlMapper.queryForList("Basket.basketList",session_id);
+			basketList = sqlMapper.queryForList("Basket.basketList",m_id);
 			if(basketList!=null){
 				for(int i=0; i< basketList.size(); i++)
-					EverytotalPrice += basketList.get(i).getB_allPrice();	
+					totalPrice += basketList.get(i).getB_allPrice();	
 			}else return ERROR;
 		}return SUCCESS;
 	}
@@ -154,7 +159,7 @@ public class ordersSetAction extends ActionSupport {
 	public void setGoodsresultClass(goodsVO goodsresultClass) {
 		this.goodsresultClass = goodsresultClass;
 	}
-	public HttpSession getSession() {
+	/*public HttpSession getSession() {
 		return session;
 	}
 	public void setSession(HttpSession session) {
@@ -165,7 +170,7 @@ public class ordersSetAction extends ActionSupport {
 	}
 	public void setSession_id(String session_id) {
 		this.session_id = session_id;
-	}
+	}*/
 	public String getOrderType() {
 		return orderType;
 	}
@@ -178,12 +183,12 @@ public class ordersSetAction extends ActionSupport {
 	public void setOrderInfo(List orderInfo) {
 		this.orderInfo = orderInfo;
 	}
-	public int getEverytotalPrice() {
+	/*public int getEverytotalPrice() {
 		return EverytotalPrice;
 	}
 	public void setEverytotalPrice(int everytotalPrice) {
 		EverytotalPrice = everytotalPrice;
-	}
+	}*/
 	public int getTotalPrice() {
 		return totalPrice;
 	}
