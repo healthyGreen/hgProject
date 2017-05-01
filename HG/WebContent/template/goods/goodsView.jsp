@@ -11,6 +11,11 @@
 		var b_g_amount = document.goodsForm.b_g_amount.value;
 		window.location.href='basketInput.action?b_m_id=<%= session_id%>&b_g_number=${g_number}&b_g_name=${goodsResult.g_name}&b_g_price=${goodsResult.g_price}&b_g_amount='+b_g_amount;
 	}
+	function buyIt(goodsForm) {
+		var b_g_amount = document.goodsForm.b_g_amount.value;
+		var b_g_bottle = document.goodsForm.b_g_bottle.value;
+		window.location.href='orderForm.action?m_id=<%=session_id%>&g_number=${g_number}&g_name=${goodsResult.g_name}&price=${goodsResult.g_price}&amount='+b_g_amount+'&bottle='+b_g_bottle+'&orderType=goods';
+	} 
 </script>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -91,6 +96,16 @@
 													</div>
 												</td>
 											</tr>
+											<tr>
+												<td class=count>bottle</td>
+												<td class=count >
+													<div style="float:left;">
+														<select name="b_g_bottle">
+				<option value="small">350 mL</option>
+				<option value="medium">500 mL<option>
+				<option value="big">750 mL</option>
+			</select>
+											</tr>
 
 										</table>
 									  <div id="el-multi-option-display" class="info_option">
@@ -99,7 +114,7 @@
 										  <col width="50">
 										  <col width="150">
 										</table>
-										<div class="info_total">총 상품금액 :  <span class="feb" id="el-multi-option-total-price">19,800 원</span></div>
+										<%-- <div class="info_total">총 상품금액 :  <span class="feb" id="el-multi-option-total-price">19,800 원</span></div> --%>
 									  </div>
  
 									  <div class="view_btn"> 					
@@ -107,7 +122,7 @@
 										<a href="javascript:cartAdd(this.form)"><img src="../images/cart.png"></a> 
 										<input type="button" value="장바구니" onclick="return cartAdde(this.form)">
 										<style>.view_btn a{margin-left:20px} </style>
-									  </div>
+									  </div><br><input type="button" value="상품구매" onclick="return buyIt(this.form)">
 								   
 								  </div>
 								</div>

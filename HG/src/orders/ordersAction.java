@@ -26,6 +26,8 @@ public class ordersAction extends ActionSupport{
 	public String bottle;
 	public int price;
 	public int totalPrice;
+	public int x; 
+	public int y;
 	//public setOrderVO setOrder;
 	public ordersVO order;
 	public ordersVO orderResult;
@@ -40,7 +42,7 @@ public class ordersAction extends ActionSupport{
 		orderInfo.add(bottle);
 		orderInfo.add(price); */
 	public int o_number;
-	public String session_id;
+	//public String session_id;
 	public String o_name;
 	public int o_rphone;
 	public String o_zipcode;
@@ -58,7 +60,7 @@ public class ordersAction extends ActionSupport{
 	// 장바구니가 아닌 그냥 바로 상품주문
 	public String execute() throws SQLException{
 		
-		order.setO_m_id(session_id);
+		order.setO_m_id(m_id);
 		order.setO_name(o_name);
 		order.setO_rphone(o_rphone);
 		order.setO_zipcode(o_zipcode);
@@ -69,7 +71,7 @@ public class ordersAction extends ActionSupport{
 		order.setO_date(o_date.getTime());
 		
 		if(orderType.equals("goods")){
-			order.setO_m_id(session_id);
+			order.setO_m_id(m_id);
 			order.setO_name(g_name);
 			order.setO_g_number(g_number);
 			order.setO_g_amount(amount);
@@ -86,11 +88,11 @@ public class ordersAction extends ActionSupport{
 	// 장바구니에 넣었을때 
 	public String execute2() throws SQLException{
 		
-		basketList = sqlMapper.queryForList("Basket.basketList",session_id);
+		basketList = sqlMapper.queryForList("Basket.basketList",m_id);
 		for(int i=0; i<basketList.size(); i++){
 			
 			basket = basketList.get(i);
-			order.setO_m_id(session_id);
+			order.setO_m_id(m_id);
 			order.setO_name(o_name);
 			order.setO_rphone(o_rphone);
 			order.setO_zipcode(o_zipcode);
@@ -111,4 +113,143 @@ public class ordersAction extends ActionSupport{
 		}
 		return SUCCESS;
 	}
+	public int getG_number() {
+		return g_number;
+	}
+	public void setG_number(int g_number) {
+		this.g_number = g_number;
+	}
+	public String getM_id() {
+		return m_id;
+	}
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
+	}
+	public String getG_name() {
+		return g_name;
+	}
+	public void setG_name(String g_name) {
+		this.g_name = g_name;
+	}
+	public int getAmount() {
+		return amount;
+	}
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+	public String getBottle() {
+		return bottle;
+	}
+	public void setBottle(String bottle) {
+		this.bottle = bottle;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+	public int getX() {
+		return x;
+	}
+	public void setX(int x) {
+		this.x = x;
+	}
+	public int getY() {
+		return y;
+	}
+	public void setY(int y) {
+		this.y = y;
+	}
+	public ordersVO getOrder() {
+		return order;
+	}
+	public void setOrder(ordersVO order) {
+		this.order = order;
+	}
+	public ordersVO getOrderResult() {
+		return orderResult;
+	}
+	public void setOrderResult(ordersVO orderResult) {
+		this.orderResult = orderResult;
+	}
+	public basketVO getBasket() {
+		return basket;
+	}
+	public void setBasket(basketVO basket) {
+		this.basket = basket;
+	}
+	public List<basketVO> getBasketList() {
+		return basketList;
+	}
+	public void setBasketList(List<basketVO> basketList) {
+		this.basketList = basketList;
+	}
+	public String getOrderType() {
+		return orderType;
+	}
+	public void setOrderType(String orderType) {
+		this.orderType = orderType;
+	}
+	public int getO_number() {
+		return o_number;
+	}
+	public void setO_number(int o_number) {
+		this.o_number = o_number;
+	}
+	public String getO_name() {
+		return o_name;
+	}
+	public void setO_name(String o_name) {
+		this.o_name = o_name;
+	}
+	public int getO_rphone() {
+		return o_rphone;
+	}
+	public void setO_rphone(int o_rphone) {
+		this.o_rphone = o_rphone;
+	}
+	public String getO_zipcode() {
+		return o_zipcode;
+	}
+	public void setO_zipcode(String o_zipcode) {
+		this.o_zipcode = o_zipcode;
+	}
+	public String getO_addr1() {
+		return o_addr1;
+	}
+	public void setO_addr1(String o_addr1) {
+		this.o_addr1 = o_addr1;
+	}
+	public String getO_addr2() {
+		return o_addr2;
+	}
+	public void setO_addr2(String o_addr2) {
+		this.o_addr2 = o_addr2;
+	}
+	public String getO_comment() {
+		return o_comment;
+	}
+	public void setO_comment(String o_comment) {
+		this.o_comment = o_comment;
+	}
+	public String getO_pay() {
+		return o_pay;
+	}
+	public void setO_pay(String o_pay) {
+		this.o_pay = o_pay;
+	}
+	public Calendar getO_date() {
+		return o_date;
+	}
+	public void setO_date(Calendar o_date) {
+		this.o_date = o_date;
+	}
+	
 }
