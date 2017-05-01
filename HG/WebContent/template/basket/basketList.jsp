@@ -1,6 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+    <%
+    	String session_id = (String)session.getAttribute("session_id");
+    %>
+<%-- <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %> --%>
+<script type="text/javascript">
+	function modiBas(basketlist) {
+		var b_g_amount = document.basketlist.b_g_amount.value;
+		
+		window.location.href='basketModify.action?b_g_number=${b_g_number}&b_number=${b_number}&b_g_price=${b_g_price}&b_g_amount='+b_g_amount;
+	}
+</script>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+
 </tr>
 <tr>
 <td height=100%>
@@ -19,7 +31,7 @@
 
 <div class="indiv"><!-- Start indiv -->
 
-<form name=frmCart method=post>
+<form name="basketlist">
 <input type=hidden name=mode value=modItem>
 <br>
  <style media="screen">
@@ -49,26 +61,29 @@ table.orderitem-list tfoot tr td table td {border:none;}
 </tr>
 </thead>
 <tbody>
+	<s:iterator value="basketList" status="sta">
 	<tr>
-		<td>1</td>
-		<td>상품명입니다.</td>
-		<td>23,000원</td>
-		<td>
-			<select>
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
-				<option>6</option>
-				<option>7</option>
-				<option>8</option>
-				<option>9</option>
-			</select>
+	<%-- <s:hidden name="b_number" value='%{b_number}'/> --%>
+		<%-- <s:hidden name="b_number" value="b_number"/> --%>
+		<td>${b_g_number}</td>
+		<td>${b_g_name} </td>
+		<td>${b_g_price }원</td>
+		<td>${b_g_amount } &nbsp;
+			<select name="b_g_amount">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+			</select>&nbsp;<input type="button" value="변경" onclick="return modiBas(this.form)">
 		</td>
-		<td>상품합계금액</td>
-		
-	</tr>
+		<td>${b_allPrice }원</td>
+	</tr><br>
+		</s:iterator>
 </tr>
 	
 </tbody>

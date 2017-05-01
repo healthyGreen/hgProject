@@ -1,5 +1,6 @@
 package goods;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import com.ibatis.common.resources.Resources;
@@ -14,6 +15,7 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -29,17 +31,19 @@ public class goodsViewAction extends ActionSupport {
    private goodsVO goodsResult = new goodsVO();
    private replyVO replyParam = new replyVO();
    private replyVO replyResult = new replyVO();
-   HttpServletRequest request;
+  /* HttpServletRequest request;
    HttpSession session = request.getSession();
-   private String sesssion_id = (String) session.getAttribute("session_id");
+   private String sesssion_id = (String) session.getAttribute("session_id");*/
    private int currentPage = 1;
    private int totalCount;
    private int blockCount = 10;
    private int blockPage = 5;
    private List<replyVO> rp_list = new ArrayList<>();
-   private int no;
+   private int g_number;
    private String password;
-
+   /*ActionContext context = ActionContext.getContext();
+	Map<String, Object> session = context.getSession();
+	String session_id = (String) session.get("m_id");*/
    replyPagingAction rp_page;
    private String pagingHtml;
    private InputStream inputStream;
@@ -53,10 +57,10 @@ public class goodsViewAction extends ActionSupport {
    }
 
    public String execute() throws Exception {
-      goodsResult = (goodsVO) sqlMapper.queryForObject("goods.g_view", no);
-      if (sesssion_id != null) {
-         rp_list = sqlMapper.queryForList("reply.g_selectReply");
-      } else return LOGIN;
+      goodsResult = (goodsVO) sqlMapper.queryForObject("g_view", g_number);
+     
+         rp_list = sqlMapper.queryForList("g_selectReply");
+     
       
      // totalCount = rp_list.size();
       
@@ -103,7 +107,7 @@ public class goodsViewAction extends ActionSupport {
       this.replyResult = replyResult;
    }
 
-   public HttpSession getSession() {
+   /*public HttpSession getSession() {
       return session;
    }
 
@@ -117,7 +121,7 @@ public class goodsViewAction extends ActionSupport {
 
    public void setSesssion_id(String sesssion_id) {
       this.sesssion_id = sesssion_id;
-   }
+   }*/
 
    public int getCurrentPage() {
       return currentPage;
@@ -159,15 +163,17 @@ public class goodsViewAction extends ActionSupport {
       this.rp_list = rp_list;
    }
 
-   public int getNo() {
-      return no;
-   }
+   
 
-   public void setNo(int no) {
-      this.no = no;
-   }
+   public int getG_number() {
+	return g_number;
+}
 
-   public String getPassword() {
+public void setG_number(int g_number) {
+	this.g_number = g_number;
+}
+
+public String getPassword() {
       return password;
    }
 

@@ -102,7 +102,7 @@ public class ordersAction extends ActionSupport{
 			order.setO_m_id(basket.getB_m_id());
 			order.setO_name(basket.getB_g_name());
 			order.setO_g_number(basket.getB_g_number());
-			order.setO_g_amount(basket.getB_g_amout());
+			order.setO_g_amount(basket.getB_g_amount());
 			order.setO_g_bottle(basket.getB_g_bottle());
 			order.setO_price(basket.getB_g_price());
 			order.setO_allprice(basket.getB_allPrice());

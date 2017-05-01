@@ -29,12 +29,12 @@ public class basketListAction extends ActionSupport{
 	private goodsVO goodsresultClass;
 	
 	private String b_m_id;
-	private int b_g_number;
+	/*private int b_g_number;
 	private String b_g_name;
 	private int b_g_amount;
-	private int b_allprice;
+	private int b_allprice;*/
 	private List<String> b_image = new ArrayList();
-	private Date b_date;
+	
 	private List<basketVO> basketList = new ArrayList<basketVO>();
 	private List<basketVO> subBasketList = new ArrayList<basketVO>();
 	private List<goodsVO> goodsList = new ArrayList<goodsVO>();
@@ -45,7 +45,7 @@ public class basketListAction extends ActionSupport{
 	private int blockPage = 5; // 한 화면에 보여줄 페이지 수
 	private String pagingHtml; // 페이징을 구현한 HTML
 	private basketPageAction page; // 페이징 클래스
-	private int num = 0;
+	//private int num = 0;
 	private Map session;
 	
 	public basketListAction() throws Exception{
@@ -59,11 +59,11 @@ public class basketListAction extends ActionSupport{
 		memresultClass = new memberVO();
 		basparamClass = new basketVO();
 		basresultClass = new basketVO();
-		ActionContext context = ActionContext.getContext(); // session을 생성하기 위해
+		/*ActionContext context = ActionContext.getContext(); // session을 생성하기 위해
 		Map<String, Object> session = context.getSession();
-		String session_id = (String) session.get("m_id");
-		memresultClass = (memberVO) sqlMapper.queryForObject("Member.UserCheck", session_id); // 궅이 필요 없을듯
-		basketList = sqlMapper.queryForList("Basket.basketList", session_id);
+		String session_id = (String) session.get("m_id");*/
+		/*memresultClass = (memberVO) sqlMapper.queryForObject("Member.UserCheck", sb_m_id); // 궅이 필요 없을듯
+*/		basketList = sqlMapper.queryForList("Basket.basketList", b_m_id);
 		/*if(basketList!=null){
 		for(int i=1; i<= basketList.size(); i++){
 			goodsresultClass=(goodsVO)sqlMapper.queryForObject("goods_selectOne", basketList.get(0).getB_G_NUMBER());
@@ -133,7 +133,7 @@ public class basketListAction extends ActionSupport{
 		this.b_m_id = b_m_id;
 	}
 
-	public int getB_g_number() {
+/*	public int getB_g_number() {
 		return b_g_number;
 	}
 
@@ -163,7 +163,7 @@ public class basketListAction extends ActionSupport{
 
 	public void setB_allprice(int b_allprice) {
 		this.b_allprice = b_allprice;
-	}
+	}*/
 
 	public List<String> getB_image() {
 		return b_image;
@@ -173,13 +173,6 @@ public class basketListAction extends ActionSupport{
 		this.b_image = b_image;
 	}
 
-	public Date getB_date() {
-		return b_date;
-	}
-
-	public void setB_date(Date b_date) {
-		this.b_date = b_date;
-	}
 
 	public List<basketVO> getSubBasketList() {
 		return subBasketList;
@@ -237,13 +230,13 @@ public class basketListAction extends ActionSupport{
 		this.page = page;
 	}
 
-	public int getNum() {
+	/*public int getNum() {
 		return num;
 	}
 
 	public void setNum(int num) {
 		this.num = num;
-	}
+	}*/
 
 	public goodsVO getGoodsparamClass() {
 		return goodsparamClass;

@@ -6,6 +6,10 @@
 	String salad = "salad";
 	String chacJeb = "chacJeb";
 	String smoothy = "smoothy";
+	String superFood= "superFood";
+	String fruit = "fruit";
+	String giftSet = "giftSet";
+	String water = "water";
 %>
 <html>
 <head>
@@ -108,16 +112,16 @@
 					<li style="width:16.6%">
 						<a href="" class="cate1">SNACK</a>
 						<div class="two">
-							<p><a href="" class="cate2">하루슈퍼푸드</a>
+							<p><a href="goodsList.action?g_category=<%=superFood %>" class="cate2">하루슈퍼푸드</a>
 							</p>
-							<p><a href="" class="cate2">하루과일칩</a>
+							<p><a href="goodsList.action?g_category=<%=fruit %>" class="cate2">하루과일칩</a>
 							</p>
-							<p><a href="" class="cate2">선물 세트</a>
+							<p><a href="goodsList.action?g_category=<%=giftSet %>" class="cate2">선물 세트</a>
 							</p>
 						</div>
 					</li>
 					<li style="width:16.6%">
-						<a href="" class="cate1">REFRESH WATER</a>
+						<a href="goodsList.action?g_category=<%=water %>" class="cate1">REFRESH WATER</a>
 					</li>
 					<li><a href="noticeList.action">NOTICE</a></li>
 					<li><a href="reviewList.action">상품후기</a></li>

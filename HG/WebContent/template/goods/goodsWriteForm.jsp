@@ -74,7 +74,15 @@ function validation(){
 					<th scope="row">상품카테고리</th>
 					<td>
 						<div>
-							<input type="text" class="input1 write-box" name="g_category" />
+							<select name="g_category">
+								<option value="chacJeb">착즙주스키트</option>
+								<option value="smoothy">스무디키트</option>
+								<option value="salad">샐러드</option>
+								<option value="superFood">슈퍼푸드</option>
+								<option value="fruit">하루과일칩</option>
+								<option value="giftSet">선물세트</option>
+								<option value="water">REFRESH WATER</option>
+							</select>
 						</div>
 					</td>
 				</tr>
@@ -99,6 +107,14 @@ function validation(){
 					<td>
 						<div>
 							<input type="text" class="input1 write-box" name="g_ingr" />
+						</div>
+					</td>
+				</tr>
+				<tr class="">
+					<th scope="row">상품재고량</th>
+					<td>
+						<div>
+							<input type="text" class="input1 write-box" name="g_jaegoAmount" />
 						</div>
 					</td>
 				</tr>

@@ -23,10 +23,10 @@ public class goodsDeleteAction extends ActionSupport{
 		private replyVO reClass = new replyVO(); // 댓글의 파라미터를 저장할 객체
 		private replyVO reResult = new replyVO(); // 댓글의 쿼리 결과값을 저장할 객체
 		private replyVO passResult = new replyVO();
-		private int currentPage;
+		private int adminCurrentPage;
 		private String rp_pass;
 		private int no;
-		private int G_NUMBER;
+		private int g_number;
 		private String G_CATEGORY;
 		private String category;
 		private int rp_number;
@@ -43,7 +43,9 @@ public class goodsDeleteAction extends ActionSupport{
 
 		// 게시글 글 삭제
 		public String execute() throws Exception {
-
+			/*System.out.println("1");
+			System.out.println(g_number);
+			System.out.println(adminCurrentPage);*/
 			// 파라미터와 리절트 객체 생성.
 			goods_paramClass = new goodsVO();
 			goods_resultClass = new goodsVO();
@@ -53,7 +55,7 @@ public class goodsDeleteAction extends ActionSupport{
 					"g_list_selectOne", getG_NUMBER());*/
 
 			// 삭제할 항목 설정.
-			goods_paramClass.setG_number(getG_NUMBER());
+			goods_paramClass.setG_number(getG_number());
 
 			// 삭제 쿼리 수행.
 			sqlMapper.delete("g_delete", goods_paramClass);
@@ -104,12 +106,14 @@ public class goodsDeleteAction extends ActionSupport{
 			goodsDeleteAction.sqlMapper = sqlMapper;
 		}
 
-		public int getCurrentPage() {
-			return currentPage;
+		
+
+		public int getAdminCurrentPage() {
+			return adminCurrentPage;
 		}
 
-		public void setCurrentPage(int currentPage) {
-			this.currentPage = currentPage;
+		public void setAdminCurrentPage(int adminCurrentPage) {
+			this.adminCurrentPage = adminCurrentPage;
 		}
 
 		public int getNo() {
@@ -144,12 +148,14 @@ public class goodsDeleteAction extends ActionSupport{
 			this.reResult = reResult;
 		}
 
-		public int getG_NUMBER() {
-			return G_NUMBER;
+		
+
+		public int getG_number() {
+			return g_number;
 		}
 
-		public void setG_NUMBER(int goods_num) {
-			this.G_NUMBER = goods_num;
+		public void setG_number(int g_number) {
+			this.g_number = g_number;
 		}
 
 		public String getG_CATEGORY() {

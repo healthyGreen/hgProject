@@ -1,25 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
     <%@ taglib prefix="s" uri="/struts-tags" %>
- <%
-	String salad = "salad";
-	String chacJeb = "chacJeb";
-	String smoothy = "smoothy";
-	String superFood= "superFood";
-	String fruit = "fruit";
-	String giftSet = "giftSet";
-	String water = "water";
-%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- 메인팝업창 -->
 
 	<script language="JavaScript"><!--
 	//--></script>
 	<script type="text/javascript" src="js/rolling.js"></script>
-	<%-- <script type="text/javascript">
-	function goodsdelete(g_number,currentPage){
-		document.goodsform.action="goodsDelete.action?G_NUMBER="+G_NUMBER+"&currentPage="+currentPage;
-		document.goodsform.submit();
+	<script type="text/javascript">
+	function goodsdelete(g_number,adminCurrentPage){
+		document.adminList.action="goodsDelete.action?g_number="+g_number+"&adminCurrentPage="+adminCurrentPage;
+		document.adminList.submit();
 	}
 	$(function(){ 
 		$('#visual').rolling({ 
@@ -31,8 +22,8 @@
 
 
 	});
-	</script> --%>
-
+	</script>
+	<h1>관리자 list 부분 !! 언니 이거 디자인 처리 해주세용 >.< 관리자 리스트라고~~>.</h1>
 	<table height=100% cellpadding=0 cellspacing=0 border=0 class="outline_both" style="width:1100px;margin:0 auto ; padding:30px 0;">
 		<tr>
 			<td valign=top width=100% height=100% bgcolor="" background="" class=outline_side>
@@ -40,22 +31,6 @@
 					<img src="../images/b31ec21d972e1833.jpg">		
 				</div>
 
-				<!-- 상단 카테고리 메뉴시작 -->
-				<div class="subtab">
-				  <ul>
-					<li  class="on"><a href="goodsList.action?g_category=<%=chacJeb %>&currentPage=<s:property value="currentPage"/>">착즙주스키트</a>
-					</li>
-				 
-					<li><a href="goodsList.action?g_category=<%=smoothy %>&currentPage=<s:property value="currentPage"/>">스무디키트</a>
-					</li>
-				 
-					<li><a href="goodsList.action?g_category=<%=salad %>&currentPage=<s:property value="currentPage"/>">샐러드</a>
-					</li>
-				  </ul>
-				</div>
-		<!-- 상단 카테고리 메뉴끝 -->
-		<!--현재위치시작-->
-		<!--현재위치끝-->
 
 	<!--제품리스트상단시작-->
 
@@ -63,7 +38,7 @@
   
 		
 
-    
+    <form name="adminList"></form>
 		<table width=100% border=0 cellpadding=0 cellspacing=0>
 		  <tr>
 			<td>      
@@ -90,16 +65,18 @@
 				<s:iterator value="list" status="stat">
                         <tr>
                            <td><s:property value="g_number"/></td>
-                           <td class="subject"><a href="goodsView.action?g_number=<s:property value="g_number"/>&currentPage=<s:property value="currentPage"/>">&nbsp;&nbsp;&nbsp;<s:property value="g_name" /></a></td>
-                           <td><s:property value="g_name"/></td>
-                           
+                           <td class="subject"><s:property value="g_name" /></td>
+ 							<%-- <td class="subject"><a href="goodsView.action?g_number=<s:property value="g_number"/>&currentPage=<s:property value="adminCurrentPage"/>">&nbsp;&nbsp;&nbsp;<s:property value="g_name" /></a></td> --%>
+                          
+                           <td><s:property value="g_category"/></td>
+                            <td><s:property value="g_jaegoAmount"/>개</td>
+                       <td><input type="button" onclick="javascript:goodsdelete(<s:property value="g_number" />,<s:property value="adminCurrentPage" />)" value="상품 삭제" ></td>
                         </tr>
                      </s:iterator>
 			</td>
 		  </tr>
 		  <tr>
 			<!-- <td align=center height=50> <b></b> </td> -->
-			
 		  </tr>
 		</table>
 		<br>

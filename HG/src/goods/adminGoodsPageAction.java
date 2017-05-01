@@ -1,8 +1,8 @@
 package goods;
 
-public class goodsPageAction {
+public class adminGoodsPageAction {
 
-	private int currentPage;   // 현재페이지
+	private int adminCurrentPage;   // 현재페이지
 	private int totalCount;	 // 전체 게시물 수
 	private int totalPage;	 // 전체 페이지 수
 	private int blockCount;	 // 한 페이지의  게시물의 수
@@ -14,12 +14,12 @@ public class goodsPageAction {
 	
 	private StringBuffer pagingHtml;
 	
-	public goodsPageAction(int currentPage, int totalCount, int blockCount, int blockPage, int searchNum, String isSearch
+	public adminGoodsPageAction(int adminCurrentPage, int totalCount, int blockCount, int blockPage
 			){
 		
 		this.blockCount = blockCount;
 		this.blockPage = blockPage;
-		this.currentPage = currentPage;
+		this.adminCurrentPage = adminCurrentPage;
 		this.totalCount = totalCount;
 		
 		
@@ -29,16 +29,16 @@ public class goodsPageAction {
 					totalPage = 1;
 	}
 			//현재 페이지가 전체 페이지 수보다 클 때 전체 페이지 수로 설정	
-				if(currentPage > totalPage){
-					currentPage = totalPage;
+				if(adminCurrentPage > totalPage){
+					adminCurrentPage = totalPage;
 				}
 				
 				//현재 페이지의 처음과 마지막 글의 번호 가져오는 것.
-		startCount = (currentPage-1)*blockCount;
+		startCount = (adminCurrentPage-1)*blockCount;
 		endCount = startCount + blockCount - 1;
 		
 		//시작 페이지와 마지막 페이지 값 구하기.
-		startPage = (int) ((currentPage-1)/blockPage)*blockPage+1;
+		startPage = (int) ((adminCurrentPage-1)/blockPage)*blockPage+1;
 		endPage = startPage + blockPage - 1;
 		
 		//마지막 페이지가 전체 페이지 수보다 클 때 전체 페이지 수로 설정
@@ -48,12 +48,9 @@ public class goodsPageAction {
 		
 		//이전 block 페이지
 		pagingHtml = new StringBuffer();
-		if(currentPage>blockPage){
-			if(isSearch != "")
-			pagingHtml.append("<a href=goodsList.action?currentPage="
-					+(startPage-1)+ "&searchKeyword="+isSearch+"&searchNum="+searchNum+">");
-			else
-				pagingHtml.append("<a href=goodsList.action?currentPage=" +
+		if(adminCurrentPage>blockPage){
+			
+				pagingHtml.append("<a href=adminGoodsList.action?adminCurrentPage=" +
 			(startPage-1)+">");
 			pagingHtml.append("이전");
 			pagingHtml.append("</a>");
@@ -65,16 +62,14 @@ public class goodsPageAction {
 		if(i>totalPage){
 			break;
 		}
-		if(i==currentPage){
+		if(i==adminCurrentPage){
 			pagingHtml.append("&nbsp;<b> <font color='red'>");
 			pagingHtml.append(i);
 			pagingHtml.append("</font></b>");
 	}else{
-		pagingHtml.append("&nbsp;<a href=goodsList.action?currentPage=");
+		pagingHtml.append("&nbsp;<a href=adminGoodsList.action?adminCurrentPage=");
 		pagingHtml.append(i);
-		if(isSearch != ""){
-			pagingHtml.append("&searchKeyword="+isSearch+"&searchNum="+searchNum);
-		}
+		
 			pagingHtml.append(">");
 		pagingHtml.append(i);
 		pagingHtml.append("</a>");
@@ -84,10 +79,9 @@ public class goodsPageAction {
 	
 	//다음 block 페이지
 	if(totalPage - startPage >= blockPage){
-		pagingHtml.append("&nbsp;<a href=goodsList.action?currentPage=");
+		pagingHtml.append("&nbsp;<a href=adminGoodsList.action?adminCurrentPage=");
 		pagingHtml.append((endPage+1));
-		if(isSearch != "")
-			pagingHtml.append("&searchKeyword="+isSearch+"&searchNum="+searchNum);
+		
 		pagingHtml.append("'>");
 		pagingHtml.append("다음");
 		pagingHtml.append("</a>");
@@ -95,12 +89,14 @@ public class goodsPageAction {
 	}
 
 
-	public int getCurrentPage() {
-		return currentPage;
+	
+
+	public int getAdminCurrentPage() {
+		return adminCurrentPage;
 	}
 
-	public void setCurrentPage(int currentPage) {
-		this.currentPage = currentPage;
+	public void setAdminCurrentPage(int adminCurrentPage) {
+		this.adminCurrentPage = adminCurrentPage;
 	}
 
 	public int getTotalCount() {

@@ -36,13 +36,13 @@ public class goodsWriteAction extends ActionSupport implements SessionAware {
 	//private String g_bottle;
 	private String g_org_image; // 업로드 파일 원래 이름
 	private String g_sav_image; // 서버에 저장할 업로드 파일 이름 (고유번호로 분류됨)
-
+	private int g_jaegoAmount;
 	private Map session;
 
 	private List<File> upload = new ArrayList<File>(); // 파일 객체
 	private List<String> uploadContentType = new ArrayList<String>(); // 컨텐츠 타입
 	private List<String> uploadFileName = new ArrayList<String>(); // 파일 이름
-	private String fileUploadPath = "미정";// 업로드
+	private String fileUploadPath = "C:\\eclipse-jee-neon-2-win32-x86_64\\eclipse\\file\\";// 업로드
 	private int index;// 경로
 
 	public goodsWriteAction() throws IOException {
@@ -70,7 +70,7 @@ public class goodsWriteAction extends ActionSupport implements SessionAware {
 		paramClass.setG_ingr(g_ingr);
 		paramClass.setG_number(g_number);
 		paramClass.setG_price(g_price);
-
+		paramClass.setG_jaegoAmount(g_jaegoAmount);
 		
 		sqlMapper.insert("g_write", paramClass);
 		// 첨부파일을 선택했다면 파일을 업로드한다.
@@ -237,5 +237,13 @@ public class goodsWriteAction extends ActionSupport implements SessionAware {
 		this.index = index;
 	}
 
+	public int getG_jaegoAmount() {
+		return g_jaegoAmount;
+	}
+
+	public void setG_jaegoAmount(int g_jaegoAmount) {
+		this.g_jaegoAmount = g_jaegoAmount;
+	}
+	
 	
 }

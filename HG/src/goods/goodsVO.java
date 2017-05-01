@@ -11,8 +11,9 @@ public class goodsVO {
 	private int g_price;
 	private String g_ingr;
 	private String g_category;
-	private int g_amount;
-	private String g_bottle;
+	private int g_jaegoAmount;
+	/*private int g_amount;
+	private String g_bottle;*/
 	
 	public int getG_number() {
 		return g_number;
@@ -68,7 +69,14 @@ public class goodsVO {
 	public void setG_category(String g_category) {
 		this.g_category = g_category;
 	}
-	public int getG_amount() {
+	public int getG_jaegoAmount() {
+		return g_jaegoAmount;
+	}
+	public void setG_jaegoAmount(int g_jaegoAmount) {
+		this.g_jaegoAmount = g_jaegoAmount;
+	}
+	
+/*	public int getG_amount() {
 		return g_amount;
 	}
 	public void setG_amount(int g_amount) {
@@ -79,7 +87,7 @@ public class goodsVO {
 	}
 	public void setG_bottle(String g_bottle) {
 		this.g_bottle = g_bottle;
-	}
+	}*/
 }
 	
 	

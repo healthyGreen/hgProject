@@ -1,10 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+     <%@ taglib prefix="s" uri="/struts-tags" %>
+     <%
+     	String session_id = (String)session.getAttribute("session_id");
+     	/* String b_g_bottle = "병";
+     	int b_g_amount = 3; */
+     %>
+     <script type="text/javascript">
+	function cartAdde(goodsForm) {
+		var b_g_amount = document.goodsForm.b_g_amount.value;
+		window.location.href='basketInput.action?b_m_id=<%= session_id%>&b_g_number=${g_number}&b_g_name=${goodsResult.g_name}&b_g_price=${goodsResult.g_price}&b_g_amount='+b_g_amount;
+	}
+</script>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-</tr>
+
 	<tr>
 		<td height=100%>
+		<form name="goodsForm">
+		 <%-- <input type="hidden" name="b_m_id" value="<%= session_id%>">
+		 <s:hidden name="b_g_number" value="%{g_number}"/>
+		 <s:hidden name="b_g_name" value="%{goodsResult.g_name}"/>
+		 <s:hidden name="b_g_price" value="%{goodsResult.g_price}"/> --%>
+		 
 			<table height=100% cellpadding=0 cellspacing=0 border=0 class="outline_both" style="width:1100px;margin:0 auto ; padding:30px 0;">
+ 	<tr><td> <%-- <a href="basketInput.action?b_g_number=<s:property value="g_number"/>&b_m_id=<%=session_id%>
+			&b_g_name=<s:property value="goodsResult.g_name"/>
+			&b_g_price=<s:property value="goodsResult.g_price"/>">장바구니</a> --%>
+			
+			</td></tr>
 				<tr>
 					<td valign=top width=100% height=100% bgcolor="" background="" class=outline_side>
 						
@@ -25,7 +48,7 @@
 											<tr class="info_price">
 												<th>판매가격 </th>
 												<td>
-												<b><span id=price>19,800</span>원</b>
+												<b><span id=price><s:property value="goodsResult.g_price"/></span>원</b>
 												</td>
 											</tr>
 										</table>
@@ -54,7 +77,17 @@
 												<th class=count >구매수량 </th>
 												<td class=count >
 													<div style="float:left;">
-														<input type=text name=ea size=2 value=1 class=line style="text-align:right;height:22px" step="1" min="1" max="0">개
+														<select name="b_g_amount">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+			</select>
 													</div>
 												</td>
 											</tr>
@@ -71,7 +104,8 @@
  
 									  <div class="view_btn"> 					
 										<a href="javascript:act('../order/order')"><img src="../images/buy_now.png"></a>
-										<a href="javascript:cartAdd(frmView,'Confirm')"><img src="../images/cart.png"></a> 
+										<a href="javascript:cartAdd(this.form)"><img src="../images/cart.png"></a> 
+										<input type="button" value="장바구니" onclick="return cartAdde(this.form)">
 										<style>.view_btn a{margin-left:20px} </style>
 									  </div>
 								   
@@ -219,6 +253,7 @@
  
 					</tr>
 				</table>
+				</form>
 			</td>
 		</tr>
 <tr>

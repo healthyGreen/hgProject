@@ -17,25 +17,24 @@ public class basketInputAction extends ActionSupport{
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 	
-	private memberVO memparamClass;
-	private memberVO memresultClass;
+	/*private memberVO memparamClass;
+	private memberVO memresultClass;*/
 	private basketVO basparamClass;
 	private basketVO basresultClass;
 	
 	private String g_number;
-	private String g_name;
+	//private String g_name;
 	private String g_sav_image;
-	private int g_price;
-	private int g_amout;
-	
+	//private int g_amout;
+	private int b_g_price;
 	private String b_m_id;
 	private int b_g_number;
 	private String b_g_name;
-	private int b_g_amout;
+	private Calendar b_date = Calendar.getInstance();
+	private int b_g_amount; 
 	private int b_allprice;
-	private String b_bottle;
-	private Date b_date;
-	Calendar today = Calendar.getInstance();
+	//private String b_g_bottle; -> 다시 써야대
+	
 
 	public basketInputAction() throws Exception{
 		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
@@ -46,24 +45,24 @@ public class basketInputAction extends ActionSupport{
 	public String execute() throws Exception{
 		basparamClass = new basketVO();
 		basresultClass = new basketVO();
-		ActionContext context = ActionContext.getContext();
-		Map<String, Object> session = context.getSession();
+		// ActionContext context = ActionContext.getContext();
+		/*Map<String, Object> session = context.getSession();
 		String session_id = (String) session.get("m_id");
-		memresultClass = (memberVO) sqlMapper.queryForObject("Member.UserCheck", session_id);
+		memresultClass = (memberVO) sqlMapper.queryForObject("Member.UserCheck", session_id);*/
 		
-		basparamClass.setB_m_id(session_id);
+		basparamClass.setB_m_id(getB_m_id());
 		basparamClass.setB_g_name(getB_g_name());
-		basparamClass.setB_g_amout(getB_g_amout());
-		basparamClass.setB_g_price(getG_price());
-		basparamClass.setB_allPrice(getB_g_amout()*getG_price());
-		basparamClass.setB_g_bottle(getB_bottle());
-		basparamClass.setB_date(today.getTime());
-		basparamClass.setB_g_number(getB_g_number());  // 굳이 넣지 않아도 됩니다!!!(장바구니에 상품 번호 안뜨기 때문에)
+		basparamClass.setB_g_amount(getB_g_amount());
+		basparamClass.setB_g_price(getB_g_price());
+		basparamClass.setB_allPrice(getB_g_amount()*getB_g_price());
+		basparamClass.setB_g_bottle("bottle");
+		basparamClass.setB_g_number(getB_g_number());
+		basparamClass.setB_date(b_date.getTime());
 		sqlMapper.insert("Basket.basketInsert", basparamClass);
 		return SUCCESS;
 	}
 
-	public memberVO getMemparamClass() {
+	/*public memberVO getMemparamClass() {
 		return memparamClass;
 	}
 
@@ -77,7 +76,7 @@ public class basketInputAction extends ActionSupport{
 
 	public void setMemresultClass(memberVO memresultClass) {
 		this.memresultClass = memresultClass;
-	}
+	}*/
 
 	public basketVO getBasparamClass() {
 		return basparamClass;
@@ -95,21 +94,9 @@ public class basketInputAction extends ActionSupport{
 		this.basresultClass = basresultClass;
 	}
 
-	public String getG_number() {
-		return g_number;
-	}
 
-	public void setG_number(String g_number) {
-		this.g_number = g_number;
-	}
 
-	public String getG_name() {
-		return g_name;
-	}
 
-	public void setG_name(String g_name) {
-		this.g_name = g_name;
-	}
 
 	public String getG_sav_image() {
 		return g_sav_image;
@@ -119,20 +106,30 @@ public class basketInputAction extends ActionSupport{
 		this.g_sav_image = g_sav_image;
 	}
 
-	public int getG_price() {
-		return g_price;
-	}
+	
 
-	public void setG_price(int g_price) {
-		this.g_price = g_price;
-	}
-
-	public int getG_amout() {
+	/*public int getG_amout() {
 		return g_amout;
 	}
 
 	public void setG_amout(int g_amout) {
 		this.g_amout = g_amout;
+	}*/
+
+	public int getB_g_price() {
+		return b_g_price;
+	}
+
+	public void setB_g_price(int b_g_price) {
+		this.b_g_price = b_g_price;
+	}
+	
+	public String getG_number() {
+		return g_number;
+	}
+
+	public void setG_number(String g_number) {
+		this.g_number = g_number;
 	}
 
 	public String getB_m_id() {
@@ -159,12 +156,14 @@ public class basketInputAction extends ActionSupport{
 		this.b_g_name = b_g_name;
 	}
 
-	public int getB_g_amout() {
-		return b_g_amout;
+	
+
+	public int getB_g_amount() {
+		return b_g_amount;
 	}
 
-	public void setB_g_amout(int b_g_amout) {
-		this.b_g_amout = b_g_amout;
+	public void setB_g_amount(int b_g_amount) {
+		this.b_g_amount = b_g_amount;
 	}
 
 	public int getB_allprice() {
@@ -174,21 +173,8 @@ public class basketInputAction extends ActionSupport{
 	public void setB_allprice(int b_allprice) {
 		this.b_allprice = b_allprice;
 	}
-	public Date getB_date() {
-		return b_date;
-	}
+	
 
-	public void setB_date(Date b_date) {
-		this.b_date = b_date;
-	}
-
-	public Calendar getToday() {
-		return today;
-	}
-
-	public void setToday(Calendar today) {
-		this.today = today;
-	}
 
 	public static Reader getReader() {
 		return reader;
@@ -206,13 +192,15 @@ public class basketInputAction extends ActionSupport{
 		basketInputAction.sqlMapper = sqlMapper;
 	}
 
-	public String getB_bottle() {
-		return b_bottle;
+/*	public String getB_g_bottle() {
+		return b_g_bottle;
 	}
 
-	public void setB_bottle(String b_bottle) {
-		this.b_bottle = b_bottle;
-	}
+	public void setB_g_bottle(String b_g_bottle) {
+		this.b_g_bottle = b_g_bottle;
+	}*/
+
+	
 	
 
 }

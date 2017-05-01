@@ -23,10 +23,10 @@
 	<sqlMap resource="/sql/boardSQL.xml"/>
 	<sqlMap resource="/sql/memberSQL.xml" />
 	<sqlMap resource="/sql/goodsSQL.xml"/> 
-	<!-- <sqlMap resource="/sql/basketSQL.xml"/>
+<sqlMap resource="/sql/basketSQL.xml"/> 
 	 
 	
-	<sqlMap resource="/sql/ordersSQL.xml" />-->
+	<!-- <sqlMap resource="/sql/ordersSQL.xml" /> -->
 	
 	
 </sqlMapConfig>

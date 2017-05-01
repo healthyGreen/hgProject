@@ -19,7 +19,7 @@ public class goodsListAction extends ActionSupport {
    public static Reader reader;
    public static SqlMapClient sqlMapper;
 
-   private List<goodsVO> list = new ArrayList<goodsVO>();
+   private List<goodsVO> list = new ArrayList<goodsVO>();;
 
    private goodsVO goods_paramClass = new goodsVO();
    private goodsVO goods_resultClass = new goodsVO();
@@ -29,11 +29,13 @@ public class goodsListAction extends ActionSupport {
    private int searchNum;
 
    private int currentPage = 1;
+   private int adminCurrentPage = 1;
    private int totalCount;
-   private int blockCount = 10;
+   private int blockCount = 3; // 10으로 다시 바꾸면 됨
    private int blockPage = 5;
    private String pagingHtml;
    private goodsPageAction page;
+   private adminGoodsPageAction adminPage;
    private int num = 0;
 
    public goodsListAction() throws IOException {
@@ -48,7 +50,6 @@ public class goodsListAction extends ActionSupport {
       /*ActionContext context = ActionContext.getContext();g_
       Map<String, Object> session = context.getSession();
       String sessionid = (String) session.get("session_id");*/
-      
      // System.out.println("sessionid:"+sessionid);
 	   if (getSearchKeyword() != null) {
 	         return search();
@@ -69,6 +70,30 @@ public class goodsListAction extends ActionSupport {
       list = list.subList(page.getStartCount(), lastCount);
       return SUCCESS;
    }
+   public String adminList() throws Exception {
+	   
+		 // System.out.println(getG_category());
+	      /*ActionContext context = ActionContext.getContext();g_
+	      Map<String, Object> session = context.getSession();
+	      String sessionid = (String) session.get("session_id");*/
+
+	     // System.out.println("sessionid:"+sessionid);
+		   list = sqlMapper.queryForList("admin_list_selectAll");
+	     totalCount = list.size();
+	     	
+	      adminPage = new adminGoodsPageAction(adminCurrentPage, totalCount, blockCount, blockPage);
+	      pagingHtml = adminPage.getPagingHtml().toString();
+	      
+	      //System.out.println("page :"+page);
+	      //System.out.println("pagingHtml :"+pagingHtml);
+	      
+	      int lastCount = totalCount;
+	      if (adminPage.getEndCount() < totalCount)
+	         lastCount = adminPage.getEndCount() + 1;
+
+	      list = list.subList(adminPage.getStartCount(), lastCount);
+	      return SUCCESS;
+	   }
 
    /*private String getGoods_category() {
 
@@ -240,6 +265,22 @@ public String getG_category() {
 
 public void setG_category(String g_category) {
 	this.g_category = g_category;
+}
+
+public adminGoodsPageAction getAdminPage() {
+	return adminPage;
+}
+
+public void setAdminPage(adminGoodsPageAction adminPage) {
+	this.adminPage = adminPage;
+}
+
+public int getAdminCurrentPage() {
+	return adminCurrentPage;
+}
+
+public void setAdminCurrentPage(int adminCurrentPage) {
+	this.adminCurrentPage = adminCurrentPage;
 }
    
 }

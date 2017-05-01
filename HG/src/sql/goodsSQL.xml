@@ -19,7 +19,7 @@
       <result property="g_price" column="g_price"/>
       <result property="g_ingr" column="g_ingr"/>
       <result property="g_category" column="g_category"/>
-      
+      <result property="g_jaegoAmount" column="g_jaegoAmount"/>
    </resultMap>
    
    <resultMap id="replyRes" class="reply">
@@ -38,12 +38,15 @@
    </sql>
    
    <sql id="where-no">
-   WHERE no = #no#
+   WHERE g_number = #g_number#
    </sql>
    
    <!-- 상품 리스트 -->
    <select id="g_list_selectAll" resultMap="goodsRes" parameterClass="string">
       SELECT * FROM GOODS where g_category=#g_category# ORDER BY g_number DESC
+   </select>
+   <select id="admin_list_selectAll" resultMap="goodsRes">
+   	 SELECT * FROM GOODS ORDER BY g_number DESC
    </select>
    
    <select id="g_list_selectOne" resultMap="goodsRes" >
@@ -96,7 +99,7 @@
    <!-- 상품 등록 -->
    <insert id="g_write" parameterClass="goods">
    INSERT INTO GOODS (g_number, g_name, g_content, g_info, g_price, g_ingr,
-   g_category) VALUES (G_NUMBER_SEQ.NEXTVAL, #g_name#, #g_content#, #g_info#, #g_price#, #g_ingr#, #g_category#)
+   g_category,g_jaegoAmount) VALUES (G_NUMBER_SEQ.NEXTVAL, #g_name#, #g_content#, #g_info#, #g_price#, #g_ingr#, #g_category#,#g_jaegoAmount#)
    </insert>
    
    <!-- 상품 파일 업로드 -->
