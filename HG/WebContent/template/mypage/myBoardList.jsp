@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- 상단이미지 || 현재위치 -->
 	<td height=100%>
@@ -33,10 +34,10 @@
 			<div class="grade"><img src="../../images/grade.png" alt="" /><span>회원정보변경</span></div>
 			<div class="myCont">
 				<ul>
-					<li><span>hg1212</span></li>
-					<li><span>장바구니(1)</span></li>
-					<li><span>홍길동</span></li>
-					<li><span>적립금(1000)</span></li>
+					<li><span>${ session.session_id }</span></li>
+               		<li><span>장바구니(1)</span></li>
+               		<li><span>${ session.session_name }</span></li>
+               		<li><span>적립금  ${ session.session_point } P</span></li>
 				</ul>
 			</div>
 		</div>

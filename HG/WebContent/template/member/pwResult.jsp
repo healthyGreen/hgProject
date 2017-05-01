@@ -10,5 +10,15 @@
 <body>
 당신의 비밀번호가 1111 로 초기화 되었습니다.<br>
 마이페이지에서 비밀번호를 변경 해 주세요.<br>
+<table width=100% cellpadding=0 cellspacing=0 border=0>
+<tr>
+<td id=avoidDbl align=center height=100>
+<div style="width:100%" class=noline>
+    <input type="button" onClick="location.href='logInForm.action'" value="로그인하기">
+    <input type="button" onClick="location.href='main.action'" value="메인으로">
+</div>
+</td>
+</tr>
+</table>
 </body>
 </html>

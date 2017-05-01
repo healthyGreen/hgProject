@@ -9,5 +9,16 @@
 </head>
 <body>
 당신의 아이디는 ${ resultClass.m_id } 입니다.
+
+<table width=100% cellpadding=0 cellspacing=0 border=0>
+<tr>
+<td id=avoidDbl align=center height=100>
+<div style="width:100%" class=noline>
+    <input type="button" onClick="location.href='logInForm.action'" value="로그인하기">
+    <input type="button" onClick="location.href='main.action'" value="메인으로">
+</div>
+</td>
+</tr>
+</table>
 </body>
 </html>
