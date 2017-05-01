@@ -49,6 +49,7 @@ public class goodsViewAction extends ActionSupport {
    private InputStream inputStream;
    private String contentDisposition;
    private long contentLength;
+   private List<replyVO> replylist = new ArrayList<replyVO>();
 
    public goodsViewAction() throws IOException {
       reader = Resources.getResourceAsReader("sqlMapConfig.xml");
@@ -60,6 +61,7 @@ public class goodsViewAction extends ActionSupport {
       goodsResult = (goodsVO) sqlMapper.queryForObject("g_view", g_number);
      
          rp_list = sqlMapper.queryForList("g_selectReply");
+         replylist = sqlMapper.queryForList("replySelectAll", getRp_number());
      
       
      // totalCount = rp_list.size();
@@ -74,11 +76,16 @@ public class goodsViewAction extends ActionSupport {
       return SUCCESS;
    }
 
-   public String insertRp() {
+   private Object getRp_number() {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+public String insertRp() {
       
       return SUCCESS;
    }
-
+  
 
 
    
