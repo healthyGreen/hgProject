@@ -7,7 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-메롱 에러에용><
-${ session.session_id }
+비밀번호 오류입니다.
+<table width=100% cellpadding=0 cellspacing=0 border=0>
+<tr>
+<td id=avoidDbl align=center height=100>
+<div style="width:100%" class=noline>
+<input type="button" onClick="history.back()" value="이전으로">
+</div>
+</td>
+</tr>
+</table>
 </body>
 </html>

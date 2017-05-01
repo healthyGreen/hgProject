@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <% String session_id=(String)session.getAttribute("session_id"); %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -37,17 +38,17 @@
          <a href="/HG/myInfoView.action"><img src="../../images/grade.png" alt="" /><span>회원정보보기</span></div></a>
          <div class="myCont">
             <ul>
-               <li><span>hg1212</span></li>
+               <li><span>${ session.session_id }</span></li>
                <li><span>장바구니(1)</span></li>
-               <li><span>홍길동</span></li>
-               <li><span>적립금(1000)</span></li>
+               <li><span>${ session.session_name }</span></li>
+               <li><span>적립금  ${ session.session_point } P</span></li>
             </ul>
          </div>
          <div class="btnBox">
-            <input type="button" onclick="location.href='basketList.action?session_id='+<%=session_id %>" value="장바구니">
-            <input type="button" onclick="" value="내가 쓴 글">
+            <input type="button" onclick="location.href='basketList.action?session_id='+'${ session.session_id }'" value="장바구니">
+            <input type="button" onclick="location.href='myBoard.action?session_id='+'${ session.session_id }'" value="내가 쓴 글">
             <input type="button" onclick="" value="나의 주문 내역">
-            <input type="button" onclick="location.href='myInfoView.action?session_id='+<%=session_id %>" value="개인 정보 보기">
+            <input type="button" onclick="location.href='myInfoView.action?session_id='+'${ session.session_id }'" value="개인 정보 보기">
          </div>
       </div>
       

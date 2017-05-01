@@ -22,6 +22,7 @@ public class basketModifyAction extends ActionSupport{
 	private int b_g_price;
 	private int b_g_number;
 	private String b_m_id;
+	private int b_number;
 	//private Map<String,Object> session;
 	
 	public basketModifyAction() throws Exception{
@@ -31,6 +32,7 @@ public class basketModifyAction extends ActionSupport{
 	}
 	
 	public String execute() throws Exception{
+		System.out.println(b_number);
 		//ActionContext context=ActionContext.getContext();
 		/*session=context.getSession();
 		if(session.get("session_id")==null){
@@ -38,7 +40,8 @@ public class basketModifyAction extends ActionSupport{
 		}*/
 		paramClass = new basketVO();
 		paramClass.setB_g_number(getB_g_number());
-		paramClass.setB_g_amount(getB_g_amount());
+		paramClass.setB_g_amount(getB_g_amount()); //3
+		paramClass.setB_number(getB_number()); //44
 		paramClass.setB_allPrice(getB_g_amount()*getB_g_price());
 		sqlMapper.update("Basket.amountModify",paramClass);
 		return SUCCESS;
@@ -83,7 +86,14 @@ public class basketModifyAction extends ActionSupport{
 	public void setB_g_price(int b_g_price) {
 		this.b_g_price = b_g_price;
 	}
-	
+
+	public int getB_number() {
+		return b_number;
+	}
+
+	public void setB_number(int b_number) {
+		this.b_number = b_number;
+	}
 	
 	
 

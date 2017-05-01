@@ -26,6 +26,7 @@
   	<result property="rp_number" column="rp_number"/>
   	<result property="rp_m_id" column="rp_m_id"/>
    	<result property="rp_content" column="rp_content"/>
+   	<result property="rp_pass" column="rp_pass"/>
    <result property="rp_date" column="rp_date"/>
    <result property="rp_ref" column="rp_ref"/>
    <result property="rp_ref_step" column="rp_ref_step"/>
@@ -83,7 +84,12 @@
        WHERE content like #searchKeyword#
        ORDER BY g_number DESC
    </select>
-   
+   <!-- 댓글 리스트 -->
+   <select id="replySelectAll" resultMap="replyRes" parameterClass="int">
+		SELECT * FROM REPLY
+		WHERE rp_number = #rp_number#
+		ORDER BY rp_number DESC
+   </select>
    <!-- 상품 삭제 -->
    <delete id="g_delete" parameterClass="goods">
       DELETE * FROM GOODS
@@ -91,9 +97,9 @@
    </delete>
    
    <!-- 댓글 삭제 -->
-   <delete id="g_deleteReply" parameterClass="goods">
+   <delete id="g_deleteReply" parameterClass="reply">
    DELETE * FROM REPLY
-   WHERE G_NUMBER=#g_number#
+   WHERE RP_NUMBER=#rp_number#
    </delete>
    
    <!-- 상품 등록 -->
@@ -118,8 +124,8 @@
    
    <!-- 댓글 -->
    <insert id="g_insertReply" parameterClass="reply">
-   INSERT INTO REPLY (rp_number, rp_m_id, rp_content, rp_date, rp_ref, rp_ref_step, rp_ref_level)
-   VALUES (rp_number_seq.NEXVAL, #rp_m_id#, #rp_content#, #rp_date#, #rp_ref#, #rp_ref_step#, #rp_ref_level#)
+   INSERT INTO REPLY (rp_number, rp_m_id, rp_content, rp_pass ,rp_date, rp_ref, rp_ref_step, rp_ref_level)
+   VALUES (rp_number_seq.NEXTVAL, #rp_m_id#, #rp_content#, #rp_pass#, #rp_date#, #rp_ref#, #rp_ref_step#, #rp_ref_level#)
    </insert>
    <select id="selectLastNum" resultClass="goods">
    	select max(g_number) as g_number from goods

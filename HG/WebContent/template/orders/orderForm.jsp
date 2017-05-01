@@ -1,10 +1,65 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+       <%@ taglib prefix="s" uri="/struts-tags" %>
+       <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+       <script type="text/javascript">
+       function sample6_execDaumPostcode() {
+           new daum.Postcode({
+               oncomplete: function(data) {
+                   // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                   // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                   // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                   var fullAddr = ''; // 최종 주소 변수
+                   var extraAddr = ''; // 조합형 주소 변수
+
+                   // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                   if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                       fullAddr = data.roadAddress;
+
+                   } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                       fullAddr = data.jibunAddress;
+                   }
+
+                   // 사용자가 선택한 주소가 도로명 타입일때 조합한다.
+                   if(data.userSelectedType === 'R'){
+                       //법정동명이 있을 경우 추가한다.
+                       if(data.bname !== ''){
+                           extraAddr += data.bname;
+                       }
+                       // 건물명이 있을 경우 추가한다.
+                       if(data.buildingName !== ''){
+                           extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                       }
+                       // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+                       fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
+                   }
+
+                   // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                   document.getElementById('sample6_postcode').value = data.zonecode; //5자리 새우편번호 사용
+                   document.getElementById('sample6_address').value = fullAddr;
+
+                   // 커서를 상세주소 필드로 이동한다.
+                   document.getElementById('sample6_address2').focus();
+               }
+           }).open();
+       }
+</script>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 </tr>
 <tr>
 <td height=100%>
-
+<form action="orderForGoodsPro.action">
+<s:if test='%{orderType=="goods"}'>
+<s:hidden name="g_number" value="%{orderInfo.get(0)}"/>
+<s:hidden name="g_name" value="%{orderInfo.get(1)}"/>
+<s:hidden name="amount" value="%{orderInfo.get(2)}"/>
+<s:hidden name="bottle" value="%{orderInfo.get(3)}"/>
+<s:hidden name="price" value="%{orderInfo.get(4)}"/>
+<s:hidden name="orderType" value="%{orderType}"/>
+<s:hidden name="m_id" value="%{member.m_id}"/>
+<s:hidden name="totalPrice" value="%{totalPrice}"/>
+</s:if>
 <table height=100% cellpadding=0 cellspacing=0 border=0 class="outline_both" style="width:1100px;margin:0 auto ; padding:30px 0;">
 <tr>
 <td valign=top width=100% height=100% bgcolor="" background="" class=outline_side>
@@ -76,7 +131,7 @@ table.orderitem-list tfoot tr td table td {border:none;}
 	<th class="input_txt" style="display:none;">적립금</th>
 	<th class="input_txt">판매가</th>
 	<th class="input_txt">수량</th>
-	<th class="input_txt">배송비</th>
+	<th class="input_txt">배송비(50,000원 이상시 3000원)</th>
 	<th class="input_txt">상품합계금액</th>
 </tr>
 </thead>
@@ -87,27 +142,28 @@ table.orderitem-list tfoot tr td table td {border:none;}
 <script type='text/javascript'>var wp_page_type = 'Cart';</script>
 <!-- // WIDERPLANET CART SCRIPT END 2017.1.9 -->
 <tr>
-	<input type="hidden" name="strprice[]" value="">
-	<input type="hidden" name="adultpro[]" value="0">
+	<!-- <input type="hidden" name="strprice[]" value="">
+	<input type="hidden" name="adultpro[]" value="0"> -->
 	<td height=60 align=center>
 	<a href="" class="oi_img"><img src='../images/1481460887917s0.jpg' width=56 /></a> 
 	</td>
 	<td>
-	<div>하루슈퍼푸드 2BOX(28팩)</div>
+	<div><s:property value="%{orderInfo.get(1) }"/></div>
 	<div style="margin:5px 0 5px 0;overflow:hidden;height:1px;background:url(/shop/data/skin/standard_C/img/common/line2.gif) repeat-x top left;"></div>
 	</td>
-	<td align=center style="display:none;">0원</td>
-	<td align=right style="padding-right:10">23,900원</td>
+	<%-- <s:iterator value="orderInfo" status="sta"> --%>
+	 <td align=center style="display:none;">0원</td> 
+	<td align=right style="padding-right:10"><s:property value="%{orderInfo.get(4) }"/>원</td>
 	<td align=center>
-		1개
+		<s:property value="%{orderInfo.get(2) }"/>
 	</td>
 	<td align=center rowspan="1">
 		<div id="el-default-delivery">
-		기본배송
+		<s:property value="%{baesongPrice }"/>원
 		</div>
 	</td>
-
-	<td align=right style="padding-right:10">23,900원</td>
+	<%-- </s:iterator> --%>
+	<td align=right style="padding-right:10"><s:property value="%{totalPrice }"/>원</td>
 </tr>
 </tbody>
 
@@ -118,7 +174,7 @@ table.orderitem-list tfoot tr td table td {border:none;}
 	<table style="display:block;float:right;">
 	<tr>
 		<td align=right width=80 nowrap style="padding-top:5px; padding-bottom:5px;">상품합계금액</td>
-		<td align=right style="font-weight:bold;padding-left:25px; padding-top:5px; padding-bottom:5px;"><span id="el-orderitem-total-price">23,900</span>원&nbsp;</td>
+		<td align=right style="font-weight:bold;padding-left:25px; padding-top:5px; padding-bottom:5px;"><span id="el-orderitem-total-price"><s:property value="%{totalPrice }"/></span>원&nbsp;</td>
 	</tr>
 	</table>
 
@@ -129,9 +185,9 @@ table.orderitem-list tfoot tr td table td {border:none;}
 
 
 
-<form id=form name=frmOrder action="/shop/order/settle.php" method=post onsubmit="return chkForm2(this)">
-<input type=hidden name=ordno value="1492400558889">
-<input type=hidden name=item_apply_coupon[]>
+<!-- <form id=form name=frmOrder action="/shop/order/settle.php" method=post onsubmit="return chkForm2(this)"> -->
+<!-- <input type=hidden name=ordno value="1492400558889">
+<input type=hidden name=item_apply_coupon[]> -->
 
 <div id=apply_coupon></div>
 
@@ -144,33 +200,24 @@ table.orderitem-list tfoot tr td table td {border:none;}
 	<col width=100><col>
 	<tr>
 		<th>주문하시는분</th>
-		<td><input type=text name=nameOrder value="신희진" style="font-weight:bold" readonly style='border:0' required msgR="주문하시는분의 이름을 적어주세요"></td>
+		<td><s:property value="%{member.m_name}"/></td>
 	</tr>
 	<tr>
 		<th>주소</th>
 		<td>
-			경기도 가평군 청평면 청평리 306 청평 경남아너스빌 경남아너스빌 103동 902호
-<div style="padding-top:5px;font:12px dotum;color:#999;">경기도 가평군 청평면 골안길 7-28 (청평 경남아너스빌) 경남아너스빌 103동 902호</div>		</td>
+			<s:property value="%{member.m_zipcode}"/>&nbsp;<s:property value="%{member.m_addr1}"/>&nbsp;<s:property value="%{member.m_addr2}"/>
+<div style="padding-top:5px;font:12px dotum;color:#999;"><s:property value="%{member.m_zipcode}"/>&nbsp;<s:property value="%{member.m_addr1}"/>&nbsp;<s:property value="%{member.m_addr2}"/></div></td>
 	</tr>
 	<tr>
 		<th>전화번호</th>
 		<td>
-		<input type=text name=phoneOrder[] value="" size=3 maxlength=3 option=regNum required label="주문자 전화번호"> -
-		<input type=text name=phoneOrder[] value="" size=4 maxlength=4 option=regNum required label="주문자 전화번호"> -
-		<input type=text name=phoneOrder[] value="" size=4 maxlength=4 option=regNum required label="주문자 전화번호">
+		<s:property value="%{member.m_phone}"/>
 		</td>
 	</tr>
-	<tr>
-		<th>핸드폰번호</th>
-		<td>
-		<input type=text name=mobileOrder[] value="010" size=3 maxlength=3 option=regNum required label="주문자 핸드폰번호"> -
-		<input type=text name=mobileOrder[] value="4158" size=4 maxlength=4 option=regNum required label="주문자 핸드폰번호"> -
-		<input type=text name=mobileOrder[] value="2290" size=4 maxlength=4 option=regNum required label="주문자 핸드폰번호">
-		</td>
-	</tr>
+	
 	<tr>
 		<th>이메일</th>
-		<td><input type=text name=email value="ktlovegh@naver.com" required option=regEmail></td>
+		<td><s:property value="%{member.m_email}"/></td>
 	</tr>
 	</table>
 
@@ -182,63 +229,54 @@ table.orderitem-list tfoot tr td table td {border:none;}
 	
 	<tr>
 		<th>받으실분</th>
-		<td><input type=text name=nameReceiver value="신희진" required></td>
+		<td><input type=text name=o_name required></td>
 	</tr>
 	<tr>
 		<th>받으실곳</th>
 		<td>
-		<input type=text name="zonecode" id="zonecode" size="5" class="line" readonly value="12451" readonlyCheck />
-		( <input type=text name=zipcode[] id="zipcode0" size=3 class=line readonly value="477" required readonlyCheck> -
-		<input type=text name=zipcode[] id="zipcode1" size=3 class=line readonly value="815" required readonlyCheck> )
-		<a href="javascript:popup('../proc/popup_address.php',500,432);" id="addressSearch" style="display:none;"><img src="/shop/data/skin/standard_C/img/common/btn_zipcode.gif" align=absmiddle></a>
+		<input type="text" name="o_zipcode" id="sample6_postcode" placeholder="우편번호">
+      <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+      <input type="text" name="o_addr1" id="sample6_address" placeholder="주소">
+      <input type="text" name="o_addr2" size=30  id="sample6_address2" placeholder="상세주소">
 		</td>
 	</tr>
-	<tr>
+	<!-- <tr>
 		<td></td>
 		<td><input type=text name=address id="address" class=lineBig readonly value="경기도 가평군 청평면 청평리 306 청평 경남아너스빌" required></td>
-	</tr>
+	</tr> -->
 	<tr>
 		<td></td>
 		<td>
-		<input type=text name=address_sub id="address_sub" class=lineBig value="경남아너스빌 103동 902호" onkeyup="SameAddressSub(this)" oninput="SameAddressSub(this)" label="세부주소" readonlyCheck>
-		<input type="hidden" name="road_address" id="road_address" style="width:100%" value="경기도 가평군 청평면 골안길 7-28 (청평 경남아너스빌)" class="line">
-		<div style="padding:5px 5px 0 1px;font:12px dotum;color:#999;" id="div_road_address">경기도 가평군 청평면 골안길 7-28 (청평 경남아너스빌)</div>
-		<div style="padding:5px 0 0 1px;font:12px dotum;color:#999;" id="div_road_address_sub">경남아너스빌 103동 902호</div>
+		<!-- <input type=text name=address_sub id="address_sub" class=lineBig value="경남아너스빌 103동 902호" onkeyup="SameAddressSub(this)" oninput="SameAddressSub(this)" label="세부주소" readonlyCheck> -->
+		<!-- <input type="hidden" name="road_address" id="road_address" style="width:100%" value="경기도 가평군 청평면 골안길 7-28 (청평 경남아너스빌)" class="line"> -->
+<!-- 		<div style="padding:5px 5px 0 1px;font:12px dotum;color:#999;" id="div_road_address">경기도 가평군 청평면 골안길 7-28 (청평 경남아너스빌)</div>
+		<div style="padding:5px 0 0 1px;font:12px dotum;color:#999;" id="div_road_address_sub">경남아너스빌 103동 902호</div> -->
 		</td>
 	</tr>
 	<tr>
 		<th>전화번호</th>
 		<td>
-		<input type=text name=phoneReceiver[] value="" size=3 maxlength=3 option=regNum required label="수령자 전화번호" readonlyCheck> -
-		<input type=text name=phoneReceiver[] value="" size=4 maxlength=4 option=regNum required label="수령자 전화번호" readonlyCheck> -
-		<input type=text name=phoneReceiver[] value="" size=4 maxlength=4 option=regNum required label="수령자 전화번호" readonlyCheck>
-		</td>
-	</tr>
-	<tr>
-		<th>핸드폰번호</th>
-		<td>
-		<input type=text name=mobileReceiver[] value="010" size=3 maxlength=3 option=regNum required label="수령자 핸드폰번호" readonlyCheck> -
-		<input type=text name=mobileReceiver[] value="4158" size=4 maxlength=4 option=regNum required label="수령자 핸드폰번호" readonlyCheck> -
-		<input type=text name=mobileReceiver[] value="2290" size=4 maxlength=4 option=regNum required label="수령자 핸드폰번호" readonlyCheck>
+		<input type=text name=o_rphone size=3 maxlength=3 option=regNum required label="수령자 전화번호" readonlyCheck>
 		</td>
 	</tr>
 	<tr>
 		<th>남기실 말씀</th>
-		<td><input type=text name=memo style="width:100%"></td>
+		<td><input type=text name=o_comment style="width:100%"></td>
 	</tr>
-	<tr id="delivery_check" style="display:none;">
+<!-- 	<tr id="delivery_check" style="display:none;">
 		<td>&nbsp;</td>
 		<td>
 			<input type="checkbox" name="delivery_add" id="delivery_add" value="y" onclick="deliveryAddCheck('delivery_add', this);" /><label for="delivery_add">배송지 목록에 추가</label>
 			<input type="checkbox" name="delivery_default" id="delivery_default" value="y" onclick="deliveryAddCheck('delivery_default', this);" /><label for="delivery_default">기본 배송지로 선택</label>
 		</td>
-	</tr>
+	</tr> -->
 	<tr><td colspan=2>&nbsp;</td></tr>
 	<tr id="paper_delivery_menu">
-		<th>배송선택</th>
+		<th>결제수단</th>
 		<td class="noline">
 
-		<div style='float:left'><input type="radio" name="deliPoli" value="0" checked onclick="getDelivery()" onblur="chk_emoney(document.frmOrder.emoney)"> 기본배송</div>
+		<div style='float:left'><input type="radio" name="o_pay" value="noTongJang" checked onclick="getDelivery()" onblur="chk_emoney(document.frmOrder.emoney)"> 무통장 입금</div>
+		<div style='float:left'><input type="radio" name="o_pay" value="card" checked onclick="getDelivery()" onblur="chk_emoney(document.frmOrder.emoney)"> 카드 결제</div>
 		</td>
 	</tr>
 	</table>
@@ -258,7 +296,7 @@ table.orderitem-list tfoot tr td table td {border:none;}
 		<td>
 
 		<table cellpadding=0 cellspacing=0>
-		<div style="display:none;">
+		<!-- <div style="display:none;">
 		<tr>
 			<td width=60 align=right>적립금 :</td>
 			<td style="padding-left:3px">
@@ -266,12 +304,12 @@ table.orderitem-list tfoot tr td table td {border:none;}
 			(보유적립금 : 0원)
 			</td>
 		</tr>
-		</div>
-		<tr>
+		</div> -->
+		<!-- <tr>
 			<td colspan=2 class="small red">
 			<input type=hidden name=emoney_max value="0">
 			</td>
-		</tr>
+		</tr> -->
 		</table>
 
 		</td>
@@ -292,7 +330,7 @@ table.orderitem-list tfoot tr td table td {border:none;}
 <!-- 04 결제수단 -->
 
 
-	<input type=hidden name=escrow value="N">
+	<%-- <input type=hidden name=escrow value="N">
 <div class="sub_tit2">
 <span class="tit">결제<span>수단</span></span></div>
 <table width=100% class="order_list"  cellpadding=0 cellspacing=0>
@@ -311,7 +349,7 @@ table.orderitem-list tfoot tr td table td {border:none;}
 		<th></th>
 		<td class="small red"><div id="coupon_typinfo" style="display:none">무통장입금에서만 사용가능한 쿠폰을 선택하였습니다. <br>다른 결제 수단을 선택하시려면 쿠폰을 제거 하여 주십시오.</div></td>
 	</tr>
-	</table>
+	</table> --%>
 
 
 
@@ -321,7 +359,7 @@ table.orderitem-list tfoot tr td table td {border:none;}
 <img src="../images/btn_cancel.jpg" onclick="history.back()" style="cursor:pointer">
 </div>
 
-</form>
+<!-- </form> -->
 
 </div><!-- End indiv -->
 <div id=dynamic></div>
@@ -341,6 +379,7 @@ table.orderitem-list tfoot tr td table td {border:none;}
 </td>
 </tr>
 </table>
+</form>
 </td>
 </tr>
 <tr>

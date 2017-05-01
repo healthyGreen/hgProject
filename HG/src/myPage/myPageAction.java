@@ -16,9 +16,10 @@ public class myPageAction extends ActionSupport{
 	private memberVO paramClass;
 	private memberVO resultClass;
 	private Map session;
-	public memberVO getParamClass() {
-		return paramClass;
-	}
+	private String m_id;
+	private String m_name;
+	private int m_point;
+	
 	
 	public myPageAction() throws Exception{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
@@ -26,40 +27,62 @@ public class myPageAction extends ActionSupport{
 		reader.close();
 	}
 	
-	/*장바구니 리스트 이동*/
-	public String basketList() throws Exception{
-		return SUCCESS;
-	}
-	
-	/*내가 쓴 글 이동*/
-	public String myBoard() throws Exception{
-		return SUCCESS;
-	}
-	
-	/*주문내역 이동*/
-	public String orderList() throws Exception{
-		return SUCCESS;
-	}
-	
-	/*개인 정보 보기 이동*/
 	public String execute() throws Exception{
 		return SUCCESS;
 	}
 	
+	public String myBoard() throws Exception{
+		return SUCCESS;
+	}
+	
+
+	public memberVO getParamClass() {
+		return paramClass;
+	}
+
 	public void setParamClass(memberVO paramClass) {
 		this.paramClass = paramClass;
 	}
+
 	public memberVO getResultClass() {
 		return resultClass;
 	}
+
 	public void setResultClass(memberVO resultClass) {
 		this.resultClass = resultClass;
 	}
+
 	public Map getSession() {
 		return session;
 	}
+
 	public void setSession(Map session) {
 		this.session = session;
 	}
 
+	public String getM_id() {
+		return m_id;
+	}
+
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
+	}
+
+	public String getM_name() {
+		return m_name;
+	}
+
+	public void setM_name(String m_name) {
+		this.m_name = m_name;
+	}
+
+	public int getM_point() {
+		return m_point;
+	}
+
+	public void setM_point(int m_point) {
+		this.m_point = m_point;
+	}
+	
+	
 }

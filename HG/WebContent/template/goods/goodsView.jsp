@@ -11,6 +11,11 @@
 		var b_g_amount = document.goodsForm.b_g_amount.value;
 		window.location.href='basketInput.action?b_m_id=<%= session_id%>&b_g_number=${g_number}&b_g_name=${goodsResult.g_name}&b_g_price=${goodsResult.g_price}&b_g_amount='+b_g_amount;
 	}
+	function buyIt(goodsForm) {
+		var b_g_amount = document.goodsForm.b_g_amount.value;
+		var b_g_bottle = document.goodsForm.b_g_bottle.value;
+		window.location.href='orderForm.action?m_id=<%=session_id%>&g_number=${g_number}&g_name=${goodsResult.g_name}&price=${goodsResult.g_price}&amount='+b_g_amount+'&bottle='+b_g_bottle+'&orderType=goods';
+	} 
 </script>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -91,6 +96,16 @@
 													</div>
 												</td>
 											</tr>
+											<tr>
+												<td class=count>bottle</td>
+												<td class=count >
+													<div style="float:left;">
+														<select name="b_g_bottle">
+				<option value="small">350 mL</option>
+				<option value="medium">500 mL<option>
+				<option value="big">750 mL</option>
+			</select>
+											</tr>
 
 										</table>
 									  <div id="el-multi-option-display" class="info_option">
@@ -99,7 +114,7 @@
 										  <col width="50">
 										  <col width="150">
 										</table>
-										<div class="info_total">총 상품금액 :  <span class="feb" id="el-multi-option-total-price">19,800 원</span></div>
+										<%-- <div class="info_total">총 상품금액 :  <span class="feb" id="el-multi-option-total-price">19,800 원</span></div> --%>
 									  </div>
  
 									  <div class="view_btn"> 					
@@ -107,7 +122,7 @@
 										<a href="javascript:cartAdd(this.form)"><img src="../images/cart.png"></a> 
 										<input type="button" value="장바구니" onclick="return cartAdde(this.form)">
 										<style>.view_btn a{margin-left:20px} </style>
-									  </div>
+									  </div><br><input type="button" value="상품구매" onclick="return buyIt(this.form)">
 								   
 								  </div>
 								</div>
@@ -161,14 +176,14 @@
 											<ul class="cfix">
 													<li><a  href="#viewtab1">상품상세정보</a></li>
 													<li class="selected"><a href="#viewtab2">배송안내</a></li>
-													<li><a href="#viewtab5">상품문의</a></li>
+													<li><a href="#viewtab3">상품문의</a></li>
 											</ul>
 										</div>
 							</div>
 								<!-- 배송안내s -->
 								  <div class="con111">
 									<ul>
-										<Font Size=2 color=#323130 line-height:-8px;>
+										<Font Size=2 color=#323130 line-height:-8px;>	
 										<img src="../images/delivery_page.jpg"><br>
 											<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<배송비></b><br>
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;배송료: 3,000원<br> 
@@ -238,13 +253,76 @@
 								</tbody>
 								</table>
 
-								<div style="float:right;padding:10px 5px"> 
-								<a href="/shop/goods/goods_qna.php?&amp;" target="_parent"><img src="/shop/data/skin/standard_C/dsm/img/goods/btn_list1.jpg"></a>
-								<a href="javascript:;" onclick="popup_register( 'add_qna', '19' )"><img src="/shop/data/skin/standard_C/dsm/img/goods/btn_w1.jpg"></a>
-								</div>
-								<div style="clear:both;text-align:center;padding-bottom:15px;"></div>
-								</div>
-									  </div>
+								<form action="replyWrite.action" method="post">
+			<table>
+				<tr>
+				<td width="170">
+				이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름<s:textfield name="name" theme="simple" value="" cssStyle="width:100px" maxlength="20" /><br>
+				비밀번호 <s:textfield name="password" theme="simple" value="" cssStyle="width:100px" maxlength="20" />
+			</td>
+			<s:hidden name="originno" value="%{resultClass.no}"/>
+			<s:hidden name="no" value="%{resultClass.no}"/>
+			<s:hidden name="currentPage" value="%{currentPage}"/>
+			<td align="left">
+			<s:textarea name="content" theme="simple" value="" cols="60" rows="3"/>
+			</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="right">
+				<input name="submit" type="submit" value="작성완료" class="inputb">
+				</td>
+				</tr>
+			</table>
+			</form>
+		<tr bgcolor="#777777">
+		<td colspan="2" height="1"></td>
+		</tr>
+		
+		<s:iterator value="replylist" status="stat">
+		<tr>
+			<td height="10" width="130" align="center">
+			<s:property value="name"/><br>
+			<s:property value="regdate"/><br><br>
+			</td>
+			<td>
+			<s:property value="content"/>
+			<a href="javascript:open_win_noresizable('checkForm.action?no=<s:property value="rp_number"/>&originno=<s:property value="originno"/>&currentPage=<s:property value="currentPage"/>','cdelete')">x</a>
+			</td>
+			</tr>
+			<tr bgcolor="#777777">
+			<td colspan="2" height="1"></td>
+		</tr>
+		</s:iterator>
+		<tr>
+			<td colspan="2" height="10">
+				<s:if test="replylist.size() <= 0">
+				댓글없음
+				</s:if>
+			</td>
+		</tr>
+					
+	
+		<tr bgcolor="#777777">
+			<td colspan="2" height="1"></td>
+		</tr>
+		<tr>
+			<td colspan="2" height="10"></td>
+		</tr>
+	
+	
+		<tr>
+			<td colspan="2" align="right">
+			
+			<s:url id="deleteURL" action="delteAction">
+			<s:param name="no">
+			<s:property value="no"/>
+			</s:param>
+			</s:url>
+			<input name="list" type="button" value="답변달기" class="inputb" onClick="javascript:location.href='replyWrite.action?no=<s:property value="rp_number"/>&currentPage=<s:property value="currentPage" />'">
+			<input name="list" type="button" value="삭제" class="inputb" onClick="javascript:open_win_noresizable('checkForm.action?no=<s:property value="resultClass.no"/>&currentPage=<s:property value="currentPage"/>','delete')">
+			<input name="list" ty1pe="button" value="목록" class="inputb" onClick="javascript:location.href='listAction.action?currentPage=<s:property value="currentPage"/>'">
+			</td>
+			</tr>
 									<!-- 상품문의e--> 
 
 						</td>
