@@ -253,7 +253,7 @@
 								</tbody>
 								</table>
 
-								<form action="replyWrite.action" method="post">
+		<form action="replyWrite.action" method="post">
 			<table>
 				<tr>
 				<td width="170">
@@ -313,14 +313,14 @@
 		<tr>
 			<td colspan="2" align="right">
 			
-			<s:url id="deleteURL" action="delteAction">
+			<s:url id="deleteURL" action="replyDeletePro.action">
 			<s:param name="no">
 			<s:property value="no"/>
 			</s:param>
 			</s:url>
 			<input name="list" type="button" value="답변달기" class="inputb" onClick="javascript:location.href='replyWrite.action?no=<s:property value="rp_number"/>&currentPage=<s:property value="currentPage" />'">
 			<input name="list" type="button" value="삭제" class="inputb" onClick="javascript:open_win_noresizable('checkForm.action?no=<s:property value="resultClass.no"/>&currentPage=<s:property value="currentPage"/>','delete')">
-			<input name="list" ty1pe="button" value="목록" class="inputb" onClick="javascript:location.href='listAction.action?currentPage=<s:property value="currentPage"/>'">
+			<input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='replylist.action?currentPage=<s:property value="currentPage"/>'">
 			</td>
 			</tr>
 									<!-- 상품문의e--> 
@@ -332,7 +332,30 @@
 					</tr>
 				</table>
 				</form>
+				<form action="replyWrite.action" method="post">
+			<table>
+				<tr>
+				<td width="170">
+				이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름<s:textfield name="name" theme="simple" value="" cssStyle="width:100px" maxlength="20" /><br>
+				비밀번호 <s:textfield name="password" theme="simple" value="" cssStyle="width:100px" maxlength="20" />
+			</td>
+			<s:hidden name="originno" value="%{resultClass.no}"/>
+			<s:hidden name="no" value="%{resultClass.no}"/>
+			<s:hidden name="currentPage" value="%{currentPage}"/>
+			<td align="left">
+			<s:textarea name="content" theme="simple" value="" cols="60" rows="3"/>
+			</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="right">
+				<input name="submit" type="submit" value="작성완료" class="inputb">
+				</td>
+				</tr>
+			</table>
+			</form>
 			</td>
 		</tr>
 <tr>
   <td> 
+  
+  
