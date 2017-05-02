@@ -10,9 +10,9 @@
 
 				<div class="menu">
 					<ul class="clear">
-						<li><a href="aboutCont.jsp">헬시그린 소개</a></li>
-						<li><a href="promiseView.jsp">이용약관</a></li>
-						<li><a href="privacyView.jsp">개인정보취급방침</a></li>
+						<li><a href="template/about/aboutCont.jsp">헬시그린 소개</a></li>
+						<li><a href="template/promise/promiseView.jsp">이용약관</a></li>
+						<li><a href="template/promise/privacyView.jsp">개인정보취급방침</a></li>
 						<li><a href="">1:1문의</a></li>
 						<li><a href="">공지사항</a></li>
 					</ul>

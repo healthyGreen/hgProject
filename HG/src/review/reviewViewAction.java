@@ -15,7 +15,7 @@ public class reviewViewAction extends ActionSupport{
       //private reviewVO paramClass;
       private reviewVO resultClass;
       private static int rv_number;
-     
+      private int currentPage;
 
    public reviewViewAction() throws IOException {
       reader=Resources.getResourceAsReader("sqlMapConfig.xml");
@@ -44,6 +44,14 @@ public class reviewViewAction extends ActionSupport{
    public static void setRv_number(int rv_number) {
       reviewViewAction.rv_number = rv_number;
    }
+
+public int getCurrentPage() {
+	return currentPage;
+}
+
+public void setCurrentPage(int currentPage) {
+	this.currentPage = currentPage;
+}
 
 
    

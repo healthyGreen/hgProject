@@ -24,7 +24,7 @@ public class reviewWriteAction extends ActionSupport{
    private reviewVO paramClass;
    private reviewVO resultClass;
 
-   private int rv_currentPage;
+   private int currentPage;
    private int rv_number;
    private String rv_file_orgName;
    private String rv_file_savName;
@@ -55,10 +55,28 @@ public class reviewWriteAction extends ActionSupport{
    public String form(){
       return SUCCESS;
    }
-   public String reply(){
-	   return SUCCESS;
-   }
-   public String execute() throws SQLException, IOException{
+   public String reply() throws Exception
+	{
+	   	
+	      
+		reply=true;
+		resultClass = new reviewVO();
+		
+		resultClass = (reviewVO) sqlMapper.queryForObject("Board.selectOneReview", getRv_number());
+		resultClass.setRv_title("[´äº¯] " + resultClass.getRv_title());
+		resultClass.setRv_content("");
+	
+		System.out.println(currentPage);
+		
+		return SUCCESS;
+		
+	}
+  /* public String execute() throws Exception {
+	   
+	  System.out.println("rv_number"+getRv_number());
+	  System.out.println("rv_number"+getRv_title());
+	  
+	  
       paramClass = new reviewVO();
       resultClass = new reviewVO();
       ActionContext context = ActionContext.getContext();
@@ -106,11 +124,70 @@ public class reviewWriteAction extends ActionSupport{
          sqlMapper.update("Board.updateRvFile",paramClass);
       }
       return SUCCESS;
-   }
+   }*/
+   
+   public String execute() throws Exception {
+	   System.out.println("rv_number"+getRv_number());
+		  System.out.println("rv_number"+getRv_title());
+		  
+		  
+	      paramClass = new reviewVO();
+	      resultClass = new reviewVO();
+	      ActionContext context = ActionContext.getContext();
+			Map session = context.getSession();
+			String session_id = (String) session.get("session_id");
+	      
+	      if(rv_ref==0){
+	         paramClass.setRv_ref_level(0);
+	         paramClass.setRv_ref_step(0);   
+	      }else{
+	         paramClass.setRv_ref_step(getRv_ref_step());
+	         paramClass.setRv_ref_level(getRv_ref_level());
+	         sqlMapper.update("Board.updateReplyStep",paramClass);
+	         paramClass.setRv_ref_step(getRv_ref_step()+1);
+	         paramClass.setRv_ref_level(getRv_ref_level()+1);
+	         paramClass.setRv_ref(getRv_ref());
+	      }
+	      paramClass.setRv_m_id(session_id);
+	      paramClass.setRv_date(today.getTime());
+	      paramClass.setRv_title(getRv_title());
+	      paramClass.setRv_content(getRv_content());
+	      paramClass.setRv_pass(getRv_pass());
+	      paramClass.setRv_name(getRv_name());
+	      paramClass.setRv_date(rv_date.getTime());
+	      paramClass.setRv_score("0");
+	      
+	      if(rv_ref==0)
+	         sqlMapper.insert("Board.insertReview", paramClass);
+	      else
+	         sqlMapper.insert("Board.insertReviewReply",paramClass);
+	      
+	      if(getUpload()!=null){
+	         resultClass = (reviewVO)sqlMapper.queryForObject("Board.selectLastNo");
+	         
+	         String fileName = "file_" + getRv_number();
+	         String fileExt = getUploadFileName().substring(getUploadFileName().lastIndexOf('.')+1,getUploadFileName().length());
+	         
+	         File newFile = new File(FileUploadPath+fileName+"."+fileExt);
+	         FileUtils.copyFile(getUpload(), newFile);
+	         
+	         paramClass.setRv_number(resultClass.getRv_number());
+	         paramClass.setRv_org_image(getUploadFileName());
+	         paramClass.setRv_sav_image(fileName+"."+fileExt);
+	         
+	         sqlMapper.update("Board.updateRvFile",paramClass);
+	      }
+	      return SUCCESS;
+	}
+   
+   
    public reviewVO getParamClass() {
       return paramClass;
    }
-   public void setParamClass(reviewVO paramClass) {
+
+
+
+public void setParamClass(reviewVO paramClass) {
       this.paramClass = paramClass;
    }
    public reviewVO getResultClass() {
@@ -119,13 +196,40 @@ public class reviewWriteAction extends ActionSupport{
    public void setResultClass(reviewVO resultClass) {
       this.resultClass = resultClass;
    }
-   public int getRv_currentPage() {
-      return rv_currentPage;
-   }
-   public void setRv_currentPage(int rv_currentPage) {
-      this.rv_currentPage = rv_currentPage;
-   }
-   public int getRv_number() {
+  
+   public static Reader getReader() {
+	return reader;
+}
+
+public static void setReader(Reader reader) {
+	reviewWriteAction.reader = reader;
+}
+
+public static SqlMapClient getSqlMapper() {
+	return sqlMapper;
+}
+
+public static void setSqlMapper(SqlMapClient sqlMapper) {
+	reviewWriteAction.sqlMapper = sqlMapper;
+}
+
+public int getCurrentPage() {
+	return currentPage;
+}
+
+public void setCurrentPage(int currentPage) {
+	this.currentPage = currentPage;
+}
+
+public Calendar getToday() {
+	return today;
+}
+
+public void setToday(Calendar today) {
+	this.today = today;
+}
+
+public int getRv_number() {
       return rv_number;
    }
    public void setRv_number(int rv_number) {
@@ -243,6 +347,7 @@ public Map getSession() {
 public void setSession(Map session) {
 	this.session = session;
 }
+
    
    
 }
