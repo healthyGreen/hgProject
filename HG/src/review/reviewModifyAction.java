@@ -12,6 +12,8 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 
+import notice.noticeVO;
+
 public class reviewModifyAction extends ActionSupport{
    private static Reader reader;
    private static SqlMapClient sqlMapper;
@@ -34,15 +36,21 @@ public class reviewModifyAction extends ActionSupport{
       sqlMapper=SqlMapClientBuilder.buildSqlMapClient(reader);
       reader.close();
    }
-   public String execute() throws SQLException, IOException{
+   public String execute() throws Exception{
+	   paramClass= new reviewVO();
+		resultClass = new reviewVO();
+	   
       paramClass.setRv_number(getRv_number());
+      
+      
       paramClass.setRv_title(getRv_title());
+      
       paramClass.setRv_content(getRv_content());
       
       
-      
-      
       sqlMapper.update("Board.updateReview", paramClass);
+      
+      
       if(getRv_upload()!=null){
        String file_name="file_"+getRv_number();
          String file_ext = getUploadFileName().substring(getUploadFileName().lastIndexOf('.')+1,getUploadFileName().length());

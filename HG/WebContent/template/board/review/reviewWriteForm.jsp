@@ -63,7 +63,7 @@
 								비밀번호
 							</th>
 							<td>
-								<div><input type="text" class="input1 write-box" name="rv_content" value="<s:property value="resultClass.rv_pass"/>"/></div>
+								<div><input type="text" class="input1 write-box"  name="rv_pass" value="<s:property value="resultClass.rv_pass"/>"/></div>
 							</td>
 						</tr>
 						<tr>
@@ -72,7 +72,7 @@
 							</th>
 							<td>
 								<div class="input3">
-									<textarea name="" id="" cols="30" rows="10" width="100%; " name="rv_pass"><s:property value="resultClass.rv_content" /></textarea>
+									<textarea id="" cols="30" rows="10" width="100%; " name="rv_content"><s:property value="resultClass.rv_content" /></textarea>
 								</div>
 							</td>
 						</tr>

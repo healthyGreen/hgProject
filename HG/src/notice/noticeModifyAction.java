@@ -57,18 +57,12 @@ public class noticeModifyAction extends ActionSupport {
 	public String execute() throws Exception {
 		memparamClass = new memberVO();
 		memresultClass = new memberVO();
-	/*	ActionContext context = ActionContext.getContext();
-		Map<String, Object> session = context.getSession();
-		String session_id = (String) session.get("m_id");
-		memresultClass = (memberVO) sqlMapper.queryForObject("Member.UserCheck",
-				session_id);*/
+	
 
 		paramClass= new noticeVO();
 		resultClass = new noticeVO();
 
 		paramClass.setN_number(getN_number());
-		// resultClass=(noticeVO) sqlMapper.queryForObject("boardView",no);
-		//paramClass.setN_name(getN_name());
 		paramClass.setN_title(getN_title());
 		paramClass.setN_content(getN_content());
 		sqlMapper.update("Board.updateNotice", paramClass);

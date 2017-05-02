@@ -45,7 +45,7 @@
 							
 							</tbody>
 						</table>
-						<form name="searchBox" action="reviewListAction.action" method="post">
+						<form name="searchBox"  method="post">
 							<div style="width: 1100px; margin: 0 auto; ">
 								<select class="border" name="forSearch">
 									<option value="writer">작성자</option>
@@ -53,8 +53,9 @@
 									<option value="title">제목</option>
 									
 								</select>
-								<input class="searchk" type="text" name="search">
-								<input class="click" type="submit" value="" name="submit">
+								
+								<s:textfield name="search" theme="simple" value="" cssStyle="width:120px" maxlength="20" />
+								<input class="click" type="submit" value="검색" name="submit">
 							</div>
 						</form>
 						<div class="wBtn" ><span onclick="location.href='reviewWriteForm.action?currentPage=<s:property value="currentPage"/>'">작성하기</span></div>

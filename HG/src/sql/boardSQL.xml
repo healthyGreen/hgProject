@@ -80,6 +80,12 @@
        ORDER BY RV_REF DESC, RV_REF_STEP ASC
   </select> 
   
+   <select id="selectRvSearchC" resultMap="reviewRes" parameterClass="string">
+    <include refid="select-review"/>
+       WHERE rv_content like #search#
+       ORDER BY RV_REF DESC, RV_REF_STEP ASC
+  </select> 
+  
 <!--   <select id="selectAboutPass" resultMap="reviewRes" parameterClass="review">
      select rv_pass from review where rv_number=#rv_number#
   </select> -->
@@ -171,6 +177,8 @@
   <update id="updateNotice" parameterClass="notice">
      update NOTICE set N_TITLE=#n_title#, N_CONTENT=#n_content# where N_NUMBER=#n_number#
   </update>
+  
+ 
   
   
 </sqlMap>
