@@ -9,7 +9,7 @@
          <result type="tiles">main</result>
       </action>
    </package>
-    <package name="review" extends="struts-default, tiles-default">
+     <package name="review" extends="struts-default, tiles-default">
       <action name="reviewWriteForm" class="review.reviewWriteAction" method="form">
          <result type="tiles">reviewWrite</result>
       </action>
@@ -22,20 +22,26 @@
       <action name="reviewView" class="review.reviewViewAction">
          <result type="tiles">reviewView</result>
       </action>
-      <action name="reviewCheckPassForm" class="review.reviewCheckPassAction" method="form">
+      <action name="reviewCheckPassForm" class="review.reviewCheckPassAction"  method="form">
          <result type="tiles">reviewPass</result>
       </action>
       <action name="reviewCheckPassPro" class="review.reviewCheckPassAction" method="execute">
-         <result name="success">/template/board/review/passForRpSuccess.jsp</result>
+        <result type="chain">reviewModifyForm</result>
       </action>
       <action name="reviewModifyForm" class="review.reviewCheckPassAction">
-         <result name="success">reviewWriteForm</result>
+         <result type="chain">reviewWriteForm</result>
       </action>
-      <action name="reviewModifyPro" class="review.reviewModifyAction">
-         <result type="redirect-action"><param name="actionName">reviewView</param></result>
+      <action name="reviewModifyPro" class="review.reviewModifyAction" >
+         <result name="success" type="chain">reviewView</result>
       </action>
       <action name="reviewDelete" class="review.reviewDeleteAction">
          <result type="redirect-action"><param name="actionName">reviewList</param></result>
+      </action>
+      <action name="reviewReplyForm" class="review.reviewWriteAction" method="reply">
+        <result type="chain">reviewWriteForm</result>
+     </action>
+      <action name="reviewReplyActionPro" class="review.reviewWriteAction" >
+         <result name="success" type="chain">reviewView</result>
       </action>
    </package>
    
@@ -131,14 +137,17 @@
          <result type="chain">basketList</result>
       </action>
       <action name="basketDelete" class="basket.basketDeleteAction">
-         <result type="tiles">basketList</result>
+         <result type="redirect-action"><param name="actionName">basketList</param></result>
+      </action>
+      <action name="basketDeleteAll" class="basket.basketDeleteAction" method="deleteAll">
+         <result type="redirect-action"><param name="actionName">basketList</param></result>
       </action>
    </package>
    
    <package name="mypage" extends="struts-default, tiles-default">
       <action name="existForm" class="myPage.existAction" method="form">
          <result name="success" type="tiles">existWarning</result>
-         <result name="error">/template/mypage/passError.jsp</result>
+         <result name="error" type="tiles">passError</result>
       </action>
       <action name="existPro" class="myPage.existAction" method="execute">
          <result type="redirect-action">
@@ -150,7 +159,7 @@
       </action>
       <action name="myInfoModifyForm" class="myPage.myInfoModifyAction" method="form">
          <result name="success" type="tiles">infoModifyForm</result>
-         <result name="error">/template/mypage/passError.jsp</result>
+         <result name="error" type="tiles">passError</result>
       </action>
       <action name="modifyPassForm" class="myPage.myInfoModifyAction" method="checkForm">
          <result type="tiles">infoPassForm</result>
@@ -172,6 +181,13 @@
      <!--  <action name="infoView" class="myPage.myInfoViewAction" method="infoView">
          <result name="success" type="tiles">infoView</result>
       </action> -->
+      <action name="myPage" class="myPage.myPageAction" method="execute">
+         <!-- <result name="login" type="tiles">logInForm</result> -->
+         <result name="success" type="tiles">myPage</result>
+      </action>
+      <action name="myBoard" class="myPage.myPageAction" method="myBoard">
+         <result type="tiles">myBoard</result>
+      </action>
    </package>
    
    <package name="goods" extends="struts-default, tiles-default">
@@ -184,26 +200,31 @@
          </result>
       </action>
       <action name="adminGoodsList" class="goods.goodsListAction" method="adminList">
-      	 <result type="tiles">adminGoodsList</result>
+          <result type="tiles">adminGoodsList</result>
       </action>
       <action name="goodsList" class="goods.goodsListAction">
          <result type="tiles">goodsList</result>
       </action>
       <action name="goodsView" class="goods.goodsViewAction">
-         <result type="tiles">goodsView</result>
-         <result name="error">/goods/goodsError.jsp</result>
+         <result name="success" type="tiles">goodsView</result>
+         <result name="error" type="tiles">goodsError</result>
         <!--  <result name="login">/goods/pleaseLog.jsp</result> -->
       </action>
-      <action name="goodsDelete" class="goods.goodsDeleteAction">
+     <action name="goodsDelete" class="goods.goodsDeleteAction">
          <result name="success">goodsList</result>
-         <result name="error">/goods/goodsError.jsp</result>
+         <result name="error" type="tiles">goodsError</result>
+     </action>
+     <action name="goodsDelete" class="goods.goodsDeleteAction" method="execute2">
+         <result type="redirect-action">
+         <param name="actionName">goodsView</param>
+         </result>
      </action>
    </package>
    
     <package name="reply" extends="struts-default, tiles-default">
       <action name="replyWrite" class="goods.replyWriteAction">
-         <result type="chain">goodsView</result>
-      </action> 
+         <result type="redirect-action"><param name="actionName">goodsView</param></result>
+     </action>
       <action name="replyDeletePassCheckForm" class="goods.goodsDeleteAction" method="checkForm">
          <result name="success">/goods/replyPassForm.jsp</result>
       </action>
@@ -219,13 +240,20 @@
       <action name="orderForm" class="orders.ordersSetAction">
          <result type="tiles">orderWrite</result>
       </action>
-      <action name="orderForGoodsPro" class="orders.ordersAction" method="execute1">
+      <action name="orderForGoodsPro" class="orders.ordersAction">
          <result type="tiles">orderOk</result>
       </action>
       <action name="orderForBasketPro" class="orders.ordersAction" method="execute2">
          <result type="tiles">orderOk</result>
       </action>
    </package>
+   
+   <package name="qna" extends="struts-default, tiles-default" >
+      <action name="qnacustom" class="qna.qnaListAction">
+         <result type="tiles">QnaCustom</result>
+      </action>
+   </package>
+   
    
    
    
