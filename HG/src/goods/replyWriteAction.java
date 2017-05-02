@@ -17,9 +17,9 @@ public class replyWriteAction extends ActionSupport {
 
 	private replyVO reClass; // 파라미터를 저장할 객체
 	private replyVO reresult; // 쿼리 결과값을 저장할 객체
-
+	
 	private int currentPage;
-	private int G_NUMBER;
+	private int g_number;
 	//private String G_CATEGORY;
 	//private String G_SAV_IMAGE;
 	
@@ -31,6 +31,8 @@ public class replyWriteAction extends ActionSupport {
 	private int ref;
 	private int ref_step;
 	private int ref_level;
+	private int rp_g_number;
+	private int checked;
 	
 	
 	
@@ -47,8 +49,14 @@ public class replyWriteAction extends ActionSupport {
 	}
 
 	public String execute() throws Exception {
+		if(checked ==1){
+		
 		reClass = new replyVO();
 		reresult = new replyVO();
+		
+		
+		
+		System.out.println("number"+getG_number());
 
 		reClass.setRp_number(getOriginno());
 		System.out.println(originno);
@@ -64,12 +72,19 @@ public class replyWriteAction extends ActionSupport {
 		System.out.println(ref);
 		reClass.setRp_ref_step(getRef_step());
 		reClass.setRp_ref_level(getRp_level());
+		reClass.setRp_g_number(getG_number());
+		System.out.println(rp_g_number);
 		
 		
 		System.out.println(reClass);
 		sqlMapper.insert("g_insertReply", reClass);
-
+		}
 		return SUCCESS;
+	}
+
+	private int getRp_g_number() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	private int getRp_level() {
@@ -147,13 +162,7 @@ public class replyWriteAction extends ActionSupport {
 		return originno;
 	}
 
-	public int getG_NUMBER() {
-		return G_NUMBER;
-	}
 
-	public void setG_NUMBER(int goods_num) {
-		this.G_NUMBER = goods_num;
-	}
 
 /*	public String getG_CATEGORY() {
 		return G_CATEGORY;
@@ -162,6 +171,14 @@ public class replyWriteAction extends ActionSupport {
 	public void setG_CATEGORY(String goods_category) {
 		this.G_CATEGORY = goods_category;
 	}*/
+
+	public int getG_number() {
+		return g_number;
+	}
+
+	public void setG_number(int g_number) {
+		this.g_number = g_number;
+	}
 
 	public void setOriginno(int originno) {
 		this.originno = originno;
@@ -191,5 +208,19 @@ public class replyWriteAction extends ActionSupport {
 	public void setReresult(replyVO reresult) {
 		this.reresult = reresult;
 	}
+
+	public void setRp_g_number(int rp_g_number) {
+		this.rp_g_number = rp_g_number;
+	}
+
+	public void setChecked(int checked) {
+		this.checked = checked;
+	}
+
+
+	
+	
+	
+	
 
 }
