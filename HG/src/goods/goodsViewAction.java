@@ -40,7 +40,11 @@ public class goodsViewAction extends ActionSupport {
    private int blockPage = 5;
    private List<replyVO> rp_list = new ArrayList<>();
    private int g_number;
+   
+   private int rp_g_number;
    private String password;
+   private int searchNum;
+   private int num = 0;
    /*ActionContext context = ActionContext.getContext();
 	Map<String, Object> session = context.getSession();
 	String session_id = (String) session.get("m_id");*/
@@ -58,24 +62,35 @@ public class goodsViewAction extends ActionSupport {
    }
 
    public String execute() throws Exception {
-      goodsResult = (goodsVO) sqlMapper.queryForObject("g_view", g_number);
+	   System.out.println("글넘버:"+getG_number());
+	   // 글 상세보기 SQL
+	   goodsResult.setG_number(getG_number());
+	   
+      goodsResult = (goodsVO) sqlMapper.queryForObject("g_view", getG_number());
      
-         rp_list = sqlMapper.queryForList("g_selectReply");
-         replylist = sqlMapper.queryForList("replySelectAll", getRp_number());
-     
+        // rp_list = sqlMapper.queryForList("g_selectReply");
+         
+         replylist = sqlMapper.queryForList("replySelectAll",getG_number());
+         
+         System.out.println("size:"+replylist.size());
+         
       
      // totalCount = rp_list.size();
       
-      rp_page = new replyPagingAction(currentPage, totalCount, blockCount, blockPage);
+     /* rp_page = new replyPagingAction(currentPage, totalCount, blockCount, blockPage);
       pagingHtml = rp_page.getPagingHtml().toString();
       int endCount = rp_page.getEndCount();
       if(endCount>totalCount) endCount=totalCount;
-      rp_list=rp_list.subList(rp_page.getStartCount(),endCount);
+      replylist=replylist.subList(rp_page.getStartCount(),endCount);*/
       
-      if (goodsResult == null) return ERROR;
+      if (goodsResult == null) {
+    	  return ERROR;
+      }
+      
+      
       return SUCCESS;
    }
-
+   
    private Object getRp_number() {
 	// TODO Auto-generated method stub
 	return null;
@@ -228,5 +243,21 @@ public String getPassword() {
       this.contentLength = contentLength;
    }
 
+public List<replyVO> getReplylist() {
+	return replylist;
+}
+
+public void setReplylist(List<replyVO> replylist) {
+	this.replylist = replylist;
+}
+
+public int getRp_g_number() {
+	return rp_g_number;
+}
+
+public void setRp_g_number(int rp_g_number) {
+	this.rp_g_number = rp_g_number;
+}
    
 }
+   

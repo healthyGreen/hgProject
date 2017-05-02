@@ -21,7 +21,7 @@
 	
 	<!-- 장바구니 리스트 -->
 	 <select id="basketList" resultMap="basketRes" parameterClass="string">
-		SELECT * FROM BASKET WHERE B_M_ID = #session_id#
+		SELECT * FROM BASKET WHERE B_M_ID = #b_m_id#
 		ORDER BY B_DATE DESC
 	</select> 
 	
