@@ -1,25 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="s"  uri="/struts-tags"%>
     <%
     	String session_id = (String)session.getAttribute("session_id");
     %>
 <%-- <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %> --%>
 <script type="text/javascript">
-	function modiBas(basketlist) {
-		var b_g_amount = document.basketlist.b_g_amount.value;
-		window.location.href='basketModify.action?b_g_number=${b_g_number}&b_number=${b_number}&b_g_price=${b_g_price}&b_m_id=${b_m_id}&b_g_amount='+b_g_amount;
-	}
-	
-	function delBas(basketlist) {
-		window.location.href='basketDelete.action?b_number=${b_number}&b_m_id=${b_m_id}';
-	}
 	function alldelBas(basketlist) {
 		if(confirm("삭제하시겠습니까?")){
 			window.location.href='basketDeleteAll.action?b_m_id=${b_m_id}';
 		}else return;
 	}
 </script>
-<%@ taglib prefix="s" uri="/struts-tags" %>
 
 </tr>
 <tr>
@@ -70,14 +62,14 @@ table.orderitem-list tfoot tr td table td {border:none;}
 </thead>
 <tbody>
 	<s:iterator value="basketList" status="sta">
+	<s:hidden name="b_number" value="b_number"/>
 	<tr>
-	<%-- <s:hidden name="b_number" value="b_number"/> --%>
-		
+
 		<td>${b_g_number}</td>
 		<td>${b_g_name} </td>
 		<td>${b_g_price }원</td>
 		<td>${b_g_amount } &nbsp;
-			<select name="b_g_amount">
+			<select name='b_g_amount' id='aaa<s:property value="%{#sta.index}" />'>
 				<option value="1">1</option>
 				<option value="2">2</option>
 				<option value="3">3</option>
@@ -87,8 +79,8 @@ table.orderitem-list tfoot tr td table td {border:none;}
 				<option value="7">7</option>
 				<option value="8">8</option>
 				<option value="9">9</option>
-			</select>&nbsp;<input type="button" value="변경" onclick="return modiBas(this.form)">
-			&nbsp;<input type="button" value="삭제" onclick="return delBas(this.form)">
+			</select>&nbsp;<input type="button" value="변경" onclick="javascript:location.href='basketModify.action?b_g_number=${b_g_number}&b_number=${b_number}&b_g_price=${b_g_price}&b_m_id=${b_m_id}&b_g_amount='+document.getElementById('aaa<s:property value="%{#sta.index}" />').value">
+			&nbsp;<input type="button" value="삭제" onclick="javascript:location.href='basketDelete.action?b_number=${b_number}'"/>
 		</td>
 		<td>${b_allPrice }원</td>
 	</tr><br>

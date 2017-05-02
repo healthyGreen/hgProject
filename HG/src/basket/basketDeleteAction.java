@@ -23,21 +23,34 @@ public class basketDeleteAction extends ActionSupport{
 	private int b_number;
 	private String b_m_id;
 	//private int b_g_number;
+	private Map session;
 	
+	public Map getSession() {
+		return session;
+	}
+	public void setSession(Map session) {
+		this.session = session;
+	}
 	public basketDeleteAction() throws Exception{
 		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
 	}
+	
 	public String deleteAll() throws SQLException{
-		sqlMapper.delete("Basket.basketDeleteAll",b_m_id);
+		ActionContext context = ActionContext.getContext(); // session을 생성하기 위해
+		Map<String, Object> session = context.getSession();
+		String session_id = (String) session.get("session_id");
+		sqlMapper.delete("Basket.basketDeleteAll",session_id);
 		return SUCCESS;
 	}
 	public String execute() throws Exception{
+		System.out.println(b_number);
 		basparamClass = new basketVO();
 		basresultClass = new basketVO();
 		memresultClass = new memberVO();
 		basparamClass.setB_number(b_number);
+		
 		/*ActionContext context = ActionContext.getContext();
 		Map<String, Object> session = context.getSession();
 */		/*String session_id = (String)session.get("m_id");

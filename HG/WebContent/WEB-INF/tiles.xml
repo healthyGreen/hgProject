@@ -18,7 +18,7 @@
       <put-attribute name="body" value="/template/goods/goodsList.jsp"/>
    </definition>
    <definition name="adminGoodsList" extends="main">
-   	<put-attribute name="body" value="/template/goods/adminGoodsList.jsp"/>
+      <put-attribute name="body" value="/template/goods/adminGoodsList.jsp"/>
    </definition>
    <definition name="goodsView"  extends="main">
       <put-attribute name="body" value="/template/goods/goodsView.jsp"/>
@@ -31,6 +31,9 @@
    </definition>
    <definition name="goodsView"  extends="main">
       <put-attribute name="body" value="/template/goods/goodsView.jsp"/>
+   </definition>
+   <definition name="goodsError"  extends="main">
+      <put-attribute name="body" value="/template/goods/goodsError.jsp"/>
    </definition>
    
    
@@ -135,6 +138,14 @@
    <definition name="existPassForm" extends="main">
       <put-attribute name="body" value="/template/mypage/existPassForm.jsp"/>
    </definition>
+   <definition name="passError" extends="main">
+      <put-attribute name="body" value="/template/mypage/passError.jsp"/>
+   </definition>
+   <definition name="myBoard" extends="main">
+      <put-attribute name="body" value="/template/mypage/myBoardList.jsp"/>
+   </definition>
+   
+   
    
    
    
