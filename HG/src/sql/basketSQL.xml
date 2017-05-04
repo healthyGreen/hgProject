@@ -24,6 +24,9 @@
 		SELECT * FROM BASKET WHERE B_M_ID = #b_m_id#
 		ORDER BY B_DATE DESC
 	</select> 
+	<select id="basketCount" resultMap="basketRes" parameterClass="string">
+		SELECT * FROM BASKET WHERE B_M_ID =#b_m_id# 
+	</select> 
 	
 
 	

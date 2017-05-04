@@ -13,6 +13,7 @@ public class basketVO {
    private int b_g_price;
    private Date b_date;
    private int b_number;
+   
    public String getB_m_id() {
       return b_m_id;
    }

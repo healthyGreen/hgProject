@@ -130,12 +130,12 @@ function validation(){
 			
 
 
-				<div id="main_content">
+				<!-- <div id="main_content">
 
 					<table width="600" align="center">
 						<tr>
 							<td align="center">상품 등록</td>
-						</tr>
+						</tr> -->
 					</table>
 
 				 	<%-- <s:if test="goods_resultClass == null">

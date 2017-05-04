@@ -1,6 +1,7 @@
 package goods;
 
 import com.opensymphony.xwork2.ActionSupport;
+
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
@@ -9,6 +10,7 @@ import java.io.Reader;
 import java.sql.SQLException;
 import java.io.File;
 import java.io.IOException;
+
 
 import org.apache.commons.io.FileUtils;
 
@@ -43,28 +45,27 @@ public class goodsDeleteAction extends ActionSupport{
 
 		// 게시글 글 삭제
 		public String execute() throws Exception {
-			/*System.out.println("1");
-			System.out.println(g_number);
-			System.out.println(adminCurrentPage);*/
+	
 			// 파라미터와 리절트 객체 생성.
+			
 			goods_paramClass = new goodsVO();
 			goods_resultClass = new goodsVO();
-
-			// 해당번호의 글을 가져온다.
+			
+			
 		/*	goods_resultClass = (goodsVO) sqlMapper.queryForObject(
 					"g_list_selectOne", getG_NUMBER());*/
-
+			System.out.println(g_number);
 			// 삭제할 항목 설정.
-			goods_paramClass.setG_number(getG_number());
-
-			// 삭제 쿼리 수행.
-			sqlMapper.delete("g_delete", goods_paramClass);
-
+			goods_paramClass.setG_number(g_number);
+			System.out.println("상품번호:"+goods_paramClass.getG_number());
+			// 삭제 쿼리 수행..
+			sqlMapper.delete("g_delete", g_number);
+			
 			return SUCCESS;
 		}
 
 		// 댓글 삭제
-		public String execute2() throws Exception {
+		/*public String execute2() throws Exception {
 
 			reClass = new replyVO();
 			reResult = new replyVO();
@@ -76,8 +77,8 @@ public class goodsDeleteAction extends ActionSupport{
 			sqlMapper.update("g_deleteReply", reClass);
 
 			return SUCCESS;
-		}
-		public String checkform(){
+		}*/
+		/*public String checkform(){
 			return SUCCESS;
 		}
 		
@@ -89,7 +90,7 @@ public class goodsDeleteAction extends ActionSupport{
 			if(reResult!=null)
 				return SUCCESS;
 			else return ERROR;
-		}
+		}*/
 		public static Reader getReader() {
 			return reader;
 		}
