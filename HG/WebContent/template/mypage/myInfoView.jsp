@@ -22,6 +22,7 @@
 <script src="../../js/godo.password_strength.js" type="text/javascript"></script>
 
 <style type="text/css">
+.wBtn span {border: none; padding-top: 10px;     cursor: pointer;    float: right;    width: 120px;    height: 40px;    background: #484647;    text-align: center;    color: #fff;    display: block;    font-size: 13px;       box-sizing: border-box;  }
 div.passwordStrenth {background-color:#FFFFFF; border:1px #CCCCCC solid; padding:10px; width:263px;display:none; position:absolute;}
 
 div.passwordStrenth p {margin:0;padding:5px 0 0 0; font-size:11px;color:#616161; }
@@ -215,9 +216,9 @@ scrollbar-arrow-color: #838383;
 <tr>
 <td id=avoidDbl align=center height=100>
 <div style="width:100%" class=noline>
-    <input type="button" onclick="location.href='modifyPassForm.action'" value="수정하기">
-    <input type="button" onclick="location.href='existPassForm.action'" value="탈퇴하기">
-    <input type="button" onClick="location.href='main.action'" value="메인으로">
+    <div class="wBtn clear"  style="float: left; width: 120px; margin-right: 10px; "  onclick="location.href='modifyPassForm.action'" ><span>수정하기</span></div>
+    <div class="wBtn clear"  style="float: left; width: 120px;"  onclick="location.href='existPassForm.action'" ><span>탈퇴하기</span></div>
+    <div class="wBtn clear"   style="float: right; width: 120px;"onClick="location.href='main.action'" ><span>메인으로</span></div>
 </div>
 </td>
 </tr>

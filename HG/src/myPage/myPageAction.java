@@ -2,13 +2,18 @@ package myPage;
 
 import com.opensymphony.xwork2.ActionSupport;
 import member.memberVO;
+import notice.noticeVO;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
 import java.io.Reader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import basket.basketVO;
 
 public class myPageAction extends ActionSupport{
 	public static Reader reader;
@@ -19,6 +24,8 @@ public class myPageAction extends ActionSupport{
 	private String m_id;
 	private String m_name;
 	private int m_point;
+	private int basketCount;
+	List<basketVO> list = new ArrayList<basketVO>();
 	
 	
 	public myPageAction() throws Exception{
@@ -28,6 +35,11 @@ public class myPageAction extends ActionSupport{
 	}
 	
 	public String execute() throws Exception{
+		ActionContext context = ActionContext.getContext(); // session을 생성하기 위해
+		Map<String, Object> session = context.getSession();
+		String session_id = (String) session.get("session_id");
+		list = sqlMapper.queryForList("Basket.basketCount",session_id);
+		basketCount = list.size();
 		return SUCCESS;
 	}
 	
@@ -82,6 +94,22 @@ public class myPageAction extends ActionSupport{
 
 	public void setM_point(int m_point) {
 		this.m_point = m_point;
+	}
+
+	public List<basketVO> getList() {
+		return list;
+	}
+
+	public void setList(List<basketVO> list) {
+		this.list = list;
+	}
+
+	public int getBasketCount() {
+		return basketCount;
+	}
+
+	public void setBasketCount(int basketCount) {
+		this.basketCount = basketCount;
 	}
 	
 	

@@ -38,7 +38,9 @@
 	<link rel="styleSheet" href="css/dsm/sub.css">
 	<link rel="styleSheet" href="css/dsm/goods.css">
 
-				
+	<!-- <link href="css/demo-page.css" rel="stylesheet" media="all"> -->
+	<link href="css/hover.css" rel="stylesheet" media="all">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">			
 
 </head>
 
@@ -53,13 +55,13 @@
                   	<li><a href="logout.action">로그아웃</a></li>
                		<li><a href="myPage.action">마이헬시</a></li>
                		<li><a href="qnacustom.action">고객센터</a></li>
-               		<li><a href="">장바구니</a></li>
+               		<li><a href="/HG/basketList.action">장바구니</a></li>
                	 </c:if>
              	<c:if test="${session.session_id == null }">
                    	<li><a href="/HG/logInForm.action">로그인</a></li>
                		<li><a href="/HG/joinCheck.action">회원가입</a></li>
                		<li><a href="qnacustom.action">고객센터</a></li>
-               		<li><a href="">장바구니</a></li>
+               		<li><a href="/HG/template/basket/BasketLoginError.jsp">장바구니</a></li>
                	</c:if>
             </ul>
          </div><!--// area -->
@@ -125,7 +127,7 @@
 					</li>
 					<li><a href="noticeList.action">NOTICE</a></li>
 					<li><a href="reviewList.action">상품후기</a></li>
-					<li><a href="">ABOUT</a></li>
+					<li><a href="template/about/aboutCont.jsp">ABOUT</a></li>
 				</ul>
 
 			</div><!--// area -->

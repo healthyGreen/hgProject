@@ -15,6 +15,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import member.memberVO;
+import review.reviewPageAction;
 
 public class noticeListAction extends ActionSupport{
    private static Reader reader;
@@ -23,10 +24,12 @@ public class noticeListAction extends ActionSupport{
    //  private memberVO memresultClass;
    //  private memberVO memparamClass;
      private int currentPage=1;
-     private int OnePageBlock=10;
-     private int pageBlocks=5;
-     private int totalPage;
-     private int totalBlock;
+     private int totalCount;
+     private int blockCount = 10; // 10으로 다시 바꾸면 됨
+     private int blockPage = 5;
+
+ 
+ 
      private String pagingHtml;
      private noticePageAction page;
      private Map session;
@@ -47,10 +50,19 @@ public class noticeListAction extends ActionSupport{
          memresultClass = (memberVO) sqlMapper.queryForObject("Member.UserCheck",
                session_id);*/
         list = sqlMapper.queryForList("Board.selectAllNotice");
-        totalBlock=list.size();  
-         page = new noticePageAction(currentPage, OnePageBlock, pageBlocks, totalBlock);
-         list=list.subList(page.getStartBlock(),page.getEndBlock());
-         pagingHtml=page.getPaginHtml().toString();
+        totalCount = list.size();  
+      
+         page = new noticePageAction(currentPage, totalCount, blockCount, blockPage, "", "");
+         pagingHtml = page.getPagingHtml().toString();
+         
+         //System.out.println("page :"+page);
+         //System.out.println("pagingHtml :"+pagingHtml);
+         
+         int lastCount = totalCount;
+         if (page.getEndCount() < totalCount)
+            lastCount = page.getEndCount() + 1;
+
+         list = list.subList(page.getStartCount(), lastCount);
          return SUCCESS;
      }
 
@@ -62,37 +74,6 @@ public class noticeListAction extends ActionSupport{
       this.currentPage = currentPage;
    }
 
-   public int getOnePageBlock() {
-      return OnePageBlock;
-   }
-
-   public void setOnePageBlock(int onePageBlock) {
-      OnePageBlock = onePageBlock;
-   }
-
-   public int getPageBlocks() {
-      return pageBlocks;
-   }
-
-   public void setPageBlocks(int pageBlocks) {
-      this.pageBlocks = pageBlocks;
-   }
-
-   public int getTotalPage() {
-      return totalPage;
-   }
-
-   public void setTotalPage(int totalPage) {
-      this.totalPage = totalPage;
-   }
-
-   public int getTotalBlock() {
-      return totalBlock;
-   }
-
-   public void setTotalBlock(int totalBlock) {
-      this.totalBlock = totalBlock;
-   }
 
    public String getPagingHtml() {
       return pagingHtml;
@@ -124,5 +105,31 @@ public class noticeListAction extends ActionSupport{
 
    public void setSession(Map session) {
       this.session = session;
-   }     
+   }
+
+public int getTotalCount() {
+	return totalCount;
+}
+
+public void setTotalCount(int totalCount) {
+	this.totalCount = totalCount;
+}
+
+public int getBlockCount() {
+	return blockCount;
+}
+
+public void setBlockCount(int blockCount) {
+	this.blockCount = blockCount;
+}
+
+public int getBlockPage() {
+	return blockPage;
+}
+
+public void setBlockPage(int blockPage) {
+	this.blockPage = blockPage;
+}     
+   
+   
 }

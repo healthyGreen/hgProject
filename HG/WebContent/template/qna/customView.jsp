@@ -5,9 +5,9 @@
 <tr>
 <td height=100%>
 
-<table height=100% cellpadding=0 cellspacing=0 border=0 class="outline_both" style="width:1100px;margin:0 auto ; padding:30px 0;">
+<table cellpadding=0 cellspacing=0 border=0 class="outline_both" style="width:1100px;margin:0 auto ; padding:30px 0;">
 <tr>
-<td valign=top width=100% height=100% bgcolor="" background="" class=outline_side>
+<td valign=top width=100% bgcolor="" background="" class=outline_side>
 
 <!-- 상단이미지 || 현재위치 -->
 <div class="sub_tit">

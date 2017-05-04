@@ -90,9 +90,9 @@
      select rv_pass from review where rv_number=#rv_number#
   </select> -->
   
-  <select id="myWriteBoard" resultMap="reviewRes" parameterClass="review">
+  <select id="myWriteBoard" resultMap="reviewRes" parameterClass="string">
      <include refid="select-review"/>
-     where rv_m_id = #rv_m_id#
+     where rv_m_id = #rv_m_id# ORDER BY RV_NUMBER DESC
   </select>
   
   
@@ -127,14 +127,14 @@
   <insert id="insertReview" parameterClass="review">
      insert into REVIEW (RV_NUMBER, RV_M_ID, RV_TITLE, RV_CONTENT, RV_PASS, RV_NAME, RV_DATE,
      RV_SCORE, RV_REF, RV_REF_STEP, RV_REF_LEVEL, RV_READHIT) 
-     values (RV_NUMBER_SEQ.NEXTVAL, #rv_m_id#, #rv_title#, #rv_content#, #rv_pass#, #rv_name#, #rv_date#, #rv_score#, RV_NUMBER_SEQ.CURRVAL, #rv_ref_step#, #rv_ref_level#, #rv_readhit#)
+     values (RV_NUMBER_SEQ.NEXTVAL, #rv_m_id#, #rv_title#, #rv_content#, #rv_pass#, #rv_name#, sysdate, #rv_score#, RV_NUMBER_SEQ.CURRVAL, #rv_ref_step#, #rv_ref_level#, #rv_readhit#)
   </insert>
   
   <insert id="insertReviewReply">
      insert into REVIEW (RV_NUMBER, RV_M_ID, RV_TITLE, RV_CONTENT, RV_PASS, RV_NAME, RV_DATE,
-     RV_SCORE, RV_REF, RV_REF_STEP, RV_REF_LEVEL) 
-     values (RV_NUMBER_SEQ.NEXTVAL, #rv_m_id#, #rv_title#, #rv_content#, #rv_pass#, #rv_name#, #rv_date#,
-     #rv_score#, #rv_ref#, #rv_ref_step#, #rv_ref_level#)
+     RV_SCORE, RV_REF, RV_REF_STEP, RV_REF_LEVEL, RV_READHIT) 
+     values (RV_NUMBER_SEQ.NEXTVAL, #rv_m_id#, #rv_title#, #rv_content#, #rv_pass#, #rv_name#, sysdate,
+     #rv_score#, #rv_ref#, #rv_ref_step#, #rv_ref_level#, #rv_readhit#)
   </insert>
   
   <insert id="insertNotice" parameterClass="notice">
