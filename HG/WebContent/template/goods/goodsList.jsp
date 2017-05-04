@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
     <%@ taglib prefix="s" uri="/struts-tags" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <%
 	String salad = "salad";
 	String chacJeb = "chacJeb";
@@ -37,7 +38,7 @@
 		<tr>
 			<td valign=top width=100% height=100% bgcolor="" background="" class=outline_side>
 				<div class="subimg">
-					<img src="../images/b31ec21d972e1833.jpg">		
+					<img src="images/b31ec21d972e1833.jpg">		
 				</div>
 
 				<!-- 상단 카테고리 메뉴시작 -->
@@ -87,22 +88,41 @@
 				.percent:before { position:absolute; content:''; border-left:70px solid red; border-bottom:70px solid transparent; z-index:1; }
 				.percent span { position:relative; color:#fff; font-size:18px; top:5px; left:5px; font-weight:bold; z-index:2; }
 				</style>
-				<s:iterator value="list" status="stat">
-                        <tr>
-                           <td><s:property value="g_number"/></td>
-                           <td class="subject"><a href="goodsView.action?g_number=<s:property value="g_number"/>&currentPage=<s:property value="currentPage"/>">&nbsp;&nbsp;&nbsp;<s:property value="g_name" /></a></td>
-                           <td><s:property value="g_name"/></td>
+				<ul class="goodsbox">
+					<s:iterator value="list" status="stat">
+                        <li>
+                        	<div class="goods">
+                        		 <div class="img"><s:property value="g_sav_image"/></div>
+		                         <span class=" name fb"><a href="goodsView.action?g_number=<s:property value="g_number"/>&currentPage=<s:property value="currentPage"/>">&nbsp;&nbsp;&nbsp;<s:property value="g_name" /></a></span>
+		                         <span class="txt"><s:property value="g_name"/></span>
+                        	</div>
                            
-                        </tr>
+                        </li>
                      </s:iterator>
+                </ul>
 			</td>
 		  </tr>
 		  <tr>
 			<!-- <td align=center height=50> <b></b> </td> -->
 			
 		  </tr>
+		  
+		  	  <c:if test="${session.session_admin == 1 }"> 
+		  	 
+		  	 <input name="list" type="button" value="글쓰기" class="inputb" 
+		onClick="javascript:location.href='goodsWrite.action?'"/>
+		<tr align="right"><td colspan="4" >
+		
+		
+		  
+
+		  </c:if>   
+	
+	
+	
 		</table>
 		<br>
+	
 		<div align="center"><s:property value="pagingHtml" escape="false"/></div>
 	</div>
 

@@ -1,7 +1,9 @@
 <%@page contentType="text/html; charset=euc-kr"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
+<style>
+	.wBtn input {border: none;     cursor: pointer;    float: right;    width: 120px;    height: 40px;    background: #484647;    text-align: center;    color: #fff;    display: block;    font-size: 13px;       box-sizing: border-box; padding-top: 0px !important; }
+</style>
 <script>
 	function reviewcheck(reviewWrite) {
 		if (!document.reviewWrite.rv_name.value) {
@@ -34,52 +36,10 @@
 	</div>
 	
 	
-	<s:if test="reply">
-		<form action="reviewReplyActionPro.action" method="post" encType="multipart/form-data" onsubmit="return reviewcheck()" >
-		<s:hidden name="rv_pass" value="%{resultClass.rv_pass}" />
-		<s:hidden name="rv_name" value="%{resultClass.rv_name}" />
-		<s:hidden name="rv_number" value="%{resultClass.rv_number}" />
-		<s:hidden name="currentPage" value="%{currentPage}" />
-		<s:hidden name="rv_m_id" value="%{resultClass.rv_m_id}" />
-		<s:hidden name="rv_date" value="%{resultClass.rv_date}" />
-		<s:hidden name="rv_score" value="%{resultClass.rv_score}" />
-		<table width="100%" class="board-type03" style="width:1100px;margin:0 auto ;">
-					<colgroup>
-						<col width="" />
-						<col width="" />
-					</colgroup>
-					<tbody>
-						
-						<tr class="first">
-							<th scope="row">
-								제목
-							</th>
-							<td>
-								<div><input type="text" class="input1 write-box" name="rv_title"  value="<s:property value="resultClass.rv_title"/>"/></div>
-							</td>
-						</tr>
-						
-						
-						<tr>
-							<th scope="row" class="vertical-t">
-								답글내용
-							</th>
-							<td>
-								<div class="input3">
-									<textarea id="" cols="30" rows="10" width="100%; " name="rv_content"><s:property value="resultClass.rv_content" /></textarea>
-								</div>
-							</td>
-						</tr>
-						
-					</tbody>
-				</table>
-				<div class="wBtn clear" ><input type="submit" value="답변완료" /></div>
-			</form>
 	
-	</s:if>
 	
 
-	<s:elseif test="resultClass.getRv_number() != null">
+	<s:if test="resultClass.getRv_number() != null">
 		<form name="reviewWrite" method="post" enctype="multipart/form-data" onsubmit="return reviewcheck()" action="reviewModifyPro.action?rv_number=<s:property value="resultClass.getRv_number()"/>&currentPage=<s:property value="currentPage"/>">
 		<table width="100%" class="board-type03" style="width:1100px;margin:0 auto ;">
 					<colgroup>
@@ -141,7 +101,7 @@
 				</table>
 				<div class="wBtn clear" ><input type="submit" value="수정완료" /></div>
 			</form>
-		</s:elseif>	
+		</s:if>	
 		<s:else>
 			<form name="reviewWrite" method="post" enctype="multipart/form-data" action="reviewWritePro.action" onsubmit="return reviewcheck()">
 				<table width="100%" class="board-type03" style="width:1100px;margin:0 auto ;">

@@ -26,14 +26,14 @@ public class reviewWriteAction extends ActionSupport{
 
    private int currentPage;
    private int rv_number;
+   private String rv_m_id;
    private String rv_file_orgName;
    private String rv_file_savName;
    private String rv_title;
    private String rv_content;
    private String rv_pass;
    private String rv_name;
-   Calendar rv_date = Calendar.getInstance();
-  // private String rv_score;
+   private String rv_score;
    private int rv_ref;
    private int rv_ref_step;
    private int rv_ref_level;
@@ -43,7 +43,6 @@ public class reviewWriteAction extends ActionSupport{
    private String uploadContentType;
    private String uploadFileName;
    private String FileUploadPath = "C:\\Java\\upload\\";
-   public Calendar today = Calendar.getInstance();
    private boolean reply = false;
    
    public reviewWriteAction() throws IOException {
@@ -65,7 +64,9 @@ public class reviewWriteAction extends ActionSupport{
 		resultClass = (reviewVO) sqlMapper.queryForObject("Board.selectOneReview", getRv_number());
 		resultClass.setRv_title("[´äº¯] " + resultClass.getRv_title());
 		resultClass.setRv_content("");
-	
+		
+		System.out.println(resultClass.getRv_m_id());
+		System.out.println(resultClass.getRv_date());
 		System.out.println(currentPage);
 		
 		return SUCCESS;
@@ -127,12 +128,16 @@ public class reviewWriteAction extends ActionSupport{
    }*/
    
    public String execute() throws Exception {
+	   System.out.println("11111111111");
 	   System.out.println("rv_number"+getRv_number());
+	   System.out.println("rv_id"+getRv_m_id());
 		  System.out.println("rv_number"+getRv_title());
+
 		  
 		  
 	      paramClass = new reviewVO();
 	      resultClass = new reviewVO();
+	      
 	      ActionContext context = ActionContext.getContext();
 			Map session = context.getSession();
 			String session_id = (String) session.get("session_id");
@@ -149,12 +154,10 @@ public class reviewWriteAction extends ActionSupport{
 	         paramClass.setRv_ref(getRv_ref());
 	      }
 	      paramClass.setRv_m_id(session_id);
-	      paramClass.setRv_date(today.getTime());
 	      paramClass.setRv_title(getRv_title());
 	      paramClass.setRv_content(getRv_content());
 	      paramClass.setRv_pass(getRv_pass());
 	      paramClass.setRv_name(getRv_name());
-	      paramClass.setRv_date(rv_date.getTime());
 	      paramClass.setRv_score("0");
 	      
 	      if(rv_ref==0)
@@ -221,13 +224,7 @@ public void setCurrentPage(int currentPage) {
 	this.currentPage = currentPage;
 }
 
-public Calendar getToday() {
-	return today;
-}
 
-public void setToday(Calendar today) {
-	this.today = today;
-}
 
 public int getRv_number() {
       return rv_number;
@@ -271,12 +268,7 @@ public int getRv_number() {
    public void setRv_name(String rv_name) {
       this.rv_name = rv_name;
    }
-   public Calendar getRv_date() {
-      return rv_date;
-   }
-   public void setRv_date(Calendar rv_date) {
-      this.rv_date = rv_date;
-   }
+
  /*  public String getRv_score() {
       return rv_score;
    }
@@ -347,6 +339,23 @@ public Map getSession() {
 public void setSession(Map session) {
 	this.session = session;
 }
+
+public String getRv_m_id() {
+	return rv_m_id;
+}
+
+public void setRv_m_id(String rv_m_id) {
+	this.rv_m_id = rv_m_id;
+}
+
+public String getRv_score() {
+	return rv_score;
+}
+
+public void setRv_score(String rv_score) {
+	this.rv_score = rv_score;
+}
+
 
    
    

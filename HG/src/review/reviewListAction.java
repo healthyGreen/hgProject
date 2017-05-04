@@ -13,6 +13,8 @@ import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
+import goods.goodsPageAction;
+
 public class reviewListAction extends ActionSupport {
    private static Reader reader;
    private static SqlMapClient sqlMapper;
@@ -21,14 +23,14 @@ public class reviewListAction extends ActionSupport {
    private String search;
    private String forSearch;
    private int currentPage = 1;
-   private int OnePageBlock = 10;
-   private int pageBlocks = 5;
    /*
     * private int startBLlock; private int endBlock; private int startPage;
     * private int endPage;
     */
-   private int totalPage;
-   private int totalBlock;
+
+   private int totalCount;
+   private int blockCount = 10; // 10으로 다시 바꾸면 됨
+   private int blockPage = 5;
    private String pagingHtml;
    private reviewPageAction page;
    private Map session;
@@ -48,19 +50,22 @@ public class reviewListAction extends ActionSupport {
       ActionContext context=ActionContext.getContext();
       session=context.getSession();
       
-      totalBlock = list.size();
-      page = new reviewPageAction(currentPage, OnePageBlock, pageBlocks, totalBlock, "", "");
-      int endBlock = page.getEndBlock();
-      if(endBlock>totalBlock) endBlock = totalBlock;
+      totalCount = list.size();
+   	
+      page = new reviewPageAction(currentPage, totalCount, blockCount, blockPage, "", "");
+      pagingHtml = page.getPagingHtml().toString();
+      
+      //System.out.println("page :"+page);
+      //System.out.println("pagingHtml :"+pagingHtml);
+      
+      int lastCount = totalCount;
+      if (page.getEndCount() < totalCount)
+         lastCount = page.getEndCount() + 1;
 
-      list = list.subList(page.getStartBlock(), endBlock);
-      pagingHtml = page.getPaginHtml().toString();
-      
-      
-      
+      list = list.subList(page.getStartCount(), lastCount);
       return SUCCESS;
    }
-
+ 
    public String search() throws SQLException {
       if (forSearch.equals("writer"))
          list = sqlMapper.queryForList("Board.selectRvSearchW", "%" + search + "%");
@@ -68,10 +73,15 @@ public class reviewListAction extends ActionSupport {
          list = sqlMapper.queryForList("Board.selectRvSearchC", "%" + search + "%");
       else if (forSearch.equals("title"))
          list = sqlMapper.queryForList("Board.selectRvSearchT", "%" + search + "%");
-      totalBlock = list.size();
-      page = new reviewPageAction(currentPage, OnePageBlock, pageBlocks, totalBlock, search, forSearch);
-      pagingHtml = page.getPaginHtml().toString();
-      list = list.subList(page.getStartBlock(), page.getEndBlock());
+      totalCount = list.size();
+      page = new reviewPageAction(currentPage, totalCount, blockCount, blockPage, search, forSearch);
+      pagingHtml = page.getPagingHtml().toString();
+      
+      int lastCount = totalCount;
+      if (page.getEndCount() < totalCount)
+         lastCount = page.getEndCount() + 1;
+      
+      list = list.subList(page.getStartCount(), lastCount);
       return SUCCESS;
    }
 
@@ -99,37 +109,9 @@ public class reviewListAction extends ActionSupport {
       this.currentPage = currentPage;
    }
 
-   public int getOnePageBlock() {
-      return OnePageBlock;
-   }
 
-   public void setOnePageBlock(int onePageBlock) {
-      OnePageBlock = onePageBlock;
-   }
+ 
 
-   public int getPageBlocks() {
-      return pageBlocks;
-   }
-
-   public void setPageBlocks(int pageBlocks) {
-      this.pageBlocks = pageBlocks;
-   }
-
-   public int getTotalPage() {
-      return totalPage;
-   }
-
-   public void setTotalPage(int totalPage) {
-      this.totalPage = totalPage;
-   }
-
-   public int getTotalBlock() {
-      return totalBlock;
-   }
-
-   public void setTotalBlock(int totalBlock) {
-      this.totalBlock = totalBlock;
-   }
 
    public reviewPageAction getPage() {
       return page;
@@ -154,6 +136,40 @@ public Map getSession() {
 public void setSession(Map session) {
 	this.session = session;
 }
+
+public int getTotalCount() {
+	return totalCount;
+}
+
+public void setTotalCount(int totalCount) {
+	this.totalCount = totalCount;
+}
+
+public int getBlockCount() {
+	return blockCount;
+}
+
+public void setBlockCount(int blockCount) {
+	this.blockCount = blockCount;
+}
+
+public int getBlockPage() {
+	return blockPage;
+}
+
+public void setBlockPage(int blockPage) {
+	this.blockPage = blockPage;
+}
+
+public String getPagingHtml() {
+	return pagingHtml;
+}
+
+public void setPagingHtml(String pagingHtml) {
+	this.pagingHtml = pagingHtml;
+}
+
+
    
 
 }
