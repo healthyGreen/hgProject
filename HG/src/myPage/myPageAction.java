@@ -31,9 +31,9 @@ public class myPageAction extends ActionSupport{
 		return SUCCESS;
 	}
 	
-	public String myBoard() throws Exception{
+	/*public String myBoard() throws Exception{
 		return SUCCESS;
-	}
+	}*/
 	
 
 	public memberVO getParamClass() {

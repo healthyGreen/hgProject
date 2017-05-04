@@ -7,6 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-에러페이지입니다.
+정보가 맞지 않습니다. 다시 입력해 주세요.
+
+<table width=100% cellpadding=0 cellspacing=0 border=0>
+<tr>
+<td id=avoidDbl align=center height=100>
+<div style="width:100%" class=noline>
+    <input type="button" onClick="history.go(-1)" value="이전으로">
+</div>
+</td>
+</tr>
+</table>
 </body>
 </html>

@@ -65,9 +65,9 @@
       <div class="tit"><img src="images/cs_2_tit2.jpg"></div>
       <ul class="con">
         <li><a HREF="">주문내역</a></li>
-        <li><a HREF="">포인트내역</a></li>
-        <li><a HREF="">장바구니</a></li>
-        <li><a HREF="">나의 게시글</a></li>
+        <li><a HREF="/HG/myInfoView.action">내정보보기</a></li>
+        <li><a HREF="/HG/basketList.action">장바구니</a></li>
+        <li><a HREF="/HG/myBoard.action">나의 게시글</a></li>
       </ul>
     </div>
     <!--마이쇼핑 끝--> 

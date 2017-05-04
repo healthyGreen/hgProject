@@ -1,5 +1,6 @@
 package myPage;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient; 
@@ -25,6 +26,7 @@ public class myWriteBoardAction extends ActionSupport{
 	private int blockPage = 5; 	// 한 화면에 보여줄 페이지 수
 	private String pagingHtml; 	//페이징을 구현한 HTML
 	private myWriteBoardPageAction page; 	// 페이징 클래스
+	private Map session;
 	
 	// 생성자
 	public myWriteBoardAction() throws IOException {
@@ -36,8 +38,12 @@ public class myWriteBoardAction extends ActionSupport{
 
 	// 게시판 LIST 액션
 	public String execute() throws Exception {
+		ActionContext context = ActionContext.getContext(); // session을 생성하기 위해
+		Map session = context.getSession();
+		String session_id = (String) session.get("session_id");
+		System.out.println(session_id);
 		// id 값으로 쓴 글을 받아와 list에 넣는다.
-		list = sqlMapper.queryForList("myWriteBoard");
+		list = sqlMapper.queryForList("Board.myWriteBoard",session_id);
 
 		totalCount = list.size(); // 전체 글 갯수를 구한다.
 		// pagingAction 객체 생성.
@@ -113,6 +119,14 @@ public class myWriteBoardAction extends ActionSupport{
 
 	public void setPage(myWriteBoardPageAction page) {
 		this.page = page;
+	}
+
+	public Map getSession() {
+		return session;
+	}
+
+	public void setSession(Map session) {
+		this.session = session;
 	}
 	
 
