@@ -90,9 +90,8 @@
 		SELECT * FROM reply where rp_g_number = #rp_g_number# ORDER BY rp_number DESC
    </select>
    <!-- 상품 삭제 -->
-   <delete id="g_delete" parameterClass="goods">
-      DELETE * FROM GOODS
-      WHERE G_NUMBER=#g_number#   
+   <delete id="g_delete" parameterClass="int">
+      DELETE GOODS WHERE G_NUMBER = #g_number#   
    </delete>
    
    <!-- 댓글 삭제 -->
