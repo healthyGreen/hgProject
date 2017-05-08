@@ -83,13 +83,13 @@ public class goodsViewAction extends ActionSupport {
       if(endCount>totalCount) endCount=totalCount;
       replylist=replylist.subList(rp_page.getStartCount(),endCount);*/
       
-      if (goodsResult == null) {
-    	  return ERROR;
+      if (goodsResult != null) {
+    	 
       }
-      
-      
       return SUCCESS;
+   
    }
+
    
    private Object getRp_number() {
 	// TODO Auto-generated method stub
