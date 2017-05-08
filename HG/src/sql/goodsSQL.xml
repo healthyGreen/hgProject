@@ -30,7 +30,6 @@
    <result property="rp_date" column="rp_date"/>
    <result property="rp_ref" column="rp_ref"/>
    <result property="rp_ref_step" column="rp_ref_step"/>
-   <result property="rp_ref_level" column="rp_ref_level"/>
 <result property="rp_g_number" column="rp_g_number"/>  
    </resultMap>
    
@@ -96,8 +95,8 @@
    
    <!-- 댓글 삭제 -->
    <delete id="rp_delete" parameterClass="reply">
-   DELETE * FROM REPLY
-   WHERE RP_NUMBER, RP_G_NUMBER=#rp_number#, #rp_g_number#
+   DELETE FROM REPLY
+   WHERE RP_NUMBER = #rp_number#
    </delete>
    
    <!-- 상품 등록 -->
@@ -122,12 +121,17 @@
    
    <!-- 댓글 -->
    <insert id="g_insertReply" parameterClass="reply">
-   INSERT INTO REPLY (rp_number, rp_m_id, rp_content, rp_pass ,rp_date, rp_ref, rp_ref_step, rp_ref_level, rp_g_number)
-   VALUES (rp_number_seq.NEXTVAL, #rp_m_id#, #rp_content#, #rp_pass#, #rp_date#, #rp_ref#, #rp_ref_step#, #rp_ref_level#, #rp_g_number#)
+   INSERT INTO REPLY (rp_number, rp_m_id, rp_content, rp_pass ,rp_date, rp_ref, rp_ref_step, rp_g_number)
+   VALUES (rp_number_seq.NEXTVAL, #rp_m_id#, #rp_content#, #rp_pass#, #rp_date#, #rp_ref#, #rp_ref_step#, #rp_g_number#)
    </insert>
    <select id="selectLastNum" resultClass="goods">
    	select max(g_number) as g_number from goods
    </select>
+   
+   <insert id="g_insertReplyComment" parameterClass="reply">
+   INSERT INTO REPLY (rp_number, rp_m_id, rp_content, rp_pass, rp_date, rp_ref, rp_ref_step, rp_g_number)
+   VALUES (rp_number_seq.NEXTVAL, #rp_m_id#, #rp_content#, #rp_pass#, #rp_date#, #rp_ref#, #rp_ref_step#, #rp_g_number#)
+   </insert>
    
    <select id="g_selectReply" resultClass="reply">
       select * from reply order by rp_number desc

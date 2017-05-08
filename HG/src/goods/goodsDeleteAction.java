@@ -64,33 +64,7 @@ public class goodsDeleteAction extends ActionSupport{
 			return SUCCESS;
 		}
 
-		// 댓글 삭제
-		/*public String execute2() throws Exception {
-
-			reClass = new replyVO();
-			reResult = new replyVO();
-
-			// 삭제할 항목 설정.
-			reClass.setRp_number(getNo());
-
-			// 삭제할 쿼리 수행.
-			sqlMapper.update("g_deleteReply", reClass);
-
-			return SUCCESS;
-		}*/
-		/*public String checkform(){
-			return SUCCESS;
-		}
-		
-		public String checkAction() throws SQLException{
-			reClass = new replyVO();
-			reClass.setRp_pass(rp_pass);
-			reClass.setRp_number(rp_number);
-			passResult = (replyVO)sqlMapper.queryForObject("reply_passCheck",reClass);
-			if(reResult!=null)
-				return SUCCESS;
-			else return ERROR;
-		}*/
+	
 		public static Reader getReader() {
 			return reader;
 		}
