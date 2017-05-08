@@ -13,7 +13,7 @@
 </head>
 <body>
 	<s:if test="reply">
-		<form action="reviewReplyActionPro.action" enctype="multipart/form-data" method="post" >
+		<form action="reviewWritePro.action" enctype="multipart/form-data" method="post" >
 		<s:hidden name="rv_pass" value="%{resultClass.rv_pass}" />
 		<s:hidden name="rv_name" value="%{resultClass.rv_name}" />
 		<s:hidden name="rv_number" value="%{resultClass.rv_number}" />
