@@ -46,8 +46,10 @@
 									</tbody>
 								</table>
 								<div style="width: 1100px; margin: 0 auto; ">
+								<c:if test="${session.session_admin == 1 }"> 
 									<div class="wBtn clear" style="float: left; width: 120px;" onclick="javascript:window.location.href='reviewCheckPassForm.action?rv_number=<s:property value="resultClass.rv_number"/>&currentPage=<s:property value="currentPage"/>'"><span>수정하기</span></div>
 									<div class="wBtn clear" style="float: left; width: 120px; margin-left: 10px; " onclick="javascript:window.location.href='reviewReplyForm.action?rv_number=<s:property value="resultClass.rv_number" />&currentPage=<s:property value="currentPage" />'"><span>답글달기</span></div>
+								</c:if>
 									<div class="wBtn clear" style="float: right; width: 120px;" onclick="javascript:window.location.href='reviewList.action?rv_number=<s:property value="resultClass.rv_number"/>&currentPage=<s:property value="currentPage"/>'"><span>목록가기</span></div>
 								</div>
 </td>

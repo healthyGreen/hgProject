@@ -36,6 +36,7 @@ public class reviewModifyAction extends ActionSupport{
       sqlMapper=SqlMapClientBuilder.buildSqlMapClient(reader);
       reader.close();
    }
+
    public String execute() throws Exception{
 	   paramClass= new reviewVO();
 		resultClass = new reviewVO();

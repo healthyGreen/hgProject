@@ -28,9 +28,8 @@ public class replyWriteAction extends ActionSupport {
 	private String content;
 	private int originno;
 	private Date rp_date;
-	private int ref;
-	private int ref_step;
-	private int ref_level;
+	private int rp_ref;
+	private int rp_ref_step;
 	private int rp_g_number;
 	private int checked;
 	
@@ -49,12 +48,18 @@ public class replyWriteAction extends ActionSupport {
 	}
 
 	public String execute() throws Exception {
-		if(checked ==1){
+		/*if(checked ==1){*/
 		
 		reClass = new replyVO();
 		reresult = new replyVO();
 		
-		
+		/*if(rp_ref==0){
+			reClass.setRp_ref_step(0);
+		}else{
+			reClass.setRp_ref_step(getRef_step());
+			reClass.setRp_ref(getRef());
+			reClass.setRp_ref_step(getRef_step()+1);
+		}*/
 		
 		System.out.println("number"+getG_number());
 
@@ -68,26 +73,31 @@ public class replyWriteAction extends ActionSupport {
 		System.out.println(password);
 		reClass.setRp_date(today.getTime());
 		System.out.println(today);
-		reClass.setRp_ref(getRef());
-		System.out.println(ref);
-		reClass.setRp_ref_step(getRef_step());
-		reClass.setRp_ref_level(getRp_level());
-		reClass.setRp_g_number(getG_number());
+		reClass.setRp_ref(getRp_number());
+		System.out.println(rp_ref);
+		reClass.setRp_ref_step(getRp_number());
+		reClass.setRp_g_number(getRp_number());
 		System.out.println(rp_g_number);
 		
 		
 		System.out.println(reClass);
 		sqlMapper.insert("g_insertReply", reClass);
-		}
+		
+	/*	if(rp_ref==0)
+			sqlMapper.insert("g_insertReply", reClass);
+		else
+			sqlMapper.insert("g_insertReplyComment", reClass);
+		*/
+		
 		return SUCCESS;
 	}
-
-	private int getRp_g_number() {
+	
+	private int getRp_number() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	private int getRp_level() {
+	private int getRp_g_number() {
 		// TODO Auto-generated method stub
 		return 0;
 	}

@@ -58,7 +58,9 @@
 								<input class="click" type="submit" value="검색" name="submit">
 							</div>
 						</form>
-						<div class="wBtn" ><span onclick="location.href='reviewWriteForm.action?currentPage=<s:property value="currentPage"/>'">작성하기</span></div>
+						<c:if test="${session.session_admin == 1 }"> 
+							<div class="wBtn" ><span onclick="location.href='reviewWriteForm.action?currentPage=<s:property value="currentPage"/>'">작성하기</span></div>
+						</c:if>
 						<div class="pageing" >
 							<s:property value="pagingHtml" escape="false"/>
 						</div>

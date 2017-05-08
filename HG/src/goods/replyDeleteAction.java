@@ -42,7 +42,7 @@ public class replyDeleteAction extends ActionSupport{
 		 
 		 re_paramClass.setRp_number(rp_number);
 		 System.out.println("´ñ±Û¹øÈ£:"+re_paramClass.getRp_number());
-		 sqlMapper.delete("rp_delete", rp_number);
+		 sqlMapper.delete("rp_delete", re_paramClass);
 		 
 		 return SUCCESS;
 		 
