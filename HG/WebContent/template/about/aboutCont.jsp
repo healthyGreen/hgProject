@@ -50,16 +50,16 @@
         
             <ul class="clear">
                   <c:if test="${session.session_id != null }">
-                  	<li><a href="/logout.action">로그아웃</a></li>
-               		<li><a href="/myPage.action">마이헬시</a></li>
-               		<li><a href="/qnacustom.action">고객센터</a></li>
-               		<li><a href="">장바구니</a></li>
+                  	<li><a href="/HG/logout.action">로그아웃</a></li>
+               		<li><a href="/HG/myPage.action">마이헬시</a></li>
+               		<li><a href="/HG/qnacustom.action">고객센터</a></li>
+               		<li><a href="/HG/basketList.action">장바구니</a></li>
                	 </c:if>
              	<c:if test="${session.session_id == null }">
                    	<li><a href="/HG/logInForm.action">로그인</a></li>
                		<li><a href="/HG/joinCheck.action">회원가입</a></li>
-               		<li><a href="/qnacustom.action">고객센터</a></li>
-               		<li><a href="">장바구니</a></li>
+               		<li><a href="/HG/qnacustom.action">고객센터</a></li>
+               		<li><a href="/HG/template/basket/BasketLoginError.jsp">장바구니</a></li>
                	</c:if>
             </ul>
          </div><!--// area -->
@@ -83,7 +83,7 @@
 			</div><!--// search -->
 
 			<h1>
-				<a href="/main.action"><img src="../../images/logo.jpg" alt="" /></a>
+				<a href="/HG/main.action"><img src="../../images/logo.jpg" alt="" /></a>
 			</h1><!--// logo -->
 
 
@@ -101,30 +101,30 @@
 					<li style="width:16.6%">
 						<a href="" class="cate1">FRESH KIT</a>
 						<div class="two">
-							<p><a href="/goodsList.action?g_category=<%=chacJeb %>" class="cate2">착즙주스키트</a>
+							<p><a href="/HG/goodsList.action?g_category=<%=chacJeb %>" class="cate2">착즙주스키트</a>
 							</p>
-							<p><a href="/goodsList.action?g_category=<%=smoothy %>" class="cate2">스무디키트</a>
+							<p><a href="/HG/goodsList.action?g_category=<%=smoothy %>" class="cate2">스무디키트</a>
 							</p>
-							<p><a href="/goodsList.action?g_category=<%=salad %>" class="cate2">샐러드</a>
+							<p><a href="/HG/goodsList.action?g_category=<%=salad %>" class="cate2">샐러드</a>
 							</p>
 						</div>
 					</li>
 					<li style="width:16.6%">
 						<a href="" class="cate1">SNACK</a>
 						<div class="two">
-							<p><a href="/goodsList.action?g_category=<%=superFood %>" class="cate2">하루슈퍼푸드</a>
+							<p><a href="/HG/goodsList.action?g_category=<%=superFood %>" class="cate2">하루슈퍼푸드</a>
 							</p>
-							<p><a href="/goodsList.action?g_category=<%=fruit %>" class="cate2">하루과일칩</a>
+							<p><a href="/HG/goodsList.action?g_category=<%=fruit %>" class="cate2">하루과일칩</a>
 							</p>
-							<p><a href="/goodsList.action?g_category=<%=giftSet %>" class="cate2">선물 세트</a>
+							<p><a href="/HG/goodsList.action?g_category=<%=giftSet %>" class="cate2">선물 세트</a>
 							</p>
 						</div>
 					</li>
 					<li style="width:16.6%">
-						<a href="/goodsList.action?g_category=<%=water %>" class="cate1">REFRESH WATER</a>
+						<a href="/HG/goodsList.action?g_category=<%=water %>" class="cate1">REFRESH WATER</a>
 					</li>
-					<li><a href="/noticeList.action">NOTICE</a></li>
-					<li><a href="/reviewList.action">상품후기</a></li>
+					<li><a href="/HG/noticeList.action">NOTICE</a></li>
+					<li><a href="/HG/reviewList.action">상품후기</a></li>
 					<li><a href="">ABOUT</a></li>
 				</ul>
 
