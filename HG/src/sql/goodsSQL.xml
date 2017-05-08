@@ -95,13 +95,13 @@
    </delete>
    
    <!-- 댓글 삭제 -->
-   <delete id="g_deleteReply" parameterClass="reply">
+   <delete id="rp_delete" parameterClass="reply">
    DELETE * FROM REPLY
-   WHERE RP_NUMBER=#rp_number#
+   WHERE RP_NUMBER, RP_G_NUMBER=#rp_number#, #rp_g_number#
    </delete>
    
    <!-- 상품 등록 -->
-   <insert id="g_write" parameterClass="goods">
+   <insert id="g_write" parameterClass="goods" >
    INSERT INTO GOODS (g_number, g_name, g_content, g_info, g_price, g_ingr,
    g_category,g_jaegoAmount) VALUES (G_NUMBER_SEQ.NEXTVAL, #g_name#, #g_content#, #g_info#, #g_price#, #g_ingr#, #g_category#,#g_jaegoAmount#)
    </insert>

@@ -267,7 +267,7 @@
          </td>
          <td>
          <s:property value="rp_content"/>
-         <a href="javascript:open_win_noresizable('checkForm.action?no=<s:property value="rp_number"/>&originno=<s:property value="originno"/>&currentPage=<s:property value="currentPage"/>','cdelete')">x</a>
+         <a href="javascript:open_win_noresizable('checkForm.action?rp_number=<s:property value="rp_number"/>&originno=<s:property value="originno"/>&currentPage=<s:property value="currentPage"/>','cdelete')">x</a>
          </td>
          </tr>
          <tr bgcolor="#777777">
@@ -299,9 +299,9 @@
          <s:property value="no"/>
          </s:param>
          </s:url>
-         <input name="list" type="button" value="답변달기" class="inputb" onClick="javascript:location.href='replyWrite.action?no=<s:property value="rp_number"/>&currentPage=<s:property value="currentPage" />'">
-         <input type="button" value="삭제" onclick="javascript:location.href='goodsDelete.action?rp_number=${rp_number}'"/>
-         <input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='goodsView.action?currentPage=<s:property value="currentPage"/>'">
+         <input name="list" type="button" value="답변달기" class="inputb" onClick="javascript:location.href='replyWrite.action?rp_number=<s:property value="rp_number"/>&currentPage=<s:property value="rp_number" />'">
+         <input type="button" value="삭제" onclick="javascript:location.href='replyDeletePro.action?rp_number&rp_g_number=<s:property value="rp_number&rp_g_number"/>'">
+         <input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='goodsView.action?g_number=<s:property value="g_number"/>'">
          </td>
          </tr>
                            <!-- 상품문의e--> 
