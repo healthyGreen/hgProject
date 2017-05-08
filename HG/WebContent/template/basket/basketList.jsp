@@ -113,9 +113,9 @@ table.orderitem-list tfoot tr td table td {border:none;}
 </div>
 
 <div class="rig">
-<a href=""><img src="images/btn_back2.gif" border=0></a>&nbsp;
+<!-- <a href=""><img src="images/btn_back2.gif" border=0></a>&nbsp; -->
 <a onclick="return alldelBas(this.form)" ><img src="images/btn_empty2.gif" border=0></a>&nbsp;
-<a href=""><img src="images/btn_continue2.gif" border=0></a>
+<!-- <a href=""><img src="images/btn_continue2.gif" border=0></a> -->
 </div>
 </div>
 
