@@ -72,7 +72,7 @@
 				.goodsbox{ clear:both; width:100%; height:auto;}
 				.goodsbox li{ width:25%; display:inline; float:left; }
 				.goodsbox .goods { width:262px; margin:29px auto 0 auto;}
-				.goodsbox .goods .img{ width:262px; display:block; height:262px; overflow:hidden; text-align:center;position: relative;}
+				.goodsbox .goods .img{ cursor:pointer;width:262px; display:block; height:262px; overflow:hidden; text-align:center;position: relative;}
 				.goodsbox .goods .img a{width:260px; display:block; height:260px;border:1px solid #dddddd;}
 				.goodsbox .goods .img img{ max-width:100%; }
 				.goodsbox .goods .name a{display:block; text-align:center; height:30px; line-height:30px; color:#717171; margin-bottom:3px; font-size:14px;}
@@ -92,7 +92,7 @@
 					<s:iterator value="list" status="stat">
                         <li>
                         	<div class="goods">
-                        		 <div class="img"><s:property value="g_sav_image"/></div>
+                        		 <div class="img" onclick="location.href='goodsView.action?g_number=<s:property value="g_number"/>&currentPage=<s:property value="currentPage"/>'"><img src="./template/goods/upload/${ g_sav_image}"></div>
 		                         <span class=" name fb"><a href="goodsView.action?g_number=<s:property value="g_number"/>&currentPage=<s:property value="currentPage"/>">&nbsp;&nbsp;&nbsp;<s:property value="g_name" /></a></span>
 		                         <span class="txt"><s:property value="g_name"/></span>
                         	</div>
