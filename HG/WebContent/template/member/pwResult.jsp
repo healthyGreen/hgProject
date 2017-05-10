@@ -10,7 +10,7 @@
 </head>
 <style>
 	input{width: 120px; height: 40px; background: #f0f0f0; border: 1px solid #000; cursor: pointer; }
-	p{text-align: center;  }
+	p{text-align: center; font-size: 20px; margin-top: 100px; }
 	p span{color: blue; font-weight: 600; }
 </style>
 <body>
