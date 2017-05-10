@@ -344,8 +344,8 @@ function checkForm(){
 
 <!-- 하단버튼 -->
 <div align=center style="padding:50px 0 20px 0" class=noline>
-<span onclick="return checkForm()"><img src="../../images/btn_join.gif"></span>
-<a href="javascript:history.back()"><img src="../../images/btn_back.gif" border=0></a>
+<span onclick="return checkForm()"><img src="./images/btn_join.gif"></span>
+<a href="javascript:history.back()"><img src="./images/btn_back.gif" border=0></a>
 </div>
 </form>
 
