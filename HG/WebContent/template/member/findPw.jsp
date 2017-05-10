@@ -47,7 +47,7 @@
             </li>
             <li><span></span>
             <a href="/HG/findPassPro.action">
-              <input type=image src="../../images/find_scbtn.jpg" tabindex=6></a>
+              <input type=image src="./images/find_scbtn.jpg" tabindex=6></a>
             </li>
        
           </ul>
@@ -61,8 +61,8 @@
 <div class="findbox">
           <ul>
             <li><span></span>
-              <a href="/HG/findIdForm.action"><img src="../../images/find_id.jpg"></a>
-<a href="/HG/main.action"><img src="../../images/find_login.jpg"></a>
+              <a href="/HG/findIdForm.action"><img src="./images/find_id.jpg"></a>
+<a href="/HG/main.action"><img src="./images/find_login.jpg"></a>
             </li>
           </ul>
           
