@@ -111,7 +111,7 @@
 							</p>
 						</div>
 					</li>
-					<li style="width:16.6%">
+					<%-- <li style="width:16.6%">
 						<a href="" class="cate1">SNACK</a>
 						<div class="two">
 							<p><a href="goodsList.action?g_category=<%=superFood %>" class="cate2">하루슈퍼푸드</a>
@@ -124,7 +124,7 @@
 					</li>
 					<li style="width:16.6%">
 						<a href="goodsList.action?g_category=<%=water %>" class="cate1">REFRESH WATER</a>
-					</li>
+					</li> --%>
 					<li><a href="noticeList.action">NOTICE</a></li>
 					<li><a href="reviewList.action">상품후기</a></li>
 					<li><a href="template/about/aboutCont.jsp">ABOUT</a></li>
