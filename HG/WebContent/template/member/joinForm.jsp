@@ -178,17 +178,14 @@ scrollbar-arrow-color: #838383;
         <input type=text name=M_id value="" style="background:#FFF" maxlength=16 required fld_esssential option=regId label="아이디">
        <!--  <input type=hidden name=M_id required fld_esssential label="아이디중복체크"> -->
        	<sapn onclick="javasript:IdConfirm(this.form)"><img src="images/join_btn_id.jpg" border=0 align=absmiddle/></sapn>
-        <div class="description_wrap" style="font-size: 11px;color: #8d8d8d;">
-               <div class="description">6~16자의 영문자, 숫자조합</div>
-               <div class="description wrong" id="id_description">아이디는 6자 이상으로 입력해 주세요</div>
-            </div>
+        
         </td>
     </tr>
     <tr>
         <td class=memberCols1><font color=FF6000>*</font> 비밀번호</td>
         <td class=memberCols2>
         <input type=password name=M_pass required fld_esssential option=regPass label="비밀번호" style="background:#FFF" >
-       <div class="description" id="el-password-strength-indicator-msg"style="font-size: 11px;color: #8d8d8d;">10~16자의 영문자, 숫자조합</div> 
+      
         </td>
     </tr>
     
@@ -230,9 +227,7 @@ scrollbar-arrow-color: #838383;
       <input type=hidden name=chk_email required fld_esssential >        </a>
         <span class=noline style="padding-left:10px"></span>
        
-        <div class="description "style="font-size: 11px;color: #8d8d8d;">
-                  ※ 아이디 / 비밀번호 찾기에 활용 되므로 정확하게 입력해 주세요.
-               </div>
+     
         </td>
     </tr>
     
@@ -244,10 +239,10 @@ scrollbar-arrow-color: #838383;
    <table>
    <tr>
       <td>
-      <input type="text" name="M_zipcode" id="sample6_postcode" placeholder="우편번호">
-      <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-      <input type="text" name="M_addr1" id="sample6_address" placeholder="주소">
-      <input type="text" name="M_addr2" size=30  id="sample6_address2" placeholder="상세주소">
+      <input type="text" name="M_zipcode" id="sample6_postcode" placeholder="우편번호" background="#fff">
+      <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" style="background:#484647;cursor: pointer; border: none; color: #Fff; "><br>
+      <input type="text" name="M_addr1" id="sample6_address" placeholder="주소" background="#fff">
+      <input type="text" name="M_addr2" size=30  id="sample6_address2" placeholder="상세주소" background="#fff">
             </td>
         </tr>
         </table>

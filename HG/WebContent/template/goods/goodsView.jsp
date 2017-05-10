@@ -19,7 +19,15 @@
    } 
 </script>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
+	<style>
+		.replyTable th{border-bottom: 1px solid #999; padding: 10px 0px; vertical-align: middle;}
+		.replyTable td{border-bottom: 1px solid #ddd; padding: 10px 0px; vertical-align: middle;}
+		.replyTable input{border: 1px solid #ddd; padding: 5px 10px; cursor: pointer; }
+		.replyTable2 {width: 1100px; margin: 0 auto; }
+		.replyTable2 input{border: 1px solid #ddd;height: 32px;  margin-left: 10px; }
+		.replyTable2 textarea{border: 1px solid #ddd !important ; background: #f0f0f0;     height: 75px;    width: 800px;  }
+		.replyTable2 .inputb{background: #484647; border: none !important; color: #fff; font-weight: 600; width: 100px; height:75px; }
+	</style>
    <tr>
       <td height=100%>
       <form name="goodsForm">
@@ -216,96 +224,60 @@
                               </ul>
                            </div>
                         </div>
-                        <!-- 상품문의s -->
-                          <div class="con111">
-                           <div id="contents-wrapper">
-                          <table width="100%" cellpadding="0" cellspacing="0" border="0" class="gv_bbs">
-                           <colgroup>
-                           <col width="50">
-                           <col>
-                           <col width="110">
-                           <col width="85">
-                           </colgroup>
-                           <tbody>
-                           <tr>
-                             <th>번호</th>
-                             <th>제목</th>
-                             <th>작성자</th>
-                             <th>작성일</th>
-                           </tr>
-                           <tr>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                           </tr>
-                           <tr>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                           </tr>
-                           <tr>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                           </tr>
-                        </tbody>
-                        </table>
+                       
 
+     
+      <tr>
+      	<td colspan="2">
+        	<table width="100%;" class="replyTable">
+      		<colspan>
+      			<col width="50">
+                <col>
+                <col width="110">
+                <col width="85">
+      		</colspan>
+      		<tr>
+      			<th width="50px;">번호</th>
+		        <th>내용</th>
+		        <th>작성일</th>
+		        <c:if test="${session.session_admin == 1 }"> 
+		        <th>관리자버튼</th>
+		        </c:if>
+      		</tr>
+      		<s:iterator value="replylist" status="stat">
+	      <tr>
+	         <td height="10" width="130" align="center"><s:property value="rp_number"/><br></td>
+	         <td><s:property value="rp_content"/></td>	
+	         <td><s:property value="rp_date"/></td>
+	         <c:if test="${session.session_admin == 1 }"> 
+	         <td>
+	         <%-- <s:property value="rp_content"/>
+	         <a href="javascript:open_win_noresizable('replyDeletePro.action?g_number=<s:property value="g_number"/>&originno=<s:property value=""/>&currentPage=<s:property value="currentPage"/>','rp_delete')">x</a>
+	       <!-- <a href="replyDeleteForm.action" onclick="location.href='replyDeleteForm.action'">x</a> --> --%>
+			 	<input type="button" value="x" onclick="javascript:location.href='replyDeletePro.action?g_number=${g_number}&currentPage=${currentPage}&rp_number=${rp_number}'"/>
+			 	<input type="button" value="답변" onclick="javascript:location.href='template/goods/replyWriteForm.jsp?g_number=${g_number}&rp_ref=${rp_ref}&currentPage=${currentPage}'"/>
+	         </td>
+	         </c:if>
+	     </tr>
+		    </s:iterator>
+		 <s:if test="replylist.size() <= 0">
+	     <tr>
+	         <td colspan="2" height="10">           
+	            	댓글없음 
+	         </td>
+	      </tr>
+	       </s:if>
+      	</table>
+        </td>
+      </tr>
 
-      <tr bgcolor="#777777">
-      <td colspan="2" height="1"></td>
-      </tr>
-      
-      <s:iterator value="replylist" status="stat">
       <tr>
-         <td height="10" width="130" align="center">
-         <s:property value="rp_number"/><br>
-         <s:property value="rp_date"/><br><br>
-        
-         </td>
-         <td>
-         <s:property value="rp_content"/>
-<%--          <a href="javascript:open_win_noresizable('replyDeletePro.action?g_number=<s:property value="g_number"/>&originno=<s:property value=""/>&currentPage=<s:property value="currentPage"/>','rp_delete')">x</a>
- --%>       <!-- <a href="replyDeleteForm.action" onclick="location.href='replyDeleteForm.action'">x</a> -->
- 	<input type="button" value="x" onclick="javascript:location.href='replyDeletePro.action?g_number=${g_number}&currentPage=${currentPage}&rp_number=${rp_number}'"/>
- 	<input type="button" value="답변" onclick="javascript:location.href='template/goods/replyWriteForm.jsp?g_number=${g_number}&rp_ref=${rp_ref}&currentPage=${currentPage}'"/>
-         </td>
-         </tr>
-         <tr bgcolor="#777777">
-         <td colspan="2" height="1"></td>
-      </tr>
-      </s:iterator>
-      <tr>
-         <td colspan="2" height="10">
-            <s:if test="replylist.size() <= 0">
-            댓글없음
-            </s:if>
-         </td>
-      </tr>
-               
-   
-      <tr bgcolor="#777777">
-         <td colspan="2" height="1"></td>
-      </tr>
-      <tr>
-         <td colspan="2" height="10"></td>
-      </tr>
-   
-   
-      <tr>
-         <td colspan="2" align="right">
-         
-         <s:url id="deleteURL" action="replyDeletePro.action">
+		 <s:url id="deleteURL" action="replyDeletePro.action">
          <s:param name="no">
          <s:property value="no"/>
          </s:param>
          </s:url>
-         
-         </td>
-         </tr>
+     </tr>
                            <!-- 상품문의e--> 
 
                   </td>
@@ -316,35 +288,37 @@
             </table>
             </form>
          <form action="replyWrite.action" method="post">
-         <table>
+         <table class="replyTable2">
+         	 <s:hidden name="originno" value="%{resultClass.no}"/>
+	         <s:hidden name="no" value="%{resultClass.no}"/>
+	         <s:hidden name="currentPage" value="%{currentPage}"/>
+	         <s:hidden name="g_number" value="%{goodsResult.g_number}"/>
+	         <s:hidden name="checked" value="1"/>
             <tr>
-            <td width="170">
-            이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름<s:textfield name="name" theme="simple" value="" cssStyle="width:100px" maxlength="20" /><br>
-            비밀번호 <s:textfield name="password" theme="simple" value="" cssStyle="width:100px" maxlength="20" />
-         </td>
-         <s:hidden name="originno" value="%{resultClass.no}"/>
-         <s:hidden name="no" value="%{resultClass.no}"/>
-         <s:hidden name="currentPage" value="%{currentPage}"/>
-         <s:hidden name="g_number" value="%{goodsResult.g_number}"/>
-         <s:hidden name="checked" value="1"/>
-         <td align="left">
-         <s:textarea name="content" theme="simple" value="" cols="60" rows="3"/>
-         </td>
-         </tr>
-         <tr>
-            <td colspan="2" align="right">
-            <input name="submit" type="submit" value="작성완료" class="inputb">
-            </td>
-            </tr>
-              <c:if test="${session.session_admin == 1 }"> 
-            
-            <input name="list" type="button" value="상품 삭제" class="inputb" 
-      onclick="javascript:location.href='goodsDelete.action?g_number=${g_number}'"/>
-      <tr align="right"><td colspan="4" >
-      
+	             <td width="170">
+	            	<table>
+	            		<tr>
+	            			<td>이름</td>
+	            			<td><s:textfield name="name" theme="simple" value="" cssStyle="width:100px" maxlength="20" /></td>
+	            		</tr>
+	            		<tr>
+	            			<td height="10" colspan="2"></td>
+	            		</tr>
+	            		<tr>
+	            			<td>비밀번호</td>
+	            			<td> <s:textfield name="password" theme="simple" value="" cssStyle="width:100px" maxlength="20" /></td>
+	            		</tr>
+	            	</table>
+		         </td>
+		         <td>
+		         	<s:textarea name="content" theme="simple" value="" cols="60" rows="3"/>
+		         </td>
+		         <td colspan="2" >
+	            	<input name="submit" type="submit" value="작성완료" class="inputb">
+	             </td>
+         	</tr>
         
-
-        </c:if>   
+             
    
          </table>
          </form>
@@ -352,5 +326,14 @@
       </tr>
 <tr>
   <td> 
+  
+   <c:if test="${session.session_admin == 1 }"> 
+       <div style="width: 1100px; margin: 0 auto; ">    
+            <input name="list" type="button" value="상품 삭제" class="inputb" 
+      onclick="javascript:location.href='goodsDelete.action?g_number=${g_number}'" style="margin-top: 50px; float: right; background: red; cursor: pointer;  border: none !important; color: #fff; font-weight: 600; width: 100px; height:20px;"/>
+   
+  	  </div>
+
+   </c:if>   
   
   

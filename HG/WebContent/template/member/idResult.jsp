@@ -7,8 +7,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 </head>
+<style>
+	input{width: 120px; height: 40px; background: #f0f0f0; border: 1px solid #000; cursor: pointer; }
+	p{text-align: center;  }
+	p span{color: blue; font-weight: 600; }
+</style>
 <body>
-당신의 아이디는 ${ resultClass.m_id } 입니다.
+<p>당신의 아이디는 <span>${ resultClass.m_id }</span> 입니다.</p>
 
 <table width=100% cellpadding=0 cellspacing=0 border=0>
 <tr>
