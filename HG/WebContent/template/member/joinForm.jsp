@@ -177,7 +177,8 @@ scrollbar-arrow-color: #838383;
         <td class=memberCols2>
         <input type=text name=M_id value="" style="background:#FFF" maxlength=16 required fld_esssential option=regId label="아이디">
        <!--  <input type=hidden name=M_id required fld_esssential label="아이디중복체크"> -->
-       	<sapn onclick="javasript:IdConfirm(this.form)"><img src="images/join_btn_id.jpg" border=0 align=absmiddle/></sapn>
+       <input type="button" onclick="javasript:IdConfirm(this.form)" value="아이디중복체크" style="background:#484647;cursor: pointer; border: none; color: #Fff; padding: 3px 7px;">
+       	<%-- <sapn onclick="javasript:IdConfirm(this.form)"><img src="images/join_btn_id.jpg" border=0 align=absmiddle/></sapn> --%>
         
         </td>
     </tr>
@@ -240,7 +241,7 @@ scrollbar-arrow-color: #838383;
    <tr>
       <td>
       <input type="text" name="M_zipcode" id="sample6_postcode" placeholder="우편번호" background="#fff">
-      <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" style="background:#484647;cursor: pointer; border: none; color: #Fff; "><br>
+      <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" style="background:#484647;cursor: pointer; border: none; color: #Fff; padding: 3px 7px;"><br>
       <input type="text" name="M_addr1" id="sample6_address" placeholder="주소" background="#fff">
       <input type="text" name="M_addr2" size=30  id="sample6_address2" placeholder="상세주소" background="#fff">
             </td>

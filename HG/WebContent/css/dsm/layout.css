@@ -23,10 +23,10 @@
 .sub_tit .tit span{ color:#b2b2b2; font-size:12pt; padding-left:5px;}
 .sub_tit .local{position:absolute; right:10px; bottom:10px; color:#6d6d6d; line-height:14px;}
 .sub_tit .local span{color:#4c4c4c;}
-.sub_tit2{width:100%; height:30px; line-height:30px; margin:25px 0 0 0; background:url(../img/all/arr3.jpg) left center no-repeat;}
+.sub_tit2{width:100%; height:30px; line-height:30px; margin:25px 0 0 0; background:url(../images/arr3.jpg) left center no-repeat;}
 .sub_tit2 .tit{text-align:center; color:#cfde00; font-size:12pt; font-weight:bold;letter-spacing:-1px;padding-left:18px;}
 .sub_tit2 .tit span{ color:#4c4c4c; }
-.sub_tit3{width:100%; height:30px; line-height:30px;text-align:center; margin:0; padding:19px 0 35px 0; background:url(../img/all/arr1.jpg) center bottom no-repeat;}
+.sub_tit3{width:100%; height:30px; line-height:30px;text-align:center; margin:0; padding:19px 0 35px 0; background:url(../images/arr1.jpg) center bottom no-repeat;}
 .sub_tit3 span{text-align:center; letter-spacing:-1px; font-size:30px; color:#999;}
 .sub_tit3 span a{color:#4c4c4c; font-size:30px; font-weight:bold; }
 
