@@ -28,7 +28,9 @@ public class reviewCheckPassAction extends ActionSupport{
 		return SUCCESS;
 	}
 	
-	
+	public String form2(){
+		return SUCCESS;
+	}
 	public String execute() throws SQLException{
 		
 		 paramClass = new reviewVO();
@@ -46,6 +48,29 @@ public class reviewCheckPassAction extends ActionSupport{
 	         return ERROR;
 	      }
 	}
+	
+	public String deleteCP() throws SQLException{
+		
+		 paramClass = new reviewVO();
+		 resultClass = new reviewVO();
+	      paramClass.setRv_pass(getRv_pass());
+	      paramClass.setRv_number(getRv_number());
+	      
+	      resultClass = (reviewVO)sqlMapper.queryForObject("Board.selectPasswordRV", paramClass);
+	      if(resultClass != null){
+	         /*checkPass = 1;*/
+	      return SUCCESS;
+	      }
+	      else{
+	         /*checkPass = 0;*/
+	         return ERROR;
+	      }
+	}
+	
+	
+	
+	
+	
 	public static Reader getReader() {
 		return reader;
 	}

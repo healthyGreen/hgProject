@@ -16,9 +16,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class noticeDeleteAction extends ActionSupport{
 		public static Reader reader; // 파일 스트림을 위한 reader
 		public static SqlMapClient sqlMapper;// SqlMapClient API를 사용하기 위함
-	
-		private memberVO memresultClass;
-		private memberVO memparamClass;
+
 		private noticeVO resultClass;
 		private noticeVO paramClass;
 		private int currentPage;
@@ -35,8 +33,7 @@ public class noticeDeleteAction extends ActionSupport{
 	}
 	
 	public String execute() throws Exception{
-		memparamClass = new memberVO();
-		memresultClass = new memberVO();
+
 		paramClass = new noticeVO();
 		resultClass = new noticeVO();
 		/*ActionContext context = ActionContext.getContext();
@@ -66,21 +63,6 @@ public class noticeDeleteAction extends ActionSupport{
 		noticeDeleteAction.sqlMapper = sqlMapper;
 	}
 
-	public memberVO getMemresultClass() {
-		return memresultClass;
-	}
-
-	public void setMemresultClass(memberVO memresultClass) {
-		this.memresultClass = memresultClass;
-	}
-
-	public memberVO getMemparamClass() {
-		return memparamClass;
-	}
-
-	public void setMemparamClass(memberVO memparamClass) {
-		this.memparamClass = memparamClass;
-	}
 
 	public noticeVO getResultClass() {
 		return resultClass;

@@ -5,6 +5,18 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page import = "java.util.HashMap" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<script>
+	function boardDelete() {
+		if (confirm("삭제하시겠습니까?")) {
+			window.location.href = 'reviewDeleteCheckPassForm.action?rv_number=<s:property value="resultClass.rv_number"/>';
+		} else {
+			alert("취소되었습니다");
+		}
+	}
+</script>
+
+
 <div class="sub_tit" style="width:1100px;margin:0 auto ; padding:30px 0;">
 	  <div class="tit">후기<span>/ PRODUCT REVIEW</span></div>
 	  <div class="local">홈 > <span>상품후기</span></div>
@@ -18,7 +30,10 @@
 									<thead>
 									<tr>
 										<th scope="col">
-											<div class="tit"><s:property value="resultClass.rv_title" /></div>
+											<div class="tit" style="float: left; "><s:property value="resultClass.rv_title" /></div>
+											<c:if test="${session.session_admin == 1 }"> 
+												<div class="delete" style="float:right; cursor: pointer; padding-right: 20px;  " onclick="return boardDelete()"><span>X</span></div>
+											</c:if>
 										</th>
 									</tr>
 									</thead>
