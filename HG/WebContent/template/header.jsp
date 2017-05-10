@@ -55,19 +55,19 @@
                   	<li><a href="logout.action">로그아웃</a></li>
                		<li><a href="myPage.action">마이헬시</a></li>
                		<li><a href="qnacustom.action">고객센터</a></li>
-               		<li><a href="/HG/basketList.action">장바구니</a></li>
+               		<li><a href="basketList.action">장바구니</a></li>
                	 </c:if>
-             	<c:if test="${session.session_id == null }">
-                   	<li><a href="/HG/logInForm.action">로그인</a></li>
-               		<li><a href="/HG/joinCheck.action">회원가입</a></li>
+             	 <c:if test="${session.session_id == null }">
+                   	<li><a href="logInForm.action">로그인</a></li>
+               		<li><a href="joinCheck.action">회원가입</a></li>
                		<li><a href="qnacustom.action">고객센터</a></li>
                		<li><a href="/HG/template/basket/BasketLoginError.jsp">장바구니</a></li>
-               	</c:if>
+               	 </c:if>
             </ul>
          </div><!--// area -->
 		</div><!--// top -->
 		<div class="mid">
-			<div class="search">
+			<%-- <div class="search">
 				<!-- 검색 시작----------------------------------->
 				<form action="" onsubmit="return chkForm(this)" style="margin:0; padding:0; border:none;">
 					<table cellpadding="0" cellspacing="0" border="0">
@@ -82,7 +82,7 @@
 					</table>
 				</form>
 				<!-- 검색 끝-------------------------------------->		
-			</div><!--// search -->
+			</div><!--// search --> --%>
 
 			<h1>
 				<a href="main.action"><img src="images/logo.jpg" alt="" /></a>
