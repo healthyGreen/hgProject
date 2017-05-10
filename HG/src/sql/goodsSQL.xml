@@ -122,7 +122,7 @@
    <!-- 댓글 -->
    <insert id="g_insertReply" parameterClass="reply">
    INSERT INTO REPLY (rp_number, rp_m_id, rp_content, rp_pass ,rp_date, rp_ref, rp_ref_step, rp_g_number)
-   VALUES (rp_number_seq.NEXTVAL, #rp_m_id#, #rp_content#, #rp_pass#, #rp_date#, #rp_ref#, #rp_ref_step#, #rp_g_number#)
+   VALUES (rp_number_seq.NEXTVAL, #rp_m_id#, #rp_content#, #rp_pass#, #rp_date#, rp_number_seq.CURRVAL, #rp_ref_step#, #rp_g_number#)
    </insert>
    <select id="selectLastNum" resultClass="goods">
    	select max(g_number) as g_number from goods
@@ -131,7 +131,7 @@
    <insert id="g_insertReplyComment" parameterClass="reply">
    INSERT INTO REPLY (rp_number, rp_m_id, rp_content, rp_pass, rp_date, rp_ref, rp_ref_step, rp_g_number)
    VALUES (rp_number_seq.NEXTVAL, #rp_m_id#, #rp_content#, #rp_pass#, #rp_date#, #rp_ref#, #rp_ref_step#, #rp_g_number#)
-   </insert>
+   </insert> 
    
    <select id="g_selectReply" resultClass="reply">
       select * from reply order by rp_number desc

@@ -53,15 +53,16 @@ public class replyWriteAction extends ActionSupport {
 		reClass = new replyVO();
 		reresult = new replyVO();
 		
-		/*if(rp_ref==0){
+		System.out.println("ref:"+getRp_ref());
+		
+		if(rp_ref==0){
 			reClass.setRp_ref_step(0);
 		}else{
-			reClass.setRp_ref_step(getRef_step());
 			reClass.setRp_ref(getRef());
 			reClass.setRp_ref_step(getRef_step()+1);
-		}*/
+		}
 		
-		System.out.println("number"+getG_number());
+		System.out.println("number11:"+getG_number());
 
 		reClass.setRp_number(getOriginno());
 		System.out.println(originno);
@@ -73,21 +74,15 @@ public class replyWriteAction extends ActionSupport {
 		System.out.println(password);
 		reClass.setRp_date(today.getTime());
 		System.out.println(today);
-		reClass.setRp_ref(getRp_number());
-		System.out.println(rp_ref);
-		reClass.setRp_ref_step(getRp_number());
-		reClass.setRp_g_number(getRp_number());
+		reClass.setRp_g_number(getG_number());
 		System.out.println(rp_g_number);
+	
 		
-		
-		System.out.println(reClass);
-		sqlMapper.insert("g_insertReply", reClass);
-		
-	/*	if(rp_ref==0)
+		if(rp_ref==0)
 			sqlMapper.insert("g_insertReply", reClass);
 		else
 			sqlMapper.insert("g_insertReplyComment", reClass);
-		*/
+		
 		
 		return SUCCESS;
 	}
@@ -182,13 +177,6 @@ public class replyWriteAction extends ActionSupport {
 		this.G_CATEGORY = goods_category;
 	}*/
 
-	public int getG_number() {
-		return g_number;
-	}
-
-	public void setG_number(int g_number) {
-		this.g_number = g_number;
-	}
 
 	public void setOriginno(int originno) {
 		this.originno = originno;
@@ -225,6 +213,38 @@ public class replyWriteAction extends ActionSupport {
 
 	public void setChecked(int checked) {
 		this.checked = checked;
+	}
+
+	public int getG_number() {
+		return g_number;
+	}
+
+	public void setG_number(int g_number) {
+		this.g_number = g_number;
+	}
+
+	public Date getRp_date() {
+		return rp_date;
+	}
+
+	public void setRp_date(Date rp_date) {
+		this.rp_date = rp_date;
+	}
+
+	public int getRp_ref() {
+		return rp_ref;
+	}
+
+	public void setRp_ref(int rp_ref) {
+		this.rp_ref = rp_ref;
+	}
+
+	public int getRp_ref_step() {
+		return rp_ref_step;
+	}
+
+	public void setRp_ref_step(int rp_ref_step) {
+		this.rp_ref_step = rp_ref_step;
 	}
 
 

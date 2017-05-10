@@ -11,7 +11,6 @@ public class replyVO {
 	private Date rp_date;
 	private int rp_ref;
 	private int rp_ref_step;
-	private int rp_ref_level;
 	private int rp_g_number;
 	public int getRp_number() {
 		return rp_number;
@@ -55,12 +54,7 @@ public class replyVO {
 	public void setRp_ref_step(int rp_ref_step) {
 		this.rp_ref_step = rp_ref_step;
 	}
-	public int getRp_ref_level() {
-		return rp_ref_level;
-	}
-	public void setRp_ref_level(int rp_ref_level) {
-		this.rp_ref_level = rp_ref_level;
-	}
+	
 	public int getRp_g_number() {
 		return rp_g_number;
 	}

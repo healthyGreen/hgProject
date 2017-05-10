@@ -86,6 +86,8 @@ public class goodsViewAction extends ActionSupport {
       if (goodsResult != null) {
     	 
       }
+      
+   
       return SUCCESS;
    
    }
