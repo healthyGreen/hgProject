@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
      <%@ taglib prefix="s" uri="/struts-tags" %>
+        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -25,19 +26,18 @@
             이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름<s:textfield name="name" theme="simple" value="" cssStyle="width:100px" maxlength="20" /><br>
             비밀번호 <s:textfield name="password" theme="simple" value="" cssStyle="width:100px" maxlength="20" />
          </td>
-         <s:hidden name="originno" value="%{resultClass.rp_number}"/>
-         <s:hidden name="no" value="%{resultClass.no}"/>
+      <s:hidden name="rp_ref" value="481"/>
          <s:hidden name="currentPage" value="%{currentPage}"/>
-         <s:hidden name="g_number" value="%{goodsResult.g_number}"/>
-         <s:hidden name="checked" value="1"/>
+         <s:hidden name="g_number" value="%{g_number}"/>
          <td align="left">
          <s:textarea name="content" theme="simple" value="" cols="60" rows="3"/>
+         	<input type="hidden" name="rp_ref" value="rp_ref">
          </td>
          </tr>
          <tr>
             <td colspan="2" align="right">
-            <!-- <input name="submit" type="submit" value="작성완료" class="inputb"> -->
-            <input type="button" value="답변완료" onclick="javascript:location.href='replyComment.action?g_number=${g_number}&currentPage=${currentPage}&rp_number=${rp_number}'"/>
+            <input name="submit" type="submit" value="작성완료" class="inputb">
+            <%-- <input type="button" value="답변완료" onclick="javascript:location.href='replyComment.action?g_number=${g_number}&currentPage=${currentPage}&rp_number=${rp_number}'"/> --%>
             </td>
             </tr>
              
