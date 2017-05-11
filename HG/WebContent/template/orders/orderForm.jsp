@@ -111,11 +111,13 @@ scrollbar-arrow-color: #838383;
 <span class="tit">주문상세<span>내역</span></span></div>
  <style media="screen">
 table.orderitem-list {width:100%;}
-table.orderitem-list thead tr th {border-top:2px solid #303030;border-bottom:1px solid #d6d6d6;background:#f0f0f0;height:25px;}
+table.orderitem-list thead tr th {border-top:2px solid #303030;border-bottom:1px solid #d6d6d6;background:#f0f0f0;height:25px; font-size: 14px; }
 table.orderitem-list tbody tr td {border-bottom:1px solid #d6d6d6;padding:3px;}
 table.orderitem-list tbody tr td table td {border:none;}
 table.orderitem-list tfoot tr td {border-bottom:1px solid #efefef;background:#f7f7f7;height:25px;text-align:right;}
 table.orderitem-list tfoot tr td table td {border:none;}
+
+.tlist2 th{font-size: 13px; }
 </style>
 
 <table cellpadding=0 cellspacing=0 border=0 class="tlist2">
@@ -210,8 +212,8 @@ table.orderitem-list tfoot tr td table td {border:none;}
 	<table style="display:block;float:right;">
 	<tr>
 		<td align=right width=80 nowrap style="padding-top:5px; padding-bottom:5px;">상품합계금액</td>
-		<td align=right style="font-weight:bold;padding-left:25px; padding-top:5px; padding-bottom:5px;"><span id="el-orderitem-total-price"><s:property value="%{ttotalPrice }"/></span>원&nbsp;</td>
-	</tr>
+		<td align=right style="font-weight:bold;padding-left:25px; padding-top:5px; padding-bottom:5px; color:FF6C68"><span id="el-orderitem-total-price"><s:property value="%{ttotalPrice }"/></span>원&nbsp;</td>
+	</tr> 
 	</table>
 
 	</td>
@@ -271,7 +273,7 @@ table.orderitem-list tfoot tr td table td {border:none;}
 		<th>받으실곳</th>
 		<td>
 		<input type="text" name="o_zipcode" id="sample6_postcode" placeholder="우편번호">
-      <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+      <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" style="background:#484647;cursor: pointer; border: none; color: #Fff; padding: 3px 7px;"><br>
       <input type="text" name="o_addr1" id="sample6_address" placeholder="주소">
       <input type="text" name="o_addr2" size=30  id="sample6_address2" placeholder="상세주소">
 		</td>
@@ -325,7 +327,7 @@ table.orderitem-list tfoot tr td table td {border:none;}
 	<col width=100><col>
     	<tr>
 		<th>상품합계금액</th>
-		<td><p id="paper_goodsprice" style="width:146px;text-align:right;font-weight:bold;float:left;margin:0">${totalPrice }</p> 원</td>
+		<td><p id="paper_goodsprice" style="width:146px;font-weight:bold;float:left;margin:0">${totalPrice }원</p> </td>
 	</tr>
 
 	<tr style="display:none;">
@@ -392,8 +394,8 @@ table.orderitem-list tfoot tr td table td {border:none;}
 
 
 <div style="padding:20px" align=center class="noline">
-<input type="image" src="../images/btn_payment.jpg">
-<img src="../images/btn_cancel.jpg" onclick="history.back()" style="cursor:pointer">
+<input type="image" src="images/btn_payment.jpg">
+<img src="images/btn_cancel.jpg" onclick="history.back()" style="cursor:pointer">
 </div>
 
 <!-- </form> -->

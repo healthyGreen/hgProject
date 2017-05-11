@@ -112,7 +112,7 @@
                                        <div style="float:left;">
                                           <select name="b_g_bottle">
             <option value="small">350 mL</option>
-            <option value="medium">500 mL<option>
+            <option value="medium">500 mL</option>
             <option value="big">750 mL</option>
          </select>
                                  </tr>
@@ -127,8 +127,13 @@
                               <%-- <div class="info_total">총 상품금액 :  <span class="feb" id="el-multi-option-total-price">19,800 원</span></div> --%>
                              </div>
  
-                             <div class="view_btn">                
+                             <div class="view_btn">
+                             <c:if test="${session.session_id != null }">                
                               <a href="javascript:act('../order/order')" onclick="return buyIt(this.form)"><img src="images/buy_now.png"></a>
+                              </c:if>
+                              <c:if test="${session.session_id == null }">
+                              <a href="/HG/template/basket/BasketLoginError.jsp" onclick="return buyIt(this.form)"><img src="images/buy_now.png"></a>
+                              </c:if>
                               <a href="javascript:cartAdd(this.form)" onclick="return cartAdde(this.form)"><img src="images/cart.png" /></a> 
                               <!-- <input type="button" value="장바구니" onclick="return cartAdde(this.form)">
                               <style>.view_btn a{margin-left:20px} </style>
