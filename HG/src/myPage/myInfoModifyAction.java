@@ -51,11 +51,9 @@ public class myInfoModifyAction extends ActionSupport{
 		paramClass.setM_id(session_id);
 		resultClass = (memberVO)sqlMapper.queryForObject("Member.modifyPass", paramClass);
 		if(resultClass != null){
-			/*checkPass = 1;*/
-		return SUCCESS;
+			return SUCCESS;
 		}
 		else{
-			/*checkPass = 0;*/
 			return ERROR;
 		}
 		
