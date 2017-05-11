@@ -155,7 +155,7 @@
 						</tr>
 					</tbody>
 				</table>
-				<div class="wBtn clear" ><input type="submit" value="공지등록" class="wBtn"/></div>
+				<div class="wBtn clear" ><input type="submit" value="후기등록" class="wBtn"/></div>
 			 </form>
 		</s:else>	
 				
