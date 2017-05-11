@@ -51,7 +51,7 @@ public class goodsPageAction {
 		pagingHtml = new StringBuffer();
 		if(currentPage>blockPage){
 			if(isSearch != "")
-			pagingHtml.append("<a href=goodsList.action?&currentPage="
+			pagingHtml.append("<a href=goodsList.action?currentPage="
 					+(startPage-1)+ "&searchKeyword="+isSearch+"&searchNum="+searchNum+">");
 			else
 				pagingHtml.append("<a href=goodsList.action?g_category&currentPage=" +

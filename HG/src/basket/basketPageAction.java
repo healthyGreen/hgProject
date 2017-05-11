@@ -14,7 +14,7 @@ public class basketPageAction {
 
 	// 페이징 생성자
 	public basketPageAction(int currentPage, int totalCount, int blockCount,
-			int blockPage) {
+			int blockPage, String m_id, String what) {
 		this.blockCount = blockCount;
 		this.blockPage = blockPage;
 		this.currentPage = currentPage;
@@ -42,8 +42,13 @@ public class basketPageAction {
 		// 이전 block 페이지
 		pagingHtml = new StringBuffer();
 		if (currentPage > blockPage) {
-				pagingHtml.append("<a href=basketList.action?currentPage="
-						+ (startPage - 1) + ">");
+				pagingHtml.append("<a href=basketList.action?currentPage=");
+				pagingHtml.append(startPage - 1); 
+				pagingHtml.append("&m_id=");
+				pagingHtml.append(m_id);
+				pagingHtml.append("&what=");
+				pagingHtml.append("what");
+				pagingHtml.append(">");
 				pagingHtml.append("이전");
 				pagingHtml.append("</a>");
 		}
@@ -62,6 +67,10 @@ public class basketPageAction {
 			} else {
 				pagingHtml.append("&nbsp;<a href='basketList.action?currentPage=");
 				pagingHtml.append(i);
+				pagingHtml.append("&m_id=");
+				pagingHtml.append(m_id);
+				pagingHtml.append("&what=");
+				pagingHtml.append("what");
 				pagingHtml.append("'>");
 				pagingHtml.append(i);
 				pagingHtml.append("</a>");
@@ -74,8 +83,12 @@ public class basketPageAction {
 
 		// 다음 block 페이지
 		if (totalPage - startPage >= blockPage) {
-			pagingHtml.append("<a href='basketList.action?currentPage="
-					+ (endPage + 1));
+			pagingHtml.append("<a href='basketList.action?currentPage=");
+			pagingHtml.append(endPage + 1);
+			pagingHtml.append("&m_id=");
+			pagingHtml.append(m_id);
+			pagingHtml.append("&what=");
+			pagingHtml.append("what");
 			pagingHtml.append("'>");
 			pagingHtml.append("다음");
 			pagingHtml.append("</a>");

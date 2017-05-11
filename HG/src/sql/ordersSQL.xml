@@ -35,7 +35,44 @@
 		INSERT INTO ORDERS(O_NUMBER, O_M_ID, O_NAME, O_RPHONE, O_ZIPCODE,O_ADDR1,O_ADDR2,O_COMMENT,O_PAY,O_DATE,O_G_PRICE,O_ALLPRICE,O_G_NUMBER,O_AMOUNT,O_BOTTLE,O_ORDERTYPE)VALUES
 		(O_NUMBER_SEQ.NEXTVAL,#o_m_id#,#o_name#,#o_rphone#,#o_zipcode#,#o_addr1#,#o_addr2#,#o_comment#,#o_pay#,#o_date#,#o_price#,#o_allprice#,#o_g_number#,#o_g_amount#,#o_g_bottle#,#o_orderType#)
 	</insert>
+  <!--  <select id="order_selectOne" resultMap="orderRes">
+      SELECT * FROM ORDERS
+      WHERE O_M_ID = #o_m_id# AND O_NAME = #o_name#
+   </select> -->
+   <!-- <select id="orderDetail" resultMap="orderRes" parameterClass="int">
+      SELECT * FROM ORDERS WHERE ORDER_NUM=#order_num#
+   </select> -->
+   <select id="orderList" resultMap="orderRes" parameterClass="string">
+      SELECT * FROM ORDERS WHERE O_M_ID = #session_id# ORDER BY o_number DESC
+   </select>
    
+  <!--  <delete id="orderDelete" parameterClass="order">
+      DELETE FROM ORDERS
+      WHERE O_NUMBER=#o_number#
+   </delete>
+   쇼핑몰 어드민 Order list select 쿼리문 정의
+   <select id="selectOrderList" resultMap="orderRes">
+      SELECT * FROM ORDERS
+      ORDER BY O_NUMBER DESC
+   </select>
+
+   
+
+   쇼핑몰 어드민 Order select 쿼리문 정의 
+    <select id="selectProductOrder" resultMap="orderRes">
+      SELECT * FROM ORDERS
+      WHERE O_NUMBER=#o_number#
+   </select>
+   
+   <update id="updateProductOrder" parameterClass="order">
+      UPDATE ORDERS SET
+      ORDER_TRANS_NUM=#order_trans_num#,
+      ORDER_STATUS=#order_status#
+      WHERE ORDER_NUM=#order_num#
+   </update>
+   <delete id="adminorderDelete" parameterClass="order">
+      DELETE FROM ORDERS WHERE ORDER_NUM=#order_num#
+   </delete> -->
  
   
 </sqlMap>

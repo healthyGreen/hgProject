@@ -18,7 +18,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class ordersListAction extends ActionSupport {
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
-
+	private String session_id;
 	private memberVO memparamClass;
 	private memberVO memresultClass;
 	private ordersVO orderparamClass;
@@ -43,16 +43,16 @@ public class ordersListAction extends ActionSupport {
 		memresultClass = new memberVO();
 		orderparamClass = new ordersVO();
 		orderresultClass = new ordersVO();
-		ActionContext context = ActionContext.getContext();
+	/*	ActionContext context = ActionContext.getContext();
 		Map<String, Object> session = context.getSession();
-		String session_id = (String) session.get("m_id");
+		String session_id = (String) session.get("m_id");*/
 		/*memresultClass = (memberVO) sqlMapper.queryForObject("Member.UserCheck",
 				session_id);*/
 
 		// orderparamClass.setOrder_id(session_id);
-		orderList = sqlMapper.queryForList("Order.orderList", session_id);
+		orderList = sqlMapper.queryForList("Orders.orderList", session_id);
 		totalCount = orderList.size();
-		page = new orderListPageAction(currentPage, totalCount, blockCount, blockPage);
+		page = new orderListPageAction(currentPage, totalCount, blockCount, blockPage, session_id);
 		pagingHtml = page.getPagingHtml().toString();
 		int lastCount = totalCount;
 		if (page.getEndCount() < totalCount) {
@@ -151,4 +151,12 @@ public class ordersListAction extends ActionSupport {
 		this.page = page;
 	}
 
+	public String getSession_id() {
+		return session_id;
+	}
+
+	public void setSession_id(String session_id) {
+		this.session_id = session_id;
+	}
+	
 }

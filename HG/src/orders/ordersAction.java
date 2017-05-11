@@ -15,6 +15,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import basket.basketVO;
 import goods.goodsVO;
+import member.memberVO;
 
 public class ordersAction extends ActionSupport{
 	private static Reader reader;
@@ -26,6 +27,7 @@ public class ordersAction extends ActionSupport{
 	public int amount;
 	public String bottle;
 	public int price;
+	public int ttotalPrice;
 	public int totalPrice;
 	public int x; 
 	public int y;
@@ -33,6 +35,7 @@ public class ordersAction extends ActionSupport{
 	public ordersVO order;
 	public ordersVO orderResult;
 	public basketVO basket;
+	public memberVO member;
 	public List<basketVO> basketList;
 	//public List<setOrderVO> setOrderList;
 	//public Vector forOrder; 
@@ -51,7 +54,9 @@ public class ordersAction extends ActionSupport{
 	public String o_addr2;
 	public String o_comment;
 	public String o_pay; // 지불 방식
-	public Calendar o_date = Calendar.getInstance();
+	public Calendar o_ddate = Calendar.getInstance();
+	public Date o_date = o_ddate.getTime();
+	public int myPoint=0;
 	
 	public ordersAction() throws IOException {
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
@@ -61,6 +66,7 @@ public class ordersAction extends ActionSupport{
 	// 장바구니가 아닌 그냥 바로 상품주문
 	public String execute() throws SQLException{
 		order = new ordersVO();
+		member = new memberVO();
 		//System.out.println(o_name);
 		if (orderType.equals("basket")){
 			return execute2();
@@ -74,7 +80,7 @@ public class ordersAction extends ActionSupport{
 			order.setO_addr2(o_addr2);
 			order.setO_comment(o_comment);
 			order.setO_pay(o_pay);
-			order.setO_date(o_date.getTime());
+			order.setO_date(o_date);
 			//order.setO_m_id(m_id);
 			order.setO_name(g_name);
 			order.setO_g_number(g_number);
@@ -84,8 +90,11 @@ public class ordersAction extends ActionSupport{
 			order.setO_allprice(totalPrice);
 			order.setO_orderType(orderType);
 		}
+			myPoint = (int) (myPoint + totalPrice*0.05); 
+			member.setM_point(myPoint);
+			member.setM_id(m_id);
 			sqlMapper.insert("Orders.insertOrder", order);
-		
+			sqlMapper.update("member.updatePoint",member);
 			return SUCCESS;
 	}
 	
@@ -104,7 +113,7 @@ public class ordersAction extends ActionSupport{
 			order.setO_addr2(o_addr2);
 			order.setO_comment(o_comment);
 			order.setO_pay(o_pay);
-			order.setO_date(o_date.getTime());
+			order.setO_date(o_date);
 			order.setO_m_id(basket.getB_m_id());
 			order.setO_name(basket.getB_g_name());
 			order.setO_g_number(basket.getB_g_number());
@@ -153,11 +162,12 @@ public class ordersAction extends ActionSupport{
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public int getTotalPrice() {
-		return totalPrice;
+	
+	public int getTtotalPrice() {
+		return ttotalPrice;
 	}
-	public void setTotalPrice(int totalPrice) {
-		this.totalPrice = totalPrice;
+	public void setTtotalPrice(int ttotalPrice) {
+		this.ttotalPrice = ttotalPrice;
 	}
 	public int getX() {
 		return x;
@@ -249,11 +259,30 @@ public class ordersAction extends ActionSupport{
 	public void setO_pay(String o_pay) {
 		this.o_pay = o_pay;
 	}
-	public Calendar getO_date() {
+	
+	public Calendar getO_ddate() {
+		return o_ddate;
+	}
+	public void setO_ddate(Calendar o_ddate) {
+		this.o_ddate = o_ddate;
+	}
+	public Date getO_date() {
 		return o_date;
 	}
-	public void setO_date(Calendar o_date) {
+	public void setO_date(Date o_date) {
 		this.o_date = o_date;
+	}
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+	public int getMyPoint() {
+		return myPoint;
+	}
+	public void setMyPoint(int myPoint) {
+		this.myPoint = myPoint;
 	}
 	
 }

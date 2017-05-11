@@ -28,26 +28,24 @@
  <table width=100% cellpadding=0 cellspacing=0 class="oe_list">
 <tr>
 <!--왼쪽리스트시작-->
-<td valign="top"  width="50%">
+<td valign="top"  width="60%">
 
 
 <table>
    <tr>
       <th>가상계좌</th>
-      <td>농협 79012761211895 신희진</td>
+      <td>농협 79012761211895 healthy Green</td>
    </tr>
    <tr>
       <th>결제금액</th>
-      <td><b>16,900원</b></td>
+      <td><b>${ttotalPrice }</b></td>
    </tr>
-   <tr>
-      <th>상품가격</th>
-      <td>13,900원</td>
-   </tr>
+   <s:if test="%{totalPrice }>50000"> 원
    <tr>
       <th>배송비</th>
       <td>3,000원</td>
    </tr>
+   </s:if>
    <tr>
       <th>적립금결제</th>
       <td><b>0원</b></td>
@@ -61,19 +59,19 @@
     <table>
     <tr>
       <th>주문번호</th>
-      <td>1494477421320</td>
+      <td>${g_number}</td>
    </tr>
    <tr>
       <th>주문자명</th>
-      <td>신희진</td>
+      <td>${o_name }</td>
    </tr>
    <tr>
       <th>주문일자</th>
-      <td>2017-05-11 13:37:56</td>
+      <td>${o_date }</td>
    </tr>
    <tr>
       <th>주문금액</th>
-      <td>16,900원</td>
+      <td>${totalPrice }</td>
    </tr>
     </table>
     </td>
@@ -84,7 +82,7 @@
    
 
 
-<div style="width:100%; text-align:center; padding:10"><a HREF="http://www.wondergreen.kr/shop/index.php?&"><img src="images/complete_ok.jpg" border=0></a></div>
+<div style="width:100%; text-align:center; padding:10"><a HREF="main.action"><img src="images/complete_ok.jpg" border=0></a></div>
 
 </div><!-- End indiv -->
 

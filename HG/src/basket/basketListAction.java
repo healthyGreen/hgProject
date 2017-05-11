@@ -65,7 +65,7 @@ public class basketListAction extends ActionSupport{
 		
 
 		totalCount = basketList.size();  // 전체 글의 갯수를 구함
-		page = new basketPageAction(currentPage, totalCount, blockCount, blockPage);
+		page = new basketPageAction(currentPage, totalCount, blockCount, blockPage, m_id, what);
 		pagingHtml = page.getPagingHtml().toString();
 		int lastCount = totalCount;
 		// 현재 페이지의 마지막 글 번호가

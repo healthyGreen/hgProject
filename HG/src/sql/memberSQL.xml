@@ -3,7 +3,7 @@
 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 <sqlMap namespace="Member">
    <typeAlias alias="member" type="member.memberVO"/>
-
+<!-- 	<typeAlias alias="orders" type="orders.ordersVO"/> -->
    <!-- 회원정보 맵핑 -->
    <resultMap id="memberRes" class="member">
       <result property="m_id" column="m_id"/>
@@ -22,7 +22,24 @@
       <result property="m_point" column="m_point"/>
       <result property="m_admin" column="m_admin"/>
    </resultMap>
-   
+   <!--  <resultMap id="orderRes" class="orders">
+      <result property="o_number" column="o_number"/>
+      <result property="o_m_id" column="o_m_id"/>
+      <result property="o_name" column="o_name"/>
+      <result property="o_rphone" column="o_rphone"/>
+      <result property="o_zipcode" column="o_zipcode"/>
+      <result property="o_addr1" column="o_addr1"/>
+      <result property="o_addr2" column="o_addr2"/>
+      <result property="o_comment" column="o_comment"/>
+      <result property="o_pay" column="o_pay"/>
+      <result property="o_date" column="o_date"/>
+      <result property="o_price" column="o_g_price"/>
+      <result property="o_allprice" column="o_allprice"/>
+      <result property="o_g_number" column="o_g_number"/>
+      <result property="o_g_amount" column="o_amount"/>
+      <result property="o_g_bottle" column="o_bottle"/>
+      <result property="o_orderType" column="o_orderType"/>
+   </resultMap> -->
    <!-- 회원정보 select -->
    <sql id="select-all">
       SELECT * FROM MEMBER
@@ -117,6 +134,9 @@
       m_addr1 = #m_addr1#,
       m_addr2 = #m_addr2#
       where m_id=#m_id#
+   </update>
+   <update id="updatePoint" parameterClass="member">
+   	update member set m_point = m_point + #m_point# where m_id = #m_id#
    </update>
    <!-- 회원 탈퇴 -->
    <delete id="deleteMember" parameterClass="member">

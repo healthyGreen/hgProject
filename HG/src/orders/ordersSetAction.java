@@ -44,11 +44,12 @@ public class ordersSetAction extends ActionSupport {
 	public List orderInfo = new ArrayList();
 	public List<basketVO> basketList = new ArrayList<>();
 	private int ttotalPrice=0;
+	private int baesongPrice=3000;
 	//public List<goodsVO> goodsList; // 장바구니에서 '주문하기'버튼 클릭시 장바구니 list에서 3개 셋팅해준 값을 setter로 셋팅
 	//public Vector orderVector = new Vector<>();
 	
 	//public int EverytotalPrice=0;
-	public int baesongPrice=0;
+
 	public ordersSetAction() throws IOException {
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper=SqlMapClientBuilder.buildSqlMapClient(reader);
@@ -69,10 +70,10 @@ public class ordersSetAction extends ActionSupport {
 			orderInfo.add(price);
 			//orderInfo.add(image);
 			totalPrice = amount*price;
-			if(totalPrice>50000){
-				baesongPrice=3000;
-				ttotalPrice=totalPrice+3000;
-			}
+			ttotalPrice=totalPrice;
+			if(totalPrice>50000)
+				ttotalPrice=totalPrice+baesongPrice;
+		
 			//orderInfo.add(totalPrice);
 			
 		}else if(orderType.equals("basket")){
@@ -81,10 +82,8 @@ public class ordersSetAction extends ActionSupport {
 			if(basketList!=null){
 				for(int i=0; i< basketList.size(); i++)
 					totalPrice += basketList.get(i).getB_allPrice();	
-				if(totalPrice>50000){
-					baesongPrice=3000;
-					ttotalPrice=totalPrice+3000;
-				}
+				if(totalPrice>50000)
+					ttotalPrice=totalPrice+baesongPrice;			
 			}else return ERROR;
 		}return SUCCESS;
 	}
@@ -210,6 +209,14 @@ public class ordersSetAction extends ActionSupport {
 
 	public void setTtotalPrice(int ttotalPrice) {
 		this.ttotalPrice = ttotalPrice;
+	}
+
+	public int getBaesongPrice() {
+		return baesongPrice;
+	}
+
+	public void setBaesongPrice(int baesongPrice) {
+		this.baesongPrice = baesongPrice;
 	}
 	
 	

@@ -21,7 +21,7 @@ public class basketModifyAction extends ActionSupport{
 	private int b_g_amount;
 	private int b_g_price;
 	private int b_g_number;
-	private String b_m_id;
+	private String m_id;
 	private int b_number;
 	//private Map<String,Object> session;
 	
@@ -71,12 +71,14 @@ public class basketModifyAction extends ActionSupport{
 		this.b_g_number = b_g_number;
 	}
 
-	public String getB_m_id() {
-		return b_m_id;
+	
+
+	public String getM_id() {
+		return m_id;
 	}
 
-	public void setB_m_id(String b_m_id) {
-		this.b_m_id = b_m_id;
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
 	}
 
 	public int getB_g_price() {

@@ -21,7 +21,7 @@ public class basketDeleteAction extends ActionSupport{
 	private basketVO basparamClass;
 	private basketVO basresultClass;;
 	private int b_number;
-	private String b_m_id;
+	private String m_id;
 	//private int b_g_number;
 	private Map session;
 	
@@ -91,14 +91,14 @@ public class basketDeleteAction extends ActionSupport{
 	public void setB_number(int b_number) {
 		this.b_number = b_number;
 	}
-
-	public String getB_m_id() {
-		return b_m_id;
+	public String getM_id() {
+		return m_id;
+	}
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
 	}
 
-	public void setB_m_id(String b_m_id) {
-		this.b_m_id = b_m_id;
-	}
+	
 
 	/*public int getB_g_number() {
 		return b_g_number;

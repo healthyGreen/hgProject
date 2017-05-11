@@ -11,11 +11,12 @@ public class orderListPageAction {
 	private int startPage; // 시작 페이지
 	private int endPage;// 마지막 페이지
 	private StringBuffer pagingHtml;
-
+	private String session_id;
+	
 
 	// 페이징 생성자
 	public orderListPageAction(int currentPage, int totalCount, int blockCount,
-			int blockPage) {
+			int blockPage, String session_id) {
 		this.blockCount = blockCount;
 		this.blockPage = blockPage;
 		this.currentPage = currentPage;
@@ -43,8 +44,11 @@ public class orderListPageAction {
 		// 이전 block 페이지
 		pagingHtml = new StringBuffer();
 		if (currentPage > blockPage) {
-			pagingHtml.append("<a href=buyList.action?currentPage="
-					+ (startPage - 1) + ">");
+			pagingHtml.append("<a href=myOrder.action?session_id=");
+			pagingHtml.append(session_id);
+			pagingHtml.append("&currentPage=");
+					pagingHtml.append(startPage - 1);
+					pagingHtml.append(">");
 			//pagingHtml.append("<img src="+"images/basket/prew.png"+">");
 			pagingHtml.append("[이전]");
 			pagingHtml.append("</a>");
@@ -60,7 +64,9 @@ public class orderListPageAction {
 				pagingHtml.append(i);
 				pagingHtml.append("</font></b>");
 			} else {
-				pagingHtml.append("&nbsp;<a href='buyList.action?currentPage=");
+				pagingHtml.append("&nbsp;<a href='myOrder.action?session_id=");
+				pagingHtml.append(session_id);
+				pagingHtml.append("&currentPage=");
 				pagingHtml.append(i);
 				pagingHtml.append("'>");
 				pagingHtml.append(i);
@@ -73,8 +79,10 @@ public class orderListPageAction {
 
 		// 다음 block 페이지
 		if (totalPage - startPage >= blockPage) {
-			pagingHtml.append("<a href='buyList.action?currentPage="
-					+ (endPage + 1));
+			pagingHtml.append("<a href='myOrder.action?session_id=");
+			pagingHtml.append(session_id);
+			pagingHtml.append("&currentPage=");
+			pagingHtml.append(endPage + 1);
 			pagingHtml.append("'>");
 			pagingHtml.append("[다음]");
 			pagingHtml.append("</a>");
@@ -161,4 +169,12 @@ public class orderListPageAction {
 		this.pagingHtml = pagingHtml;
 	}
 
+	public String getSession_id() {
+		return session_id;
+	}
+
+	public void setSession_id(String session_id) {
+		this.session_id = session_id;
+	}
+	
 }
