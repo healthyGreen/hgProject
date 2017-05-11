@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 </tr>
 <tr>
-<td height=100%>
+<td >
 
 <table cellpadding=0 cellspacing=0 border=0 class="outline_both" style="width:1100px;margin:0 auto ; padding:30px 0;">
 <tr>
@@ -75,14 +75,14 @@
     <div class="infobox">
       <div class="tit"><img src="images/cs_2_tit3.jpg"></div>
       <ul class="con">
-        <li><a href="/shop/service/faq.php?&ssno=48" class=stxt style="line-height:normal;">가상  계좌로 결제할 경우 주문 후 ..</a></li>
-        <li><a href="/shop/service/faq.php?&ssno=47" class=stxt style="line-height:normal;">주문마감시간이 있나요?</a></li>
-        <li><a href="/shop/service/faq.php?&ssno=45" class=stxt style="line-height:normal;">착즙과 스무디 어떤점이 다른거죠?</a></li>
-        <li><a href="/shop/service/faq.php?&ssno=40" class=stxt style="line-height:normal;">여러상품을 한번에 주문했는데 왜 배..</a></li>
-        <li><a href="/shop/service/faq.php?&ssno=38" class=stxt style="line-height:normal;">유통기한은 어떻게 되나요?</a></li>
-        <li><a href="/shop/service/faq.php?&ssno=37" class=stxt style="line-height:normal;">고객센터 운영 시간은 어떻게 되나요?</a></li>
-        <li><a href="/shop/service/faq.php?&ssno=32" class=stxt style="line-height:normal;">교환/반품/환불은 어떻게 하나요?</a></li>
-        <li><a href="/shop/service/faq.php?&ssno=18" class=stxt style="line-height:normal;">결제방법에는 어떤 종류가 있나요?</a></li>
+        <li><a href="/HG/template/qna/qnaList.jsp" class=stxt style="line-height:normal;">가상  계좌로 결제할 경우 주문 후 ..</a></li>
+        <li><a href="/HG/template/qna/qnaList.jsp" class=stxt style="line-height:normal;">주문마감시간이 있나요?</a></li>
+        <li><a href="/HG/template/qna/qnaList.jsp" class=stxt style="line-height:normal;">착즙과 스무디 어떤점이 다른거죠?</a></li>
+        <li><a href="/HG/template/qna/qnaList.jsp" class=stxt style="line-height:normal;">여러상품을 한번에 주문했는데 왜 배..</a></li>
+        <li><a href="/HG/template/qna/qnaList.jsp" class=stxt style="line-height:normal;">유통기한은 어떻게 되나요?</a></li>
+        <li><a href="/HG/template/qna/qnaList.jsp" class=stxt style="line-height:normal;">고객센터 운영 시간은 어떻게 되나요?</a></li>
+        <li><a href="/HG/template/qna/qnaList.jsp" class=stxt style="line-height:normal;">교환/반품/환불은 어떻게 하나요?</a></li>
+        <li><a href="/HG/template/qna/qnaList.jsp" class=stxt style="line-height:normal;">결제방법에는 어떤 종류가 있나요?</a></li>
       </ul>
     </div>
     <!--자주묻는질문 끝--> 
