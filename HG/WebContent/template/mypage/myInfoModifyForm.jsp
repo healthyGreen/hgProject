@@ -2,7 +2,7 @@
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-	</tr>
+   </tr>
 <tr>
 <td height=100%>
 
@@ -102,7 +102,7 @@ width:100px;
 color:#5D5D5D;
 letter-spacing:-1;
 }
-.scroll	{
+.scroll   {
 scrollbar-face-color: #FFFFFF;
 scrollbar-shadow-color: #AFAFAF;
 scrollbar-highlight-color: #AFAFAF;
@@ -144,7 +144,7 @@ scrollbar-arrow-color: #838383;
     
     
     
-	<style>
+   <style>
     .jogin_infotbl caption{display:none;}
     .jogin_infotbl {border-collapse:collapse;border-spacing:0;width:100%;}
     .jogin_infotbl th{ border-bottom:#e7e7e7 solid 1px;height:39px;text-indent:20px; color:#414141; font-weight:bold;}
@@ -159,11 +159,11 @@ scrollbar-arrow-color: #838383;
         <td class=memberCols1><font color=FF6000>*</font> 비밀번호</td>
       
 
-        <td class="memberCols1">&nbsp;</td>
+        
         <!-- 비밀번호 버튼 -->
         <td class="memberCols2">
            <table cellpadding="0" cellspacing="0" border="0">
-			<tbody>
+         <tbody>
                 <td>
                 <input type="password" name="m_pass" id="newPassword" style="background:#FFF" onfocus="checkPassword(this)" onkeyup="checkPassword(this)" onblur="emptyPwState()">
     
@@ -200,7 +200,7 @@ scrollbar-arrow-color: #838383;
         <td class=memberCols1><font color=FF6000>*</font> 이메일</td>
         <td class=memberCols2>
         <input type=text name=m_email value="" size=30 required fld_esssential option=regEmail label="이메일" style="background:#FFF">
-		
+      
         </td>
     </tr>
     
@@ -212,10 +212,10 @@ scrollbar-arrow-color: #838383;
    <table>
    <tr>
       <td>
-      <input type="text" name="m_zipcode" id="sample6_postcode" placeholder="우편번호">
-      <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-      <input type="text" name="m_addr1" id="sample6_address" placeholder="주소">
-      <input type="text" name="m_addr2" size=30  id="sample6_address2" placeholder="상세주소">
+      <input type="text" name="m_zipcode" id="sample6_postcode" placeholder="우편번호" style="background: #fff;">
+      <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"  style="background:#484647;cursor: pointer; border: none; color: #Fff; padding: 3px 7px;"><br>
+      <input type="text" name="m_addr1" id="sample6_address" placeholder="주소" style="background: #fff;">
+      <input type="text" name="m_addr2" size=30  id="sample6_address2" placeholder="상세주소" style="background: #fff;">
             </td>
         </tr>
         </table>
@@ -227,7 +227,7 @@ scrollbar-arrow-color: #838383;
      <tr>
         <td class=memberCols1><font color=FF6000>*</font> 핸드폰</td>
         <td class=memberCols2>
-   <input type=text name=m_phone value="" size=12 maxlength=15 required fld_esssential option=regNum label="핸드폰" >
+   <input type=text name=m_phone value="" size=12 maxlength=15 required fld_esssential option=regNum label="핸드폰"style="background: #fff;" >
    <span class=noline style="padding-left:10px"></span>
    </td>
 </tr>
@@ -243,7 +243,7 @@ scrollbar-arrow-color: #838383;
 <tr>
 <td id=avoidDbl align=center height=100>
 <div style="width:100%" class=noline>
-    <input type=image src="../../images/btn_join.jpg">
+   <input type=button value="수정하기" style="background:#484647;cursor: pointer; border: none; color: #Fff;     padding: 11px 25px;font-size: 15px;">
     <!-- <img src="../../images/btn_prev.jpg" border=0 onClick="history.back()" style="cursor:pointer;"> -->
 </div>
 </td>
