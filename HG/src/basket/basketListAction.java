@@ -25,7 +25,7 @@ public class basketListAction extends ActionSupport{
 	private goodsVO goodsparamClass;
 	private goodsVO goodsresultClass;
 	
-	private String b_m_id;
+	private String m_id;
 	private int b_g_number;
 
 	private List<String> b_image = new ArrayList();
@@ -50,10 +50,10 @@ public class basketListAction extends ActionSupport{
 	public String execute() throws Exception{
 		basparamClass = new basketVO();
 		basresultClass = new basketVO();
-		ActionContext context = ActionContext.getContext(); // session을 생성하기 위해
+		/*ActionContext context = ActionContext.getContext(); // session을 생성하기 위해
 		Map<String, Object> session = context.getSession();
-		String session_id = (String) session.get("session_id");
-		basketList = sqlMapper.queryForList("Basket.basketList",session_id);
+		String session_id = (String) session.get("session_id");*/
+		basketList = sqlMapper.queryForList("Basket.basketList",m_id);
 		if(basketList!=null){
 		for(int i=0; i< basketList.size(); i++){
 			System.out.println(basketList.get(i).getB_allPrice());
@@ -97,12 +97,14 @@ public class basketListAction extends ActionSupport{
 		this.basresultClass = basresultClass;
 	}
 
-	public String getB_m_id() {
-		return b_m_id;
+	
+
+	public String getM_id() {
+		return m_id;
 	}
 
-	public void setB_m_id(String b_m_id) {
-		this.b_m_id = b_m_id;
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
 	}
 
 	public List<String> getB_image() {

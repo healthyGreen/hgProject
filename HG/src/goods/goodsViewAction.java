@@ -72,7 +72,8 @@ public class goodsViewAction extends ActionSupport {
          
          replylist = sqlMapper.queryForList("replySelectAll",getG_number());
          
-         System.out.println("size:"+replylist.size());
+         /*System.out.println("size:"+replylist.size());
+         System.out.println("img"+goodsResult.getG_sav_image());*/
          
       
      // totalCount = rp_list.size();
@@ -83,11 +84,7 @@ public class goodsViewAction extends ActionSupport {
       if(endCount>totalCount) endCount=totalCount;
       replylist=replylist.subList(rp_page.getStartCount(),endCount);*/
       
-      if (goodsResult != null) {
-    	 
-      }
       
-   
       return SUCCESS;
    
    }

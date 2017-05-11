@@ -21,6 +21,7 @@ public class ordersAction extends ActionSupport{
 	private static SqlMapClient sqlMapper;
 	public int g_number;
 	public String m_id;
+	//public String b_m_id;
 	public String g_name;
 	public int amount;
 	public String bottle;
@@ -41,7 +42,7 @@ public class ordersAction extends ActionSupport{
 		orderInfo.add(amount);
 		orderInfo.add(bottle);
 		orderInfo.add(price); */
-	public int o_number;
+	//public int o_number;
 	//public String session_id;
 	public String o_name;
 	public int o_rphone;
@@ -59,8 +60,9 @@ public class ordersAction extends ActionSupport{
 	}
 	// 장바구니가 아닌 그냥 바로 상품주문
 	public String execute() throws SQLException{
-		
-		order.setO_m_id(m_id);
+		order = new ordersVO();
+		//System.out.println(o_name);
+		//order.setO_m_id(m_id);
 		order.setO_name(o_name);
 		order.setO_rphone(o_rphone);
 		order.setO_zipcode(o_zipcode);
@@ -87,12 +89,12 @@ public class ordersAction extends ActionSupport{
 	
 	// 장바구니에 넣었을때 
 	public String execute2() throws SQLException{
-		
-		basketList = sqlMapper.queryForList("Basket.basketList",m_id);
+	
+		basketList = sqlMapper.queryForList("Basket.basketList", m_id);
 		for(int i=0; i<basketList.size(); i++){
 			
 			basket = basketList.get(i);
-			order.setO_m_id(m_id);
+			//order.setO_m_id(m_id);
 			order.setO_name(o_name);
 			order.setO_rphone(o_rphone);
 			order.setO_zipcode(o_zipcode);
@@ -197,12 +199,12 @@ public class ordersAction extends ActionSupport{
 	public void setOrderType(String orderType) {
 		this.orderType = orderType;
 	}
-	public int getO_number() {
+	/*public int getO_number() {
 		return o_number;
 	}
 	public void setO_number(int o_number) {
 		this.o_number = o_number;
-	}
+	}*/
 	public String getO_name() {
 		return o_name;
 	}

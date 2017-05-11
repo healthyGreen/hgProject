@@ -20,6 +20,7 @@ public class ordersVO {
 	private int o_g_amount;
 	private String o_g_bottle;
 	private String o_orderType;
+	
 	public int getO_number() {
 		return o_number;
 	}

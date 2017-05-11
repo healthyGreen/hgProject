@@ -10,7 +10,7 @@
      <script type="text/javascript">
    function cartAdde(goodsForm) {
       var b_g_amount = document.goodsForm.b_g_amount.value;
-      window.location.href='basketInput.action?b_m_id=<%= session_id%>&b_g_number=${g_number}&b_g_name=${goodsResult.g_name}&b_g_price=${goodsResult.g_price}&b_g_amount='+b_g_amount;
+      window.location.href='basketInput.action?m_id=<%= session_id%>&b_g_number=${g_number}&b_g_name=${goodsResult.g_name}&b_g_price=${goodsResult.g_price}&b_g_amount='+b_g_amount;
    }
    function buyIt(goodsForm) {
       var b_g_amount = document.goodsForm.b_g_amount.value;
@@ -52,12 +52,13 @@
                            <div class="view_img">
                               <div class="img_big">
                                  <span onclick="popup('goods_popup_large.php?goodsno=19',800,600)" class="">
-                                    <img src='images/1480927871296m0.jpg' id=objImg />
+                                    <img src="./template/goods/upload/${goodsResult.g_sav_image}" id=objImg />
+                                    
                                  </span>
                               </div>
                            </div>
                            <div id=goods_spec class="view_info"> 
-                              <div class="info_name"> <span class="tit">그린메디신(warm green) 1L 기준</span> <span class="txt">약보다 그린 주스</span> </div>
+                              <div class="info_name"> <span class="tit">${goodsResult.g_name }</span> <span class="txt">${goodsResult.g_info }</span> </div>
                               <table border=0 cellpadding=0 cellspacing=0 class=top>
                                  <tr class="info_price">
                                     <th>판매가격 </th>
@@ -69,7 +70,7 @@
                               <table border=0 cellpadding=0 cellspacing=0>
                                  <tr>
                                     <th>구성 </th>
-                                    <td>콜라비/오이/파인애플/사과/파슬리</td>
+                                    <td>${goodsResult.g_ingr }</td>
                                  </tr>
                                  <tr>
                                     <th>용량 </th>

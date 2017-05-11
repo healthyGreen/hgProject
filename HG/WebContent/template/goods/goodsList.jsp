@@ -94,7 +94,7 @@
                         	<div class="goods">
                         		 <div class="img" onclick="location.href='goodsView.action?g_number=<s:property value="g_number"/>&currentPage=<s:property value="currentPage"/>'"><img src="./template/goods/upload/${ g_sav_image}"></div>
 		                         <span class=" name fb"><a href="goodsView.action?g_number=<s:property value="g_number"/>&currentPage=<s:property value="currentPage"/>">&nbsp;&nbsp;&nbsp;<s:property value="g_name" /></a></span>
-		                         <span class="txt"><s:property value="g_name"/></span>
+		                         <span class="txt"><s:property value="g_info"/></span>
                         	</div>
                            
                         </li>
