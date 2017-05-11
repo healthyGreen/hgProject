@@ -94,7 +94,7 @@ public class ordersAction extends ActionSupport{
 			member.setM_point(myPoint);
 			member.setM_id(m_id);
 			sqlMapper.insert("Orders.insertOrder", order);
-			sqlMapper.update("member.updatePoint",member);
+			sqlMapper.update("Member.updatePoint",member);
 			return SUCCESS;
 	}
 	

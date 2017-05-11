@@ -65,7 +65,7 @@ table.orderitem-list tfoot tr td table td {border:none;}
 </tr>
 </thead>
 <tbody>
-   <s:iterator value="basketList" status="sta">
+   <s:iterator value="subBasketList" status="sta">
    <s:hidden name="b_number" value="b_number"/>
    <tr>
 
@@ -83,8 +83,8 @@ table.orderitem-list tfoot tr td table td {border:none;}
             <option value="7">7</option>
             <option value="8">8</option>
             <option value="9">9</option>
-         </select>&nbsp;<input type="button" value="변경" onclick="javascript:location.href='basketModify.action?b_g_number=${b_g_number}&b_number=${b_number}&b_g_price=${b_g_price}&b_m_id=${b_m_id}&b_g_amount='+document.getElementById('aaa<s:property value="%{#sta.index}" />').value">
-         &nbsp;<input type="button" value="삭제" onclick="javascript:location.href='basketDelete.action?b_number=${b_number}'"/>
+         </select>&nbsp;<input type="button" value="변경" onclick="javascript:location.href='basketModify.action?b_g_number=${b_g_number}&b_number=${b_number}&b_g_price=${b_g_price}&m_id=${b_m_id}&b_g_amount='+document.getElementById('aaa<s:property value="%{#sta.index}" />').value">
+         &nbsp;<input type="button" value="삭제" onclick="javascript:location.href='basketDelete.action?b_number=${b_number}&m_id=${b_m_id}'"/>
       </td>
       <td>${b_allPrice }원</td>
    </tr><br>
@@ -99,6 +99,8 @@ table.orderitem-list tfoot tr td table td {border:none;}
 
    <table style="display:block;float:right;">
    <tr>
+   <td rowspan="3" align="center"><s:property value="pagingHtml" escape="false"/></td>
+   
       <td align=right width=80 nowrap style="padding-top:5px; padding-bottom:5px;">상품합계금액</td>
       <td align=right style="font-weight:bold;padding-left:25px; padding-top:5px; padding-bottom:5px;"><span id="el-orderitem-total-price">${allTotalPrice }</span>원&nbsp;</td>
    </tr>
@@ -121,7 +123,7 @@ table.orderitem-list tfoot tr td table td {border:none;}
 
 <div class="rig">
 <!-- <a href=""><img src="images/btn_back2.gif" border=0></a>&nbsp; -->
-<a href="orderForm.action?orderType=basket&m_id=${m_id}"><img src="images/btn_empty2.gif" border=0></a>&nbsp;
+<a href="orderForm.action?orderType=basket&m_id=${m_id}">주문하기</a>&nbsp;
 <a onclick="return alldelBas(this.form)" ><img src="images/btn_empty2.gif" border=0></a>&nbsp;
 <!-- <a href=""><img src="images/btn_continue2.gif" border=0></a> -->
 </div>

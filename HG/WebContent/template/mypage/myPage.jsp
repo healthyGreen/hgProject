@@ -46,13 +46,13 @@
                <li><span>${ session.session_id }</span></li>
                <li><span>장바구니(${basketCount })</span></li>
                <li><span>${ session.session_name }</span></li>
-               <li><span>적립금  ${ session.session_point } P</span></li>
+               <li><span>적립금  ${ myPoint } P</span></li>
             </ul>
          </div>
          <div class="btnBox">
             <span class="hvr-underline-from-left " onclick="location.href='basketList.action?M_id='+'${ session.session_id }'" >장바구니</span>
             <span class="hvr-underline-from-left " onclick="location.href='myBoard.action?M_id='+'${ session.session_id }'" >내가 쓴 글</span>
-            <span class="hvr-underline-from-left " onclick="" >나의 주문 내역</span>
+            <span class="hvr-underline-from-left " onclick="location.href='myOrder.action?session_id='+'${ session.session_id }'" >나의 주문 내역</span>
             <span class="hvr-underline-from-left " onclick="location.href='myInfoView.action?M_id='+'${ session.session_id }'">개인 정보 보기</span>
          </div>
       </div>
