@@ -10,7 +10,7 @@
      <script type="text/javascript">
    function cartAdde(goodsForm) {
       var b_g_amount = document.goodsForm.b_g_amount.value;
-      window.location.href='basketInput.action?b_m_id=<%= session_id%>&b_g_number=${g_number}&b_g_name=${goodsResult.g_name}&b_g_price=${goodsResult.g_price}&b_g_amount='+b_g_amount;
+      window.location.href='basketInput.action?m_id=<%= session_id%>&b_g_number=${g_number}&b_g_name=${goodsResult.g_name}&b_g_price=${goodsResult.g_price}&b_g_amount='+b_g_amount;
    }
    function buyIt(goodsForm) {
       var b_g_amount = document.goodsForm.b_g_amount.value;

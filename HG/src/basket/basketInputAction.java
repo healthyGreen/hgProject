@@ -27,7 +27,7 @@ public class basketInputAction extends ActionSupport{
 	private String g_sav_image;
 	//private int g_amout;
 	private int b_g_price;
-	private String b_m_id;
+	private String m_id;
 	private int b_g_number;
 	private String b_g_name;
 	private Calendar b_date = Calendar.getInstance();
@@ -50,7 +50,7 @@ public class basketInputAction extends ActionSupport{
 		String session_id = (String) session.get("m_id");
 		memresultClass = (memberVO) sqlMapper.queryForObject("Member.UserCheck", session_id);*/
 		
-		basparamClass.setB_m_id(getB_m_id());
+		basparamClass.setB_m_id(getM_id());
 		basparamClass.setB_g_name(getB_g_name());
 		basparamClass.setB_g_amount(getB_g_amount());
 		basparamClass.setB_g_price(getB_g_price());
@@ -132,12 +132,14 @@ public class basketInputAction extends ActionSupport{
 		this.g_number = g_number;
 	}
 
-	public String getB_m_id() {
-		return b_m_id;
+	
+
+	public String getM_id() {
+		return m_id;
 	}
 
-	public void setB_m_id(String b_m_id) {
-		this.b_m_id = b_m_id;
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
 	}
 
 	public int getB_g_number() {
