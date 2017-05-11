@@ -35,13 +35,7 @@ public String execute() throws Exception{
 
 	paramClass = new reviewVO();
 	resultClass = new reviewVO();
-	/*ActionContext context = ActionContext.getContext();
-	Map<String, Object> session = context.getSession();
-	String session_id = (String) session.get("m_id");
-	memresultClass = (memberVO) sqlMapper.queryForObject("Member.UserCheck",
-			session_id);*/
 	paramClass.setRv_number(getRv_number());
-	System.out.println(rv_number);
 	sqlMapper.delete("Board.deleteReview",paramClass);
 	return SUCCESS;
 }

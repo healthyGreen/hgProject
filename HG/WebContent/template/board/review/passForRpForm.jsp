@@ -15,7 +15,7 @@
 
 <!-- 상단이미지 || 현재위치 -->
 <div class="sub_tit">
-  <div class="tit">공지사항<span>/ NOTICE</span></div>
+  <div class="tit">상품후기<span>/ REVIEW</span></div>
   <div class="local">홈 > 공지사항 >  <span>비밀번호확인</span></div>
 </div>
 
@@ -47,7 +47,7 @@ function modifyPass(fm){
 <div class="findbox">
           <ul>
             <li><span>현재 비밀번호</span>
-              <input name="rv_pass" type="text" size="29" required label="비밀번호" tabindex=2 class="fm">
+              <input name="rv_pass" type="password" size="29" required label="비밀번호" tabindex=2 class="fm">
               <input name="rv_number" type="hidden" size="29" value="${param.rv_number}">
             </li>
             <li><span></span>

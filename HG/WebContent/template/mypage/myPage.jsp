@@ -50,10 +50,10 @@
             </ul>
          </div>
          <div class="btnBox">
-            <span class="hvr-underline-from-left " onclick="location.href='basketList.action?session_id='+'${ session.session_id }'" >장바구니</span>
-            <span class="hvr-underline-from-left " onclick="location.href='myBoard.action?session_id='+'${ session.session_id }'" >내가 쓴 글</span>
+            <span class="hvr-underline-from-left " onclick="location.href='basketList.action?M_id='+'${ session.session_id }'" >장바구니</span>
+            <span class="hvr-underline-from-left " onclick="location.href='myBoard.action?M_id='+'${ session.session_id }'" >내가 쓴 글</span>
             <span class="hvr-underline-from-left " onclick="" >나의 주문 내역</span>
-            <span class="hvr-underline-from-left " onclick="location.href='myInfoView.action?session_id='+'${ session.session_id }'">개인 정보 보기</span>
+            <span class="hvr-underline-from-left " onclick="location.href='myInfoView.action?M_id='+'${ session.session_id }'">개인 정보 보기</span>
          </div>
       </div>
       
