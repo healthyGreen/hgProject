@@ -8,7 +8,7 @@
 <script type="text/javascript">
 	function alldelBas(basketlist) {
 		if(confirm("삭제하시겠습니까?")){
-			window.location.href='basketDeleteAll.action?b_m_id=${b_m_id}';
+			window.location.href='basketDeleteAll.action?b_m_id=${m_id}';
 		}else return;
 	}
 </script>
@@ -108,12 +108,16 @@ table.orderitem-list tfoot tr td table td {border:none;}
 
 <div class="btnbox">
 <div class="left">
+<s:if test="%{what=='notHeader'}">
 <!-- <a href="javascript:history.back();"onFocus="blur()"><img src="images/btn_prev.jpg" border=0></a> -->
-<a href="goodsView.action?g_number=${b_g_number}"><img src="images/btn_shopping.jpg" border=0></a>
+<a href="goodsView.action?g_number=${g_number}"><img src="images/btn_shopping.jpg" border=0></a>
+</s:if>
+
 </div>
 
 <div class="rig">
 <!-- <a href=""><img src="images/btn_back2.gif" border=0></a>&nbsp; -->
+<a href="orderForm.action?orderType=basket&m_id=${m_id}"><img src="images/btn_empty2.gif" border=0></a>&nbsp;
 <a onclick="return alldelBas(this.form)" ><img src="images/btn_empty2.gif" border=0></a>&nbsp;
 <!-- <a href=""><img src="images/btn_continue2.gif" border=0></a> -->
 </div>

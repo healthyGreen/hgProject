@@ -49,15 +49,15 @@
 </tr>
 <tr>
 <td height=100%>
-<form action="orderForGoodsPro.action">
-<s:if test='%{orderType=="goods"}'>
+<form action="orderForPro.action">
+<s:hidden name="m_id" value="%{member.m_id}"/>
+<s:if test="%{orderType=='goods'}">
 <s:hidden name="g_number" value="%{orderInfo.get(0)}"/>
 <s:hidden name="g_name" value="%{orderInfo.get(1)}"/>
 <s:hidden name="amount" value="%{orderInfo.get(2)}"/>
 <s:hidden name="bottle" value="%{orderInfo.get(3)}"/>
 <s:hidden name="price" value="%{orderInfo.get(4)}"/>
 <s:hidden name="orderType" value="%{orderType}"/>
-<s:hidden name="m_id" value="%{member.m_id}"/>
 <s:hidden name="totalPrice" value="%{totalPrice}"/>
 </s:if>
 <table height=100% cellpadding=0 cellspacing=0 border=0 class="outline_both" style="width:1100px;margin:0 auto ; padding:30px 0;">
@@ -136,6 +136,7 @@ table.orderitem-list tfoot tr td table td {border:none;}
 </tr>
 </thead>
 <tbody>
+<s:if test="%{orderType=='goods'}">
 
 	<!-- WIDERPLANET CART SCRIPT START 2017.1.9 --><%-- 
 <span style="display: none;" name="wp_detection" tag="i">28</span> --%>
@@ -163,8 +164,43 @@ table.orderitem-list tfoot tr td table td {border:none;}
 		</div>
 	</td>
 	<%-- </s:iterator> --%>
-	<td align=right style="padding-right:10"><s:property value="%{totalPrice }"/>원</td>
+	<td align=right style="padding-right:10"><s:property value="%{ttotalPrice }"/>원</td>
 </tr>
+
+</s:if>
+
+	<s:else>
+	<s:hidden name="orderType" value="%{orderType}"/>
+<s:iterator id="basketList" status="status">
+<tr>
+	<!-- <input type="hidden" name="strprice[]" value="">
+	<input type="hidden" name="adultpro[]" value="0"> -->
+	<td height=60 align=center>
+	<a href="" class="oi_img"><img src='../images/1481460887917s0.jpg' width=56 /></a> 
+	</td>
+	<td>
+	<div>${b_g_name }</div>
+	<div style="margin:5px 0 5px 0;overflow:hidden;height:1px;background:url(/shop/data/skin/standard_C/img/common/line2.gif) repeat-x top left;"></div>
+	</td>
+	<%-- <s:iterator value="orderInfo" status="sta"> --%>
+	 <td align=center style="display:none;">0원</td> 
+	<td align=right style="padding-right:10">${b_g_price }원</td>
+	<td align=center>
+		<s:property value="%{b_g_amount }"/>
+	</td>
+	<td align=center rowspan="1">
+		<div id="el-default-delivery">
+		${baesongPrice }원
+		</div>
+	</td>
+	<%-- </s:iterator> --%>
+	<td align=right style="padding-right:10">${ttotalPrice }"원</td>
+</tr>
+</s:iterator>
+
+
+
+</s:else>
 </tbody>
 
 <tfoot id="orderitem_total">
@@ -174,7 +210,7 @@ table.orderitem-list tfoot tr td table td {border:none;}
 	<table style="display:block;float:right;">
 	<tr>
 		<td align=right width=80 nowrap style="padding-top:5px; padding-bottom:5px;">상품합계금액</td>
-		<td align=right style="font-weight:bold;padding-left:25px; padding-top:5px; padding-bottom:5px;"><span id="el-orderitem-total-price"><s:property value="%{totalPrice }"/></span>원&nbsp;</td>
+		<td align=right style="font-weight:bold;padding-left:25px; padding-top:5px; padding-bottom:5px;"><span id="el-orderitem-total-price"><s:property value="%{ttotalPrice }"/></span>원&nbsp;</td>
 	</tr>
 	</table>
 
@@ -224,12 +260,12 @@ table.orderitem-list tfoot tr td table td {border:none;}
 <!-- 02 배송정보 -->
 <div class="sub_tit2">
 <span class="tit">배송<span>정보</span></span></div>
-<table width=100% class="order_list"  cellpadding=0 cellspacing=0>
+<table width=100% class="order_list" cellpadding=0 cellspacing=0>
 	<col width=100><col>
 	
 	<tr>
 		<th>받으실분</th>
-		<td><input type=text name=o_name required></td>
+		<td><input type="text" name="o_name"></td>
 	</tr>
 	<tr>
 		<th>받으실곳</th>
@@ -289,7 +325,7 @@ table.orderitem-list tfoot tr td table td {border:none;}
 	<col width=100><col>
     	<tr>
 		<th>상품합계금액</th>
-		<td><p id="paper_goodsprice" style="width:146px;text-align:right;font-weight:bold;float:left;margin:0">23,900</p> 원</td>
+		<td><p id="paper_goodsprice" style="width:146px;text-align:right;font-weight:bold;float:left;margin:0">${totalPrice }</p> 원</td>
 	</tr>
 
 	<tr style="display:none;">
@@ -319,7 +355,7 @@ table.orderitem-list tfoot tr td table td {border:none;}
 
 	<tr>
 		<th>총 결제금액</th>
-		<td><span id=paper_settlement style="width:146px;text-align:right;font:bold 14px tahoma; color:FF6C68;">26,900</span> 원</td>
+		<td><span id=paper_settlement style="width:146px;text-align:right;font:bold 14px tahoma; color:FF6C68;">${ttotalPrice }</span> 원</td>
 	</tr>
 	</table>
 <!-- 구매안전표시 start --><table  width=100% style='border:1px solid #DEDEDE' cellpadding=0 cellspacing=0>

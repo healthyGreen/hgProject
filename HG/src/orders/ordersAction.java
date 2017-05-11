@@ -62,18 +62,20 @@ public class ordersAction extends ActionSupport{
 	public String execute() throws SQLException{
 		order = new ordersVO();
 		//System.out.println(o_name);
-		//order.setO_m_id(m_id);
-		order.setO_name(o_name);
-		order.setO_rphone(o_rphone);
-		order.setO_zipcode(o_zipcode);
-		order.setO_addr1(o_addr1);
-		order.setO_addr2(o_addr2);
-		order.setO_comment(o_comment);
-		order.setO_pay(o_pay);
-		order.setO_date(o_date.getTime());
-		
-		if(orderType.equals("goods")){
+		if (orderType.equals("basket")){
+			return execute2();
+		}
+		else if(orderType.equals("goods")){
 			order.setO_m_id(m_id);
+			order.setO_name(o_name);
+			order.setO_rphone(o_rphone);
+			order.setO_zipcode(o_zipcode);
+			order.setO_addr1(o_addr1);
+			order.setO_addr2(o_addr2);
+			order.setO_comment(o_comment);
+			order.setO_pay(o_pay);
+			order.setO_date(o_date.getTime());
+			//order.setO_m_id(m_id);
 			order.setO_name(g_name);
 			order.setO_g_number(g_number);
 			order.setO_g_amount(amount);
@@ -89,7 +91,7 @@ public class ordersAction extends ActionSupport{
 	
 	// 장바구니에 넣었을때 
 	public String execute2() throws SQLException{
-	
+		order = new ordersVO();
 		basketList = sqlMapper.queryForList("Basket.basketList", m_id);
 		for(int i=0; i<basketList.size(); i++){
 			
@@ -206,10 +208,10 @@ public class ordersAction extends ActionSupport{
 		this.o_number = o_number;
 	}*/
 	public String getO_name() {
-		return o_name;
+		return o_name.trim();
 	}
 	public void setO_name(String o_name) {
-		this.o_name = o_name;
+		this.o_name = o_name.trim();
 	}
 	public int getO_rphone() {
 		return o_rphone;

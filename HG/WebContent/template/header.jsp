@@ -55,7 +55,7 @@
                   	<li><a href="logout.action">로그아웃</a></li>
                		<li><a href="myPage.action">마이헬시</a></li>
                		<li><a href="qnacustom.action">고객센터</a></li>
-               		<li><a href="basketList.action">장바구니</a></li>
+               		<li><a href="basketList.action?m_id=${session.session_id}&what=header">장바구니</a></li>
                	 </c:if>
              	 <c:if test="${session.session_id == null }">
                    	<li><a href="logInForm.action">로그인</a></li>

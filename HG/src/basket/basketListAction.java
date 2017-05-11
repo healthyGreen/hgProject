@@ -26,7 +26,7 @@ public class basketListAction extends ActionSupport{
 	private goodsVO goodsresultClass;
 	
 	private String m_id;
-	private int b_g_number;
+	private int g_number;
 
 	private List<String> b_image = new ArrayList();
 	
@@ -41,6 +41,7 @@ public class basketListAction extends ActionSupport{
 	private basketPageAction page; // 페이징 클래스
 	private Map session;
 	private long allTotalPrice=0;
+	private String what;
 	public basketListAction() throws Exception{
 		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
@@ -220,14 +221,23 @@ public class basketListAction extends ActionSupport{
 		this.allTotalPrice = allTotalPrice;
 	}
 
-	public int getB_g_number() {
-		return b_g_number;
+	public int getG_number() {
+		return g_number;
 	}
 
-	public void setB_g_number(int b_g_number) {
-		this.b_g_number = b_g_number;
+	public void setG_number(int g_number) {
+		this.g_number = g_number;
 	}
 
+	public String getWhat() {
+		return what;
+	}
+
+	public void setWhat(String what) {
+		this.what = what;
+	}
+	
+	
 	
 	
 }

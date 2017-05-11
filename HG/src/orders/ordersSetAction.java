@@ -42,7 +42,8 @@ public class ordersSetAction extends ActionSupport {
 	public String session_id = (String)session.getAttribute("session_id");*/
 	public String orderType;
 	public List orderInfo = new ArrayList();
-	public List<basketVO> basketList;
+	public List<basketVO> basketList = new ArrayList<>();
+	private int ttotalPrice=0;
 	//public List<goodsVO> goodsList; // 장바구니에서 '주문하기'버튼 클릭시 장바구니 list에서 3개 셋팅해준 값을 setter로 셋팅
 	//public Vector orderVector = new Vector<>();
 	
@@ -68,15 +69,22 @@ public class ordersSetAction extends ActionSupport {
 			orderInfo.add(price);
 			//orderInfo.add(image);
 			totalPrice = amount*price;
-			if(totalPrice>50000)
+			if(totalPrice>50000){
 				baesongPrice=3000;
-				totalPrice=totalPrice+3000;
+				ttotalPrice=totalPrice+3000;
+			}
 			//orderInfo.add(totalPrice);
+			
 		}else if(orderType.equals("basket")){
+			
 			basketList = sqlMapper.queryForList("Basket.basketList",m_id);
 			if(basketList!=null){
 				for(int i=0; i< basketList.size(); i++)
 					totalPrice += basketList.get(i).getB_allPrice();	
+				if(totalPrice>50000){
+					baesongPrice=3000;
+					ttotalPrice=totalPrice+3000;
+				}
 			}else return ERROR;
 		}return SUCCESS;
 	}
@@ -194,6 +202,14 @@ public class ordersSetAction extends ActionSupport {
 	}
 	public void setTotalPrice(int totalPrice) {
 		this.totalPrice = totalPrice;
+	}
+
+	public int getTtotalPrice() {
+		return ttotalPrice;
+	}
+
+	public void setTtotalPrice(int ttotalPrice) {
+		this.ttotalPrice = ttotalPrice;
 	}
 	
 	

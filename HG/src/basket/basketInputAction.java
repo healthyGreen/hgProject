@@ -22,20 +22,20 @@ public class basketInputAction extends ActionSupport{
 	private basketVO basparamClass;
 	private basketVO basresultClass;
 	
-	private String g_number;
+	//private String g_number;
 	//private String g_name;
 	private String g_sav_image;
 	//private int g_amout;
 	private int b_g_price;
 	private String m_id;
-	private int b_g_number;
+	private int g_number;
 	private String b_g_name;
 	private Calendar b_date = Calendar.getInstance();
 	private int b_g_amount; 
 	private int b_allprice;
 	//private String b_g_bottle; -> 다시 써야대
+	private String what;
 	
-
 	public basketInputAction() throws Exception{
 		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
@@ -56,7 +56,7 @@ public class basketInputAction extends ActionSupport{
 		basparamClass.setB_g_price(getB_g_price());
 		basparamClass.setB_allPrice(getB_g_amount()*getB_g_price());
 		basparamClass.setB_g_bottle("bottle");
-		basparamClass.setB_g_number(getB_g_number());
+		basparamClass.setB_g_number(getG_number());
 		basparamClass.setB_date(b_date.getTime());
 		sqlMapper.insert("Basket.basketInsert", basparamClass);
 		return SUCCESS;
@@ -124,14 +124,14 @@ public class basketInputAction extends ActionSupport{
 		this.b_g_price = b_g_price;
 	}
 	
-	public String getG_number() {
+/*	public String getG_number() {
 		return g_number;
 	}
 
 	public void setG_number(String g_number) {
 		this.g_number = g_number;
 	}
-
+*/
 	
 
 	public String getM_id() {
@@ -142,12 +142,14 @@ public class basketInputAction extends ActionSupport{
 		this.m_id = m_id;
 	}
 
-	public int getB_g_number() {
-		return b_g_number;
+	
+
+	public int getG_number() {
+		return g_number;
 	}
 
-	public void setB_g_number(int b_g_number) {
-		this.b_g_number = b_g_number;
+	public void setG_number(int g_number) {
+		this.g_number = g_number;
 	}
 
 	public String getB_g_name() {
@@ -194,6 +196,15 @@ public class basketInputAction extends ActionSupport{
 		basketInputAction.sqlMapper = sqlMapper;
 	}
 
+	public String getWhat() {
+		return what;
+	}
+
+	public void setWhat(String what) {
+		this.what = what;
+	}
+
+	
 /*	public String getB_g_bottle() {
 		return b_g_bottle;
 	}
