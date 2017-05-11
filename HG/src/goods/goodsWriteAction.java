@@ -42,7 +42,7 @@ public class goodsWriteAction extends ActionSupport implements SessionAware {
 	private List<File> upload = new ArrayList<File>(); // 파일 객체
 	private List<String> uploadContentType = new ArrayList<String>(); // 컨텐츠 타입
 	private List<String> uploadFileName = new ArrayList<String>(); // 파일 이름
-	private String fileUploadPath = "C:\\Java\\HG\\HG\\WebContent\\template\\goods\\upload\\";// 업로드
+	private String fileUploadPath = "C:\\javaprojectB\\HG\\HG\\WebConten\\template\\goods\\upload";// 업로드
 	private int index;// 경로
 
 	public goodsWriteAction() throws IOException {
@@ -52,6 +52,9 @@ public class goodsWriteAction extends ActionSupport implements SessionAware {
 	}
 
 	public String form() throws Exception {
+		
+		
+		
 		return SUCCESS;
 	}
 
@@ -71,8 +74,13 @@ public class goodsWriteAction extends ActionSupport implements SessionAware {
 		paramClass.setG_number(g_number);
 		paramClass.setG_price(g_price);
 		paramClass.setG_jaegoAmount(g_jaegoAmount);
+			
 		
 		sqlMapper.insert("g_write", paramClass);
+		
+		
+		
+		
 		// 첨부파일을 선택했다면 파일을 업로드한다.
 	if (upload != null) {
 			resultClass = (goodsVO)sqlMapper.queryForObject("selectLastNum");

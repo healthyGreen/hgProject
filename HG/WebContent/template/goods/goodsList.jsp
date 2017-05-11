@@ -44,7 +44,7 @@
 				<!-- 상단 카테고리 메뉴시작 -->
 				<div class="subtab">
 				  <ul>
-					<li  class="on"><a href="goodsList.action?g_category=<%=chacJeb %>&currentPage=<s:property value="currentPage"/>">착즙주스키트</a>
+					<li  class="on"><a href="goodsList.action?g_category=<%=chacJeb %>&currentPage=<s:property value="currentPage"/>">착즙주스키트</a>	
 					</li>
 				 
 					<li><a href="goodsList.action?g_category=<%=smoothy %>&currentPage=<s:property value="currentPage"/>">스무디키트</a>
