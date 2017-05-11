@@ -137,9 +137,9 @@ table.orderitem-list tfoot tr td table td {border:none;}
 </thead>
 <tbody>
 
-	<!-- WIDERPLANET CART SCRIPT START 2017.1.9 -->
-<span style="display: none;" name="wp_detection" tag="i">28</span>
-<script type='text/javascript'>var wp_page_type = 'Cart';</script>
+	<!-- WIDERPLANET CART SCRIPT START 2017.1.9 --><%-- 
+<span style="display: none;" name="wp_detection" tag="i">28</span> --%>
+<%-- <script type='text/javascript'>var wp_page_type = 'Cart';</script> --%>
 <!-- // WIDERPLANET CART SCRIPT END 2017.1.9 -->
 <tr>
 	<!-- <input type="hidden" name="strprice[]" value="">
@@ -274,9 +274,10 @@ table.orderitem-list tfoot tr td table td {border:none;}
 	<tr id="paper_delivery_menu">
 		<th>결제수단</th>
 		<td class="noline">
-
-		<div style='float:left'><input type="radio" name="o_pay" value="noTongJang" checked onclick="getDelivery()" onblur="chk_emoney(document.frmOrder.emoney)"> 무통장 입금</div>
-		<div style='float:left'><input type="radio" name="o_pay" value="card" checked onclick="getDelivery()" onblur="chk_emoney(document.frmOrder.emoney)"> 카드 결제</div>
+<div style='float:left'><input type="radio" name="o_pay" value="noTongJang" checked="checked"> 무통장 입금</div>
+		<div style='float:left'><input type="radio" name="o_pay" value="card"> 카드 결제</div> 
+		<!-- <div style='float:left'><input type="radio" name="o_pay" value="noTongJang" checked onclick="getDelivery()" onblur="chk_emoney(document.frmOrder.emoney)"> 무통장 입금</div>
+		<div style='float:left'><input type="radio" name="o_pay" value="card" checked onclick="getDelivery()" onblur="chk_emoney(document.frmOrder.emoney)"> 카드 결제</div> -->
 		</td>
 	</tr>
 	</table>
