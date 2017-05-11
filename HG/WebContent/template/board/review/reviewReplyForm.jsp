@@ -11,6 +11,10 @@
 	.wBtn input {border: none;     cursor: pointer;    float: right;    width: 120px;    height: 40px;    background: #484647;    text-align: center;    color: #fff;    display: block;    font-size: 13px;       box-sizing: border-box; padding-top: 0px !important; }
 </style>
 </head>
+<div class="sub_tit" style="width:1100px;margin:0 auto ; padding:30px 0;">
+	  <div class="tit">후기<span>/ PRODUCT REVIEW</span></div>
+	  <div class="local">홈 > <span>상품후기</span></div>
+	</div>
 <body>
 	<s:if test="reply">
 		<form action="reviewWritePro.action" enctype="multipart/form-data" method="post" >

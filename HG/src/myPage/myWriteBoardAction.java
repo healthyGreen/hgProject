@@ -38,11 +38,9 @@ public class myWriteBoardAction extends ActionSupport{
 
 	// 게시판 LIST 액션
 	public String execute() throws Exception {
-		ActionContext context = ActionContext.getContext(); // session을 생성하기 위해
+		ActionContext context = ActionContext.getContext();
 		Map session = context.getSession();
 		String session_id = (String) session.get("session_id");
-		System.out.println(session_id);
-		// id 값으로 쓴 글을 받아와 list에 넣는다.
 		list = sqlMapper.queryForList("Board.myWriteBoard",session_id);
 
 		totalCount = list.size(); // 전체 글 갯수를 구한다.

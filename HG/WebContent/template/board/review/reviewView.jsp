@@ -46,7 +46,9 @@
 												<span >/</span>
 												<strong>작성일</strong>
 												<span><s:property value="resultClass.rv_date"/></span>
-												
+												<span >/</span>
+												<strong>평점</strong>
+												<span><s:property value="resultClass.rv_score"/></span>
 											</div>
 											
 										</td>

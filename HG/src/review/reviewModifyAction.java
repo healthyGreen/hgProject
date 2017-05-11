@@ -26,6 +26,7 @@ public class reviewModifyAction extends ActionSupport{
    private String rv_name;
    private String rv_content;
    private String rv_old_file;
+   private String rv_score;
    private File rv_upload;
    private String uploadContentType;
    private String uploadFileName;
@@ -39,15 +40,11 @@ public class reviewModifyAction extends ActionSupport{
 
    public String execute() throws Exception{
 	   paramClass= new reviewVO();
-		resultClass = new reviewVO();
-	   
-      paramClass.setRv_number(getRv_number());
-      
-      
-      paramClass.setRv_title(getRv_title());
-      
-      paramClass.setRv_content(getRv_content());
-      
+	   resultClass = new reviewVO();
+	   paramClass.setRv_number(getRv_number());
+	   paramClass.setRv_title(getRv_title());
+	   paramClass.setRv_content(getRv_content());
+	   paramClass.setRv_score(getRv_score());
       
       sqlMapper.update("Board.updateReview", paramClass);
       
@@ -151,7 +148,16 @@ public String getFileUploadPath() {
 public void setFileUploadPath(String fileUploadPath) {
 	this.fileUploadPath = fileUploadPath;
 }
-   
+
+public String getRv_score() {
+	return rv_score;
+}
+
+public void setRv_score(String rv_score) {
+	this.rv_score = rv_score;
+}
+
+
    
    
 }

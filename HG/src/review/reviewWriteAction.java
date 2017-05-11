@@ -128,19 +128,12 @@ public class reviewWriteAction extends ActionSupport{
    }*/
    
    public String execute() throws Exception {
-	   System.out.println("11111111111");
-	   System.out.println("rv_number"+getRv_number());
-	   System.out.println("rv_id"+getRv_m_id());
-		  System.out.println("rv_number"+getRv_title());
 
-		  
-		  
 	      paramClass = new reviewVO();
 	      resultClass = new reviewVO();
-	      
 	      ActionContext context = ActionContext.getContext();
-			Map session = context.getSession();
-			String session_id = (String) session.get("session_id");
+	      Map session = context.getSession();
+	      String session_id = (String) session.get("session_id");
 	      
 	      if(rv_ref==0){
 	         paramClass.setRv_ref_level(0);
@@ -158,7 +151,7 @@ public class reviewWriteAction extends ActionSupport{
 	      paramClass.setRv_content(getRv_content());
 	      paramClass.setRv_pass(getRv_pass());
 	      paramClass.setRv_name(getRv_name());
-	      paramClass.setRv_score("0");
+	      paramClass.setRv_score(getRv_score());
 	      
 	      if(rv_ref==0)
 	         sqlMapper.insert("Board.insertReview", paramClass);
