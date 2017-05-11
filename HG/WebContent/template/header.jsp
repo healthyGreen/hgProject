@@ -52,6 +52,10 @@
         
             <ul class="clear">
                   <c:if test="${session.session_id != null }">
+                  	<c:if test="${session.session_admin == 1}">
+                  	<li><a href="">주문 목록</a></li>
+               		<li><a href="">상품 목록</a></li>
+                  	</c:if>
                   	<li><a href="logout.action">로그아웃</a></li>
                		<li><a href="myPage.action">마이헬시</a></li>
                		<li><a href="qnacustom.action">고객센터</a></li>
@@ -101,7 +105,7 @@
 			<div class="area">
 				<ul class="gnb clear">
 					<li style="width:16.6%">
-						<a href="" class="cate1">FRESH KIT</a>
+						<a class="cate1">FRESH KIT</a>
 						<div class="two">
 							<p><a href="goodsList.action?g_category=<%=chacJeb %>" class="cate2">착즙주스키트</a>
 							</p>
