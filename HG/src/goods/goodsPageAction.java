@@ -11,6 +11,7 @@ public class goodsPageAction {
 	private int endCount;	 // 한 페이지에서 보여줄 게시글의 끝 번호
 	private int startPage;	 // 시작 페이지
 	private int endPage;	 // 마지막 페이지
+	private int g_category;
 	
 	private StringBuffer pagingHtml;
 	
@@ -50,10 +51,10 @@ public class goodsPageAction {
 		pagingHtml = new StringBuffer();
 		if(currentPage>blockPage){
 			if(isSearch != "")
-			pagingHtml.append("<a href=goodsList.action?currentPage="
+			pagingHtml.append("<a href=goodsList.action?&currentPage="
 					+(startPage-1)+ "&searchKeyword="+isSearch+"&searchNum="+searchNum+">");
 			else
-				pagingHtml.append("<a href=goodsList.action?currentPage=" +
+				pagingHtml.append("<a href=goodsList.action?g_category&currentPage=" +
 			(startPage-1)+">");
 			pagingHtml.append("이전");
 			pagingHtml.append("</a>");
@@ -174,6 +175,17 @@ public class goodsPageAction {
 	public void setPagingHtml(StringBuffer pagingHtml) {
 		this.pagingHtml = pagingHtml;
 	}
+
+
+	public int getG_category() {
+		return g_category;
+	}
+
+
+	public void setG_category(int g_category) {
+		this.g_category = g_category;
+	}
+	
 }
 	
 	

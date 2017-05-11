@@ -46,11 +46,6 @@ public class goodsListAction extends ActionSupport {
 
    public String execute() throws Exception {
 	   
-	 // System.out.println(getG_category());
-      /*ActionContext context = ActionContext.getContext();g_
-      Map<String, Object> session = context.getSession();
-      String sessionid = (String) session.get("session_id");*/
-     // System.out.println("sessionid:"+sessionid);
 	   if (getSearchKeyword() != null) {
 	         return search();
 	      }
@@ -60,9 +55,7 @@ public class goodsListAction extends ActionSupport {
       page = new goodsPageAction(currentPage, totalCount, blockCount, blockPage, 0, "");
       pagingHtml = page.getPagingHtml().toString();
       
-      //System.out.println("page :"+page);
-      //System.out.println("pagingHtml :"+pagingHtml);
-      
+   
       int lastCount = totalCount;
       if (page.getEndCount() < totalCount)
          lastCount = page.getEndCount() + 1;
@@ -73,9 +66,6 @@ public class goodsListAction extends ActionSupport {
    public String adminList() throws Exception {
 	   
 		 // System.out.println(getG_category());
-	      /*ActionContext context = ActionContext.getContext();g_
-	      Map<String, Object> session = context.getSession();
-	      String sessionid = (String) session.get("session_id");*/
 
 	     // System.out.println("sessionid:"+sessionid);
 		   list = sqlMapper.queryForList("admin_list_selectAll");
@@ -95,34 +85,7 @@ public class goodsListAction extends ActionSupport {
 	      return SUCCESS;
 	   }
 
-   /*private String getGoods_category() {
-
-      return null;
-   }*/
-
-  /* public String execute() throws Exception {
-      ActionContext context = ActionContext.getContext();
-      Map<String, Object> session = context.getSession();
-      String sessionid = (String) session.get("id");
-      
-      if (getGoods_category() != null) {
-         return category();
-      }
-      list = sqlMapper.queryForList("g_list_selectAll");
-
-      totalCount = list.size();
-      page = new goodsPageAction(currentPage, totalCount, blockCount, blockPage, searchNum, "");
-      pagingHtml = page.getPagingHtml().toString();
-
-      int lastCount = totalCount;
-
-      if (page.getEndCount() < totalCount)
-         lastCount = page.getEndCount() + 1;
-
-      list = list.subList(page.getStartCount(), lastCount);
-      return SUCCESS;
-   }
-*/
+   
    public String search() throws Exception {
       if (searchNum == 0) {
          list = sqlMapper.queryForList("selectSearchW", "%" + getSearchKeyword() + "%");

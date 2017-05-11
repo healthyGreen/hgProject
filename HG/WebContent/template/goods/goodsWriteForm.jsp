@@ -3,6 +3,7 @@
 <%@taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -242,18 +243,25 @@ function validation(){
 								</input></td>
 						</tr>
 					</table> --%>
-				</div>
+				
 
 				<div id="sub_content"></div>
 
 				<%-- <div id="footer">
 					<jsp:include page="/template/footer.jsp" />
 				</div> --%>
-
 				
+				<c:if test="${resultClass.g_category == chacJeb}">
+				<li><a href="goodsList.action?g_category=chacJeb&currentPage=1"></a>
+				</c:if>
+				<c:if test="${resultClass.g_category == smoothy }">
+				<li><a href="goodsList.action?g_category=smoothy&currentPage=1"></a>
+				</c:if>
+				<c:if test="${resultClass.g_category == salad}">
+				<li><a href="goodsList.action?g_category=salad&currentPage=1"></a>
+				</c:if>
 				<input type=submit value="µî·Ï">
-
-
+				
 			</tbody>
 		</table>
 		</form>
