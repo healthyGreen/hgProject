@@ -147,7 +147,7 @@ table.orderitem-list tfoot tr td table td {border:none;}
    <!-- <input type="hidden" name="strprice[]" value="">
    <input type="hidden" name="adultpro[]" value="0"> -->
    <td height=60 align=center>
-   <a href="" class="oi_img"><img src='../images/1481460887917s0.jpg' width=56 /></a> 
+   <a href="" class="oi_img"><img src="/HG/template/goods/upload/1234.jpg" width=56 /></a> 
    </td>
    <td>
    <div><s:property value="%{orderInfo.get(1) }"/></div>
@@ -390,8 +390,8 @@ table.orderitem-list tfoot tr td table td {border:none;}
 
 
 <div style="padding:20px" align=center class="noline">
-<input type="image" src="../images/btn_payment.jpg">
-<img src="../images/btn_cancel.jpg" onclick="history.back()" style="cursor:pointer">
+<input type="image" src="./images/btn_payment.jpg">
+<img src="./images/btn_cancel.jpg" onclick="history.back()" style="cursor:pointer">
 </div>
 
 <!-- </form> -->

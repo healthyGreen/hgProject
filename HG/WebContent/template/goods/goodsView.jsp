@@ -111,10 +111,10 @@
                                     <td class=count >
                                        <div style="float:left;">
                                           <select name="b_g_bottle">
-            <option value="small">350 mL</option>
-            <option value="medium">500 mL</option>
-            <option value="big">750 mL</option>
-         </select>
+									            <option value="small">350 mL</option>
+									            <option value="medium">500 mL</option>
+									            <option value="big">750 mL</option>
+									         </select>
                                  </tr>
 
                               </table>
@@ -246,9 +246,8 @@
       			<th width="50px;">번호</th>
 		        <th>내용</th>
 		        <th>작성일</th>
-		        <c:if test="${session.session_admin == 1 }"> 
-		        <th>관리자버튼</th>
-		        </c:if>
+		        <th>댓글삭제</th>
+		   
       		</tr>
       		<s:iterator value="replylist" status="stat">
 	      <tr>
@@ -256,12 +255,12 @@
 	         <td><s:property value="rp_content"/></td>	
 	         <td><s:property value="rp_date"/></td>
 	         <%-- <c:if test="${session.session_admin == 1 }"> --%> 
-	         <td>
+	         <td style="text-align: center;">
 	         <%-- <s:property value="rp_content"/>
 	         <a href="javascript:open_win_noresizable('replyDeletePro.action?g_number=<s:property value="g_number"/>&originno=<s:property value=""/>&currentPage=<s:property value="currentPage"/>','rp_delete')">x</a>
 	       <!-- <a href="replyDeleteForm.action" onclick="location.href='replyDeleteForm.action'">x</a> --> --%>
-			 	<input type="button" value="x" onclick="javascript:location.href='replyDeletePro.action?g_number=${g_number}&currentPage=${currentPage}&rp_number=${rp_number}'"/>
-			 	<input type="button" value="답변" onclick="javascript:location.href='template/goods/replyWriteForm.jsp?g_number=${g_number}&rp_ref=${rp_ref}&currentPage=${currentPage}'"/>
+			 	<input type="button" value="x" onclick="javascript:location.href='replyCheckPassForm.action?g_number=${g_number}&currentPage=${currentPage}&rp_number=${rp_number}'"/>
+			 	
 	         </td>
 	         <%-- </c:if> --%>
 	     </tr>
