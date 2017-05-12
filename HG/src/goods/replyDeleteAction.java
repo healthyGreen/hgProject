@@ -54,11 +54,14 @@ public class replyDeleteAction extends ActionSupport{
 	}
 	
 	public String checkAction() throws SQLException{
+		System.out.println(rp_pass);
+		System.out.println(rp_number);
 		reClass = new replyVO();
-		reClass.setRp_pass(rp_pass);
-		reClass.setRp_number(rp_number);
+		passResult = new replyVO();
+		reClass.setRp_pass(getRp_pass());
+		reClass.setRp_number(getRp_number());
 		passResult = (replyVO)sqlMapper.queryForObject("reply_passCheck",reClass);
-		if(reResult!=null)
+		if(passResult!=null)
 			return SUCCESS;
 		else return ERROR;
 	}

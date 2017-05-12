@@ -42,7 +42,7 @@ public class goodsWriteAction extends ActionSupport implements SessionAware {
 	private List<File> upload = new ArrayList<File>(); // 파일 객체
 	private List<String> uploadContentType = new ArrayList<String>(); // 컨텐츠 타입
 	private List<String> uploadFileName = new ArrayList<String>(); // 파일 이름
-	private String fileUploadPath = "C:\\javaprojectB\\HG\\HG\\WebConten\\template\\goods\\upload";// 업로드
+	private String fileUploadPath = "C:\\java\\App\\gitHG\\HG\\WebContent\\template\\goods\\upload";// 업로드
 	private int index;// 경로
 
 	public goodsWriteAction() throws IOException {

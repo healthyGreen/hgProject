@@ -30,14 +30,14 @@
 <script type="text/javascript">
 function modifyPass(fm){
 	var rp_pass = document.fm.rp_pass.value;
-	var url = "replyPassCheckForm.action?rp_pass="+rp_pass;
+	var url = "replyDeleteCheckPassPro.action?rp_pass="+rp_pass;
 }
 
 </script>
 <div class="indiv"><!-- Start indiv -->
 
 
-<form method=post name=fm action="replyPassCheckForm.action" enctype="multipart/form-data">
+<form method=post name=fm action="replyDeleteCheckPassPro.action?rp_number=<s:property value="rp_number"/>" enctype="multipart/form-data">
 
 
 <div class="findbox">

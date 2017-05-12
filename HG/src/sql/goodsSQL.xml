@@ -136,7 +136,7 @@
    <select id="g_selectReply" resultClass="reply">
       select * from reply order by rp_number desc
    </select>
-	<select id="reply_passCheck" parameterClass="reply" resultClass="reply">
+	<select id="reply_passCheck" resultClass="reply">
          select*from reply where rp_number=#rp_number# and rp_pass=#rp_pass#
    </select>
   
