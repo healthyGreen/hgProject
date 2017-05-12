@@ -71,7 +71,7 @@ public class ordersSetAction extends ActionSupport {
 			//orderInfo.add(image);
 			totalPrice = amount*price;
 			ttotalPrice=totalPrice;
-			if(totalPrice>50000)
+			if(totalPrice<50000)
 				ttotalPrice=totalPrice+baesongPrice;
 		
 			//orderInfo.add(totalPrice);
@@ -85,7 +85,8 @@ public class ordersSetAction extends ActionSupport {
 				for(int i=0; i< basketList.size(); i++){
 					totalPrice += basketList.get(i).getB_allPrice();	
 				}
-				if(totalPrice>50000){
+				ttotalPrice=totalPrice;
+				if(totalPrice<50000){
 					ttotalPrice=totalPrice+baesongPrice;
 				}
 			}else return ERROR;
