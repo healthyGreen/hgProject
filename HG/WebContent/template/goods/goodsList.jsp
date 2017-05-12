@@ -108,10 +108,10 @@
 		  </tr>
 		  
 		  	  <c:if test="${session.session_admin == 1 }"> 
-		  	 
-		  	 <input name="list" type="button" value="글쓰기" class="inputb" 
+		  	 <tr align="right"><td colspan="4" >
+		  	 <input name="list" type="button" style="background:#484647;cursor: pointer; border: none; color: #Fff;     padding: 11px 25px;font-size: 15px;" value="글쓰기" class="inputb" 
 		onClick="javascript:location.href='goodsWrite.action?'"/>
-		<tr align="right"><td colspan="4" >
+		
 		
 		
 		  
