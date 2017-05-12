@@ -18,6 +18,7 @@ public class reviewCheckPassAction extends ActionSupport{
 	private int rv_number;
 	private reviewVO paramClass;
 	private reviewVO resultClass;
+	private int currentPage;
 	
 	public reviewCheckPassAction() throws IOException {
 		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
@@ -106,6 +107,12 @@ public class reviewCheckPassAction extends ActionSupport{
 	}
 	public void setresultClass(reviewVO resultClass) {
 		this.resultClass = resultClass;
+	}
+	public int getCurrentPage() {
+		return currentPage;
+	}
+	public void setCurrentPage(int currentPage) {
+		this.currentPage = currentPage;
 	}
 	
 	
