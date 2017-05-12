@@ -132,7 +132,7 @@ table.orderitem-list tfoot tr td table td {border:none;}
    <th class="input_txt" style="display:none;">적립금</th>
    <th class="input_txt">판매가</th>
    <th class="input_txt">수량</th>
-   <th class="input_txt">배송비(50,000원 이상시 3000원)</th>
+   <th class="input_txt">배송비(50,000원 미만 시 3000원)</th>
    <th class="input_txt">상품합계금액</th>
 </tr>
 </thead>
@@ -153,52 +153,65 @@ table.orderitem-list tfoot tr td table td {border:none;}
    <div><s:property value="%{orderInfo.get(1) }"/></div>
    <div style="margin:5px 0 5px 0;overflow:hidden;height:1px;background:url(/shop/data/skin/standard_C/img/common/line2.gif) repeat-x top left;"></div>
    </td>
-   <%-- <s:iterator value="orderInfo" status="sta"> --%>
+   
     <td align=center style="display:none;">0원</td> 
    <td align=right style="padding-right:10"><s:property value="%{orderInfo.get(4) }"/>원</td>
    <td align=center>
       <s:property value="%{orderInfo.get(2) }"/>
    </td>
-   <td align=center rowspan="1">
+  <td align=center rowspan="1">
       <div id="el-default-delivery">
-      <s:property value="%{baesongPrice }"/>원
+     <s:if test="%{totalPrice > 50000}">
+      0원
+      </s:if>
+      <s:else>
+
+       ${baesongPrice }원
+      </s:else>
       </div>
    </td>
-   <%-- </s:iterator> --%>
-   <td align=right style="padding-right:10"><s:property value="%{ttotalPrice }"/>원</td>
+
+   <td align=right style="padding-right:10"><s:property value="%{ttotalPrice }"/>원</td> 
 </tr>
 
 </s:if>
 
-   <s:if test="%{orderType=='basket'}">
-<s:iterator id="basketList" status="stat">
+<s:else>
+<s:iterator value="basketList" status="stat">
 <tr>
    
    <td height=60 align=center>
-  	goods Name
+   <a href="" class="oi_img"><img src="/HG/template/goods/upload/1234.jpg" width=56 /></a> 
    </td>
    <td>
-   <div><a href=""><s:property value="b_g_name "/></a></div>
+   <div><a href=""><s:property value="b_g_name"/></a></div>
    
    </td>
   
-   <td align=right style="padding-right:10"><s:property value="b_g_price "/>원</td>
+   <td align=right style="padding-right:10"><s:property value="b_g_price"/>원</td>
    <td align=center>
-     <s:property value="b_g_amount  "/>
+     <s:property value="b_g_amount"/>
    </td>
    <td align=center rowspan="1">
       <div id="el-default-delivery">
-      ${baesongPrice }원
+   <s:if test="%{totalPrice>50000}">
+      0원
+      
+      </s:if>
+      <s:else>
+      
+       ${baesongPrice }원
+      </s:else>
       </div>
    </td>
    
-   <td align=right style="padding-right:10">${ttotalPrice }원</td>
+   <td align=right style="padding-right:10"><s:property value="%{ttotalPrice }"/>원</td>
 </tr>
 </s:iterator>
 
 
 
-</s:if>
+</s:else>
 </tbody>
 
 <tfoot id="orderitem_total">
