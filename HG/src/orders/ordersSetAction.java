@@ -79,11 +79,15 @@ public class ordersSetAction extends ActionSupport {
 		}else if(orderType.equals("basket")){
 			
 			basketList = sqlMapper.queryForList("Basket.basketList",m_id);
+			//System.out.println("´Ù¿î");
+			//System.out.println(basketList.get(0).getB_g_name());
 			if(basketList!=null){
-				for(int i=0; i< basketList.size(); i++)
+				for(int i=0; i< basketList.size(); i++){
 					totalPrice += basketList.get(i).getB_allPrice();	
-				if(totalPrice>50000)
-					ttotalPrice=totalPrice+baesongPrice;			
+				}
+				if(totalPrice>50000){
+					ttotalPrice=totalPrice+baesongPrice;
+				}
 			}else return ERROR;
 		}return SUCCESS;
 	}

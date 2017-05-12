@@ -64,7 +64,7 @@ public class goodsViewAction extends ActionSupport {
    public String execute() throws Exception {
 	   System.out.println("글넘버:"+getG_number());
 	   // 글 상세보기 SQL
-	   goodsResult.setG_number(getG_number());
+	   //goodsResult.setG_number(getG_number());
 	   
       goodsResult = (goodsVO) sqlMapper.queryForObject("g_view", getG_number());
      

@@ -25,6 +25,7 @@ public class myPageAction extends ActionSupport{
 	private String m_name;
 	private int m_point;
 	private int basketCount;
+	private int myPoint;
 	List<basketVO> list = new ArrayList<basketVO>();
 	
 	
@@ -39,6 +40,8 @@ public class myPageAction extends ActionSupport{
 		Map<String, Object> session = context.getSession();
 		String session_id = (String) session.get("session_id");
 		list = sqlMapper.queryForList("Basket.basketCount",session_id);
+		myPoint = (int)sqlMapper.queryForObject("Member.selectPoint",session_id);
+		System.out.println(myPoint);
 		basketCount = list.size();
 		return SUCCESS;
 	}
@@ -106,6 +109,16 @@ public class myPageAction extends ActionSupport{
 	public void setBasketCount(int basketCount) {
 		this.basketCount = basketCount;
 	}
+
+	public int getMyPoint() {
+		return myPoint;
+	}
+
+	public void setMyPoint(int myPoint) {
+		this.myPoint = myPoint;
+	}
+
+	
 	
 	
 }

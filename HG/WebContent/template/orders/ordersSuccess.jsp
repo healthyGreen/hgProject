@@ -38,7 +38,7 @@
    </tr>
    <tr>
       <th>결제금액</th>
-      <td><b>${ttotalPrice }</b></td>
+      <td><b>${ttotalPrice }원</b></td>
    </tr>
    <s:if test="%{totalPrice }>50000"> 원
    <tr>
@@ -46,20 +46,16 @@
       <td>3,000원</td>
    </tr>
    </s:if>
-   <tr>
-      <th>적립금결제</th>
-      <td><b>0원</b></td>
-   </tr>
    
    </table>
-    </td>
+    </td> 
     <!--왼쪽리스트끝-->
     <!--오른쪽리스트시작-->
     <td valign="top" width="50%">
     <table>
     <tr>
       <th>주문번호</th>
-      <td>${g_number}</td>
+      <td>${g_number} 고객님</td>
    </tr>
    <tr>
       <th>주문자명</th>
@@ -71,7 +67,7 @@
    </tr>
    <tr>
       <th>주문금액</th>
-      <td>${totalPrice }</td>
+      <td>${totalPrice }원</td>
    </tr>
     </table>
     </td>

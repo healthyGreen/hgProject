@@ -19,7 +19,7 @@ public class goodsListAction extends ActionSupport {
    public static Reader reader;
    public static SqlMapClient sqlMapper;
 
-   private List<goodsVO> list = new ArrayList<goodsVO>();;
+   private List<goodsVO> list = new ArrayList<goodsVO>();
 
    private goodsVO goods_paramClass = new goodsVO();
    private goodsVO goods_resultClass = new goodsVO();
@@ -61,6 +61,7 @@ public class goodsListAction extends ActionSupport {
          lastCount = page.getEndCount() + 1;
 
       list = list.subList(page.getStartCount(), lastCount);
+    //  System.out.println(list);
       return SUCCESS;
    }
    public String adminList() throws Exception {

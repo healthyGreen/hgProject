@@ -54,7 +54,7 @@
 		DELETE FROM BASKET WHERE B_NUMBER = #b_number#
 	</delete>
 	 <delete id="basketDeleteAll" parameterClass="string">
-		DELETE FROM BASKET WHERE B_M_ID = #b_m_id#
+		DELETE FROM BASKET WHERE B_M_ID = #m_id#
 	</delete>
 
 </sqlMap>

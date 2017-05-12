@@ -52,13 +52,13 @@
 <form action="orderForPro.action">
 <s:hidden name="m_id" value="%{member.m_id}"/>
 <s:hidden name="ttotalPrice" value="%{ttotalPrice}"/>
+<s:hidden name="orderType" value="%{orderType}"/>
 <s:if test="%{orderType=='goods'}">
 <s:hidden name="g_number" value="%{orderInfo.get(0)}"/>
 <s:hidden name="g_name" value="%{orderInfo.get(1)}"/>
 <s:hidden name="amount" value="%{orderInfo.get(2)}"/>
 <s:hidden name="bottle" value="%{orderInfo.get(3)}"/>
 <s:hidden name="price" value="%{orderInfo.get(4)}"/>
-<s:hidden name="orderType" value="%{orderType}"/>
 <s:hidden name="totalPrice" value="%{totalPrice}"/>
 </s:if>
 <table height=100% cellpadding=0 cellspacing=0 border=0 class="outline_both" style="width:1100px;margin:0 auto ; padding:30px 0;">
@@ -170,37 +170,35 @@ table.orderitem-list tfoot tr td table td {border:none;}
 
 </s:if>
 
-   <s:else>
-   <s:hidden name="orderType" value="%{orderType}"/>
-<s:iterator id="basketList" status="status">
+   <s:if test="%{orderType=='basket'}">
+<s:iterator id="basketList" status="stat">
 <tr>
    
    <td height=60 align=center>
-   <a href="" class="oi_img"><img src='../images/1481460887917s0.jpg' width=56 /></a> 
+  	goods Name
    </td>
    <td>
-   <div><s:property value="b_g_name "/></div>
-   <div style="margin:5px 0 5px 0;overflow:hidden;height:1px;background:url(/shop/data/skin/standard_C/img/common/line2.gif) repeat-x top left;"></div>
+   <div><a href=""><s:property value="b_g_name "/></a></div>
+   
    </td>
-   <%-- <s:iterator value="orderInfo" status="sta"> --%>
-    <td align=center style="display:none;">0원</td> 
-   <td align=right style="padding-right:10">${b_g_price }원</td>
+  
+   <td align=right style="padding-right:10"><s:property value="b_g_price "/>원</td>
    <td align=center>
-     ${b_g_amount }
+     <s:property value="b_g_amount  "/>
    </td>
    <td align=center rowspan="1">
       <div id="el-default-delivery">
       ${baesongPrice }원
       </div>
    </td>
-   <%-- </s:iterator> --%>
+   
    <td align=right style="padding-right:10">${ttotalPrice }원</td>
 </tr>
 </s:iterator>
 
 
 
-</s:else>
+</s:if>
 </tbody>
 
 <tfoot id="orderitem_total">

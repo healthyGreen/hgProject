@@ -38,10 +38,10 @@ public class basketDeleteAction extends ActionSupport{
 	}
 	
 	public String deleteAll() throws SQLException{
-		ActionContext context = ActionContext.getContext(); // session을 생성하기 위해
+		/*ActionContext context = ActionContext.getContext(); // session을 생성하기 위해
 		Map<String, Object> session = context.getSession();
-		String session_id = (String) session.get("session_id");
-		sqlMapper.delete("Basket.basketDeleteAll",session_id);
+		String session_id = (String) session.get("session_id");*/
+		sqlMapper.delete("Basket.basketDeleteAll",m_id);
 		return SUCCESS;
 	}
 	public String execute() throws Exception{

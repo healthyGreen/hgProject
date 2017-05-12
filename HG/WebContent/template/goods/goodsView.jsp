@@ -255,7 +255,7 @@
 	         <td height="10" width="130" align="center"><s:property value="rp_number"/><br></td>
 	         <td><s:property value="rp_content"/></td>	
 	         <td><s:property value="rp_date"/></td>
-	         <c:if test="${session.session_admin == 1 }"> 
+	         <%-- <c:if test="${session.session_admin == 1 }"> --%> 
 	         <td>
 	         <%-- <s:property value="rp_content"/>
 	         <a href="javascript:open_win_noresizable('replyDeletePro.action?g_number=<s:property value="g_number"/>&originno=<s:property value=""/>&currentPage=<s:property value="currentPage"/>','rp_delete')">x</a>
@@ -263,7 +263,7 @@
 			 	<input type="button" value="x" onclick="javascript:location.href='replyDeletePro.action?g_number=${g_number}&currentPage=${currentPage}&rp_number=${rp_number}'"/>
 			 	<input type="button" value="´äº¯" onclick="javascript:location.href='template/goods/replyWriteForm.jsp?g_number=${g_number}&rp_ref=${rp_ref}&currentPage=${currentPage}'"/>
 	         </td>
-	         </c:if>
+	         <%-- </c:if> --%>
 	     </tr>
 		    </s:iterator>
 		 <s:if test="replylist.size() <= 0">

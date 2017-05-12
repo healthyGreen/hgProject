@@ -138,6 +138,9 @@
    <update id="updatePoint" parameterClass="member">
    	update member set m_point = m_point + #m_point# where m_id = #m_id#
    </update>
+   <select id="selectPoint" parameterClass="string" resultClass="int">
+   	select m_point from member where m_id = #session_id#
+   </select>
    <!-- 회원 탈퇴 -->
    <delete id="deleteMember" parameterClass="member">
       DELETE FROM MEMBER WHERE M_ID=#m_id#

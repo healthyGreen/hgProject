@@ -23,6 +23,7 @@
 								<!-- <th scope="col">이미지</th> -->
 								<th scope="col">상품이름</th>
 								<th scope="col">bottle</th>
+								<th scope="col">수량</th>
 								<th scope="col">주문일</th>
 							</tr>
 							</thead>
@@ -32,8 +33,9 @@
 									<td>${o_number} </td>
 									<%-- <td><s:property value="rv_sav_image"/></td> --%>
 									<%-- <td class="subject"><a href="reviewView.action?rv_number=<s:property value="rv_number"/>&currentPage=<s:property value="currentPage"/>">&nbsp;&nbsp;&nbsp;<s:property value="rv_title" /></a></td> --%>
-									<td><s:property value="o_name"/></td>
+									<td><a href='goodsView.action?g_number=<s:property value="o_number"/>&currentPage=1'><s:property value="o_name"/></a></td>
 									<td><s:property value="o_g_bottle"/></td>
+									<td><s:property value="o_g_amount"/></td>
 									<td><s:property value="o_date"/></td>
 								</tr>
 							</s:iterator>

@@ -101,6 +101,7 @@ public class ordersAction extends ActionSupport{
 	// 장바구니에 넣었을때 
 	public String execute2() throws SQLException{
 		order = new ordersVO();
+		member = new memberVO();
 		basketList = sqlMapper.queryForList("Basket.basketList", m_id);
 		for(int i=0; i<basketList.size(); i++){
 			
@@ -122,8 +123,13 @@ public class ordersAction extends ActionSupport{
 			order.setO_price(basket.getB_g_price());
 			order.setO_allprice(basket.getB_allPrice());
 			order.setO_orderType(orderType);
+			myPoint = (int) (myPoint + basket.getB_allPrice()*0.05);
 			sqlMapper.insert("Orders.insertOrder", order);
 		}
+		member.setM_point(myPoint);
+		member.setM_id(m_id);
+		sqlMapper.update("Member.updatePoint",member);
+		sqlMapper.delete("Basket.basketDeleteAll", m_id);
 		return SUCCESS;
 	}
 	public int getG_number() {
