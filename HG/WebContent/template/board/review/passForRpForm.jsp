@@ -41,7 +41,7 @@ function modifyPass(fm){
 <div class="indiv"><!-- Start indiv -->
 
 
-<form method=post name=fm action="reviewCheckPassPro.action">
+<form method=post name=fm action="reviewCheckPassPro.action?currentPage=<s:property value="currentPage"/>">
 
 
 <div class="findbox">

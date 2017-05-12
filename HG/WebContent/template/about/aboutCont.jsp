@@ -156,7 +156,7 @@
 
 <br>
 
-	<img src="../../images/company.jpg">
+	<img src="../../images/company.png">
 
 
 

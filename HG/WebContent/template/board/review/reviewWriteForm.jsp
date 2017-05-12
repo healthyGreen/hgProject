@@ -81,7 +81,7 @@
                         
                         <input type=radio name=rv_score value=5  >�ڡڡڡڡ�
                         <input type=radio name=rv_score value=4  >�ڡڡڡڡ�
-                        <input type=radio name=rv_score value=3  >�ڡڡڡ١�
+                        <input type=radio name=rv_score value=3 checked="checked" >�ڡڡڡ١�
                         <input type=radio name=rv_score value=2  >�ڡڡ١١�
                         <input type=radio name=rv_score value=1  >�ڡ١١١�
                         </div>
@@ -104,7 +104,7 @@
          </form>
       </s:if>   
       <s:else>
-         <form name="reviewWrite" method="post" enctype="multipart/form-data" action="reviewWritePro.action" onsubmit="return reviewcheck()">
+         <form name="reviewWrite" method="post" enctype="multipart/form-data" action="reviewWritePro.action?currentPage=<s:property value="currentPage"/>" onsubmit="return reviewcheck()">
             <table width="100%" class="board-type03" style="width:1100px;margin:0 auto ;">
                <colgroup>
                   <col width="" />
@@ -145,7 +145,7 @@
                         
                         <input type=radio name=rv_score value=5  >�ڡڡڡڡ�
                         <input type=radio name=rv_score value=4  >�ڡڡڡڡ�
-                        <input type=radio name=rv_score value=3  >�ڡڡڡ١�
+                        <input type=radio name=rv_score value=3 checked="checked" >�ڡڡڡ١�
                         <input type=radio name=rv_score value=2  >�ڡڡ١١�
                         <input type=radio name=rv_score value=1  >�ڡ١١١�
                         </div>
