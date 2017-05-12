@@ -260,7 +260,8 @@ function validation(){
 				<c:if test="${resultClass.g_category == salad}">
 				<li><a href="goodsList.action?g_category=salad&currentPage=1"></a>
 				</c:if>
-				<input type=submit value="등록">
+				
+				<input type=submit style="margin-top: 25px; background:#484647;cursor: pointer; border: none; color: #Fff; float: right; padding: 11px 25px;font-size: 15px;" value="등록">
 				
 			</tbody>
 		</table>

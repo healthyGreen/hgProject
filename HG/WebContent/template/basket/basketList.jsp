@@ -8,7 +8,7 @@
 <script type="text/javascript">
    function alldelBas(basketlist) {
       if(confirm("삭제하시겠습니까?")){
-         window.location.href='basketDeleteAll.action?b_m_id=${m_id}';
+    	  window.location.href='basketDeleteAll.action?m_id=${m_id}';
       }else return;
    }
 </script>
@@ -49,6 +49,10 @@ table.orderitem-list tfoot tr td table td {border:none;}
 </style>
 
 <table cellpadding=0 cellspacing=0 border=0 class="tlist2">
+<s:if test="%{subBasketList.size() <= 0}">
+   <tr><th>장바구니가 비어있습니다!</th></tr>
+</s:if> 
+ <s:else>
   <col width=60>
   <col >
   <col width=100>
@@ -83,7 +87,8 @@ table.orderitem-list tfoot tr td table td {border:none;}
             <option value="7">7</option>
             <option value="8">8</option>
             <option value="9">9</option>
-         </select>&nbsp;<input type="button" value="변경" onclick="javascript:location.href='basketModify.action?b_g_number=${b_g_number}&b_number=${b_number}&b_g_price=${b_g_price}&m_id=${b_m_id}&b_g_amount='+document.getElementById('aaa<s:property value="%{#sta.index}" />').value">
+         </select>&nbsp;<input type="button" value="변경" 
+         onclick="javascript:location.href='basketModify.action?b_g_number=${b_g_number}&b_number=${b_number}&b_g_price=${b_g_price}&m_id=${b_m_id}&b_g_amount='+document.getElementById('aaa<s:property value="%{#sta.index}" />').value">
          &nbsp;<input type="button" value="삭제" onclick="javascript:location.href='basketDelete.action?b_number=${b_number}&m_id=${b_m_id}'"/>
       </td>
       <td>${b_allPrice }원</td>
@@ -123,8 +128,8 @@ table.orderitem-list tfoot tr td table td {border:none;}
 
 <div class="rig">
 <!-- <a href=""><img src="images/btn_back2.gif" border=0></a>&nbsp; -->
-<a href="orderForm.action?orderType=basket&m_id=${m_id}">주문하기</a>&nbsp;
-<a onclick="return alldelBas(this.form)" ><img src="images/btn_empty2.gif" border=0></a>&nbsp;
+<a href="orderForm.action?orderType=basket&m_id=${m_id}" style="border: 1px solid #666; background: #f0f0f0; color: #333; padding: 10px 20px; ">주문하기</a>&nbsp;
+<a onclick="return alldelBas(this.form)" style="border: 1px solid #666; background: #f0f0f0; color: #333; padding: 10px 20px; ">비우기</a>&nbsp;
 <!-- <a href=""><img src="images/btn_continue2.gif" border=0></a> -->
 </div>
 </div>
@@ -141,6 +146,7 @@ table.orderitem-list tfoot tr td table td {border:none;}
  
 </td>
 </tr>
+</s:else>
 </table>
 </form>
 </td>
