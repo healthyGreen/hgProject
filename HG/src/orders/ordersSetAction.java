@@ -88,6 +88,14 @@ public class ordersSetAction extends ActionSupport {
 		}return SUCCESS;
 	}
 		
+	public List<basketVO> getBasketList() {
+		return basketList;
+	}
+
+	public void setBasketList(List<basketVO> basketList) {
+		this.basketList = basketList;
+	}
+
 	public HttpServletResponse getResponse() {
 		return response;
 	}

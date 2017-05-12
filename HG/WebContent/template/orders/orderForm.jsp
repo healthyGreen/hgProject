@@ -174,20 +174,19 @@ table.orderitem-list tfoot tr td table td {border:none;}
    <s:hidden name="orderType" value="%{orderType}"/>
 <s:iterator id="basketList" status="status">
 <tr>
-   <!-- <input type="hidden" name="strprice[]" value="">
-   <input type="hidden" name="adultpro[]" value="0"> -->
+   
    <td height=60 align=center>
    <a href="" class="oi_img"><img src='../images/1481460887917s0.jpg' width=56 /></a> 
    </td>
    <td>
-   <div>${b_g_name }</div>
+   <div><s:property value="b_g_name "/></div>
    <div style="margin:5px 0 5px 0;overflow:hidden;height:1px;background:url(/shop/data/skin/standard_C/img/common/line2.gif) repeat-x top left;"></div>
    </td>
    <%-- <s:iterator value="orderInfo" status="sta"> --%>
     <td align=center style="display:none;">0원</td> 
    <td align=right style="padding-right:10">${b_g_price }원</td>
    <td align=center>
-      <s:property value="%{b_g_amount }"/>
+     ${b_g_amount }
    </td>
    <td align=center rowspan="1">
       <div id="el-default-delivery">
@@ -195,7 +194,7 @@ table.orderitem-list tfoot tr td table td {border:none;}
       </div>
    </td>
    <%-- </s:iterator> --%>
-   <td align=right style="padding-right:10">${ttotalPrice }"원</td>
+   <td align=right style="padding-right:10">${ttotalPrice }원</td>
 </tr>
 </s:iterator>
 
