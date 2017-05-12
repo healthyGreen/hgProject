@@ -74,7 +74,7 @@ table.orderitem-list tfoot tr td table td {border:none;}
    <tr>
 
       <td>${b_g_number}</td>
-      <td>${b_g_name} </td>
+      <td><a href="goodsView.action?g_number=<s:property value="%{b_g_number}"/>">${b_g_name} </a></td>
       <td>${b_g_price }¿ø</td>
       <td><span class="amount">${b_g_amount }</span>°³ &nbsp;
          <select name='b_g_amount' id='aaa<s:property value="%{#sta.index}" />'>

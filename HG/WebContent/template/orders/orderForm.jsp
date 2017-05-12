@@ -175,7 +175,7 @@ table.orderitem-list tfoot tr td table td {border:none;}
 <tr>
    
    <td height=60 align=center>
-  	goods Name
+   <a href="" class="oi_img"><img src="/HG/template/goods/upload/1234.jpg" width=56 /></a> 
    </td>
    <td>
    <div><a href=""><s:property value="b_g_name "/></a></div>

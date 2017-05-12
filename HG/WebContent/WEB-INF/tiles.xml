@@ -72,6 +72,9 @@
    <definition name="reviewPass" extends="main">
       <put-attribute name="body" value="/template/board/review/passForRpForm.jsp"/>
    </definition>
+   <definition name="reviewDeletePass" extends="main">
+      <put-attribute name="body" value="/template/board/review/passDeleteForRpForm.jsp"/>
+   </definition>
    
    
    
